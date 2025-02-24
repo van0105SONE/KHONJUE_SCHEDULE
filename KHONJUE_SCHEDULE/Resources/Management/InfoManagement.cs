@@ -45,5 +45,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             studentClassManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(studentClassManagement);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            InfoContainer.Controls.Clear();
+            TimePeriodManagement timePerdioManagement = new TimePeriodManagement();
+            timePerdioManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(timePerdioManagement);
+        }
     }
 }
