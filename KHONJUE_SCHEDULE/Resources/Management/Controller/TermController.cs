@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 {
-    public class LevelController
+    public class TermController
     {
         private DatabaseContext _databaseContext;
         private NpgsqlCommand _command;
-        public LevelController(DatabaseContext context) { 
+        public TermController(DatabaseContext context) { 
           _databaseContext = context;
         }
 
-        public bool editLevel(string levelName, int Id)
+        public bool editTerm(string termName, int Id)
         {
             try
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE study_level SET ""LevelName""='{levelName}' WHERE id={Id}";
+                _command.CommandText = $@"UPDATE terms SET ""TermName""='{termName}' WHERE id={Id}";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -34,13 +34,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
-        public bool CreateLevel(LevelModel levelParams)
+        public bool CreateTerm(TermModel termParams)
         {
             try
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO study_level (""LevelCode"", ""LevelName"") VALUES ('KJ{DateTime.Now.Ticks}', '{levelParams.LevelName}')";
+                _command.CommandText = $@"INSERT INTO terms (""TermCode"", ""TermName"") VALUES ('TM{DateTime.Now.Ticks}', '{termParams.TermName}')";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -52,13 +52,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public bool deleteLevel(int Id)
+        public bool deleteTerm(int Id)
         {
             try
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"DELETE FROM study_level  WHERE ""Id"" = {Id};";
+                _command.CommandText = $@"DELETE FROM terms  WHERE ""Id"" = {Id};";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -70,25 +70,25 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public List<LevelModel> getLevels()
+        public List<TermModel> getTerms()
         {
             try
             {
-                List<LevelModel> levels = new List<LevelModel>();
+                List<TermModel> terms = new List<TermModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT study_level.""Id"", study_level.""LevelName"", study_level.""LevelCode"" FROM study_level";
+                _command.CommandText = $@"SELECT terms.""Id"", terms.""TermName"", terms.""TermCode"" FROM terms;";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
-                    LevelModel level = new LevelModel();
-                    level.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
-                    level.LevelName = data.GetValue(data.GetOrdinal("LevelName")).ToString();
-                    level.LevelCode = data.GetValue(data.GetOrdinal("LevelCode")).ToString();
-                    levels.Add(level);
+                    TermModel term = new TermModel();
+                    term.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    term.TermName = data.GetValue(data.GetOrdinal("TermName")).ToString();
+                    term.TermCode = data.GetValue(data.GetOrdinal("TermCode")).ToString();
+                    terms.Add(term);
                 }
                 data.Close();
-                return levels;
+                return terms;
             }
             catch(Exception ex)
             {

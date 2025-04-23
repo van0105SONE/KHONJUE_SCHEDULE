@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 {
-    public class LevelController
+    public class MajorController
     {
         private DatabaseContext _databaseContext;
         private NpgsqlCommand _command;
-        public LevelController(DatabaseContext context) { 
+        public MajorController(DatabaseContext context) { 
           _databaseContext = context;
         }
 
-        public bool editLevel(string levelName, int Id)
+        public bool editLevel(MajorModel majorParams)
         {
             try
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE study_level SET ""LevelName""='{levelName}' WHERE id={Id}";
+                _command.CommandText = $@"UPDATE majors SET ""MajorName""='{majorParams.MajorName},  ""LimitPerClass""='{majorParams.LimitPerClass},""CurriculumId""='{majorParams.CurriculumId}' WHERE id={majorParams.Id}";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -34,13 +34,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
-        public bool CreateLevel(LevelModel levelParams)
+        public bool CreateLevel(MajorModel majorParams)
         {
             try
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO study_level (""LevelCode"", ""LevelName"") VALUES ('KJ{DateTime.Now.Ticks}', '{levelParams.LevelName}')";
+                _command.CommandText = $@"INSERT INTO majors (""MajorCode"", ""MajorName"", ""LimitPerClass"" , ""CurriculumId"") VALUES ('KJ{DateTime.Now.Ticks}', '{majorParams.MajorName}', {majorParams.LimitPerClass}, {majorParams.CurriculumId})";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -58,7 +58,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"DELETE FROM study_level  WHERE ""Id"" = {Id};";
+                _command.CommandText = $@"DELETE FROM majors  WHERE ""id"" = {Id};";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -70,22 +70,25 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public List<LevelModel> getLevels()
+        public List<MajorModel> getLevels()
         {
             try
             {
-                List<LevelModel> levels = new List<LevelModel>();
+                List<MajorModel> levels = new List<MajorModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT study_level.""Id"", study_level.""LevelName"", study_level.""LevelCode"" FROM study_level";
+                _command.CommandText = $@"SELECT majors.""id"", majors.""MajorCode"", majors.""MajorName"",  majors.""LimitPerClass"" ,majors.""CurriculumId"",curriculum.""CurriculumName""  FROM majors LEFT JOIN curriculum ON majors.""CurriculumId"" = curriculum.""Id""";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
-                    LevelModel level = new LevelModel();
-                    level.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
-                    level.LevelName = data.GetValue(data.GetOrdinal("LevelName")).ToString();
-                    level.LevelCode = data.GetValue(data.GetOrdinal("LevelCode")).ToString();
-                    levels.Add(level);
+                    MajorModel major = new MajorModel();
+                    major.Id = int.Parse(data.GetValue(data.GetOrdinal("id")).ToString(), 0);
+                    major.MajorCode = data.GetValue(data.GetOrdinal("MajorCode")).ToString();
+                    major.MajorName = data.GetValue(data.GetOrdinal("MajorName")).ToString();
+                    major.LimitPerClass = int.Parse(data.GetValue(data.GetOrdinal("LimitPerClass")).ToString());
+                    major.CurriculumId = int.Parse(data.GetValue(data.GetOrdinal("CurriculumId")).ToString());
+                    major.CurriculumName = data.GetValue(data.GetOrdinal("CurriculumName")).ToString();
+                    levels.Add(major);
                 }
                 data.Close();
                 return levels;

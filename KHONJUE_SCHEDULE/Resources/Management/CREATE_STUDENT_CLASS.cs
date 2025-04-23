@@ -46,7 +46,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             loadLevel();
             student = studentClassParam;
             txtDescription.Text = student.Description;
-            txtNumberOfClass.Text =  student.NumberOfClass.ToString();
+            txtNumberOfClass.Text = student.NumberOfClass.ToString();
             txtStudentClassName.Text = student.StudentClassName;
             action = Actions.Update;
         }
@@ -70,10 +70,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             cmbLevel.DataSource = roles;
         }
 
-        private void closeBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void createBtn_Click_1(object sender, EventArgs e)
         {
@@ -111,6 +107,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             {
                 e.Handled = true;
             }
+        }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

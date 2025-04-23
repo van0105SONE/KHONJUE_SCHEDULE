@@ -19,7 +19,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void btnManageSubject_Click(object sender, EventArgs e)
         {
-
+            InfoContainer.Controls.Clear();
+            TermSubjectManagement levelManagement = new TermSubjectManagement();
+            levelManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(levelManagement);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,6 +55,30 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             TimePeriodManagement timePerdioManagement = new TimePeriodManagement();
             timePerdioManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(timePerdioManagement);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            InfoContainer.Controls.Clear();
+            CurriculumManagement curriculumManagement = new CurriculumManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            InfoContainer.Controls.Clear();
+            MajorManagement curriculumManagement = new MajorManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            InfoContainer.Controls.Clear();
+            TermManagement curriculumManagement = new TermManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
         }
     }
 }

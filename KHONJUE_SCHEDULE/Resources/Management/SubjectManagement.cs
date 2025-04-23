@@ -57,27 +57,17 @@ namespace KHONJUE_SCHEDULE.Resources.Management
      
             subjectDatagrid.DataSource = null;
             List<SubjectModel> subjects = _subjController.GetSubjectList();
-            subjectDatagrid.DataSource = subjects;
-            subjectDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
-            subjectDatagrid.Columns["Id"].Visible = false;
-            subjectDatagrid.Columns["LevelId"].HeaderText = "ລຳດັບ";
-            subjectDatagrid.Columns["LevelId"].Visible = false;
-            subjectDatagrid.Columns["SubjectCode"].HeaderText = "ລະຫັດວິຊາຣຽນ";
-            subjectDatagrid.Columns["SubjectName"].HeaderText = "ຊື່ວິຊາຮຽນ";
-            subjectDatagrid.Columns["Description"].HeaderText = "ຄຳອະທິບາຍວິຊາຮຽນ";
-            subjectDatagrid.Columns["LevelCode"].HeaderText = "ລະຫັດຊັ້ນຮຽນ";
-            subjectDatagrid.Columns["LevelName"].HeaderText = "ຊຶ້ຊັ້ນຮຽນ";
 
             // Set data source and column headers
             subjectDatagrid.DataSource = subjects;
             subjectDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             subjectDatagrid.Columns["Id"].Visible = false;
-            subjectDatagrid.Columns["LevelId"].HeaderText = "ລຳດັບ";
-            subjectDatagrid.Columns["LevelId"].Visible = false;
+            subjectDatagrid.Columns["CurriculumId"].HeaderText = "ລຳດັບ";
+            subjectDatagrid.Columns["CurriculumId"].Visible = false;
             subjectDatagrid.Columns["SubjectCode"].HeaderText = "ລະຫັດວິຊາຣຽນ";
             subjectDatagrid.Columns["SubjectName"].HeaderText = "ຊື່ວິຊາຮຽນ";
-            subjectDatagrid.Columns["LevelCode"].HeaderText = "ລະຫັດຊັ້ນຮຽນ";
-            subjectDatagrid.Columns["LevelName"].HeaderText = "ຊຶ້ຊັ້ນຮຽນ";
+            subjectDatagrid.Columns["CurriculumName"].HeaderText = "ລະຫັດຊັ້ນຮຽນ";
+            subjectDatagrid.Columns["CurriculumName"].HeaderText = "ຫຼັກສູດ";
 
             // Add two button columns to the DataGridView (you can add them as separate columns)
             DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
@@ -107,7 +97,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 var subjectCode = row.Cells["SubjectCode"].Value.ToString(); // Get subject code
                 var subjectName = row.Cells["SubjectName"].Value.ToString(); // Get subject code
                 var description = row.Cells["Description"].Value.ToString(); // Get subject code
-                var levelId = int.Parse( row.Cells["LevelId"].Value.ToString()); // Get subject code
+                var levelId = int.Parse( row.Cells["CurriculumId"].Value.ToString()); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == subjectDatagrid.Columns["EditButton"].Index)
                 {
@@ -119,7 +109,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         SubjectCode = subjectCode,
                         SubjectName = subjectName,
                         Description = description,
-                        LevelId = levelId
+                        CurriculumId = levelId
                     };
                     CREATE_SUBJECT_FORM createForm = new CREATE_SUBJECT_FORM(subjectArg);
 

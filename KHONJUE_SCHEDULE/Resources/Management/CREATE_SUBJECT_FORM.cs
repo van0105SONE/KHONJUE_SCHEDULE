@@ -22,6 +22,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
     {
         private DatabaseContext _dbContext { get; set; }
         private LevelController _levelController { get; set; }
+        private CurriculumController _curriculumController { get; set; }
         private SubjectController _subjController { get; set; }
         private SubjectModel subject { get; set; }
         private Actions action { get; set; }
@@ -33,14 +34,15 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _dbContext.connect();
             _levelController = new LevelController(_dbContext);
             _subjController = new SubjectController(_dbContext);
+            _curriculumController = new CurriculumController(_dbContext);
             subject = new SubjectModel()
             {
 
             };
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             createBtn.Text = "ບັນທຶກ";
-            loadUserRoles();
             action = Actions.Create;
+            loadCurriculum();
         }
 
         public CREATE_SUBJECT_FORM(SubjectModel subjectParam)
@@ -55,34 +57,34 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 Id = subjectParam.Id,
                 SubjectCode = subjectParam.SubjectName,
                 Description = subjectParam.Description,
-                LevelId = int.Parse(subjectParam.LevelId.ToString())
+                CurriculumId = int.Parse(subjectParam.CurriculumId.ToString())
             };
 
             txtSubject.Text = subjectParam.SubjectName;
             txtDescription.Text = subjectParam.Description;
-            cmbLevel.SelectedValue = subjectParam.LevelId;
+            cmbCrcl.SelectedValue = subjectParam.CurriculumId;
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
-            loadUserRoles();
             action = Actions.Update;
+            loadCurriculum();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbLevel.SelectedValue == null)
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbCrcl.SelectedValue == null)
             {
                 return;
             }
 
             subject.SubjectName = txtSubject.Text;
             subject.Description = txtDescription.Text;
-            subject.LevelId = int.Parse(cmbLevel.SelectedValue.ToString());
+            subject.CurriculumId = int.Parse(cmbCrcl.SelectedValue.ToString());
 
 
             bool isSuccess = false;
             if (action == Actions.Create)
             {
-              isSuccess =  _subjController.createSubject(subject);
+                isSuccess = _subjController.createSubject(subject);
             }
             else
             {
@@ -96,21 +98,57 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             }
         }
 
-        public void loadUserRoles()
+
+        public void loadCurriculum()
         {
-            List<LevelModel> roles = _levelController.getLevels();
+            var curriculums = _curriculumController.GetCurriculumList();
+
 
             // Set the DisplayMember and ValueMember properties
-            cmbLevel.DisplayMember = "LevelName"; // Replace with the property you want to display
-            cmbLevel.ValueMember = "Id";    // Replace with the property you want as the value
+            cmbCrcl.DisplayMember = "CurriculumName"; // Replace with the property you want to display
+            cmbCrcl.ValueMember = "Id";    // Replace with the property you want as the value
 
             // Bind the roles list to the ComboBox
-            cmbLevel.DataSource = roles;
+            cmbCrcl.DataSource = curriculums;
         }
 
-        private void deleteBtn_Click(object sender, EventArgs e)
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteBtn_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void createBtn_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbCrcl.SelectedValue == null)
+            {
+                return;
+            }
+
+            subject.SubjectName = txtSubject.Text;
+            subject.Description = txtDescription.Text;
+            subject.CurriculumId = int.Parse(cmbCrcl.SelectedValue.ToString());
+
+            bool isSuccess = false;
+            if (action == Actions.Create)
+            {
+                isSuccess = _subjController.createSubject(subject);
+            }
+            else
+            {
+                isSuccess = _subjController.editSubject(subject);
+            }
+
+            if (isSuccess)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

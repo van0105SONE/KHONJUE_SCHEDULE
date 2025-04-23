@@ -14,48 +14,35 @@ using System.Windows.Forms;
 
 namespace KHONJUE_SCHEDULE.Resources.Management
 {
-    public partial class CREATE_LEVEL_FORM : Form
+    public partial class CREATE_TERM_FORM : Form
     {
         private Actions action { get; set; }
         private DatabaseContext _dbContext { get; set; }
-        private LevelController _levelController { get; set; }
+        private TermController _termController { get; set; }
         private CurriculumController _curriculumController { get; set; }
-        private LevelModel level { get; set; }
-        public CREATE_LEVEL_FORM()
+        private TermModel level { get; set; }
+        public CREATE_TERM_FORM()
         {
             InitializeComponent();
             _dbContext = new DatabaseContext();
             _dbContext.connect();
-            _levelController = new LevelController(_dbContext);
+            _termController = new TermController(_dbContext);
             _curriculumController = new CurriculumController(_dbContext);
-            level = new LevelModel();
+            level = new TermModel();
             action = Actions.Create;
         }
 
-        public CREATE_LEVEL_FORM(LevelModel levelParam)
+        public CREATE_TERM_FORM(TermModel termParam)
         {
             InitializeComponent();
             _dbContext = new DatabaseContext();
             _dbContext.connect();
-            _levelController = new LevelController(_dbContext);
-            level = levelParam;
-            txtLevelName.Text = levelParam.LevelName;
+            _termController = new TermController(_dbContext);
+            level = termParam;
+            txtTermName.Text = termParam.TermName;
             action = Actions.Update;
         }
 
-
-        //public void loadCurriculum()
-        //{
-        //    var curriculums = _curriculumController.GetCurriculumList();
-
-
-        //    // Set the DisplayMember and ValueMember properties
-        //    cmbCrcl.DisplayMember = "CurriculumName"; // Replace with the property you want to display
-        //    cmbCrcl.ValueMember = "Id";    // Replace with the property you want as the value
-
-        //    // Bind the roles list to the ComboBox
-        //    cmbCrcl.DataSource = curriculums;
-        //}
 
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -74,15 +61,15 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             bool isSuccess = false;
             if (action == Actions.Create)
             {
-                LevelModel levelArg = new LevelModel()
+                TermModel termArg = new TermModel()
                 {
-                    LevelName = txtLevelName.Text
+                    TermName = txtTermName.Text
                 };
-                isSuccess = _levelController.CreateLevel(levelArg);
+                isSuccess = _termController.CreateTerm(termArg);
             }
             else
             {
-                isSuccess = _levelController.editLevel(txtLevelName.Text, level.Id);
+                isSuccess = _termController.editTerm(txtTermName.Text, level.Id);
             }
 
             if (isSuccess)

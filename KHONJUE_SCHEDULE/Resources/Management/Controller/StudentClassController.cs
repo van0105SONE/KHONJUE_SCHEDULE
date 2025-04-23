@@ -74,7 +74,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 List<StudentClassModel> classes = new List<StudentClassModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT student_class.""Id"",student_class.""Code"", student_class.""StudentClassName"", student_class.""Description"", student_class.""LevelId"",level.""LevelCode"" ,level.""LevelName"",student_class.""NumberOfClass""    FROM public.student_class LEFT JOIN  study_level as level ON level.id = student_class.""LevelId"";";
+                _command.CommandText = $@"SELECT student_class.""Id"",student_class.""Code"", student_class.""StudentClassName"", student_class.""Description"", student_class.""LevelId"",level.""LevelCode"" ,level.""LevelName"",student_class.""NumberOfClass""    FROM public.student_class LEFT JOIN  study_level as level ON level.""Id"" = student_class.""LevelId"";";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
@@ -94,7 +94,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
             catch (Exception ex)
             {
-                return null;
+                return new List<StudentClassModel>();
             }
         }
     }

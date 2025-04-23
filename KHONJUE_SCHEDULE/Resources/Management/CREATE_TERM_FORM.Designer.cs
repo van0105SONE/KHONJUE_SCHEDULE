@@ -1,6 +1,6 @@
 ﻿namespace KHONJUE_SCHEDULE.Resources.Management
 {
-    partial class CREATE_LEVEL_FORM
+    partial class CREATE_TERM_FORM
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             titleLabel = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel8 = new Panel();
-            txtLevelName = new TextBox();
+            txtTermName = new TextBox();
             panel9 = new Panel();
             label5 = new Label();
             closeBtn = new Button();
@@ -59,9 +59,9 @@
             titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(5, 4);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(133, 31);
+            titleLabel.Size = new Size(148, 31);
             titleLabel.TabIndex = 3;
-            titleLabel.Text = "ເພິ່ມຊັ້ນຮຽນ";
+            titleLabel.Text = "ເພິ່ມພາກຮຽນ";
             // 
             // flowLayoutPanel1
             // 
@@ -75,7 +75,7 @@
             // 
             // panel8
             // 
-            panel8.Controls.Add(txtLevelName);
+            panel8.Controls.Add(txtTermName);
             panel8.Controls.Add(panel9);
             panel8.Location = new Point(3, 4);
             panel8.Margin = new Padding(3, 4, 3, 4);
@@ -83,15 +83,15 @@
             panel8.Size = new Size(442, 89);
             panel8.TabIndex = 4;
             // 
-            // txtLevelName
+            // txtTermName
             // 
-            txtLevelName.Dock = DockStyle.Fill;
-            txtLevelName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLevelName.Location = new Point(0, 43);
-            txtLevelName.Margin = new Padding(3, 4, 3, 4);
-            txtLevelName.Name = "txtLevelName";
-            txtLevelName.Size = new Size(442, 30);
-            txtLevelName.TabIndex = 2;
+            txtTermName.Dock = DockStyle.Fill;
+            txtTermName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTermName.Location = new Point(0, 43);
+            txtTermName.Margin = new Padding(3, 4, 3, 4);
+            txtTermName.Name = "txtTermName";
+            txtTermName.Size = new Size(442, 30);
+            txtTermName.TabIndex = 2;
             // 
             // panel9
             // 
@@ -110,9 +110,9 @@
             label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(71, 25);
+            label5.Size = new Size(83, 25);
             label5.TabIndex = 1;
-            label5.Text = "ຊື່ຊັ້ນຣຽນ";
+            label5.Text = "ຊື່ພາກຮຽນ";
             // 
             // closeBtn
             // 
@@ -143,7 +143,7 @@
             createBtn.UseVisualStyleBackColor = false;
             createBtn.Click += createBtn_Click;
             // 
-            // CREATE_LEVEL_FORM
+            // CREATE_TERM_FORM
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -153,7 +153,7 @@
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "CREATE_LEVEL_FORM";
+            Name = "CREATE_TERM_FORM";
             Text = "CREATE_LEVEL_FORM";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -173,7 +173,7 @@
         private Panel panel8;
         private Panel panel9;
         private Label label5;
-        private TextBox txtLevelName;
+        private TextBox txtTermName;
         private Button closeBtn;
         private Button createBtn;
     }
