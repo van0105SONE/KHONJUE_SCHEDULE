@@ -30,11 +30,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             loadTimePeriods(true);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CREATE_TIME_PERIOD createDialog = new CREATE_TIME_PERIOD();
-            createDialog.ShowDialog();
-        }
 
         public void loadTimePeriods(bool isInit)
         {
@@ -82,7 +77,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void timePeriodDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var row = timePeriodDatagrid.Rows[e.RowIndex];
-            var id = int.Parse( row.Cells["Id"].Value.ToString()); // Get subject code
+            var id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
             var periodCode = row.Cells["periodCode"].Value.ToString(); // Get subject code
             var startTime = row.Cells["startTime"].Value.ToString(); // Get subject code
             var endTime = row.Cells["endTime"].Value.ToString(); // Get subject code
@@ -116,7 +111,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 // Delete button clicked
                 DialogResult confirm = MessageBox.Show($"Are you sure you want to delete Subject Code: {periodCode}?",
                     "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                
+
                 if (confirm == DialogResult.Yes)
                 {
                     _timeController.updateTimePeriod(id);
@@ -124,6 +119,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     loadTimePeriods(false);
                 }
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CREATE_TIME_PERIOD createDialog = new CREATE_TIME_PERIOD();
+            createDialog.ShowDialog();
         }
     }
 }

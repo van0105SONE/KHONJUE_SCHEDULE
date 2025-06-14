@@ -32,15 +32,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             loadStudentClassData(true);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CREATE_STUDENT_CLASS createDialog = new CREATE_STUDENT_CLASS();
-            var result = createDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                loadStudentClassData(false);
-            }
-        }
 
         private void loadStudentClassData(bool isInit)
         {
@@ -55,14 +46,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             studentClassDatagrid.DataSource = _studentClassController.GetStudentClasstList();
             studentClassDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
-            studentClassDatagrid.Columns["Id"].Visible = false;
-            studentClassDatagrid.Columns["LevelId"].Visible = false;
             studentClassDatagrid.Columns["Code"].HeaderText = "ລະຫັດຫ້ອງນັກຮຽນ";
             studentClassDatagrid.Columns["NumberOfClass"].HeaderText = "ຈຳນວນຫ້ອງ";
             studentClassDatagrid.Columns["StudentClassName"].HeaderText = "ຊື່ຫ້ອງນັກຮຽນ";
             studentClassDatagrid.Columns["Description"].HeaderText = "ຄຳອະທິບາຍ";
-            studentClassDatagrid.Columns["LevelCode"].HeaderText = "ລະຫັດຊັ້ນຮຽນ";
-            studentClassDatagrid.Columns["LevelName"].HeaderText = "ຊຶ້ຊັ້ນຮຽນ";
+            studentClassDatagrid.Columns["RoomType"].HeaderText = "ປະເພດຫ້ອງ";
 
             // Add two button columns to the DataGridView (you can add them as separate columns)
             DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
@@ -106,10 +94,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         Code = code,
                         StudentClassName = studentClassName,
                         Description = description,
-                        LevelId = levelId,
                         NumberOfClass = NumberOfClass,
-                        LevelCode = levelCode,
-                        LevelName = levelName
                     };
                     CREATE_STUDENT_CLASS createForm = new CREATE_STUDENT_CLASS(studentClass);
 
@@ -136,6 +121,16 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         loadStudentClassData(false);
                     }
                 }
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            CREATE_STUDENT_CLASS createDialog = new CREATE_STUDENT_CLASS();
+            var result = createDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadStudentClassData(false);
             }
         }
     }

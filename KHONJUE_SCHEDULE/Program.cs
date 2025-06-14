@@ -1,5 +1,6 @@
 using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Setting.Controller;
+using QuestPDF.Infrastructure;
 
 namespace KHONJUE_SCHEDULE
 {
@@ -11,6 +12,8 @@ namespace KHONJUE_SCHEDULE
         [STAThread]
         static void Main()
         {
+            QuestPDF.Settings.License = LicenseType.Community;
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

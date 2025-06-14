@@ -84,7 +84,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     LimitPerClass = int.Parse(txtLimitPerClass.Text),
                     CurriculumId = int.Parse(cmbCrl.SelectedValue.ToString()),
                 };
-                isSuccess = _majorController.CreateLevel(major);
+                isSuccess = _majorController.CreateMajor(major);
             }
             else
             {
@@ -94,7 +94,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     LimitPerClass = int.Parse(txtLimitPerClass.Text),
                     CurriculumId = int.Parse(cmbCrl.SelectedValue.ToString()),
                 };
-                isSuccess = _majorController.editLevel(major);
+                isSuccess = _majorController.editMajor(major);
             }
 
             if (isSuccess)

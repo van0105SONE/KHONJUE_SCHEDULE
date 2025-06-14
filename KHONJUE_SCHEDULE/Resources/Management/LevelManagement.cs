@@ -30,17 +30,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             Style.styleDatagridView(levelDatagrid);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CREATE_LEVEL_FORM createForm = new CREATE_LEVEL_FORM();
-           var result =  createForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                loadLevelData(false);
-            }
-
-        }
-
         private void loadLevelData(bool isInit)
         {
 
@@ -92,8 +81,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     var subjectArg = new LevelModel()
                     {
                         Id = Id,
-                        LevelCode    = levelCode,
-                        LevelName  = levelName
+                        LevelCode = levelCode,
+                        LevelName = levelName
                     };
                     CREATE_LEVEL_FORM createForm = new CREATE_LEVEL_FORM(subjectArg);
 
@@ -122,6 +111,17 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     }
                 }
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CREATE_LEVEL_FORM createForm = new CREATE_LEVEL_FORM();
+            var result = createForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadLevelData(false);
+            }
+
         }
     }
 }

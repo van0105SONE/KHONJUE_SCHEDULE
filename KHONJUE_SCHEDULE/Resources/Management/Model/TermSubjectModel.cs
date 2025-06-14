@@ -10,7 +10,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Model
     {
         public int Id { get; set; }
         public string SubjectName { get; set; }
+        public int SubjectId { get; set; }
         public string TermName { get; set; }
         public string LevelName { get; set; }
+        public string MajorName { get; set; }
     }
 }

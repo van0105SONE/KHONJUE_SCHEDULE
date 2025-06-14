@@ -15,6 +15,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         public InfoManagement()
         {
             InitializeComponent();
+            InfoContainer.Controls.Clear();
+            TermSubjectManagement levelManagement = new TermSubjectManagement();
+            levelManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(levelManagement);
         }
 
         private void btnManageSubject_Click(object sender, EventArgs e)
@@ -27,10 +31,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
             InfoContainer.Controls.Clear();
-            LevelManagement levelManagement = new LevelManagement();
-            levelManagement.Dock = DockStyle.Fill;
-            InfoContainer.Controls.Add(levelManagement);
+            TermManagement curriculumManagement = new TermManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,20 +50,40 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void button5_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            StudentClassManagement studentClassManagement = new StudentClassManagement();
-            studentClassManagement.Dock = DockStyle.Fill;
-            InfoContainer.Controls.Add(studentClassManagement);
+            TeacherManagement curriculumManagement = new TeacherManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            TimePeriodManagement timePerdioManagement = new TimePeriodManagement();
-            timePerdioManagement.Dock = DockStyle.Fill;
-            InfoContainer.Controls.Add(timePerdioManagement);
+            TeacherSubjectManagement curriculumManagement = new TeacherSubjectManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
+
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+            // it work
+            InfoContainer.Controls.Clear();
+            LevelManagement levelManagement = new LevelManagement();
+            levelManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(levelManagement);
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            InfoContainer.Controls.Clear();
+            StudentClassManagement studentClassManagement = new StudentClassManagement();
+            studentClassManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(studentClassManagement);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
             CurriculumManagement curriculumManagement = new CurriculumManagement();
@@ -65,18 +91,20 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             InfoContainer.Controls.Add(curriculumManagement);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            MajorManagement curriculumManagement = new MajorManagement();
-            curriculumManagement.Dock = DockStyle.Fill;
-            InfoContainer.Controls.Add(curriculumManagement);
+            TimePeriodManagement timePerdioManagement = new TimePeriodManagement();
+            timePerdioManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(timePerdioManagement);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
+
+
             InfoContainer.Controls.Clear();
-            TermManagement curriculumManagement = new TermManagement();
+            MajorManagement curriculumManagement = new MajorManagement();
             curriculumManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(curriculumManagement);
         }

@@ -33,7 +33,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void button1_Click(object sender, EventArgs e)
         {
             CREATE_TERM_SUBJECT_FORM createForm = new CREATE_TERM_SUBJECT_FORM();
-           var result =  createForm.ShowDialog();
+            var result = createForm.ShowDialog();
             if (result == DialogResult.OK)
             {
                 loadData(false);
@@ -55,7 +55,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             levelDatagrid.DataSource = _subjectController.GetTermSubjectList();
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
+            levelDatagrid.Columns["SubjectId"].Visible = false;
             levelDatagrid.Columns["SubjectName"].HeaderText = "ວິຊາ";
+            levelDatagrid.Columns["MajorName"].HeaderText = "ສາຂາ";
             levelDatagrid.Columns["TermName"].HeaderText = "ພຽກຮຽນ";
             levelDatagrid.Columns["LevelName"].HeaderText = "ປີ";
 
@@ -92,7 +94,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     var termArg = new TermModel()
                     {
                         Id = Id,
-                        TermName    = termName
+                        TermName = termName
                     };
                     CREATE_TERM_FORM createForm = new CREATE_TERM_FORM(termArg);
 
@@ -119,6 +121,21 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         loadData(false);
                     }
                 }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CREATE_TERM_SUBJECT_FORM createForm = new CREATE_TERM_SUBJECT_FORM();
+            var result = createForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadData(false);
             }
         }
     }

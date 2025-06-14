@@ -30,17 +30,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             Style.styleDatagridView(levelDatagrid);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CREATE_TERM_FORM createForm = new CREATE_TERM_FORM();
-           var result =  createForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                loadData(false);
-            }
-
-        }
-
         private void loadData(bool isInit)
         {
 
@@ -91,7 +80,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     var termArg = new TermModel()
                     {
                         Id = Id,
-                        TermName    = termName
+                        TermName = termName
                     };
                     CREATE_TERM_FORM createForm = new CREATE_TERM_FORM(termArg);
 
@@ -115,10 +104,20 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     if (confirm == DialogResult.Yes)
                     {
                         // Call your delete function here
-                       _termController.deleteTerm(Id);
+                        _termController.deleteTerm(Id);
                         loadData(false);
                     }
                 }
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CREATE_TERM_FORM createForm = new CREATE_TERM_FORM();
+            var result = createForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadData(false);
             }
         }
     }

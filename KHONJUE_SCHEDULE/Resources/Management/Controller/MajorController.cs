@@ -18,7 +18,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
           _databaseContext = context;
         }
 
-        public bool editLevel(MajorModel majorParams)
+        public bool editMajor(MajorModel majorParams)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
-        public bool CreateLevel(MajorModel majorParams)
+        public bool CreateMajor(MajorModel majorParams)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public bool deleteLevel(int Id)
+        public bool deleteMajor(int Id)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public List<MajorModel> getLevels()
+        public List<MajorModel> getMajors()
         {
             try
             {
@@ -95,7 +95,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
             catch(Exception ex)
             {
-                return [];
+                return new List<MajorModel>(){ }
+                ;
             }
         }
     }

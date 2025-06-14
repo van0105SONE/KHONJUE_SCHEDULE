@@ -58,6 +58,7 @@ namespace KHONJUE_SCHEDULE.Resources.Setting
             List<ApplicationModule> modules = _RoleController.GetApplicationModules();
 
             moduleDatagridView.DataSource = modules;
+            moduleDatagridView.Columns["Id"].Visible = false;
             moduleDatagridView.Columns["ModuleName"].HeaderText = "Role Name";
             moduleDatagridView.Columns["AllowRoles"].HeaderText = "Allowed Role";
 

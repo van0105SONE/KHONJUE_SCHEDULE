@@ -40,13 +40,18 @@
             cmbLevel = new ComboBox();
             panel3 = new Panel();
             label1 = new Label();
-            closeBtn = new Button();
-            createBtn = new Button();
             flowLayoutPanel3 = new FlowLayoutPanel();
             panel4 = new Panel();
             cmbSubject = new ComboBox();
             panel5 = new Panel();
             label2 = new Label();
+            closeBtn = new Button();
+            createBtn = new Button();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            panel6 = new Panel();
+            cmbMajor = new ComboBox();
+            panel7 = new Panel();
+            label3 = new Label();
             panel1.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
@@ -57,6 +62,9 @@
             flowLayoutPanel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -66,18 +74,18 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(448, 53);
+            panel1.Size = new Size(448, 52);
             panel1.TabIndex = 1;
             // 
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(5, 4);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(148, 31);
+            titleLabel.Size = new Size(286, 44);
             titleLabel.TabIndex = 3;
-            titleLabel.Text = "ເພິ່ມພາກຮຽນ";
+            titleLabel.Text = "ຈັດການຂໍ້ມູນວິຊາໃນຫຼັກສູດ";
             // 
             // panel8
             // 
@@ -94,7 +102,7 @@
             cmbTerm.Dock = DockStyle.Fill;
             cmbTerm.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbTerm.FormattingEnabled = true;
-            cmbTerm.Location = new Point(0, 43);
+            cmbTerm.Location = new Point(0, 42);
             cmbTerm.Margin = new Padding(3, 4, 3, 4);
             cmbTerm.Name = "cmbTerm";
             cmbTerm.Size = new Size(442, 33);
@@ -107,17 +115,17 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(442, 43);
+            panel9.Size = new Size(442, 42);
             panel9.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(73, 25);
+            label5.Size = new Size(85, 33);
             label5.TabIndex = 1;
             label5.Text = "ພາກຮຽນ";
             // 
@@ -125,7 +133,7 @@
             // 
             flowLayoutPanel1.Controls.Add(panel8);
             flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(0, 53);
+            flowLayoutPanel1.Location = new Point(0, 52);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(448, 100);
@@ -135,7 +143,7 @@
             // 
             flowLayoutPanel2.Controls.Add(panel2);
             flowLayoutPanel2.Dock = DockStyle.Top;
-            flowLayoutPanel2.Location = new Point(0, 153);
+            flowLayoutPanel2.Location = new Point(0, 152);
             flowLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(448, 100);
@@ -156,7 +164,7 @@
             cmbLevel.Dock = DockStyle.Fill;
             cmbLevel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbLevel.FormattingEnabled = true;
-            cmbLevel.Location = new Point(0, 43);
+            cmbLevel.Location = new Point(0, 42);
             cmbLevel.Margin = new Padding(3, 4, 3, 4);
             cmbLevel.Name = "cmbLevel";
             cmbLevel.Size = new Size(442, 33);
@@ -169,54 +177,25 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(442, 43);
+            panel3.Size = new Size(442, 42);
             panel3.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(52, 25);
+            label1.Size = new Size(63, 33);
             label1.TabIndex = 1;
             label1.Text = "ປີຮຽນ";
-            // 
-            // closeBtn
-            // 
-            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.Red;
-            closeBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(16, 388);
-            closeBtn.Margin = new Padding(3, 4, 3, 4);
-            closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 53);
-            closeBtn.TabIndex = 15;
-            closeBtn.Text = "ອອກ";
-            closeBtn.UseVisualStyleBackColor = false;
-            // 
-            // createBtn
-            // 
-            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.SkyBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(235, 388);
-            createBtn.Margin = new Padding(3, 4, 3, 4);
-            createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
-            createBtn.TabIndex = 14;
-            createBtn.Text = "ບັນທຶກ";
-            createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click_1;
             // 
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.Controls.Add(panel4);
             flowLayoutPanel3.Dock = DockStyle.Top;
-            flowLayoutPanel3.Location = new Point(0, 253);
+            flowLayoutPanel3.Location = new Point(0, 252);
             flowLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new Size(448, 100);
@@ -237,7 +216,7 @@
             cmbSubject.Dock = DockStyle.Fill;
             cmbSubject.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbSubject.FormattingEnabled = true;
-            cmbSubject.Location = new Point(0, 43);
+            cmbSubject.Location = new Point(0, 42);
             cmbSubject.Margin = new Padding(3, 4, 3, 4);
             cmbSubject.Name = "cmbSubject";
             cmbSubject.Size = new Size(442, 33);
@@ -250,28 +229,111 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(442, 43);
+            panel5.Size = new Size(442, 42);
             panel5.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Cursor = Cursors.SizeAll;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(69, 25);
+            label2.Size = new Size(82, 33);
             label2.TabIndex = 1;
             label2.Text = "ວິຊາຮຽນ";
+            // 
+            // closeBtn
+            // 
+            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            closeBtn.BackColor = Color.Red;
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(16, 471);
+            closeBtn.Margin = new Padding(3, 4, 3, 4);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(201, 52);
+            closeBtn.TabIndex = 18;
+            closeBtn.Text = "ອອກ";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click_1;
+            // 
+            // createBtn
+            // 
+            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            createBtn.BackColor = Color.SkyBlue;
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.ForeColor = Color.White;
+            createBtn.Location = new Point(235, 471);
+            createBtn.Margin = new Padding(3, 4, 3, 4);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(201, 52);
+            createBtn.TabIndex = 17;
+            createBtn.Text = "ບັນທຶກ";
+            createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click_2;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(panel6);
+            flowLayoutPanel4.Dock = DockStyle.Top;
+            flowLayoutPanel4.Location = new Point(0, 352);
+            flowLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(448, 100);
+            flowLayoutPanel4.TabIndex = 19;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(cmbMajor);
+            panel6.Controls.Add(panel7);
+            panel6.Location = new Point(3, 4);
+            panel6.Margin = new Padding(3, 4, 3, 4);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(442, 89);
+            panel6.TabIndex = 4;
+            // 
+            // cmbMajor
+            // 
+            cmbMajor.Dock = DockStyle.Fill;
+            cmbMajor.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbMajor.FormattingEnabled = true;
+            cmbMajor.Location = new Point(0, 42);
+            cmbMajor.Margin = new Padding(3, 4, 3, 4);
+            cmbMajor.Name = "cmbMajor";
+            cmbMajor.Size = new Size(442, 33);
+            cmbMajor.TabIndex = 4;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(label3);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(0, 0);
+            panel7.Margin = new Padding(3, 4, 3, 4);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(442, 42);
+            panel7.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.SizeAll;
+            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(3, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 33);
+            label3.TabIndex = 1;
+            label3.Text = "ສາຂາຮຽນ";
             // 
             // CREATE_TERM_SUBJECT_FORM
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(448, 454);
-            Controls.Add(flowLayoutPanel3);
+            ClientSize = new Size(448, 538);
+            Controls.Add(flowLayoutPanel4);
             Controls.Add(closeBtn);
             Controls.Add(createBtn);
+            Controls.Add(flowLayoutPanel3);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
@@ -292,6 +354,10 @@
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -309,12 +375,17 @@
         private ComboBox cmbLevel;
         private Panel panel3;
         private Label label1;
-        private Button closeBtn;
-        private Button createBtn;
         private FlowLayoutPanel flowLayoutPanel3;
         private Panel panel4;
         private ComboBox cmbSubject;
         private Panel panel5;
         private Label label2;
+        private Button closeBtn;
+        private Button createBtn;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Panel panel6;
+        private ComboBox cmbMajor;
+        private Panel panel7;
+        private Label label3;
     }
 }

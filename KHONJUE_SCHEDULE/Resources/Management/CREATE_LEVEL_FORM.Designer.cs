@@ -50,16 +50,16 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(448, 53);
+            panel1.Size = new Size(448, 52);
             panel1.TabIndex = 1;
             // 
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(5, 4);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(133, 31);
+            titleLabel.Size = new Size(145, 44);
             titleLabel.TabIndex = 3;
             titleLabel.Text = "ເພິ່ມຊັ້ນຮຽນ";
             // 
@@ -67,7 +67,7 @@
             // 
             flowLayoutPanel1.Controls.Add(panel8);
             flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(0, 53);
+            flowLayoutPanel1.Location = new Point(0, 52);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(448, 100);
@@ -87,7 +87,7 @@
             // 
             txtLevelName.Dock = DockStyle.Fill;
             txtLevelName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLevelName.Location = new Point(0, 43);
+            txtLevelName.Location = new Point(0, 42);
             txtLevelName.Margin = new Padding(3, 4, 3, 4);
             txtLevelName.Name = "txtLevelName";
             txtLevelName.Size = new Size(442, 30);
@@ -100,17 +100,17 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(442, 43);
+            panel9.Size = new Size(442, 42);
             panel9.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(71, 25);
+            label5.Size = new Size(87, 33);
             label5.TabIndex = 1;
             label5.Text = "ຊື່ຊັ້ນຣຽນ";
             // 
@@ -118,12 +118,12 @@
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             closeBtn.BackColor = Color.Red;
-            closeBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             closeBtn.ForeColor = Color.White;
             closeBtn.Location = new Point(16, 272);
             closeBtn.Margin = new Padding(3, 4, 3, 4);
             closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 53);
+            closeBtn.Size = new Size(201, 52);
             closeBtn.TabIndex = 12;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
@@ -132,12 +132,12 @@
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             createBtn.BackColor = Color.SkyBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
             createBtn.Location = new Point(235, 272);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
+            createBtn.Size = new Size(201, 52);
             createBtn.TabIndex = 11;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;

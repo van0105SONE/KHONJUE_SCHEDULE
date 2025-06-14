@@ -71,7 +71,7 @@
             // 
             deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             deleteBtn.BackColor = Color.Red;
-            deleteBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             deleteBtn.ForeColor = Color.White;
             deleteBtn.Location = new Point(282, 320);
             deleteBtn.Margin = new Padding(3, 4, 3, 4);
@@ -85,7 +85,7 @@
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             createBtn.BackColor = Color.SkyBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
             createBtn.Location = new Point(508, 320);
             createBtn.Margin = new Padding(3, 4, 3, 4);
@@ -120,7 +120,7 @@
             // 
             txtDescription.Dock = DockStyle.Fill;
             txtDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDescription.Location = new Point(0, 43);
+            txtDescription.Location = new Point(0, 42);
             txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(706, 30);
@@ -133,17 +133,17 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(3, 4, 3, 4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(706, 43);
+            panel6.Size = new Size(706, 42);
             panel6.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Cursor = Cursors.SizeAll;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(88, 25);
+            label2.Size = new Size(98, 33);
             label2.TabIndex = 1;
             label2.Text = "ຄຳອະທິບາຍ";
             // 
@@ -171,7 +171,7 @@
             // 
             txtCRCL.Dock = DockStyle.Fill;
             txtCRCL.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCRCL.Location = new Point(0, 43);
+            txtCRCL.Location = new Point(0, 42);
             txtCRCL.Margin = new Padding(3, 4, 3, 4);
             txtCRCL.Name = "txtCRCL";
             txtCRCL.Size = new Size(706, 30);
@@ -184,17 +184,17 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(706, 43);
+            panel9.Size = new Size(706, 42);
             panel9.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(70, 25);
+            label5.Size = new Size(81, 33);
             label5.TabIndex = 1;
             label5.Text = "ຊື້ຫຼັກສູດ";
             // 
@@ -211,10 +211,10 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(10, 25);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(128, 31);
+            titleLabel.Size = new Size(135, 44);
             titleLabel.TabIndex = 2;
             titleLabel.Text = "ເພິ່ມຫຼັກສູດ";
             // 

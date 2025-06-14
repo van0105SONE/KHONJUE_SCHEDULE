@@ -1,4 +1,5 @@
-﻿using KHONJUE_SCHEDULE.DatabaseContexts;
+﻿using KHONJUE_SCHEDULE.Constants;
+using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Management.Controller;
 using KHONJUE_SCHEDULE.Resources.Management.Model;
 using KHONJUE_SCHEDULE.Utils.enums;
@@ -17,7 +18,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
     public partial class CREATE_STUDENT_CLASS : Form
     {
         private Actions action { get; set; }
-        private LevelController _levelController { get; set; }
+        private AppConstants _appConstants = new AppConstants();
         private StudentClassController _studentClassController { get; set; }
         private StudentClassModel student { get; set; }
         public CREATE_STUDENT_CLASS()
@@ -25,13 +26,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             var _dbContext = new DatabaseContext();
             _dbContext.connect();
-            _levelController = new LevelController(_dbContext);
             _studentClassController = new StudentClassController(_dbContext);
             InitializeComponent();
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
-            loadLevel();
             student = new StudentClassModel();
             action = Actions.Create;
+            loadRoomTypes();
         }
 
         public CREATE_STUDENT_CLASS(StudentClassModel studentClassParam)
@@ -39,11 +39,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             var _dbContext = new DatabaseContext();
             _dbContext.connect();
-            _levelController = new LevelController(_dbContext);
             _studentClassController = new StudentClassController(_dbContext);
             InitializeComponent();
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
-            loadLevel();
+            loadRoomTypes();
             student = studentClassParam;
             txtDescription.Text = student.Description;
             txtNumberOfClass.Text = student.NumberOfClass.ToString();
@@ -58,13 +57,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
 
 
-        private void loadLevel()
+        private void loadRoomTypes()
         {
-            List<LevelModel> roles = _levelController.getLevels();
-
-            // Set the DisplayMember and ValueMember properties
-            cmbLevel.DisplayMember = "LevelName"; // Replace with the property you want to display
-            cmbLevel.ValueMember = "Id";    // Replace with the property you want as the value
+            List<string> roles = _appConstants.getRoomTypes();
 
             // Bind the roles list to the ComboBox
             cmbLevel.DataSource = roles;
@@ -76,7 +71,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             student.NumberOfClass = int.Parse(txtNumberOfClass.Text);
             student.Description = txtDescription.Text;
             student.StudentClassName = txtStudentClassName.Text;
-            student.LevelId = int.Parse(cmbLevel.SelectedValue.ToString());
+            student.RoomType = cmbLevel.SelectedValue.ToString();
 
             bool isSuccess = false;
             if (action == Actions.Create)

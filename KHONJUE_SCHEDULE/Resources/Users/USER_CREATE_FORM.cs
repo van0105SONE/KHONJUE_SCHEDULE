@@ -52,6 +52,7 @@ namespace KHONJUE_SCHEDULE.Resource.Users
             userData.Lname = txtLastname.Text;
             userData.Birthdate = txtBirthdate.Value;
             userData.RoleId = cmbRole.SelectedValue.ToString();
+            userData.Password = txtPassword.Text; // In a real application, ensure this is hashed   
             userData.Position = txtPosition.Text;
             userData.Gender = cmbGender.Text;
             userData.RoleName = cmbRole.Text;

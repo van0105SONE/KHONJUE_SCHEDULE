@@ -30,17 +30,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             Style.styleDatagridView(levelDatagrid);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CREATE_CRCL_FORM createForm = new CREATE_CRCL_FORM();
-           var result =  createForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                loadData(false);
-            }
-
-        }
-
         private void loadData(bool isInit)
         {
 
@@ -92,8 +81,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     var curriculumArg = new CurriculumModel()
                     {
                         Id = Id,
-                        CurriculumName    = curriculumName,
-                        Description  = description
+                        CurriculumName = curriculumName,
+                        Description = description
                     };
                     CREATE_CRCL_FORM createForm = new CREATE_CRCL_FORM(curriculumArg);
 
@@ -117,11 +106,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     if (confirm == DialogResult.Yes)
                     {
                         // Call your delete function here
-                       _curriculumController.deleteCurriculum(Id);
+                        _curriculumController.deleteCurriculum(Id);
                         loadData(false);
                     }
                 }
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CREATE_CRCL_FORM createForm = new CREATE_CRCL_FORM();
+            var result = createForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadData(false);
+            }
+
         }
     }
 }

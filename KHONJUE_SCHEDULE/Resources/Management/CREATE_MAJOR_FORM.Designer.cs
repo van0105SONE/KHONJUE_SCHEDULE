@@ -64,16 +64,16 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(448, 53);
+            panel1.Size = new Size(448, 52);
             panel1.TabIndex = 1;
             // 
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(5, 4);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(160, 31);
+            titleLabel.Size = new Size(167, 44);
             titleLabel.TabIndex = 3;
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນສາຂາ";
             // 
@@ -81,7 +81,7 @@
             // 
             flowLayoutPanel1.Controls.Add(panel8);
             flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(0, 53);
+            flowLayoutPanel1.Location = new Point(0, 52);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(448, 100);
@@ -101,7 +101,7 @@
             // 
             txtMajorName.Dock = DockStyle.Fill;
             txtMajorName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtMajorName.Location = new Point(0, 43);
+            txtMajorName.Location = new Point(0, 42);
             txtMajorName.Margin = new Padding(3, 4, 3, 4);
             txtMajorName.Name = "txtMajorName";
             txtMajorName.Size = new Size(442, 30);
@@ -114,17 +114,17 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(442, 43);
+            panel9.Size = new Size(442, 42);
             panel9.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(58, 25);
+            label5.Size = new Size(66, 33);
             label5.TabIndex = 1;
             label5.Text = "ຊື່ສາຂາ";
             // 
@@ -132,7 +132,7 @@
             // 
             flowLayoutPanel2.Controls.Add(panel2);
             flowLayoutPanel2.Dock = DockStyle.Top;
-            flowLayoutPanel2.Location = new Point(0, 153);
+            flowLayoutPanel2.Location = new Point(0, 152);
             flowLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(448, 100);
@@ -152,7 +152,7 @@
             // 
             txtLimitPerClass.Dock = DockStyle.Fill;
             txtLimitPerClass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLimitPerClass.Location = new Point(0, 43);
+            txtLimitPerClass.Location = new Point(0, 42);
             txtLimitPerClass.Margin = new Padding(3, 4, 3, 4);
             txtLimitPerClass.Name = "txtLimitPerClass";
             txtLimitPerClass.Size = new Size(442, 30);
@@ -168,17 +168,17 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(442, 43);
+            panel3.Size = new Size(442, 42);
             panel3.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(199, 25);
+            label1.Size = new Size(222, 33);
             label1.TabIndex = 1;
             label1.Text = "ຈຳນວນນັກຣຽນຈຳກັດຕໍ່ຫ້ອງ";
             // 
@@ -186,12 +186,12 @@
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             closeBtn.BackColor = Color.Red;
-            closeBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             closeBtn.ForeColor = Color.White;
             closeBtn.Location = new Point(16, 415);
             closeBtn.Margin = new Padding(3, 4, 3, 4);
             closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 53);
+            closeBtn.Size = new Size(201, 52);
             closeBtn.TabIndex = 15;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
@@ -200,12 +200,12 @@
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             createBtn.BackColor = Color.SkyBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
             createBtn.Location = new Point(235, 415);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
+            createBtn.Size = new Size(201, 52);
             createBtn.TabIndex = 14;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
@@ -226,7 +226,7 @@
             cmbCrl.Dock = DockStyle.Fill;
             cmbCrl.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbCrl.FormattingEnabled = true;
-            cmbCrl.Location = new Point(0, 43);
+            cmbCrl.Location = new Point(0, 42);
             cmbCrl.Margin = new Padding(3, 4, 3, 4);
             cmbCrl.Name = "cmbCrl";
             cmbCrl.Size = new Size(448, 33);
@@ -240,17 +240,17 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(448, 43);
+            panel5.Size = new Size(448, 42);
             panel5.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Cursor = Cursors.SizeAll;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(60, 25);
+            label2.Size = new Size(69, 33);
             label2.TabIndex = 1;
             label2.Text = "ຫຼັກສູດ";
             // 

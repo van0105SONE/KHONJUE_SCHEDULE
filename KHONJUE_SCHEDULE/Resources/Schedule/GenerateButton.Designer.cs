@@ -1,0 +1,63 @@
+﻿namespace KHONJUE_SCHEDULE.Resources.Schedule
+{
+    partial class GenerateButton
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            createBtn = new Button();
+            SuspendLayout();
+            // 
+            // createBtn
+            // 
+            createBtn.Anchor = AnchorStyles.None;
+            createBtn.BackColor = Color.Green;
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.ForeColor = Color.White;
+            createBtn.Location = new Point(508, 227);
+            createBtn.Margin = new Padding(3, 4, 3, 4);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(201, 53);
+            createBtn.TabIndex = 23;
+            createBtn.Text = "ເລີ່ມຈັດຕາຕະລາງ";
+            createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click;
+            // 
+            // GenerateButton
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(createBtn);
+            Name = "GenerateButton";
+            Size = new Size(1118, 558);
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Button createBtn;
+    }
+}

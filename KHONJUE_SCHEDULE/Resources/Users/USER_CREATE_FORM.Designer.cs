@@ -113,17 +113,18 @@
             panel2.Controls.Add(label19);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(622, 67);
+            panel2.Size = new Size(711, 89);
             panel2.TabIndex = 0;
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Noto Sans Lao", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(9, 19);
+            label19.Location = new Point(10, 25);
             label19.Name = "label19";
-            label19.Size = new Size(85, 35);
+            label19.Size = new Size(108, 44);
             label19.TabIndex = 2;
             label19.Text = "ເພີ່ມຜູ້ໃຊ້";
             // 
@@ -141,27 +142,30 @@
             flowLayoutPanel1.Controls.Add(panel22);
             flowLayoutPanel1.Controls.Add(panel24);
             flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(0, 67);
+            flowLayoutPanel1.Location = new Point(0, 89);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(622, 362);
+            flowLayoutPanel1.Size = new Size(711, 482);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // panel8
             // 
             panel8.Controls.Add(txtUserName);
             panel8.Controls.Add(panel9);
-            panel8.Location = new Point(3, 3);
+            panel8.Location = new Point(3, 4);
+            panel8.Margin = new Padding(3, 4, 3, 4);
             panel8.Name = "panel8";
-            panel8.Size = new Size(200, 67);
+            panel8.Size = new Size(229, 89);
             panel8.TabIndex = 4;
             // 
             // txtUserName
             // 
             txtUserName.Dock = DockStyle.Fill;
             txtUserName.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUserName.Location = new Point(0, 32);
+            txtUserName.Location = new Point(0, 42);
+            txtUserName.Margin = new Padding(3, 4, 3, 4);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(200, 34);
+            txtUserName.Size = new Size(229, 40);
             txtUserName.TabIndex = 1;
             // 
             // panel9
@@ -169,8 +173,9 @@
             panel9.Controls.Add(label5);
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(0, 0);
+            panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(200, 32);
+            panel9.Size = new Size(229, 42);
             panel9.TabIndex = 0;
             // 
             // label5
@@ -178,9 +183,9 @@
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
             label5.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(3, 3);
+            label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(49, 26);
+            label5.Size = new Size(60, 33);
             label5.TabIndex = 1;
             label5.Text = "ຊື້ຜຸ້ໃຊ້";
             // 
@@ -188,18 +193,20 @@
             // 
             panel3.Controls.Add(txtFirstname);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(209, 3);
+            panel3.Location = new Point(238, 4);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(200, 67);
+            panel3.Size = new Size(229, 89);
             panel3.TabIndex = 0;
             // 
             // txtFirstname
             // 
             txtFirstname.Dock = DockStyle.Fill;
             txtFirstname.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFirstname.Location = new Point(0, 32);
+            txtFirstname.Location = new Point(0, 42);
+            txtFirstname.Margin = new Padding(3, 4, 3, 4);
             txtFirstname.Name = "txtFirstname";
-            txtFirstname.Size = new Size(200, 34);
+            txtFirstname.Size = new Size(229, 40);
             txtFirstname.TabIndex = 1;
             // 
             // panel4
@@ -207,17 +214,18 @@
             panel4.Controls.Add(label2);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(200, 32);
+            panel4.Size = new Size(229, 42);
             panel4.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(3, 3);
+            label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(22, 26);
+            label2.Size = new Size(27, 33);
             label2.TabIndex = 1;
             label2.Text = "ຊື່";
             // 
@@ -225,18 +233,20 @@
             // 
             panel5.Controls.Add(txtLastname);
             panel5.Controls.Add(panel6);
-            panel5.Location = new Point(415, 3);
+            panel5.Location = new Point(473, 4);
+            panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(200, 67);
+            panel5.Size = new Size(229, 89);
             panel5.TabIndex = 2;
             // 
             // txtLastname
             // 
             txtLastname.Dock = DockStyle.Fill;
             txtLastname.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastname.Location = new Point(0, 32);
+            txtLastname.Location = new Point(0, 42);
+            txtLastname.Margin = new Padding(3, 4, 3, 4);
             txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(200, 34);
+            txtLastname.Size = new Size(229, 40);
             txtLastname.TabIndex = 1;
             // 
             // panel6
@@ -244,17 +254,18 @@
             panel6.Controls.Add(label3);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(3, 4, 3, 4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(200, 32);
+            panel6.Size = new Size(229, 42);
             panel6.TabIndex = 0;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 3);
+            label3.Location = new Point(3, 4);
             label3.Name = "label3";
-            label3.Size = new Size(74, 26);
+            label3.Size = new Size(92, 33);
             label3.TabIndex = 1;
             label3.Text = "ນາມສະກຸນ";
             // 
@@ -262,18 +273,20 @@
             // 
             panel7.Controls.Add(txtBirthdate);
             panel7.Controls.Add(panel10);
-            panel7.Location = new Point(3, 76);
+            panel7.Location = new Point(3, 101);
+            panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(283, 67);
+            panel7.Size = new Size(323, 89);
             panel7.TabIndex = 3;
             // 
             // txtBirthdate
             // 
             txtBirthdate.Dock = DockStyle.Fill;
             txtBirthdate.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBirthdate.Location = new Point(0, 32);
+            txtBirthdate.Location = new Point(0, 42);
+            txtBirthdate.Margin = new Padding(3, 4, 3, 4);
             txtBirthdate.Name = "txtBirthdate";
-            txtBirthdate.Size = new Size(283, 34);
+            txtBirthdate.Size = new Size(323, 40);
             txtBirthdate.TabIndex = 1;
             // 
             // panel10
@@ -281,8 +294,9 @@
             panel10.Controls.Add(label4);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(0, 0);
+            panel10.Margin = new Padding(3, 4, 3, 4);
             panel10.Name = "panel10";
-            panel10.Size = new Size(283, 32);
+            panel10.Size = new Size(323, 42);
             panel10.TabIndex = 0;
             // 
             // label4
@@ -290,9 +304,9 @@
             label4.AutoSize = true;
             label4.Cursor = Cursors.SizeAll;
             label4.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 3);
+            label4.Location = new Point(3, 4);
             label4.Name = "label4";
-            label4.Size = new Size(101, 26);
+            label4.Size = new Size(126, 33);
             label4.TabIndex = 1;
             label4.Text = "ວັນເດືອນປີເກີດ";
             // 
@@ -301,18 +315,20 @@
             panel11.Controls.Add(textBox5);
             panel11.Controls.Add(txtPhone);
             panel11.Controls.Add(panel12);
-            panel11.Location = new Point(292, 76);
+            panel11.Location = new Point(332, 101);
+            panel11.Margin = new Padding(3, 4, 3, 4);
             panel11.Name = "panel11";
-            panel11.Size = new Size(323, 67);
+            panel11.Size = new Size(369, 89);
             panel11.TabIndex = 3;
             // 
             // textBox5
             // 
             textBox5.Dock = DockStyle.Left;
             textBox5.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox5.Location = new Point(0, 32);
+            textBox5.Location = new Point(0, 42);
+            textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(48, 34);
+            textBox5.Size = new Size(54, 40);
             textBox5.TabIndex = 2;
             textBox5.Text = "+856";
             // 
@@ -320,9 +336,10 @@
             // 
             txtPhone.Dock = DockStyle.Right;
             txtPhone.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPhone.Location = new Point(51, 32);
+            txtPhone.Location = new Point(59, 42);
+            txtPhone.Margin = new Padding(3, 4, 3, 4);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(272, 34);
+            txtPhone.Size = new Size(310, 40);
             txtPhone.TabIndex = 1;
             // 
             // panel12
@@ -330,17 +347,18 @@
             panel12.Controls.Add(label6);
             panel12.Dock = DockStyle.Top;
             panel12.Location = new Point(0, 0);
+            panel12.Margin = new Padding(3, 4, 3, 4);
             panel12.Name = "panel12";
-            panel12.Size = new Size(323, 32);
+            panel12.Size = new Size(369, 42);
             panel12.TabIndex = 0;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(3, 3);
+            label6.Location = new Point(3, 4);
             label6.Name = "label6";
-            label6.Size = new Size(45, 26);
+            label6.Size = new Size(54, 33);
             label6.TabIndex = 1;
             label6.Text = "ເບີໂທ";
             // 
@@ -348,18 +366,20 @@
             // 
             panel13.Controls.Add(txtEmail);
             panel13.Controls.Add(panel14);
-            panel13.Location = new Point(3, 149);
+            panel13.Location = new Point(3, 198);
+            panel13.Margin = new Padding(3, 4, 3, 4);
             panel13.Name = "panel13";
-            panel13.Size = new Size(283, 67);
+            panel13.Size = new Size(323, 89);
             panel13.TabIndex = 2;
             // 
             // txtEmail
             // 
             txtEmail.Dock = DockStyle.Fill;
             txtEmail.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmail.Location = new Point(0, 32);
+            txtEmail.Location = new Point(0, 42);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(283, 34);
+            txtEmail.Size = new Size(323, 40);
             txtEmail.TabIndex = 1;
             // 
             // panel14
@@ -367,17 +387,18 @@
             panel14.Controls.Add(label7);
             panel14.Dock = DockStyle.Top;
             panel14.Location = new Point(0, 0);
+            panel14.Margin = new Padding(3, 4, 3, 4);
             panel14.Name = "panel14";
-            panel14.Size = new Size(283, 32);
+            panel14.Size = new Size(323, 42);
             panel14.TabIndex = 0;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(3, 3);
+            label7.Location = new Point(3, 4);
             label7.Name = "label7";
-            label7.Size = new Size(46, 26);
+            label7.Size = new Size(58, 33);
             label7.TabIndex = 1;
             label7.Text = "ອີເມວ";
             // 
@@ -385,9 +406,10 @@
             // 
             panel15.Controls.Add(cmbRole);
             panel15.Controls.Add(panel16);
-            panel15.Location = new Point(292, 149);
+            panel15.Location = new Point(332, 198);
+            panel15.Margin = new Padding(3, 4, 3, 4);
             panel15.Name = "panel15";
-            panel15.Size = new Size(323, 67);
+            panel15.Size = new Size(369, 89);
             panel15.TabIndex = 3;
             // 
             // cmbRole
@@ -395,9 +417,10 @@
             cmbRole.Dock = DockStyle.Fill;
             cmbRole.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbRole.FormattingEnabled = true;
-            cmbRole.Location = new Point(0, 32);
+            cmbRole.Location = new Point(0, 42);
+            cmbRole.Margin = new Padding(3, 4, 3, 4);
             cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(323, 34);
+            cmbRole.Size = new Size(369, 41);
             cmbRole.TabIndex = 1;
             // 
             // panel16
@@ -405,17 +428,18 @@
             panel16.Controls.Add(label8);
             panel16.Dock = DockStyle.Top;
             panel16.Location = new Point(0, 0);
+            panel16.Margin = new Padding(3, 4, 3, 4);
             panel16.Name = "panel16";
-            panel16.Size = new Size(323, 32);
+            panel16.Size = new Size(369, 42);
             panel16.TabIndex = 0;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(3, 3);
+            label8.Location = new Point(3, 4);
             label8.Name = "label8";
-            label8.Size = new Size(52, 26);
+            label8.Size = new Size(63, 33);
             label8.TabIndex = 1;
             label8.Text = "ຫນ້າທີ";
             // 
@@ -423,9 +447,10 @@
             // 
             panel17.Controls.Add(cmbGender);
             panel17.Controls.Add(panel18);
-            panel17.Location = new Point(3, 222);
+            panel17.Location = new Point(3, 295);
+            panel17.Margin = new Padding(3, 4, 3, 4);
             panel17.Name = "panel17";
-            panel17.Size = new Size(283, 67);
+            panel17.Size = new Size(323, 89);
             panel17.TabIndex = 4;
             // 
             // cmbGender
@@ -434,9 +459,10 @@
             cmbGender.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Male", "Femal" });
-            cmbGender.Location = new Point(0, 32);
+            cmbGender.Location = new Point(0, 42);
+            cmbGender.Margin = new Padding(3, 4, 3, 4);
             cmbGender.Name = "cmbGender";
-            cmbGender.Size = new Size(283, 34);
+            cmbGender.Size = new Size(323, 41);
             cmbGender.TabIndex = 2;
             // 
             // panel18
@@ -444,17 +470,18 @@
             panel18.Controls.Add(label9);
             panel18.Dock = DockStyle.Top;
             panel18.Location = new Point(0, 0);
+            panel18.Margin = new Padding(3, 4, 3, 4);
             panel18.Name = "panel18";
-            panel18.Size = new Size(283, 32);
+            panel18.Size = new Size(323, 42);
             panel18.TabIndex = 0;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(3, 3);
+            label9.Location = new Point(3, 4);
             label9.Name = "label9";
-            label9.Size = new Size(39, 26);
+            label9.Size = new Size(48, 33);
             label9.TabIndex = 1;
             label9.Text = "ເພດ";
             // 
@@ -462,18 +489,20 @@
             // 
             panel19.Controls.Add(txtPosition);
             panel19.Controls.Add(panel21);
-            panel19.Location = new Point(292, 222);
+            panel19.Location = new Point(332, 295);
+            panel19.Margin = new Padding(3, 4, 3, 4);
             panel19.Name = "panel19";
-            panel19.Size = new Size(323, 67);
+            panel19.Size = new Size(369, 89);
             panel19.TabIndex = 5;
             // 
             // txtPosition
             // 
             txtPosition.Dock = DockStyle.Fill;
             txtPosition.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPosition.Location = new Point(0, 32);
+            txtPosition.Location = new Point(0, 42);
+            txtPosition.Margin = new Padding(3, 4, 3, 4);
             txtPosition.Name = "txtPosition";
-            txtPosition.Size = new Size(323, 34);
+            txtPosition.Size = new Size(369, 40);
             txtPosition.TabIndex = 3;
             // 
             // panel21
@@ -481,17 +510,18 @@
             panel21.Controls.Add(label10);
             panel21.Dock = DockStyle.Top;
             panel21.Location = new Point(0, 0);
+            panel21.Margin = new Padding(3, 4, 3, 4);
             panel21.Name = "panel21";
-            panel21.Size = new Size(323, 32);
+            panel21.Size = new Size(369, 42);
             panel21.TabIndex = 0;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(3, 3);
+            label10.Location = new Point(3, 4);
             label10.Name = "label10";
-            label10.Size = new Size(65, 26);
+            label10.Size = new Size(82, 33);
             label10.TabIndex = 1;
             label10.Text = "ຕຳແຫນ່ງ";
             // 
@@ -499,19 +529,21 @@
             // 
             panel22.Controls.Add(txtPassword);
             panel22.Controls.Add(panel23);
-            panel22.Location = new Point(3, 295);
+            panel22.Location = new Point(3, 392);
+            panel22.Margin = new Padding(3, 4, 3, 4);
             panel22.Name = "panel22";
-            panel22.Size = new Size(283, 67);
+            panel22.Size = new Size(323, 89);
             panel22.TabIndex = 6;
             // 
             // txtPassword
             // 
             txtPassword.Dock = DockStyle.Fill;
             txtPassword.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(0, 32);
+            txtPassword.Location = new Point(0, 42);
+            txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(283, 34);
+            txtPassword.Size = new Size(323, 40);
             txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
             // 
@@ -520,17 +552,18 @@
             panel23.Controls.Add(label1);
             panel23.Dock = DockStyle.Top;
             panel23.Location = new Point(0, 0);
+            panel23.Margin = new Padding(3, 4, 3, 4);
             panel23.Name = "panel23";
-            panel23.Size = new Size(283, 32);
+            panel23.Size = new Size(323, 42);
             panel23.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 3);
+            label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(77, 26);
+            label1.Size = new Size(96, 33);
             label1.TabIndex = 1;
             label1.Text = "ລະຫັດຜ່ານ";
             // 
@@ -538,19 +571,21 @@
             // 
             panel24.Controls.Add(txtCfPassword);
             panel24.Controls.Add(panel25);
-            panel24.Location = new Point(292, 295);
+            panel24.Location = new Point(332, 392);
+            panel24.Margin = new Padding(3, 4, 3, 4);
             panel24.Name = "panel24";
-            panel24.Size = new Size(323, 67);
+            panel24.Size = new Size(369, 89);
             panel24.TabIndex = 7;
             // 
             // txtCfPassword
             // 
             txtCfPassword.Dock = DockStyle.Fill;
             txtCfPassword.Font = new Font("Noto Sans Lao", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCfPassword.Location = new Point(0, 32);
+            txtCfPassword.Location = new Point(0, 42);
+            txtCfPassword.Margin = new Padding(3, 4, 3, 4);
             txtCfPassword.Name = "txtCfPassword";
             txtCfPassword.PasswordChar = '*';
-            txtCfPassword.Size = new Size(323, 34);
+            txtCfPassword.Size = new Size(369, 40);
             txtCfPassword.TabIndex = 3;
             txtCfPassword.UseSystemPasswordChar = true;
             // 
@@ -559,17 +594,18 @@
             panel25.Controls.Add(label11);
             panel25.Dock = DockStyle.Top;
             panel25.Location = new Point(0, 0);
+            panel25.Margin = new Padding(3, 4, 3, 4);
             panel25.Name = "panel25";
-            panel25.Size = new Size(323, 32);
+            panel25.Size = new Size(369, 42);
             panel25.TabIndex = 0;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(3, 3);
+            label11.Location = new Point(3, 4);
             label11.Name = "label11";
-            label11.Size = new Size(117, 26);
+            label11.Size = new Size(144, 33);
             label11.TabIndex = 1;
             label11.Text = "ຍືນຢັນລະຫັດຜ່ານ";
             // 
@@ -579,19 +615,21 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(622, 546);
+            panel1.Size = new Size(711, 728);
             panel1.TabIndex = 0;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.SkyBlue;
+            button1.BackColor = Color.Green;
             button1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(443, 15);
+            button1.Location = new Point(506, 20);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(176, 40);
+            button1.Size = new Size(201, 52);
             button1.TabIndex = 1;
             button1.Text = "ບັນທຶກ";
             button1.UseVisualStyleBackColor = false;
@@ -603,9 +641,10 @@
             button2.BackColor = Color.Red;
             button2.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(261, 15);
+            button2.Location = new Point(298, 20);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(176, 40);
+            button2.Size = new Size(201, 52);
             button2.TabIndex = 2;
             button2.Text = "ອອກ";
             button2.UseVisualStyleBackColor = false;
@@ -616,19 +655,21 @@
             panel20.Controls.Add(button2);
             panel20.Controls.Add(button1);
             panel20.Dock = DockStyle.Bottom;
-            panel20.Location = new Point(0, 479);
+            panel20.Location = new Point(0, 639);
+            panel20.Margin = new Padding(3, 4, 3, 4);
             panel20.Name = "panel20";
-            panel20.Size = new Size(622, 67);
+            panel20.Size = new Size(711, 89);
             panel20.TabIndex = 2;
             // 
             // USER_CREATE_FORM
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 546);
+            ClientSize = new Size(711, 728);
             Controls.Add(panel20);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "USER_CREATE_FORM";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "USER_CREATE_FORM";

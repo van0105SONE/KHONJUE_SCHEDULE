@@ -21,6 +21,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private SubjectController _subjectController { get; set; }
         private TermController _termController { get; set; }
         private LevelController _levelController { get; set; }
+        private MajorController _majorController { get; set; }
         private TermSubjectModel termSubject { get; set; }
         public CREATE_TERM_SUBJECT_FORM()
         {
@@ -30,11 +31,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _subjectController = new SubjectController(_dbContext);
             _termController = new TermController(_dbContext);
             _levelController = new LevelController(_dbContext);
+            _majorController = new MajorController(_dbContext);
             termSubject = new TermSubjectModel();
             action = Actions.Create;
             loadSubject();
             loadTerm();
             loadLevel();
+            loadMajors();
         }
 
         public CREATE_TERM_SUBJECT_FORM(TermSubjectModel termSubjectParam)
@@ -42,13 +45,17 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             InitializeComponent();
             _dbContext = new DatabaseContext();
             _dbContext.connect();
+            _subjectController = new SubjectController(_dbContext);
             _termController = new TermController(_dbContext);
+            _levelController = new LevelController(_dbContext);
+            _majorController = new MajorController(_dbContext);
             termSubject = termSubjectParam;
             cmbLevel.SelectedValue = termSubjectParam.TermName;
             action = Actions.Update;
             loadSubject();
             loadTerm();
             loadLevel();
+            loadMajors();
         }
 
 
@@ -61,26 +68,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-
-        private void createBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void createBtn_Click_1(object sender, EventArgs e)
-        {
-            bool isSuccess = false;
-
-            isSuccess = _subjectController.AddSubjectAndTerm(int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
-
-
-            if (isSuccess)
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
         }
 
         private void loadSubject()
@@ -115,6 +102,46 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             // Bind the roles list to the ComboBox
             cmbLevel.DataSource = roles;
+        }
+
+        private void createBtn_Click_2(object sender, EventArgs e)
+        {
+            bool isSuccess = false;
+            bool isExist = _subjectController.isSubjectExistInTermAngMajor(int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
+            if (!isExist)
+            {
+                isSuccess = _subjectController.AddSubjectAndTerm(int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
+
+
+                if (isSuccess)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show($"ວິຊານີ້ໃນພາກຮຽນແລ້ວ ກາລຸເລືອກວິຊາໃຫມ່ແລ້ວລອງອີກຄັ້ງ?",
+                        "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void loadMajors()
+        {
+            List<MajorModel> roles = _majorController.getMajors();
+
+            // Set the DisplayMember and ValueMember properties
+            cmbMajor.DisplayMember = "MajorName"; // Replace with the property you want to display
+            cmbMajor.ValueMember = "Id";    // Replace with the property you want as the value
+
+            // Bind the roles list to the ComboBox
+            cmbMajor.DataSource = roles;
+        }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 {
     public partial class SubjectManagement : UserControl
     {
- 
+
         private DatabaseContext _dbContext { get; set; }
         private LevelController _levelController { get; set; }
         private SubjectController _subjController { get; set; }
@@ -34,16 +34,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            CREATE_SUBJECT_FORM createForm = new CREATE_SUBJECT_FORM();
-            var result = createForm.ShowDialog();
-            if(result == DialogResult.OK)
-            {
-                loadDataGrid(false);
-            }
-        }
-
         public void loadDataGrid(bool isInit)
         {
 
@@ -54,7 +44,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 subjectDatagrid.Columns.Remove("EditButton");
                 subjectDatagrid.Columns.Remove("DeleteButton");
             }
-     
+
             subjectDatagrid.DataSource = null;
             List<SubjectModel> subjects = _subjController.GetSubjectList();
 
@@ -97,7 +87,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 var subjectCode = row.Cells["SubjectCode"].Value.ToString(); // Get subject code
                 var subjectName = row.Cells["SubjectName"].Value.ToString(); // Get subject code
                 var description = row.Cells["Description"].Value.ToString(); // Get subject code
-                var levelId = int.Parse( row.Cells["CurriculumId"].Value.ToString()); // Get subject code
+                var levelId = int.Parse(row.Cells["CurriculumId"].Value.ToString()); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == subjectDatagrid.Columns["EditButton"].Index)
                 {
@@ -137,6 +127,16 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         loadDataGrid(false);
                     }
                 }
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            CREATE_SUBJECT_FORM createForm = new CREATE_SUBJECT_FORM();
+            var result = createForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadDataGrid(false);
             }
         }
     }

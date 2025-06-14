@@ -25,11 +25,34 @@ namespace KHONJUE_SCHEDULE.Resources.Users.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO Users (Username, Fname, Lname, Phone, Email, RoleId, RoleName, Birthdate, Position, Gender) VALUES ('{param.Username}', '{param.Fname}', '{param.Lname}', '{param.Phone}', '{param.Email}', '{param.RoleId}', '{param.RoleName}', '{param.Birthdate}', '{param.Position}', '{param.Gender}')";
+                _command.CommandText = $@"INSERT INTO Users (""Username"",""Password"", ""Fname"", ""Lname"", ""Phone"", ""Email"", ""RoleId"", ""RoleName"", ""Birthdate"", ""Position"", ""Gender"") VALUES ('{param.Username}',{param.Password}, '{param.Fname}', '{param.Lname}', '{param.Phone}', '{param.Email}', '{param.RoleId}', '{param.RoleName}', '{param.Birthdate}', '{param.Position}', '{param.Gender}')";
                 _command.ExecuteNonQuery();
                 return false;
             }
             catch(Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public bool VerifyUser(string username, string password)
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = @"SELECT COUNT(*) FROM Users WHERE ""Username"" = @Username AND ""Password"" = @Password";
+                _command.Parameters.AddWithValue("@Username", username);
+                _command.Parameters.AddWithValue("@Password", password); // Ensure password is hashed in real apps
+
+                var result = _command.ExecuteScalar();
+                bool isValidUser = Convert.ToInt32(result) > 0;
+
+                return isValidUser;
+
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }

@@ -8,13 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KHONJUE_SCHEDULE.Resources.Management
 {
@@ -76,9 +74,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             curriculum.CurriculumName = txtCRCL.Text;
             curriculum.Description = txtDescription.Text;
-
-
-
             bool isSuccess = false;
             if (action == Actions.Create)
             {

@@ -98,10 +98,10 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(10, 25);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(104, 31);
+            titleLabel.Size = new Size(115, 44);
             titleLabel.TabIndex = 2;
             titleLabel.Text = "ຫ້ອງຮຽນ";
             // 
@@ -129,7 +129,7 @@
             // 
             txtStudentClassName.Dock = DockStyle.Fill;
             txtStudentClassName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtStudentClassName.Location = new Point(0, 43);
+            txtStudentClassName.Location = new Point(0, 42);
             txtStudentClassName.Margin = new Padding(3, 4, 3, 4);
             txtStudentClassName.Name = "txtStudentClassName";
             txtStudentClassName.Size = new Size(706, 30);
@@ -142,17 +142,17 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(706, 43);
+            panel9.Size = new Size(706, 42);
             panel9.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(55, 25);
+            label5.Size = new Size(62, 33);
             label5.TabIndex = 1;
             label5.Text = "ຊື່ຫ້ອງ";
             // 
@@ -170,7 +170,7 @@
             // 
             textBox1.Dock = DockStyle.Fill;
             textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(0, 43);
+            textBox1.Location = new Point(0, 42);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(706, 30);
@@ -183,7 +183,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(706, 43);
+            panel3.Size = new Size(706, 42);
             panel3.TabIndex = 0;
             // 
             // label1
@@ -212,7 +212,7 @@
             cmbLevel.Dock = DockStyle.Fill;
             cmbLevel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbLevel.FormattingEnabled = true;
-            cmbLevel.Location = new Point(0, 43);
+            cmbLevel.Location = new Point(0, 42);
             cmbLevel.Margin = new Padding(3, 4, 3, 4);
             cmbLevel.Name = "cmbLevel";
             cmbLevel.Size = new Size(706, 33);
@@ -225,19 +225,19 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(706, 43);
+            panel5.Size = new Size(706, 42);
             panel5.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Cursor = Cursors.SizeAll;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(188, 25);
+            label2.Size = new Size(102, 33);
             label2.TabIndex = 1;
-            label2.Text = "ເລືອກຊັ້ນຂອງຫ້ອງນັກຮຽນ";
+            label2.Text = "ປະເພດຫ້ອງ";
             label2.Click += label2_Click;
             // 
             // flowLayoutPanel2
@@ -266,7 +266,7 @@
             // 
             txtNumberOfClass.Dock = DockStyle.Fill;
             txtNumberOfClass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNumberOfClass.Location = new Point(0, 43);
+            txtNumberOfClass.Location = new Point(0, 42);
             txtNumberOfClass.Margin = new Padding(3, 4, 3, 4);
             txtNumberOfClass.Name = "txtNumberOfClass";
             txtNumberOfClass.Size = new Size(706, 30);
@@ -280,17 +280,17 @@
             panel7.Location = new Point(0, 0);
             panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(706, 43);
+            panel7.Size = new Size(706, 42);
             panel7.TabIndex = 0;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Cursor = Cursors.SizeAll;
-            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(3, 4);
             label3.Name = "label3";
-            label3.Size = new Size(95, 25);
+            label3.Size = new Size(104, 33);
             label3.TabIndex = 1;
             label3.Text = "ຈຳນວນຫ້ອງ";
             // 
@@ -318,7 +318,7 @@
             // 
             textBox2.Dock = DockStyle.Fill;
             textBox2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(0, 43);
+            textBox2.Location = new Point(0, 42);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(706, 30);
@@ -331,7 +331,7 @@
             panel11.Location = new Point(0, 0);
             panel11.Margin = new Padding(3, 4, 3, 4);
             panel11.Name = "panel11";
-            panel11.Size = new Size(706, 43);
+            panel11.Size = new Size(706, 42);
             panel11.TabIndex = 0;
             // 
             // label4
@@ -369,7 +369,7 @@
             // 
             textBox4.Dock = DockStyle.Fill;
             textBox4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(0, 43);
+            textBox4.Location = new Point(0, 42);
             textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(706, 30);
@@ -382,7 +382,7 @@
             panel15.Location = new Point(0, 0);
             panel15.Margin = new Padding(3, 4, 3, 4);
             panel15.Name = "panel15";
-            panel15.Size = new Size(706, 43);
+            panel15.Size = new Size(706, 42);
             panel15.TabIndex = 0;
             // 
             // label7
@@ -400,12 +400,12 @@
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             closeBtn.BackColor = Color.Red;
-            closeBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(289, 513);
+            closeBtn.Location = new Point(289, 512);
             closeBtn.Margin = new Padding(3, 4, 3, 4);
             closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 53);
+            closeBtn.Size = new Size(201, 52);
             closeBtn.TabIndex = 13;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
@@ -415,12 +415,12 @@
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             createBtn.BackColor = Color.SkyBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(509, 513);
+            createBtn.Location = new Point(509, 512);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
+            createBtn.Size = new Size(201, 52);
             createBtn.TabIndex = 12;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
@@ -440,7 +440,7 @@
             // 
             txtDescription.Dock = DockStyle.Fill;
             txtDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDescription.Location = new Point(0, 43);
+            txtDescription.Location = new Point(0, 42);
             txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(706, 30);
@@ -453,17 +453,17 @@
             panel13.Location = new Point(0, 0);
             panel13.Margin = new Padding(3, 4, 3, 4);
             panel13.Name = "panel13";
-            panel13.Size = new Size(706, 43);
+            panel13.Size = new Size(706, 42);
             panel13.TabIndex = 0;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Cursor = Cursors.SizeAll;
-            label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(3, 4);
             label6.Name = "label6";
-            label6.Size = new Size(88, 25);
+            label6.Size = new Size(98, 33);
             label6.TabIndex = 1;
             label6.Text = "ຄຳອະທິບາຍ";
             // 
@@ -471,7 +471,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(715, 583);
+            ClientSize = new Size(715, 582);
             Controls.Add(closeBtn);
             Controls.Add(createBtn);
             Controls.Add(panel12);

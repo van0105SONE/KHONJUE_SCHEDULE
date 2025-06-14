@@ -53,6 +53,8 @@ namespace KHONJUE_SCHEDULE
             dataGridView1.DataSource = _userController.GetUsers();
             dataGridView1.Columns["Id"].HeaderText = "ລຳດັບ";
             dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["RoleId"].Visible = false;
+            dataGridView1.Columns["Password"].Visible = false;
             dataGridView1.Columns["Username"].HeaderText = "ຊື່ຜູ້ໃຊ້";
             dataGridView1.Columns["Fname"].HeaderText = "ຊື່ແທ້";
             dataGridView1.Columns["Lname"].HeaderText = "ນາມສະກຸນ";

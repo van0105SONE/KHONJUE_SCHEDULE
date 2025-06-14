@@ -24,7 +24,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO student_class (""Code"", ""StudentClassName"",""Description"" ,""LevelId"", ""NumberOfClass"") VALUES ('SCKJ{DateTime.Now.Ticks}', '{classParams.StudentClassName}', '{classParams.Description}',{classParams.LevelId}, '{classParams.NumberOfClass}')";
+                _command.CommandText = $@"INSERT INTO student_class (""Code"", ""StudentClassName"",""Description"" ,""NumberOfClass"", ""RoomType"") VALUES ('SCKJ{DateTime.Now.Ticks}', '{classParams.StudentClassName}', '{classParams.Description}', '{classParams.NumberOfClass}', '{classParams.RoomType}')";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -40,7 +40,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE student_class SET ""StudentClassName""='{classParams.StudentClassName}',""Description""='{classParams.Description}',""NumberOfClass""={classParams.NumberOfClass} ,""LevelId""={classParams.LevelId}  WHERE ""Id"" = '{classParams.Id}';";
+                _command.CommandText = $@"UPDATE student_class SET ""StudentClassName""='{classParams.StudentClassName}'  WHERE ""Id"" = '{classParams.Id}';";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -74,7 +74,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 List<StudentClassModel> classes = new List<StudentClassModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT student_class.""Id"",student_class.""Code"", student_class.""StudentClassName"", student_class.""Description"", student_class.""LevelId"",level.""LevelCode"" ,level.""LevelName"",student_class.""NumberOfClass""    FROM public.student_class LEFT JOIN  study_level as level ON level.""Id"" = student_class.""LevelId"";";
+                _command.CommandText = $@"SELECT student_class.""Id"",student_class.""Code"", student_class.""StudentClassName"", student_class.""Description"",student_class.""NumberOfClass"",student_class.""RoomType""    FROM public.student_class;";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
@@ -84,9 +84,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                     studentClass.NumberOfClass = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("NumberOfClass")).ToString()) ? 1 : int.Parse( data.GetValue(data.GetOrdinal("NumberOfClass")).ToString());
                     studentClass.StudentClassName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("StudentClassName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("StudentClassName")).ToString();
                     studentClass.Description = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("Description")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("Description")).ToString();
-                    studentClass.LevelId = int.Parse(data.GetValue(data.GetOrdinal("LevelId")).ToString());
-                    studentClass.LevelCode = data.GetValue(data.GetOrdinal("LevelCode")).ToString();
-                    studentClass.LevelName = data.GetValue(data.GetOrdinal("LevelName")).ToString();
+                    studentClass.RoomType = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("RoomType")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("RoomType")).ToString();
                     classes.Add(studentClass);
                 }
                 data.Close();

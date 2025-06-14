@@ -60,18 +60,18 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(10, 25);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(103, 31);
+            titleLabel.Size = new Size(209, 44);
             titleLabel.TabIndex = 2;
-            titleLabel.Text = "ເພີ່ມຜູ້ໃຊ້";
+            titleLabel.Text = "ເພີ່ມເວລາເຂົ້າ-ອອກ";
             // 
             // panel8
             // 
             panel8.Controls.Add(startTimePicker);
             panel8.Controls.Add(panel9);
-            panel8.Location = new Point(0, 97);
+            panel8.Location = new Point(0, 98);
             panel8.Margin = new Padding(3, 4, 3, 4);
             panel8.Name = "panel8";
             panel8.Size = new Size(339, 89);
@@ -82,7 +82,7 @@
             startTimePicker.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             startTimePicker.Dock = DockStyle.Fill;
             startTimePicker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            startTimePicker.Location = new Point(0, 43);
+            startTimePicker.Location = new Point(0, 42);
             startTimePicker.Margin = new Padding(3, 4, 3, 4);
             startTimePicker.Name = "startTimePicker";
             startTimePicker.Size = new Size(339, 34);
@@ -95,17 +95,17 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(339, 43);
+            panel9.Size = new Size(339, 42);
             panel9.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(76, 25);
+            label5.Size = new Size(85, 33);
             label5.TabIndex = 1;
             label5.Text = "ເວລາເລີ່ມ";
             // 
@@ -113,7 +113,7 @@
             // 
             panel1.Controls.Add(endTimePicker);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(346, 97);
+            panel1.Location = new Point(346, 98);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
             panel1.Size = new Size(339, 89);
@@ -125,7 +125,7 @@
             endTimePicker.CustomFormat = "hh:mm";
             endTimePicker.Dock = DockStyle.Fill;
             endTimePicker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            endTimePicker.Location = new Point(0, 43);
+            endTimePicker.Location = new Point(0, 42);
             endTimePicker.Margin = new Padding(3, 4, 3, 4);
             endTimePicker.Name = "endTimePicker";
             endTimePicker.Size = new Size(339, 34);
@@ -138,17 +138,17 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(339, 43);
+            panel3.Size = new Size(339, 42);
             panel3.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(76, 25);
+            label1.Size = new Size(85, 33);
             label1.TabIndex = 1;
             label1.Text = "ເວລາເລີກ";
             // 
@@ -158,10 +158,10 @@
             deleteBtn.BackColor = Color.Red;
             deleteBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             deleteBtn.ForeColor = Color.White;
-            deleteBtn.Location = new Point(264, 233);
+            deleteBtn.Location = new Point(264, 232);
             deleteBtn.Margin = new Padding(3, 4, 3, 4);
             deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(201, 53);
+            deleteBtn.Size = new Size(201, 52);
             deleteBtn.TabIndex = 8;
             deleteBtn.Text = "ອອກ";
             deleteBtn.UseVisualStyleBackColor = false;
@@ -173,10 +173,10 @@
             createBtn.BackColor = Color.SkyBlue;
             createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(485, 233);
+            createBtn.Location = new Point(485, 232);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
+            createBtn.Size = new Size(201, 52);
             createBtn.TabIndex = 7;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
@@ -186,7 +186,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(687, 303);
+            ClientSize = new Size(687, 302);
             Controls.Add(deleteBtn);
             Controls.Add(createBtn);
             Controls.Add(panel1);

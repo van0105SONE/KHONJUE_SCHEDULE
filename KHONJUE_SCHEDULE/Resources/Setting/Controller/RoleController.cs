@@ -4,8 +4,6 @@ using Npgsql;
 using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,9 +127,9 @@ namespace KHONJUE_SCHEDULE.Resources.Setting.Controller
                 _command = new NpgsqlCommand();
                 _command.Connection = _dbContext.dbConnection;
                 _command.CommandText = $@"
-INSERT INTO Roles (RoleId, RoleName, AllowRoles)
+INSERT INTO roles (""RoleName"")
 VALUES 
-    ('{param.RoleId}', '{param.RoleName}');
+    ('{param.RoleName}');
 ";
                 _command.ExecuteNonQuery();
                

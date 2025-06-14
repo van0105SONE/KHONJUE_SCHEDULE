@@ -8,13 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace KHONJUE_SCHEDULE.Resources.Management
 {
@@ -69,34 +68,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             loadCurriculum();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbCrcl.SelectedValue == null)
-            {
-                return;
-            }
 
-            subject.SubjectName = txtSubject.Text;
-            subject.Description = txtDescription.Text;
-            subject.CurriculumId = int.Parse(cmbCrcl.SelectedValue.ToString());
-
-
-            bool isSuccess = false;
-            if (action == Actions.Create)
-            {
-                isSuccess = _subjController.createSubject(subject);
-            }
-            else
-            {
-                isSuccess = _subjController.editSubject(subject);
-            }
-
-            if (isSuccess)
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
 
 
         public void loadCurriculum()
@@ -149,6 +121,72 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbCrcl.SelectedValue == null)
+            {
+                return;
+            }
+
+            subject.SubjectName = txtSubject.Text;
+            subject.Description = txtDescription.Text;
+            subject.Lecture = int.Parse(txtLecture.Text);
+            subject.Lab = int.Parse(txtLab.Text);
+            subject.CurriculumId = int.Parse(cmbCrcl.SelectedValue.ToString());
+
+
+            bool isSuccess = false;
+            if (action == Actions.Create)
+            {
+                isSuccess = _subjController.createSubject(subject);
+            }
+            else
+            {
+                isSuccess = _subjController.editSubject(subject);
+            }
+
+            if (isSuccess)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void txtLecture_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only digits (0-9), backspace, and one decimal point
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // Ensure only one decimal point is allowed
+            if (e.KeyChar == '.' && ((sender as TextBox).Text.Contains(".")))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtLab_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only digits (0-9), backspace, and one decimal point
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // Ensure only one decimal point is allowed
+            if (e.KeyChar == '.' && ((sender as TextBox).Text.Contains(".")))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

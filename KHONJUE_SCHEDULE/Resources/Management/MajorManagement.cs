@@ -30,16 +30,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             Style.styleDatagridView(levelDatagrid);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CREATE_MAJOR_FORM createForm = new CREATE_MAJOR_FORM();
-           var result =  createForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                loadMajorData(false);
-            }
-
-        }
 
         private void loadMajorData(bool isInit)
         {
@@ -52,7 +42,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 levelDatagrid.Columns.Remove("DeleteButton");
             }
 
-            levelDatagrid.DataSource = _levelController.getLevels();
+            levelDatagrid.DataSource = _levelController.getMajors();
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
             levelDatagrid.Columns["CurriculumId"].HeaderText = "ລຳດັບ";
@@ -96,8 +86,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     var subjectArg = new LevelModel()
                     {
                         Id = Id,
-                        LevelCode    = levelCode,
-                        LevelName  = levelName
+                        LevelCode = levelCode,
+                        LevelName = levelName
                     };
                     CREATE_LEVEL_FORM createForm = new CREATE_LEVEL_FORM(subjectArg);
 
@@ -121,11 +111,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     if (confirm == DialogResult.Yes)
                     {
                         // Call your delete function here
-                        _levelController.deleteLevel(Id);
+                        _levelController.deleteMajor(Id);
                         loadMajorData(false);
                     }
                 }
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CREATE_MAJOR_FORM createForm = new CREATE_MAJOR_FORM();
+            var result = createForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadMajorData(false);
+            }
+
         }
     }
 }

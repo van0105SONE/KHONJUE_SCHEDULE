@@ -92,7 +92,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
             catch(Exception ex)
             {
-                return [];
+                return new List<LevelModel>() { };
             }
         }
     }
