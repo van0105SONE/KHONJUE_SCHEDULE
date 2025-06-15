@@ -41,10 +41,6 @@
             txtLecture = new TextBox();
             panel4 = new Panel();
             label1 = new Label();
-            panel7 = new Panel();
-            cmbCrcl = new ComboBox();
-            panel10 = new Panel();
-            label3 = new Label();
             flowLayoutPanel3 = new FlowLayoutPanel();
             panel5 = new Panel();
             txtDescription = new TextBox();
@@ -64,8 +60,6 @@
             flowLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            panel7.SuspendLayout();
-            panel10.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
@@ -81,7 +75,6 @@
             panel1.Controls.Add(createBtn);
             panel1.Controls.Add(flowLayoutPanel4);
             panel1.Controls.Add(flowLayoutPanel2);
-            panel1.Controls.Add(panel7);
             panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(panel2);
@@ -95,7 +88,7 @@
             // closeBtn
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.Red;
+            closeBtn.BackColor = Color.DarkRed;
             closeBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             closeBtn.ForeColor = Color.White;
             closeBtn.Location = new Point(288, 652);
@@ -110,7 +103,7 @@
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.SkyBlue;
+            createBtn.BackColor = Color.CornflowerBlue;
             createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
             createBtn.Location = new Point(508, 652);
@@ -225,48 +218,6 @@
             label1.Size = new Size(120, 33);
             label1.TabIndex = 1;
             label1.Text = "ເລັກເຊີ້/ອາທິດ";
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(cmbCrcl);
-            panel7.Controls.Add(panel10);
-            panel7.Location = new Point(3, 509);
-            panel7.Margin = new Padding(3, 4, 3, 4);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(709, 89);
-            panel7.TabIndex = 9;
-            // 
-            // cmbCrcl
-            // 
-            cmbCrcl.Dock = DockStyle.Fill;
-            cmbCrcl.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cmbCrcl.FormattingEnabled = true;
-            cmbCrcl.Location = new Point(0, 42);
-            cmbCrcl.Margin = new Padding(3, 4, 3, 4);
-            cmbCrcl.Name = "cmbCrcl";
-            cmbCrcl.Size = new Size(709, 33);
-            cmbCrcl.TabIndex = 3;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(label3);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 0);
-            panel10.Margin = new Padding(3, 4, 3, 4);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(709, 42);
-            panel10.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.SizeAll;
-            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 4);
-            label3.Name = "label3";
-            label3.Size = new Size(69, 33);
-            label3.TabIndex = 1;
-            label3.Text = "ຫຼັກສູດ";
             // 
             // flowLayoutPanel3
             // 
@@ -412,9 +363,6 @@
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -444,10 +392,6 @@
         private TextBox txtDescription;
         private Panel panel6;
         private Label label2;
-        private Panel panel7;
-        private ComboBox cmbCrcl;
-        private Panel panel10;
-        private Label label3;
         private FlowLayoutPanel flowLayoutPanel4;
         private Panel panel11;
         private TextBox txtLab;

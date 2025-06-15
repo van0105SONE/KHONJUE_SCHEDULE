@@ -399,7 +399,7 @@
             // closeBtn
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.Red;
+            closeBtn.BackColor = Color.DarkRed;
             closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             closeBtn.ForeColor = Color.White;
             closeBtn.Location = new Point(289, 512);
@@ -414,7 +414,7 @@
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.SkyBlue;
+            createBtn.BackColor = Color.CornflowerBlue;
             createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
             createBtn.Location = new Point(509, 512);

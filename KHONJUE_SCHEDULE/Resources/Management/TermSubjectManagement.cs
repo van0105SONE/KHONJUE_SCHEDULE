@@ -60,7 +60,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             levelDatagrid.Columns["MajorName"].HeaderText = "ສາຂາ";
             levelDatagrid.Columns["TermName"].HeaderText = "ພຽກຮຽນ";
             levelDatagrid.Columns["LevelName"].HeaderText = "ປີ";
-
+            levelDatagrid.Columns["CurriculumId"].Visible = false;
+            levelDatagrid.Columns["CurriculumName"].HeaderText = "ຊື່ຫຼັກສູດ";
             // Add two button columns to the DataGridView (you can add them as separate columns)
             DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
             editButtonColumn.HeaderText = "";  // Set header text for the button column
@@ -115,6 +116,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     DialogResult confirm = MessageBox.Show($"Are you sure you want to delete this {termName}?",
                         "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+                    _subjectController.deleteTermSubject(Id);
                     if (confirm == DialogResult.Yes)
                     {
                         // Call your delete function here

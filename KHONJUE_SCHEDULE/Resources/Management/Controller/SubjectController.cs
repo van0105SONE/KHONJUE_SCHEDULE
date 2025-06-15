@@ -17,13 +17,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         {
             _databaseContext = context;
         }
-        public bool AddSubjectAndTerm(int subjectId,int MajorId,int termId, int levelId)
+        public bool AddSubjectAndTerm(int subjectId,int MajorId,int termId, int levelId, int curriculumId)
         {
             try
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO term_subjects (""SubjectId"", ""MajorId"" ,""TermId"",""LevelId"" ) VALUES ({subjectId},{MajorId}, {termId}, {levelId})";
+                _command.CommandText = $@"INSERT INTO term_subjects (""SubjectId"", ""MajorId"" ,""TermId"",""LevelId"", ""CurriculumId"" ) VALUES ({subjectId},{MajorId}, {termId}, {levelId}, {curriculumId})";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -61,7 +61,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO subject (""SubjectCode"", ""SubjectName"",""Description"" , ""CurriculumId"", ""Lecture"", ""Lab"") VALUES ('SKJ{DateTime.Now.Ticks}', '{subjectParams.SubjectName}', '{subjectParams.Description}', {subjectParams.Lecture}, {subjectParams.Lab})";
+                _command.CommandText = $@"INSERT INTO subject (""SubjectCode"", ""SubjectName"",""Description"", ""Lecture"", ""Lab"") VALUES ('SKJ{DateTime.Now.Ticks}', '{subjectParams.SubjectName}', '{subjectParams.Description}', {subjectParams.Lecture}, {subjectParams.Lab})";
                 _command.ExecuteNonQuery();
                 return true;
             }catch (Exception ex)
@@ -110,7 +110,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 List<SubjectModel> subjects = new List<SubjectModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT subject.""Id"", subject.""SubjectCode"", subject.""SubjectName"", subject.""Description"", subject.""CurriculumId"", subject.""Lecture"", subject.""Lab"",curriculum.""CurriculumName"" FROM public.subject LEFT JOIN  curriculum ON subject.""CurriculumId"" = curriculum.""Id"" ;";
+                _command.CommandText = $@"SELECT subject.""Id"", subject.""SubjectCode"", subject.""SubjectName"", subject.""Description"",  subject.""Lecture"", subject.""Lab"" FROM subject ;";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
@@ -132,6 +132,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
+       public bool deleteTermSubject(int termSubjectId)
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"DELETE FROM term_subjects WHERE ""Id"" = '{termSubjectId}'";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public List<TermSubjectModel> GetTermSubjectList()
         {
             try
@@ -139,7 +155,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 List<TermSubjectModel> subjects = new List<TermSubjectModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT term_subjects.""Id"",term_subjects.""SubjectId""  ,subject.""SubjectName"", terms.""TermName"", study_level.""LevelName"", majors.""MajorName"" FROM public.term_subjects LEFT JOIN  subject ON term_subjects.""SubjectId"" = subject.""Id"" LEFT JOIN  majors ON term_subjects.""MajorId"" = majors.id LEFT JOIN  terms ON term_subjects.""TermId"" = terms.""Id""  LEFT JOIN  study_level ON term_subjects.""LevelId"" = study_level.""Id"";";
+                _command.CommandText = $@"SELECT term_subjects.""Id"",term_subjects.""SubjectId""  ,subject.""SubjectName"", terms.""TermName"", study_level.""LevelName"", majors.""MajorName"" FROM public.term_subjects LEFT JOIN  subject ON term_subjects.""SubjectId"" = subject.""Id"" LEFT JOIN  majors ON term_subjects.""MajorId"" = majors.id LEFT JOIN  terms ON term_subjects.""TermId"" = terms.""Id""  LEFT JOIN  study_level ON term_subjects.""LevelId"" = study_level.""Id""  LEFT JOIN   curriculum ON term_subjects.""CurriculumId"" = curriculum.""Id"";";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

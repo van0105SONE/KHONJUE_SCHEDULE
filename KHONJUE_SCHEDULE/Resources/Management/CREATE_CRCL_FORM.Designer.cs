@@ -70,7 +70,7 @@
             // deleteBtn
             // 
             deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            deleteBtn.BackColor = Color.Red;
+            deleteBtn.BackColor = Color.DarkRed;
             deleteBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             deleteBtn.ForeColor = Color.White;
             deleteBtn.Location = new Point(282, 320);
@@ -85,7 +85,7 @@
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.SkyBlue;
+            createBtn.BackColor = Color.CornflowerBlue;
             createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
             createBtn.Location = new Point(508, 320);

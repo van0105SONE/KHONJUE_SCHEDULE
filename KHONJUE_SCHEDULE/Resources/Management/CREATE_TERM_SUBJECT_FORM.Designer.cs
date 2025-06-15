@@ -45,13 +45,18 @@
             cmbSubject = new ComboBox();
             panel5 = new Panel();
             label2 = new Label();
-            closeBtn = new Button();
-            createBtn = new Button();
             flowLayoutPanel4 = new FlowLayoutPanel();
             panel6 = new Panel();
             cmbMajor = new ComboBox();
             panel7 = new Panel();
             label3 = new Label();
+            closeBtn = new Button();
+            createBtn = new Button();
+            flowLayoutPanel5 = new FlowLayoutPanel();
+            panel10 = new Panel();
+            cmbCurriculum = new ComboBox();
+            panel11 = new Panel();
+            label4 = new Label();
             panel1.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
@@ -65,6 +70,9 @@
             flowLayoutPanel4.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            panel10.SuspendLayout();
+            panel11.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -243,36 +251,6 @@
             label2.TabIndex = 1;
             label2.Text = "ວິຊາຮຽນ";
             // 
-            // closeBtn
-            // 
-            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.Red;
-            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(16, 471);
-            closeBtn.Margin = new Padding(3, 4, 3, 4);
-            closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 52);
-            closeBtn.TabIndex = 18;
-            closeBtn.Text = "ອອກ";
-            closeBtn.UseVisualStyleBackColor = false;
-            closeBtn.Click += closeBtn_Click_1;
-            // 
-            // createBtn
-            // 
-            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.SkyBlue;
-            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(235, 471);
-            createBtn.Margin = new Padding(3, 4, 3, 4);
-            createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 52);
-            createBtn.TabIndex = 17;
-            createBtn.Text = "ບັນທຶກ";
-            createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click_2;
-            // 
             // flowLayoutPanel4
             // 
             flowLayoutPanel4.Controls.Add(panel6);
@@ -325,14 +303,97 @@
             label3.TabIndex = 1;
             label3.Text = "ສາຂາຮຽນ";
             // 
+            // closeBtn
+            // 
+            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            closeBtn.BackColor = Color.DarkRed;
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(25, 578);
+            closeBtn.Margin = new Padding(3, 4, 3, 4);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(201, 52);
+            closeBtn.TabIndex = 21;
+            closeBtn.Text = "ອອກ";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click_2;
+            // 
+            // createBtn
+            // 
+            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            createBtn.BackColor = Color.CornflowerBlue;
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.ForeColor = Color.White;
+            createBtn.Location = new Point(244, 578);
+            createBtn.Margin = new Padding(3, 4, 3, 4);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(201, 52);
+            createBtn.TabIndex = 20;
+            createBtn.Text = "ບັນທຶກ";
+            createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click;
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.Controls.Add(panel10);
+            flowLayoutPanel5.Dock = DockStyle.Top;
+            flowLayoutPanel5.Location = new Point(0, 452);
+            flowLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new Size(448, 100);
+            flowLayoutPanel5.TabIndex = 22;
+            // 
+            // panel10
+            // 
+            panel10.Controls.Add(cmbCurriculum);
+            panel10.Controls.Add(panel11);
+            panel10.Location = new Point(3, 4);
+            panel10.Margin = new Padding(3, 4, 3, 4);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(442, 89);
+            panel10.TabIndex = 4;
+            // 
+            // cmbCurriculum
+            // 
+            cmbCurriculum.Dock = DockStyle.Fill;
+            cmbCurriculum.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbCurriculum.FormattingEnabled = true;
+            cmbCurriculum.Location = new Point(0, 42);
+            cmbCurriculum.Margin = new Padding(3, 4, 3, 4);
+            cmbCurriculum.Name = "cmbCurriculum";
+            cmbCurriculum.Size = new Size(442, 33);
+            cmbCurriculum.TabIndex = 4;
+            // 
+            // panel11
+            // 
+            panel11.Controls.Add(label4);
+            panel11.Dock = DockStyle.Top;
+            panel11.Location = new Point(0, 0);
+            panel11.Margin = new Padding(3, 4, 3, 4);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(442, 42);
+            panel11.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Cursor = Cursors.SizeAll;
+            label4.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 4);
+            label4.Name = "label4";
+            label4.Size = new Size(69, 33);
+            label4.TabIndex = 1;
+            label4.Text = "ຫຼັກສູດ";
+            // 
             // CREATE_TERM_SUBJECT_FORM
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(448, 538);
-            Controls.Add(flowLayoutPanel4);
+            ClientSize = new Size(448, 643);
+            Controls.Add(flowLayoutPanel5);
             Controls.Add(closeBtn);
             Controls.Add(createBtn);
+            Controls.Add(flowLayoutPanel4);
             Controls.Add(flowLayoutPanel3);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
@@ -360,6 +421,10 @@
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            panel10.ResumeLayout(false);
+            panel11.ResumeLayout(false);
+            panel11.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -382,12 +447,17 @@
         private ComboBox cmbSubject;
         private Panel panel5;
         private Label label2;
-        private Button closeBtn;
-        private Button createBtn;
         private FlowLayoutPanel flowLayoutPanel4;
         private Panel panel6;
         private ComboBox cmbMajor;
         private Panel panel7;
         private Label label3;
+        private Button closeBtn;
+        private Button createBtn;
+        private FlowLayoutPanel flowLayoutPanel5;
+        private Panel panel10;
+        private ComboBox cmbCurriculum;
+        private Panel panel11;
+        private Label label4;
     }
 }

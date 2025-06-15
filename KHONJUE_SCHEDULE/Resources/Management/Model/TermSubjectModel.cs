@@ -14,5 +14,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Model
         public string TermName { get; set; }
         public string LevelName { get; set; }
         public string MajorName { get; set; }
+        public int CurriculumId { get; set; }
+        public int CurriculumName { get; set; }
     }
 }

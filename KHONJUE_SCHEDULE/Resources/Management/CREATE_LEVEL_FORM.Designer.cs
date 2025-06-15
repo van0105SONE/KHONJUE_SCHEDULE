@@ -117,38 +117,36 @@
             // closeBtn
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.Red;
+            closeBtn.BackColor = Color.DarkRed;
             closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(16, 272);
+            closeBtn.Location = new Point(12, 181);
             closeBtn.Margin = new Padding(3, 4, 3, 4);
             closeBtn.Name = "closeBtn";
             closeBtn.Size = new Size(201, 52);
-            closeBtn.TabIndex = 12;
+            closeBtn.TabIndex = 14;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
-            closeBtn.Click += closeBtn_Click_1;
             // 
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.SkyBlue;
+            createBtn.BackColor = Color.CornflowerBlue;
             createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(235, 272);
+            createBtn.Location = new Point(244, 181);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(201, 52);
-            createBtn.TabIndex = 11;
+            createBtn.TabIndex = 13;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click;
             // 
             // CREATE_LEVEL_FORM
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(448, 338);
+            ClientSize = new Size(448, 268);
             Controls.Add(closeBtn);
             Controls.Add(createBtn);
             Controls.Add(flowLayoutPanel1);

@@ -94,10 +94,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void button7_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            CurriculumManagement curriculumManagement = new CurriculumManagement();
+            MajorManagement curriculumManagement = new MajorManagement();
             curriculumManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(curriculumManagement);
-            Style.SetActiveButton(button7, panel2.Controls);
+            Style.SetActiveButton(button9, panel2.Controls);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -111,13 +111,13 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void button9_Click(object sender, EventArgs e)
         {
-
-
             InfoContainer.Controls.Clear();
-            MajorManagement curriculumManagement = new MajorManagement();
+            CurriculumManagement curriculumManagement = new CurriculumManagement();
             curriculumManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(curriculumManagement);
-            Style.SetActiveButton(button9, panel2.Controls);
+            Style.SetActiveButton(button7, panel2.Controls);
+
+
         }
     }
 }

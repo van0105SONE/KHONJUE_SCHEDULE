@@ -18,7 +18,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.Model
         public int periodId { get; set; }
          public String period { get; set; }
         public int RoomId { get; set; }
-
+        public string Type { get; set; }
         public string RoomName { get; set; }    
     }
 }

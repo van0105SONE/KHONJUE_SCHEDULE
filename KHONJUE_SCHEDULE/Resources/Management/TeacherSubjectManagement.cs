@@ -53,6 +53,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             subjectDatagrid.DataSource = subjects;
             subjectDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             subjectDatagrid.Columns["Id"].Visible = false;
+            subjectDatagrid.Columns["TeacherId"].Visible = false;
             subjectDatagrid.Columns["TeacherName"].HeaderText = "ຊື່ອາຈານ";
             subjectDatagrid.Columns["SubjectName"].HeaderText = "ວິຊາທີ່ອາຈານສອນ";
 

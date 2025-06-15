@@ -41,7 +41,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             createBtn.Text = "ບັນທຶກ";
             action = Actions.Create;
-            loadCurriculum();
         }
 
         public CREATE_SUBJECT_FORM(SubjectModel subjectParam)
@@ -63,24 +62,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
             action = Actions.Update;
-            loadCurriculum();
+
         }
 
 
 
 
-        public void loadCurriculum()
-        {
-            var curriculums = _curriculumController.GetCurriculumList();
-
-
-            // Set the DisplayMember and ValueMember properties
-            cmbCrcl.DisplayMember = "CurriculumName"; // Replace with the property you want to display
-            cmbCrcl.ValueMember = "Id";    // Replace with the property you want as the value
-
-            // Bind the roles list to the ComboBox
-            cmbCrcl.DataSource = curriculums;
-        }
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +82,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbCrcl.SelectedValue == null)
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text))
             {
                 return;
             }
@@ -122,7 +109,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) || cmbCrcl.SelectedValue == null)
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) )
             {
                 return;
             }

@@ -75,7 +75,7 @@
             button9.Name = "button9";
             button9.Size = new Size(172, 80);
             button9.TabIndex = 12;
-            button9.Text = "ສາຂາຮຽນ";
+            button9.Text = "ຫຼັກສູດ";
             button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
@@ -107,7 +107,7 @@
             button7.Name = "button7";
             button7.Size = new Size(105, 80);
             button7.TabIndex = 10;
-            button7.Text = "ຫຼັກສູດ";
+            button7.Text = "ສາຂາຮຽນ";
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 

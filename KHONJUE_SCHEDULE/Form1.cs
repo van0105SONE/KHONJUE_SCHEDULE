@@ -14,12 +14,13 @@ namespace KHONJUE_SCHEDULE
         public Form1()
         {
             InitializeComponent();
+
             MAIN_CONTAINER.Controls.Clear();
             InfoManagement inforPage = new InfoManagement();
             inforPage.Dock = DockStyle.Fill;
             MAIN_CONTAINER.Controls.Add(inforPage);
 
-            Style.SetActiveButton(button6, SIDEBAR_MENU.Controls);
+            Style.SetActiveButton(button1, SIDEBAR_MENU.Controls);
         }
 
 

@@ -43,69 +43,116 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
 
         public List<ScheduleModel> GenerateSchedule()
         {
-            List<TeacherModel> teachers = _teacherController.getTeachers();
-            List<TermSubjectModel> termSubjects =   _subjectController.GetTermSubjectList();
-            List<TimePeriodModel> periods = _periodController.getTimePeriod();
-            List<StudentClassModel> rooms = _classController.GetStudentClasstList();
+            List<ScheduleModel> schedule = new();
+            List<DayOfWeek> days = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
+
+            var teachers = _teacherController.getTeachers();
+            var termSubjects = _subjectController.GetTermSubjectList();
+            var periods = _periodController.getTimePeriod();
+            var rooms = _classController.GetStudentClasstList(); // Must include RoomType ("lecture"/"lab")
+            var subjects = _subjectController.GetSubjectList();
+
             var teacherScheduleCount = new Dictionary<int, int>();
+            var teacherOccupation = new HashSet<string>(); // day_period_teacherId
+            var roomOccupation = new HashSet<string>();    // day_period_roomId
+            var subjectDayTracker = new Dictionary<string, HashSet<string>>(); // termSubjectId_roomType -> used days
 
-            foreach (var subjectTeach in termSubjects)
+            foreach (var termSubject in termSubjects)
             {
-                bool scheduled = false;
+                var subject = subjects.FirstOrDefault(s => s.Id == termSubject.SubjectId);
+                if (subject == null) continue;
 
-                // Sort or shuffle teachers to vary selection per subject
-                var eligibleTeachers = teachers
-                    .Where(t =>
-                        IsTeacherEligible(t.Id, subjectTeach.SubjectId))
-                    .OrderBy(t => teacherScheduleCount.TryGetValue(t.Id, out int count) ? count : 0)
-                    .ToList();
+                int[] types = { 0, 1 }; // 0 = Lecture, 1 = Lab
 
-                foreach (var day in days)
+                foreach (int type in types)
                 {
-                    foreach (var period in periods)
+                    int sessionCount = type == 0 ? subject.Lecture : subject.Lab;
+                    string roomType = type == 0 ? "lecture" : "lab";
+
+                    for (int i = 0; i < sessionCount; i++)
                     {
-                        foreach (var room in rooms)
+                        bool scheduled = false;
+
+                        var eligibleTeachers = teachers
+                            .Where(t => IsTeacherEligible(t.Id, subject.Id))
+                            .OrderBy(t => teacherScheduleCount.TryGetValue(t.Id, out var count) ? count : 0)
+                            .ToList();
+
+                        foreach (var day in days)
                         {
-                            foreach (var teacher in eligibleTeachers)
+                            string dayStr = day.ToString();
+                            string subjectKey = $"{termSubject.Id}_{roomType}";
+
+                            if (subjectDayTracker.TryGetValue(subjectKey, out var usedDays) && usedDays.Contains(dayStr))
+                                continue;
+
+                            foreach (var period in periods)
                             {
-                                // Get current count or 0 if not present
-                                teacherScheduleCount.TryGetValue(teacher.Id, out int currentCount);
+                                int periodId = period.Id;
 
-                                if (currentCount < teacher.QuotaPerWeek &&
-                                    !HasTeacherConflict(teacher.Id, day, period.Id) && !HasSubjectConflict(teacher.Id, subjectTeach.Id))
+                                foreach (var room in rooms.Where(r => r.RoomType.ToLower() == roomType))
                                 {
-                                    var item = new ScheduleModel
+                                    string roomKey = $"{dayStr}_{periodId}_{room.Id}_{roomType}";
+                                    if (roomOccupation.Contains(roomKey)) continue;
+
+                                    foreach (var teacher in eligibleTeachers)
                                     {
-                                        TermSubjectId = subjectTeach.Id,
-                                        Day = day.ToString(),
-                                        periodId = period.Id,
-                                        RoomId = room.Id,
-                                        TeacherId = teacher.Id
-                                    };
+                                        string teacherKey = $"{dayStr}_{periodId}_{teacher.Id}";
+                                        teacherScheduleCount.TryGetValue(teacher.Id, out var currentCount);
 
-                                    schedule.Add(item);
-                                    saveSchedule(item);
+                                        if (currentCount >= teacher.QuotaPerWeek) continue;
+                                        if (teacherOccupation.Contains(teacherKey)) continue;
 
-                                    teacherScheduleCount[teacher.Id] = currentCount + 1;
-                                    scheduled = true;
-                                    break;
+                                        // ✅ Schedule
+                                        var item = new ScheduleModel
+                                        {
+                                            TermSubjectId = termSubject.Id,
+                                            Day = dayStr,
+                                            periodId = periodId,
+                                            RoomId = room.Id,
+                                            TeacherId = teacher.Id,
+                                            Type = room.RoomType
+                                        };
+
+                                        schedule.Add(item);
+                                        saveSchedule(item);
+
+                                        // Update usage
+                                        teacherScheduleCount[teacher.Id] = currentCount + 1;
+                                        teacherOccupation.Add(teacherKey);
+                                        roomOccupation.Add(roomKey);
+
+                                        if (!subjectDayTracker.ContainsKey(subjectKey))
+                                            subjectDayTracker[subjectKey] = new HashSet<string>();
+                                        subjectDayTracker[subjectKey].Add(dayStr);
+
+                                        scheduled = true;
+                                        break;
+                                    }
+
+                                    if (scheduled) break;
                                 }
+
+                                if (scheduled) break;
                             }
+
                             if (scheduled) break;
                         }
-                        if (scheduled) break;
-                    }
-                    if (scheduled) break;
-                }
 
-                if (!scheduled)
-                {
-                    Console.WriteLine($"Could not schedule subject: {subjectTeach.SubjectId}");
+                        if (!scheduled)
+                        {
+                            Console.WriteLine($"⚠️ Cannot schedule {subject.SubjectName} ({roomType.ToUpper()}) for TermSubjectId: {termSubject.Id}");
+                        }
+                    }
                 }
             }
-            Console.WriteLine("schedule data: ", schedule);
+
             return schedule;
         }
+
+
+
+
 
         private bool HasTeacherConflict(int teacherId ,DayOfWeek day, int periodId)
         {
@@ -190,7 +237,7 @@ LIMIT 1;
                 using (var command = new NpgsqlCommand())
                 {
                     command.Connection = dbContext.dbConnection;
-                    command.CommandText = $@"INSERT INTO schedule (""TermSubjectId"", ""Day"", ""TimePeriodId"", ""RoomId"", ""TeacherId"") VALUES ({param.TermSubjectId}, '{param.Day}', {param.periodId}, {param.RoomId}, {param.TeacherId})";
+                    command.CommandText = $@"INSERT INTO schedule (""TermSubjectId"", ""Day"", ""TimePeriodId"", ""RoomId"", ""TeacherId"", ""Type"") VALUES ({param.TermSubjectId}, '{param.Day}', {param.periodId}, {param.RoomId}, {param.TeacherId}, '{param.Type}')";
                     command.ExecuteNonQuery();
                     return true;
                 }
