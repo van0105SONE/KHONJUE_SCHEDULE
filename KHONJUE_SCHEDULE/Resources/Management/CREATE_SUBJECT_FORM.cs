@@ -56,12 +56,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 Id = subjectParam.Id,
                 SubjectCode = subjectParam.SubjectName,
                 Description = subjectParam.Description,
-                CurriculumId = int.Parse(subjectParam.CurriculumId.ToString())
             };
 
             txtSubject.Text = subjectParam.SubjectName;
             txtDescription.Text = subjectParam.Description;
-            cmbCrcl.SelectedValue = subjectParam.CurriculumId;
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
             action = Actions.Update;
@@ -104,7 +102,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             subject.SubjectName = txtSubject.Text;
             subject.Description = txtDescription.Text;
-            subject.CurriculumId = int.Parse(cmbCrcl.SelectedValue.ToString());
 
             bool isSuccess = false;
             if (action == Actions.Create)
@@ -134,7 +131,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             subject.Description = txtDescription.Text;
             subject.Lecture = int.Parse(txtLecture.Text);
             subject.Lab = int.Parse(txtLab.Text);
-            subject.CurriculumId = int.Parse(cmbCrcl.SelectedValue.ToString());
 
 
             bool isSuccess = false;

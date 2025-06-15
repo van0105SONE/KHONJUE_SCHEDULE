@@ -127,6 +127,7 @@
             closeBtn.TabIndex = 12;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click_1;
             // 
             // createBtn
             // 
@@ -152,8 +153,10 @@
             Controls.Add(createBtn);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_LEVEL_FORM";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CREATE_LEVEL_FORM";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -52,12 +52,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             subjectDatagrid.DataSource = subjects;
             subjectDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             subjectDatagrid.Columns["Id"].Visible = false;
-            subjectDatagrid.Columns["CurriculumId"].HeaderText = "ລຳດັບ";
-            subjectDatagrid.Columns["CurriculumId"].Visible = false;
             subjectDatagrid.Columns["SubjectCode"].HeaderText = "ລະຫັດວິຊາຣຽນ";
             subjectDatagrid.Columns["SubjectName"].HeaderText = "ຊື່ວິຊາຮຽນ";
-            subjectDatagrid.Columns["CurriculumName"].HeaderText = "ລະຫັດຊັ້ນຮຽນ";
-            subjectDatagrid.Columns["CurriculumName"].HeaderText = "ຫຼັກສູດ";
+            subjectDatagrid.Columns["Description"].HeaderText = "ຄຳອະທິບາຍເພີ່ມເຕິ່ມ";
+            subjectDatagrid.Columns["Lecture"].HeaderText = "ຫ້ອງລ່ວມ";
+            subjectDatagrid.Columns["Lab"].HeaderText = "ຫ້ອງທົດລອງ";
 
             // Add two button columns to the DataGridView (you can add them as separate columns)
             DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
@@ -87,7 +86,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 var subjectCode = row.Cells["SubjectCode"].Value.ToString(); // Get subject code
                 var subjectName = row.Cells["SubjectName"].Value.ToString(); // Get subject code
                 var description = row.Cells["Description"].Value.ToString(); // Get subject code
-                var levelId = int.Parse(row.Cells["CurriculumId"].Value.ToString()); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == subjectDatagrid.Columns["EditButton"].Index)
                 {
@@ -98,8 +96,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         Id = Id,
                         SubjectCode = subjectCode,
                         SubjectName = subjectName,
-                        Description = description,
-                        CurriculumId = levelId
+                        Description = description
                     };
                     CREATE_SUBJECT_FORM createForm = new CREATE_SUBJECT_FORM(subjectArg);
 

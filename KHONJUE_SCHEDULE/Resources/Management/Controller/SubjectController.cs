@@ -61,7 +61,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO subject (""SubjectCode"", ""SubjectName"",""Description"" , ""CurriculumId"", ""Lecture"", ""Lab"") VALUES ('SKJ{DateTime.Now.Ticks}', '{subjectParams.SubjectName}', '{subjectParams.Description}', {subjectParams.CurriculumId}, {subjectParams.Lecture}, {subjectParams.Lab})";
+                _command.CommandText = $@"INSERT INTO subject (""SubjectCode"", ""SubjectName"",""Description"" , ""CurriculumId"", ""Lecture"", ""Lab"") VALUES ('SKJ{DateTime.Now.Ticks}', '{subjectParams.SubjectName}', '{subjectParams.Description}', {subjectParams.Lecture}, {subjectParams.Lab})";
                 _command.ExecuteNonQuery();
                 return true;
             }catch (Exception ex)
@@ -121,8 +121,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                     subject.Description = string.IsNullOrEmpty( data.GetValue(data.GetOrdinal("Description")).ToString())? "N/A" : data.GetValue(data.GetOrdinal("Description")).ToString();
                     subject.Lecture = int.Parse(data.GetValue(data.GetOrdinal("Lecture")).ToString(), 0);
                     subject.Lab = int.Parse(data.GetValue(data.GetOrdinal("Lab")).ToString(), 0);
-                    subject.CurriculumId =     int.Parse( data.GetValue(data.GetOrdinal("CurriculumId")).ToString());
-                    subject.CurriculumName = data.GetValue(data.GetOrdinal("CurriculumName")).ToString();
                     subjects.Add(subject);
                 }
                 data.Close();

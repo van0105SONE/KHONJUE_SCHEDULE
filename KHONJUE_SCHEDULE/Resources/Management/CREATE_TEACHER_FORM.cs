@@ -150,5 +150,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 e.Handled = true;
             }
         }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

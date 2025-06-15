@@ -78,5 +78,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 this.Close();
             }
         }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

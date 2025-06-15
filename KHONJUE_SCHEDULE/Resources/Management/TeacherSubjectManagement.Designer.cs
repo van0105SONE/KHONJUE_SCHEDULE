@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherSubjectManagement));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             panel4 = new Panel();
             button2 = new Button();
             txtSearch = new TextBox();
             panel3 = new Panel();
+            button4 = new Button();
             button3 = new Button();
             panel2 = new Panel();
             subjectDatagrid = new DataGridView();
@@ -61,50 +61,66 @@
             panel4.Controls.Add(button2);
             panel4.Controls.Add(txtSearch);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(1124, 0);
+            panel4.Location = new Point(911, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(304, 71);
-            panel4.TabIndex = 1;
+            panel4.Size = new Size(360, 71);
+            panel4.TabIndex = 2;
             // 
             // button2
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.BackColor = Color.White;
+            button2.BackColor = SystemColors.Desktop;
             button2.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(242, 13);
+            button2.Location = new Point(257, 10);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(47, 44);
+            button2.Size = new Size(97, 48);
             button2.TabIndex = 15;
+            button2.Text = "ຄົ້ນຫາ";
             button2.UseVisualStyleBackColor = false;
             // 
             // txtSearch
             // 
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(15, 15);
+            txtSearch.Location = new Point(30, 16);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(221, 40);
-            txtSearch.TabIndex = 14;
+            txtSearch.TabIndex = 13;
             // 
             // panel3
             // 
+            panel3.Controls.Add(button4);
             panel3.Controls.Add(button3);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(1428, 0);
+            panel3.Location = new Point(1271, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(148, 71);
+            panel3.Size = new Size(305, 71);
             panel3.TabIndex = 0;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            button4.BackColor = Color.DarkRed;
+            button4.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.ForeColor = SystemColors.ButtonHighlight;
+            button4.Location = new Point(6, 11);
+            button4.Margin = new Padding(3, 4, 3, 4);
+            button4.Name = "button4";
+            button4.Size = new Size(166, 48);
+            button4.TabIndex = 11;
+            button4.Text = "ລ້າງຂໍ້ມູນທັງໝົດ";
+            button4.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
             button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button3.BackColor = Color.Green;
+            button3.BackColor = Color.CornflowerBlue;
             button3.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(21, 11);
+            button3.Location = new Point(178, 11);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
             button3.Size = new Size(117, 48);
@@ -170,10 +186,11 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView subjectDatagrid;
-        private Panel panel4;
         private Panel panel3;
         private Button button3;
-        private Button button2;
+        private Button button4;
+        private Panel panel4;
         private TextBox txtSearch;
+        private Button button2;
     }
 }

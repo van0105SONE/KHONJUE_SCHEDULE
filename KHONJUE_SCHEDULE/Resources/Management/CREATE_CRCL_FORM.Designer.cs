@@ -80,6 +80,7 @@
             deleteBtn.TabIndex = 8;
             deleteBtn.Text = "ອອກ";
             deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click_1;
             // 
             // createBtn
             // 
@@ -212,7 +213,7 @@
             // 
             titleLabel.AutoSize = true;
             titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            titleLabel.Location = new Point(10, 25);
+            titleLabel.Location = new Point(6, 25);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(135, 44);
             titleLabel.TabIndex = 2;
@@ -224,8 +225,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 404);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_CRCL_FORM";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateSub_jectForm";
             panel1.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);

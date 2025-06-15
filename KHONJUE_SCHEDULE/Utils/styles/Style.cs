@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.Control;
 
 namespace KHONJUE_SCHEDULE.Utils.styles
 {
@@ -41,6 +42,23 @@ namespace KHONJUE_SCHEDULE.Utils.styles
            gridView.DefaultCellStyle.Font = new Font("Noto Sans Lao", 11, FontStyle.Regular); // Increase text size for data rows
            gridView.DefaultCellStyle.WrapMode = DataGridViewTriState.False; // Disable text wrapping
            gridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // Align text to the left
+        }
+
+        public static void SetActiveButton(Button activeButton, ControlCollection controls)
+        {
+            foreach (Control ctrl in controls) // Use the actual container name
+            {
+                if (ctrl is Button btn)
+                {
+                    // Reset all buttons
+                    btn.BackColor = Color.Green;
+                    btn.ForeColor = Color.White;
+                }
+            }
+
+            // Highlight the active button
+            activeButton.BackColor = Color.White;
+            activeButton.ForeColor = Color.Black;
         }
     }
 }

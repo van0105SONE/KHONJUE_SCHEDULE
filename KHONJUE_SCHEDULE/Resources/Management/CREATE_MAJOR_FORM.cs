@@ -133,5 +133,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 e.Handled = true;
             }
         }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

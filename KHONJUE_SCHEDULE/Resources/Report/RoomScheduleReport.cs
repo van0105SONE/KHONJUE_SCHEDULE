@@ -42,7 +42,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report
     async    private void button8_Click(object sender, EventArgs e)
         {
             this.REPORT_CONTAINER.Controls.Clear();
-            var data = _scheduleController.getScheduleAll();
+            var data = _scheduleController.getScheduleAll(-1, -1 , null, null);
             var report = new RoomScheduleReportController(data);
             string path = Path.Combine(Environment.CurrentDirectory, "ScheduleReport.pdf");
             report.GeneratePdf(path);

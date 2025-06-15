@@ -30,6 +30,8 @@
         {
             panel1 = new Panel();
             SIDEBAR_MENU = new Panel();
+            label1 = new Label();
+            button5 = new Button();
             button3 = new Button();
             button6 = new Button();
             button4 = new Button();
@@ -39,7 +41,6 @@
             pictureBox1 = new PictureBox();
             panel4 = new Panel();
             MAIN_CONTAINER = new Panel();
-            button5 = new Button();
             panel1.SuspendLayout();
             SIDEBAR_MENU.SuspendLayout();
             panel2.SuspendLayout();
@@ -61,6 +62,7 @@
             // SIDEBAR_MENU
             // 
             SIDEBAR_MENU.BackColor = Color.Green;
+            SIDEBAR_MENU.Controls.Add(label1);
             SIDEBAR_MENU.Controls.Add(button5);
             SIDEBAR_MENU.Controls.Add(button3);
             SIDEBAR_MENU.Controls.Add(button6);
@@ -74,6 +76,31 @@
             SIDEBAR_MENU.Size = new Size(181, 572);
             SIDEBAR_MENU.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(34, 543);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 20);
+            label1.TabIndex = 8;
+            label1.Text = "Version: 1.0.0";
+            // 
+            // button5
+            // 
+            button5.Dock = DockStyle.Top;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Noto Sans Lao", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = SystemColors.ButtonHighlight;
+            button5.Location = new Point(0, 335);
+            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Name = "button5";
+            button5.Size = new Size(181, 67);
+            button5.TabIndex = 7;
+            button5.UseVisualStyleBackColor = true;
+            // 
             // button3
             // 
             button3.Dock = DockStyle.Top;
@@ -86,7 +113,7 @@
             button3.Name = "button3";
             button3.Size = new Size(181, 67);
             button3.TabIndex = 6;
-            button3.Text = "ຜູ້ໃຊ້";
+            button3.Text = "ລາຍງານ";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
@@ -118,7 +145,7 @@
             button4.Name = "button4";
             button4.Size = new Size(181, 67);
             button4.TabIndex = 3;
-            button4.Text = "ລາຍງານ";
+            button4.Text = "ຄົ້ນຫາ";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
@@ -134,7 +161,7 @@
             button2.Name = "button2";
             button2.Size = new Size(181, 67);
             button2.TabIndex = 1;
-            button2.Text = "ຈັດການຂໍ້ມູນ";
+            button2.Text = "ຈັດຕາຕະລາງ";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -150,13 +177,13 @@
             button1.Name = "button1";
             button1.Size = new Size(181, 67);
             button1.TabIndex = 0;
-            button1.Text = "ຈັດຕາຕະລາງ";
+            button1.Text = "ຈັດການຂໍ້ມູນຫຼັກ";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.ControlLightLight;
+            panel2.BackColor = Color.Green;
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
@@ -167,12 +194,11 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.WhatsApp_Image_2025_05_03_at_13_52_37;
-            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Location = new Point(34, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Padding = new Padding(4);
-            pictureBox1.Size = new Size(181, 139);
+            pictureBox1.Size = new Size(116, 115);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -196,21 +222,6 @@
             MAIN_CONTAINER.Size = new Size(1277, 711);
             MAIN_CONTAINER.TabIndex = 1;
             // 
-            // button5
-            // 
-            button5.Dock = DockStyle.Top;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Noto Sans Lao", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = SystemColors.ButtonHighlight;
-            button5.Location = new Point(0, 335);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(181, 67);
-            button5.TabIndex = 7;
-            button5.Text = "ຕັ້ງຄ່າ";
-            button5.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -220,9 +231,12 @@
             Controls.Add(panel1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             SIDEBAR_MENU.ResumeLayout(false);
+            SIDEBAR_MENU.PerformLayout();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel4.ResumeLayout(false);
@@ -243,5 +257,6 @@
         private PictureBox pictureBox1;
         private Button button3;
         private Button button5;
+        private Label label1;
     }
 }

@@ -109,7 +109,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             }
 
             // Load schedules and place cards
-            List<ScheduleModel> schedules = _scheduleController.getSchedule(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()));
+            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()), null, null);
             foreach (var schedule in schedules)
             {
                 int col = getDayOfWeek(schedule.Day); // +1 for time label

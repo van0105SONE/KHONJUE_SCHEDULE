@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelManagement));
             panel1 = new Panel();
             panel3 = new Panel();
-            button2 = new Button();
+            button5 = new Button();
             txtSearch = new TextBox();
             panel2 = new Panel();
+            button2 = new Button();
             button1 = new Button();
-            button3 = new Button();
             levelDatagrid = new DataGridView();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -47,7 +46,6 @@
             // 
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(button3);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
@@ -57,32 +55,33 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button5);
             panel3.Controls.Add(txtSearch);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(982, 0);
+            panel3.Location = new Point(750, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(333, 71);
-            panel3.TabIndex = 4;
+            panel3.Size = new Size(409, 71);
+            panel3.TabIndex = 5;
             // 
-            // button2
+            // button5
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.BackColor = Color.White;
-            button2.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(256, 13);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(47, 44);
-            button2.TabIndex = 9;
-            button2.UseVisualStyleBackColor = false;
+            button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            button5.BackColor = SystemColors.Desktop;
+            button5.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = SystemColors.ButtonHighlight;
+            button5.Location = new Point(306, 11);
+            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Name = "button5";
+            button5.Size = new Size(97, 48);
+            button5.TabIndex = 9;
+            button5.Text = "ຄົ້ນຫາ";
+            button5.UseVisualStyleBackColor = false;
             // 
             // txtSearch
             // 
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(29, 15);
+            txtSearch.Location = new Point(79, 15);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(221, 40);
@@ -90,20 +89,35 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(button2);
             panel2.Controls.Add(button1);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1315, 0);
+            panel2.Location = new Point(1159, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(141, 71);
+            panel2.Size = new Size(297, 71);
             panel2.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            button2.BackColor = Color.DarkRed;
+            button2.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = SystemColors.ButtonHighlight;
+            button2.Location = new Point(3, 11);
+            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(166, 48);
+            button2.TabIndex = 6;
+            button2.Text = "ລ້າງຂໍ້ມູນທັງໝົດ";
+            button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.Green;
+            button1.BackColor = Color.CornflowerBlue;
             button1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(19, 11);
+            button1.Location = new Point(175, 11);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(117, 48);
@@ -111,20 +125,6 @@
             button1.Text = "ເພີ່ມຂໍ້ມູນ";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button3.BackColor = Color.Green;
-            button3.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(2648, 15);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(117, 0);
-            button3.TabIndex = 2;
-            button3.Text = "ເພີ່ມຂໍ້ມູນ";
-            button3.UseVisualStyleBackColor = false;
             // 
             // levelDatagrid
             // 
@@ -158,12 +158,12 @@
         #endregion
 
         private Panel panel1;
-        private Button button3;
         private DataGridView levelDatagrid;
-        private Panel panel3;
         private Panel panel2;
         private Button button1;
         private Button button2;
+        private Panel panel3;
         private TextBox txtSearch;
+        private Button button5;
     }
 }

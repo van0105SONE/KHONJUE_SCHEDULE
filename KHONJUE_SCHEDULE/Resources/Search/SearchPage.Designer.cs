@@ -1,6 +1,6 @@
-﻿namespace KHONJUE_SCHEDULE.Resources.Schedule
+﻿namespace KHONJUE_SCHEDULE.Resources.Search
 {
-    partial class Schedule
+    partial class SearchPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             label1 = new Label();
-            subjectDatagrid = new Panel();
+            MAIN_CONTAINER = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,37 +42,37 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1576, 71);
-            panel1.TabIndex = 0;
+            panel1.Size = new Size(1578, 71);
+            panel1.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Noto Sans Lao", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(11, 16);
+            label1.Location = new Point(3, 15);
             label1.Name = "label1";
-            label1.Size = new Size(253, 38);
+            label1.Size = new Size(112, 38);
             label1.TabIndex = 0;
-            label1.Text = "ຕາຕະລາງການຮຽນການສອນ";
+            label1.Text = "ຄົ້ນຫາຂໍ້ມູນ";
             // 
-            // subjectDatagrid
+            // MAIN_CONTAINER
             // 
-            subjectDatagrid.Dock = DockStyle.Fill;
-            subjectDatagrid.Location = new Point(0, 71);
-            subjectDatagrid.Name = "subjectDatagrid";
-            subjectDatagrid.Size = new Size(1576, 692);
-            subjectDatagrid.TabIndex = 1;
+            MAIN_CONTAINER.Dock = DockStyle.Fill;
+            MAIN_CONTAINER.Location = new Point(0, 71);
+            MAIN_CONTAINER.Name = "MAIN_CONTAINER";
+            MAIN_CONTAINER.Size = new Size(1578, 597);
+            MAIN_CONTAINER.TabIndex = 2;
             // 
-            // Schedule
+            // SearchPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(subjectDatagrid);
+            Controls.Add(MAIN_CONTAINER);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "Schedule";
-            Size = new Size(1576, 763);
+            Name = "SearchPage";
+            Size = new Size(1578, 668);
+            Load += SearchPage_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -82,6 +82,6 @@
 
         private Panel panel1;
         private Label label1;
-        private Panel subjectDatagrid;
+        private Panel MAIN_CONTAINER;
     }
 }

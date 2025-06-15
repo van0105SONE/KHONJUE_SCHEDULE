@@ -396,8 +396,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 718);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_SUBJECT_FORM";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateSub_jectForm";
             panel1.ResumeLayout(false);
             flowLayoutPanel4.ResumeLayout(false);

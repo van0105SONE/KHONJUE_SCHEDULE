@@ -140,6 +140,7 @@
             deleteBtn.TabIndex = 11;
             deleteBtn.Text = "ອອກ";
             deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // createBtn
             // 
@@ -286,8 +287,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 491);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_TEACHER_FORM";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateSub_jectForm";
             panel1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);

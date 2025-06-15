@@ -202,40 +202,61 @@ LIMIT 1;
             }
         }
 
-        public List<ScheduleModel> getSchedule(int TermId, int majorId)
+        public List<ScheduleModel> getScheduleReport(int TermId, int majorId, string teacherName)
         {
             try
             {
+                string condition = @"WHERE 1=1"; // Makes it easier to append ANDs
+
+                if (TermId != -1)
+                {
+                    condition += $@" AND schedule.""TermId"" = {TermId}";
+                }
+
+                if (majorId != -1)
+                {
+                    condition += $@" AND ""term_subjects"".""MajorId"" = {majorId}";
+                }
+
+                if (!string.IsNullOrWhiteSpace(teacherName))
+                {
+                    condition += $@" AND LOWER(teachers.""TeacherName"") LIKE LOWER('%{teacherName}%')";
+                }
+
                 List<ScheduleModel> scheduls = new List<ScheduleModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = dbContext.dbConnection;
-                _command.CommandText = $@"SELECT 
+                _command.CommandText = $@"
+SELECT 
     schedule.""Id"",  
-     schedule.""Day"",
-    Subject.""SubjectName"", 
+    schedule.""Day"",
+    subject.""SubjectName"", 
     teachers.""TeacherName"",  
     time_period.""StartTime"", 
     time_period.""EndTime"",
     majors.""MajorName"",
     student_class.""StudentClassName""
-    FROM schedule
-    LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
-    LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
-    LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
-    LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
-    LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
-    LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId"" WHERE term_subjects.""TermId"" = {TermId} AND term_subjects.""MajorId"" = {majorId};";
+FROM schedule
+LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
+LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
+LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
+LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
+LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
+LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId""
+{condition}
+ORDER BY teachers.""TeacherName"" ASC;";
+
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
                     ScheduleModel schedule = new ScheduleModel();
-                    schedule.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
-                    schedule.Day = data.GetValue(data.GetOrdinal("Day")).ToString();
-                    schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
-                    schedule.subjectName = data.GetValue(data.GetOrdinal("SubjectName")).ToString();
-                    schedule.majorName = data.GetValue(data.GetOrdinal("MajorName")).ToString();
-                    schedule.period = data.GetValue(data.GetOrdinal("StartTime")).ToString() + " - " + data.GetValue(data.GetOrdinal("EndTime")).ToString();
-                    schedule.RoomName = data.GetValue(data.GetOrdinal("StudentClassName")).ToString();
+                    schedule.Id = int.Parse(data["Id"].ToString());
+                    schedule.Day = data["Day"].ToString();
+                    schedule.TeacherName = data["TeacherName"].ToString();
+                    schedule.subjectName = data["SubjectName"].ToString();
+                    schedule.majorName = data["MajorName"].ToString();
+                    schedule.period = data["StartTime"].ToString() + " - " + data["EndTime"].ToString();
+                    schedule.RoomName = data["StudentClassName"].ToString();
 
                     scheduls.Add(schedule);
                 }
@@ -247,6 +268,7 @@ LIMIT 1;
                 return [];
             }
         }
+
 
         public List<ScheduleModel> getScheduleReport(int TermId, int majorId)
         {
@@ -363,42 +385,76 @@ LIMIT 1;
             }
         }
 
-        public List<ScheduleModel> getScheduleAll()
+        public List<ScheduleModel> getScheduleAll(int TermId, int majorId, string teacherName, string searchType)
         {
             try
             {
+                string condition = @"WHERE 1=1"; // Makes it easier to append ANDs
+ 
+                if (TermId != -1)
+                {
+                    condition += $@" AND term_subjects.""TermId"" = {TermId}";
+                }
+
+                if (majorId != -1)
+                {
+                    condition += $@" AND ""term_subjects"".""MajorId"" = {majorId}";
+                }
+                if (searchType == "ມື້")
+                {
+                    if (!string.IsNullOrWhiteSpace(teacherName))
+                    {
+                        condition += $@" AND LOWER(schedule.""Day"") LIKE LOWER('%{teacherName}%')";
+                    }
+                }else if (searchType == "ຊື່ອາຈານ")
+                {
+                    if (!string.IsNullOrWhiteSpace(teacherName))
+                    {
+                        condition += $@" AND LOWER(teachers.""TeacherName"") LIKE LOWER('%{teacherName}%')";
+                    }
+                }else if (searchType == "ຊື່ວິຊາ")
+                {
+                    if (!string.IsNullOrWhiteSpace(teacherName))
+                    {
+                        condition += $@" AND LOWER(subject.""SubjectName"") LIKE LOWER('%{teacherName}%')";
+                    }
+                }
 
 
-                List<ScheduleModel> scheduls = new List<ScheduleModel>();
+                    List<ScheduleModel> scheduls = new List<ScheduleModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = dbContext.dbConnection;
-                _command.CommandText = $@"SELECT 
+                _command.CommandText = $@"
+SELECT 
     schedule.""Id"",  
-     schedule.""Day"",
-    Subject.""SubjectName"", 
+    schedule.""Day"",
+    subject.""SubjectName"", 
     teachers.""TeacherName"",  
     time_period.""StartTime"", 
     time_period.""EndTime"",
     majors.""MajorName"",
     student_class.""StudentClassName""
-    FROM schedule
-    LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
-    LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
-    LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
-    LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
-    LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
-    LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId"" ORDER BY  teachers.""TeacherName"" ASC;";
+FROM schedule
+LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
+LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
+LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
+LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
+LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
+LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId""
+{condition}
+ORDER BY teachers.""TeacherName"" ASC;";
+
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
                     ScheduleModel schedule = new ScheduleModel();
-                    schedule.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
-                    schedule.Day = data.GetValue(data.GetOrdinal("Day")).ToString();
-                    schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
-                    schedule.subjectName = data.GetValue(data.GetOrdinal("SubjectName")).ToString();
-                    schedule.majorName = data.GetValue(data.GetOrdinal("MajorName")).ToString();
-                    schedule.period = data.GetValue(data.GetOrdinal("StartTime")).ToString() + " - " + data.GetValue(data.GetOrdinal("EndTime")).ToString();
-                    schedule.RoomName = data.GetValue(data.GetOrdinal("StudentClassName")).ToString();
+                    schedule.Id = int.Parse(data["Id"].ToString());
+                    schedule.Day = data["Day"].ToString();
+                    schedule.TeacherName = data["TeacherName"].ToString();
+                    schedule.subjectName = data["SubjectName"].ToString();
+                    schedule.majorName = data["MajorName"].ToString();
+                    schedule.period = data["StartTime"].ToString() + " - " + data["EndTime"].ToString();
+                    schedule.RoomName = data["StudentClassName"].ToString();
 
                     scheduls.Add(schedule);
                 }
