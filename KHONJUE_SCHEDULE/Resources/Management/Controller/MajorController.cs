@@ -69,6 +69,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
+        public bool deleteMajorAll()
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"DELETE FROM majors;";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
 
         public List<MajorModel> getMajors()
         {

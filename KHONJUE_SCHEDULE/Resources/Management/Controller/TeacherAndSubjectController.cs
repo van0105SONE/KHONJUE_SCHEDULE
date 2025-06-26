@@ -37,6 +37,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
+        public bool deleteAll()
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"DELETE FROM  teacher_subject;";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public bool deleteSubjectTeacher(int id)
         {
             try

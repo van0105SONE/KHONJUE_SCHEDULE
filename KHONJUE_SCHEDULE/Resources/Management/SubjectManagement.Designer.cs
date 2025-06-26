@@ -70,7 +70,7 @@
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             button1.BackColor = SystemColors.Desktop;
-            button1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(306, 10);
             button1.Margin = new Padding(3, 4, 3, 4);
@@ -83,11 +83,11 @@
             // txtSearch
             // 
             txtSearch.BorderStyle = BorderStyle.FixedSingle;
-            txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearch.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtSearch.Location = new Point(79, 14);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(221, 40);
+            txtSearch.Size = new Size(221, 30);
             txtSearch.TabIndex = 8;
             // 
             // panel3
@@ -104,7 +104,7 @@
             // 
             button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             button4.BackColor = Color.DarkRed;
-            button4.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = SystemColors.ButtonHighlight;
             button4.Location = new Point(5, 10);
             button4.Margin = new Padding(3, 4, 3, 4);
@@ -113,12 +113,13 @@
             button4.TabIndex = 9;
             button4.Text = "ລ້າງຂໍ້ມູນທັງໝົດ";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
             button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             button3.BackColor = Color.CornflowerBlue;
-            button3.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = SystemColors.ButtonHighlight;
             button3.Location = new Point(177, 10);
             button3.Margin = new Padding(3, 4, 3, 4);

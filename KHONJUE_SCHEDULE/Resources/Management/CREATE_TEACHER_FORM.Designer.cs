@@ -29,13 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            panel3 = new Panel();
-            textDescription = new TextBox();
-            panel4 = new Panel();
-            label1 = new Label();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            panel7 = new Panel();
+            txtDescription = new TextBox();
+            panel10 = new Panel();
+            label3 = new Label();
             deleteBtn = new Button();
             createBtn = new Button();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            panel3 = new Panel();
+            textBox1 = new TextBox();
+            textPhone = new TextBox();
+            panel4 = new Panel();
+            label1 = new Label();
             flowLayoutPanel3 = new FlowLayoutPanel();
             panel5 = new Panel();
             txtQuotaPerWeek = new TextBox();
@@ -49,6 +55,9 @@
             panel2 = new Panel();
             titleLabel = new Label();
             panel1.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            panel7.SuspendLayout();
+            panel10.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -63,9 +72,10 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(flowLayoutPanel2);
+            panel1.Controls.Add(flowLayoutPanel4);
             panel1.Controls.Add(deleteBtn);
             panel1.Controls.Add(createBtn);
+            panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(panel2);
@@ -73,8 +83,88 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(713, 491);
+            panel1.Size = new Size(713, 619);
             panel1.TabIndex = 3;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(panel7);
+            flowLayoutPanel4.Dock = DockStyle.Top;
+            flowLayoutPanel4.Location = new Point(0, 397);
+            flowLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(713, 104);
+            flowLayoutPanel4.TabIndex = 15;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(txtDescription);
+            panel7.Controls.Add(panel10);
+            panel7.Location = new Point(3, 4);
+            panel7.Margin = new Padding(3, 4, 3, 4);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(706, 89);
+            panel7.TabIndex = 4;
+            // 
+            // txtDescription
+            // 
+            txtDescription.Dock = DockStyle.Fill;
+            txtDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDescription.Location = new Point(0, 43);
+            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(706, 30);
+            txtDescription.TabIndex = 1;
+            // 
+            // panel10
+            // 
+            panel10.Controls.Add(label3);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(0, 0);
+            panel10.Margin = new Padding(3, 4, 3, 4);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(706, 43);
+            panel10.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.SizeAll;
+            label3.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(3, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(88, 25);
+            label3.TabIndex = 1;
+            label3.Text = "ຄຳອະທິບາຍ";
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            deleteBtn.BackColor = Color.DarkRed;
+            deleteBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteBtn.ForeColor = Color.White;
+            deleteBtn.Location = new Point(277, 562);
+            deleteBtn.Margin = new Padding(3, 4, 3, 4);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(201, 53);
+            deleteBtn.TabIndex = 14;
+            deleteBtn.Text = "ອອກ";
+            deleteBtn.UseVisualStyleBackColor = false;
+            // 
+            // createBtn
+            // 
+            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            createBtn.BackColor = Color.CornflowerBlue;
+            createBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.ForeColor = Color.White;
+            createBtn.Location = new Point(500, 562);
+            createBtn.Margin = new Padding(3, 4, 3, 4);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(201, 53);
+            createBtn.TabIndex = 13;
+            createBtn.Text = "ບັນທຶກ";
+            createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click;
             // 
             // flowLayoutPanel2
             // 
@@ -88,7 +178,8 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(textDescription);
+            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(textPhone);
             panel3.Controls.Add(panel4);
             panel3.Location = new Point(3, 4);
             panel3.Margin = new Padding(3, 4, 3, 4);
@@ -96,15 +187,26 @@
             panel3.Size = new Size(706, 89);
             panel3.TabIndex = 4;
             // 
-            // textDescription
+            // textBox1
             // 
-            textDescription.Dock = DockStyle.Fill;
-            textDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textDescription.Location = new Point(0, 43);
-            textDescription.Margin = new Padding(3, 4, 3, 4);
-            textDescription.Name = "textDescription";
-            textDescription.Size = new Size(706, 30);
-            textDescription.TabIndex = 1;
+            textBox1.Enabled = false;
+            textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(0, 43);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(57, 30);
+            textBox1.TabIndex = 2;
+            textBox1.Text = "+856";
+            // 
+            // textPhone
+            // 
+            textPhone.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textPhone.Location = new Point(63, 43);
+            textPhone.Margin = new Padding(3, 4, 3, 4);
+            textPhone.Name = "textPhone";
+            textPhone.Size = new Size(643, 30);
+            textPhone.TabIndex = 1;
             // 
             // panel4
             // 
@@ -120,42 +222,12 @@
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(98, 33);
+            label1.Size = new Size(161, 25);
             label1.TabIndex = 1;
-            label1.Text = "ຄຳອະທິບາຍ";
-            // 
-            // deleteBtn
-            // 
-            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            deleteBtn.BackColor = Color.DarkRed;
-            deleteBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteBtn.ForeColor = Color.White;
-            deleteBtn.Location = new Point(277, 425);
-            deleteBtn.Margin = new Padding(3, 4, 3, 4);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(201, 53);
-            deleteBtn.TabIndex = 11;
-            deleteBtn.Text = "ອອກ";
-            deleteBtn.UseVisualStyleBackColor = false;
-            deleteBtn.Click += deleteBtn_Click;
-            // 
-            // createBtn
-            // 
-            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.CornflowerBlue;
-            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(500, 425);
-            createBtn.Margin = new Padding(3, 4, 3, 4);
-            createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
-            createBtn.TabIndex = 10;
-            createBtn.Text = "ບັນທຶກ";
-            createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click_1;
+            label1.Text = "ເບີໂທ (whatsapp)";
             // 
             // flowLayoutPanel3
             // 
@@ -203,10 +275,10 @@
             // 
             label2.AutoSize = true;
             label2.Cursor = Cursors.SizeAll;
-            label2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(178, 33);
+            label2.Size = new Size(160, 25);
             label2.TabIndex = 1;
             label2.Text = "ໂຄຕ້າການສອນ/ອາທິດ";
             // 
@@ -254,10 +326,10 @@
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(76, 33);
+            label5.Size = new Size(68, 25);
             label5.TabIndex = 1;
             label5.Text = "ຊຶ່ອາຈານ";
             // 
@@ -274,10 +346,10 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Microsoft Sans Serif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(10, 25);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(131, 44);
+            titleLabel.Size = new Size(125, 31);
             titleLabel.TabIndex = 2;
             titleLabel.Text = "ເພີ່ມອາຈານ";
             // 
@@ -285,7 +357,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(713, 491);
+            ClientSize = new Size(713, 619);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
@@ -293,6 +365,11 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateSub_jectForm";
             panel1.ResumeLayout(false);
+            flowLayoutPanel4.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -328,12 +405,18 @@
         private TextBox txtQuotaPerWeek;
         private Panel panel6;
         private Label label2;
-        private Button deleteBtn;
-        private Button createBtn;
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel panel3;
-        private TextBox textDescription;
+        private TextBox textPhone;
         private Panel panel4;
         private Label label1;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Panel panel7;
+        private TextBox txtDescription;
+        private Panel panel10;
+        private Label label3;
+        private Button deleteBtn;
+        private Button createBtn;
+        private TextBox textBox1;
     }
 }

@@ -430,6 +430,21 @@ ORDER BY teachers.""TeacherName"" ASC;";
             }
         }
 
+        public bool deleteSchedule()
+        {
+            string query = @$"delete from schedule;";
+            using (var command = new NpgsqlCommand())
+            {
+                command.Connection = dbContext.dbConnection;
+                command.CommandText = query;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    return reader.HasRows;
+                }
+            }
+        }
+
         public List<ScheduleModel> getScheduleAll(int TermId, int majorId, string teacherName, string searchType)
         {
             try

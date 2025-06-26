@@ -33,7 +33,24 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        
+
+        public bool deleteTermSubjectAll()
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"DELETE FROM term_subjects;";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
 
         public bool isSubjectExistInTermAngMajor(int subjectId, int termId, int majorId, int levelId)
         {
@@ -77,6 +94,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
                 _command.CommandText = $@"DELETE FROM subject WHERE ""Id"" = '{subjectId}'";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool deleteSubjectAll()
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"DELETE FROM subject;";
                 _command.ExecuteNonQuery();
                 return true;
             }

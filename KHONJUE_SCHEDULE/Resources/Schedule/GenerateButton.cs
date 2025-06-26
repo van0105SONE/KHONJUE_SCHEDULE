@@ -28,9 +28,21 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            IsDisplayTable = true;
-            scheduleController.GenerateSchedule();
-            schedulePage.visibleTablePage();
+            try
+            {
+                IsDisplayTable = true;
+               if(scheduleController.checkHasSchedule())
+                {
+                    
+                }
+                scheduleController.GenerateSchedule();
+
+                schedulePage.visibleTablePage();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("ລະບົບເກີດຂໍ້ຜິດໃນການຈັດຕາຕະລ່າງກາລຸກວດສອບຂໍ້ມູນຄືນ ແລ້ວລອງອີກຄັ້ງ");
+            }
 
         }
     }

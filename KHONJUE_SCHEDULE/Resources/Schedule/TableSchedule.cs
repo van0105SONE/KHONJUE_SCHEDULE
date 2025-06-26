@@ -109,7 +109,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             }
 
             // Load schedules and place cards
-            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()), null, null);
+            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), null, null);
             foreach (var schedule in schedules)
             {
                 int col = getDayOfWeek(schedule.Day); // +1 for time label
@@ -242,20 +242,20 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             List<MajorModel> majors = _majorController.getMajors();
             List<TermModel> termModels = _termController.getTerms();
 
-            cmbTerm.DisplayMember = "TermName"; // Replace with the property you want to display
-            cmbTerm.ValueMember = "Id";
-            cmbTerm.DataSource = termModels;
+            cmbTerms.DisplayMember = "TermName"; // Replace with the property you want to display
+            cmbTerms.ValueMember = "Id";
+            cmbTerms.DataSource = termModels;
 
-            cmbMajor.DisplayMember = "MajorName"; // Replace with the property you want to display
-            cmbMajor.ValueMember = "Id";    // Replace with the property you want as the value
-            cmbMajor.DataSource = majors;
+            cmbTerms.DisplayMember = "MajorName"; // Replace with the property you want to display
+            cmbTerms.ValueMember = "Id";    // Replace with the property you want as the value
+            cmbTerms.DataSource = majors;
             // Set the DisplayMember and ValueMember properties
 
         }
 
         private void cmbMajor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerm.SelectedValue != null && cmbMajor.SelectedValue != null)
+            if (cmbTerms.SelectedValue != null && cmbTerms.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
@@ -264,10 +264,15 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbTerm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerm.SelectedValue != null && cmbMajor.SelectedValue != null)
+            if (cmbTerms.SelectedValue != null && cmbTerms.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

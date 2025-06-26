@@ -59,7 +59,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             txtName.Text = teacherParam.TeacherName;
             txtQuotaPerWeek.Text = teacherParam.QuotaPerWeek.ToString();
-            textDescription.Text = teacherParam.Description;
+            textPhone.Text = teacherParam.Description;
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
             action = Actions.Update;
@@ -107,29 +107,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtQuotaPerWeek.Text) || string.IsNullOrEmpty(txtName.Text))
-            {
-                return;
-            }
 
-            teacher.TeacherName = txtName.Text;
-            teacher.QuotaPerWeek = int.Parse(txtQuotaPerWeek.Text);
-            teacher.Description = textDescription.Text;
-            bool isSuccess = false;
-            if (action == Actions.Create)
-            {
-                isSuccess = _teacherController.CreateTeacher(teacher);
-            }
-            else
-            {
-                isSuccess = _teacherController.editTeacher(teacher);
-            }
-
-            if (isSuccess)
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
         }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
@@ -154,6 +132,34 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtQuotaPerWeek.Text) || string.IsNullOrEmpty(txtName.Text))
+            {
+                return;
+            }
+
+            teacher.TeacherName = txtName.Text;
+            teacher.QuotaPerWeek = int.Parse(txtQuotaPerWeek.Text);
+            teacher.Description = txtDescription.Text;
+            teacher.Phone = textPhone.Text.Trim();
+            bool isSuccess = false;
+            if (action == Actions.Create)
+            {
+                isSuccess = _teacherController.CreateTeacher(teacher);
+            }
+            else
+            {
+                isSuccess = _teacherController.editTeacher(teacher);
+            }
+
+            if (isSuccess)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

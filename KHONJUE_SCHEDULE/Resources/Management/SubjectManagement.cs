@@ -136,5 +136,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 loadDataGrid(false);
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            _subjController.deleteSubjectAll();
+            loadDataGrid(false);
+        }
     }
 }

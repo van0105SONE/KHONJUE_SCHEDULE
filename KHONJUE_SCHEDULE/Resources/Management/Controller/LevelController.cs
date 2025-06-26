@@ -69,6 +69,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
+        public bool deleteLevelAll()
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"DELETE FROM study_level;";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
 
         public List<LevelModel> getLevels()
         {
