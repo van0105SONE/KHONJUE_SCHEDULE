@@ -34,10 +34,16 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             InitializeComponent();
-            subjectDatagrid.Controls.Clear();
-            GenerateButton inforPage = new GenerateButton(this);
-            inforPage.Dock = DockStyle.Fill;
-            this.subjectDatagrid.Controls.Add(inforPage);
+            if (_scheduleController.checkHasSchedule())
+            {
+                this.visibleTablePage();
+            }
+            else
+            {
+                this.visibleGeneratePage();
+            }
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -59,6 +65,15 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+       
+        public void visibleGeneratePage()
+        {
+
+            subjectDatagrid.Controls.Clear();
+            GenerateButton inforPage = new GenerateButton(this);
+            inforPage.Dock = DockStyle.Fill;
+            this.subjectDatagrid.Controls.Add(inforPage);
         }
 
         public void visibleTablePage()

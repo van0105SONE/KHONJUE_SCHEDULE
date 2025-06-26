@@ -60,10 +60,10 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Font = new Font("Microsoft Sans Serif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(10, 25);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(209, 44);
+            titleLabel.Size = new Size(200, 31);
             titleLabel.TabIndex = 2;
             titleLabel.Text = "ເພີ່ມເວລາເຂົ້າ-ອອກ";
             // 
@@ -102,10 +102,10 @@
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(85, 33);
+            label5.Size = new Size(76, 25);
             label5.TabIndex = 1;
             label5.Text = "ເວລາເລີ່ມ";
             // 
@@ -145,10 +145,10 @@
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(85, 33);
+            label1.Size = new Size(76, 25);
             label1.TabIndex = 1;
             label1.Text = "ເວລາເລີກ";
             // 

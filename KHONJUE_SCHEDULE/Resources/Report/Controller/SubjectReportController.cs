@@ -1,4 +1,5 @@
-﻿using KHONJUE_SCHEDULE.Resources.Schedule.Model;
+﻿using KHONJUE_SCHEDULE.Resources.Management.Model;
+using KHONJUE_SCHEDULE.Resources.Schedule.Model;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -10,12 +11,13 @@ using System.Threading.Tasks;
 
 namespace KHONJUE_SCHEDULE.Resources.Report.Controller
 {
-    class RoomScheduleReportController : IDocument
+    class 
+        SubjectReportController : IDocument
     {
 
-        private List<ScheduleModel> Entries;
+        private List<SubjectModel> Entries;
 
-        public RoomScheduleReportController(List<ScheduleModel> entries)
+        public SubjectReportController(List<SubjectModel> entries)
         {
             Entries = entries ;
         }
@@ -29,7 +31,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.DefaultTextStyle(x => x.FontSize(10));
 
                 page.Header().AlignCenter()
-                    .Text("ລາຍງານຊົ່ວໂມງຂື້ນສອນອາຈານ").Bold()
+                    .Text("ລາຍງານວິຊາຮຽນ").Bold()
                     .FontSize(12);
 
                 page.Content().Table(table =>
@@ -38,8 +40,8 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     table.ColumnsDefinition(columns =>
                     {
                         columns.RelativeColumn(1); // Day
-                        columns.RelativeColumn(2); // Period
-                        columns.RelativeColumn(1); // Subject
+                        columns.RelativeColumn(1); // Period
+                        columns.RelativeColumn(2); // Subject
 
 
                     });
@@ -48,9 +50,9 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Header row
                     table.Header(header =>
                     {
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ມື້").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ເວລາ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ຫ້ອງຮຽນ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ລະຫັດວິຊາຮຽນ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຊື່ວິຊາຮຽນ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຄຳອະທິບາຍເພິ່ມເຕີ່ມ").Bold();
 
 
 
@@ -68,9 +70,9 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Data rows
                     foreach (var entry in Entries)
                     {
-                        table.Cell().Element(CellStyle).Text(entry.Day);
-                        table.Cell().Element(CellStyle).Text(entry.period);
-                        table.Cell().Element(CellStyle).Text(entry.RoomName);
+                        table.Cell().Element(CellStyle).Text(entry.SubjectCode);
+                        table.Cell().Element(CellStyle).Text(entry.SubjectName);
+                        table.Cell().Element(CellStyle).Text(entry.Description);
 
                         static IContainer CellStyle(IContainer container)
                         {

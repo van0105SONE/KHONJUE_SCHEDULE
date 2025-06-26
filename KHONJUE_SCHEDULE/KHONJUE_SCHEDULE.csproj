@@ -31,6 +31,12 @@
     <Compile Update="Resources\Management\TermSubjectManagement.cs" />
     <Compile Update="Resources\Management\TermManagement.cs" />
     <Compile Update="Resources\Management\MajorManagement.cs" />
+    <Compile Update="Resources\Report\MajorReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Report\SubjectReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Resources\Schedule\Schedule.cs" />
     <Compile Update="Resources\Setting\ROLE_FORM.cs" />
   </ItemGroup>

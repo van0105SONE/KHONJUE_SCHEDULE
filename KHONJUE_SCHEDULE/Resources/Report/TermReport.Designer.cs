@@ -1,6 +1,6 @@
 ﻿namespace KHONJUE_SCHEDULE.Resources.Report
 {
-    partial class TeacherTeachReport
+    partial class TermReport
     {
         /// <summary> 
         /// Required designer variable.

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
+            button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             button5 = new Button();
@@ -41,6 +42,7 @@
             // panel2
             // 
             panel2.BackColor = Color.Green;
+            panel2.Controls.Add(button3);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(button5);
@@ -53,19 +55,35 @@
             panel2.Size = new Size(1555, 80);
             panel2.TabIndex = 6;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.Green;
+            button3.Dock = DockStyle.Left;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = SystemColors.ButtonHighlight;
+            button3.Location = new Point(1010, 0);
+            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Name = "button3";
+            button3.Size = new Size(213, 80);
+            button3.TabIndex = 7;
+            button3.Text = "ລາຍງານຕາຕະລາງຮຽນ";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // button2
             // 
             button2.BackColor = Color.Green;
             button2.Dock = DockStyle.Left;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.ButtonHighlight;
             button2.Location = new Point(797, 0);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(213, 80);
             button2.TabIndex = 6;
-            button2.Text = "ລາຍງານວິຊາ";
+            button2.Text = "ລາຍງານສາຂາຮຽນ";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
@@ -74,14 +92,14 @@
             button1.BackColor = Color.Green;
             button1.Dock = DockStyle.Left;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(587, 0);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(210, 80);
             button1.TabIndex = 5;
-            button1.Text = "ລາຍງານອາຈານ";
+            button1.Text = "ລາຍງານຫ້ອງຮຽນ";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -90,14 +108,14 @@
             button5.BackColor = Color.Green;
             button5.Dock = DockStyle.Left;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = SystemColors.ButtonHighlight;
             button5.Location = new Point(401, 0);
             button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
             button5.Size = new Size(186, 80);
             button5.TabIndex = 4;
-            button5.Text = "ລາຍງານຫ້ອງຮຽນ";
+            button5.Text = "ລາຍງານວິຊາຮຽນ";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -106,14 +124,14 @@
             button4.BackColor = Color.Green;
             button4.Dock = DockStyle.Left;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = SystemColors.ButtonHighlight;
             button4.Location = new Point(210, 0);
             button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
             button4.Size = new Size(191, 80);
             button4.TabIndex = 3;
-            button4.Text = "ລາຍງານອາຈານສອນ";
+            button4.Text = "ລາຍງານປີຮຽນ";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
@@ -122,14 +140,14 @@
             btnManageSubject.BackColor = Color.Green;
             btnManageSubject.Dock = DockStyle.Left;
             btnManageSubject.FlatStyle = FlatStyle.Flat;
-            btnManageSubject.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnManageSubject.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnManageSubject.ForeColor = SystemColors.ButtonHighlight;
             btnManageSubject.Location = new Point(0, 0);
             btnManageSubject.Margin = new Padding(3, 4, 3, 4);
             btnManageSubject.Name = "btnManageSubject";
             btnManageSubject.Size = new Size(210, 80);
             btnManageSubject.TabIndex = 2;
-            btnManageSubject.Text = "ລາຍງານຕາຕະລາງຮຽນ";
+            btnManageSubject.Text = "ລາຍງານສົກຮຽນ";
             btnManageSubject.UseVisualStyleBackColor = false;
             btnManageSubject.Click += btnManageSubject_Click;
             // 
@@ -162,5 +180,6 @@
         private Button button4;
         private Button btnManageSubject;
         private Panel REPORT_CONTAINER;
+        private Button button3;
     }
 }

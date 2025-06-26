@@ -97,7 +97,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             MajorManagement curriculumManagement = new MajorManagement();
             curriculumManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(curriculumManagement);
-            Style.SetActiveButton(button9, panel2.Controls);
+            Style.SetActiveButton(button7, panel2.Controls);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             CurriculumManagement curriculumManagement = new CurriculumManagement();
             curriculumManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(curriculumManagement);
-            Style.SetActiveButton(button7, panel2.Controls);
+            Style.SetActiveButton(button9, panel2.Controls);
 
 
         }

@@ -63,16 +63,16 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             };
 
             // Set column styles (first column is for period labels)
-            weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100)); // Time period column
+            weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150)); // Time period column
             for (int i = 1; i < cols; i++)
             {
-                weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / days.Count));
+                weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 150f / days.Count));
             }
 
             // Set row styles
             for (int i = 0; i < rows; i++)
             {
-                weekGrid.RowStyles.Add(new RowStyle(SizeType.Absolute, 100f)); // or AutoSize if desired
+                weekGrid.RowStyles.Add(new RowStyle(SizeType.Absolute, 150f)); // or AutoSize if desired
             }
 
             // Add top-left corner cell (empty)
@@ -122,7 +122,9 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                         schedule.majorName,
                         schedule.period,
                         schedule.subjectName,
-                        schedule.TeacherName);
+                        schedule.TeacherName,
+                        schedule.Type
+                        );
 
                     weekGrid.Controls.Add(card, col, row);
                 }
@@ -164,7 +166,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             }
         }
 
-        private Control CreateScheduleCard(string title, string majorName, string period, string subject, string teacher)
+        private Control CreateScheduleCard(string title, string majorName, string period, string subject, string teacher, string roomType)
         {
             Panel card = new Panel
             {
@@ -196,14 +198,21 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
             Label lblSubject = new Label
             {
-                Text = $"Subject: {subject}",
+                Text = $"ຊື່ວິຊາ: {subject}",
                 Font = new Font("Segoe UI", 6, FontStyle.Italic),
                 AutoSize = true
             };
 
             Label lblTeacher = new Label
             {
-                Text = $"Teacher: {teacher}",
+                Text = $"ຊື່ອາຈານ: {teacher}",
+                Font = new Font("Segoe UI", 6, FontStyle.Regular),
+                AutoSize = true
+            };
+
+            Label lblRoomType = new Label
+            {
+                Text = $"ປະເພດຫ້ອງ: {roomType}",
                 Font = new Font("Segoe UI", 6, FontStyle.Regular),
                 AutoSize = true
             };
@@ -213,7 +222,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                 FlowDirection = FlowDirection.TopDown,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
-                Height = 400,
+                Height = 1000,
                 WrapContents = false
             };
 
@@ -222,6 +231,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             layout.Controls.Add(lblPeriod);
             layout.Controls.Add(lblSubject);
             layout.Controls.Add(lblTeacher);
+            layout.Controls.Add(lblRoomType);
             card.Controls.Add(layout);
 
             return card;

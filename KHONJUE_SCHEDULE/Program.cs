@@ -21,7 +21,7 @@ namespace KHONJUE_SCHEDULE
             context.connect();
             RoleController role = new RoleController(context);
             role.createApplicationModule();
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }

@@ -44,7 +44,10 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
         public List<ScheduleModel> GenerateSchedule()
         {
             List<ScheduleModel> schedule = new();
-            List<DayOfWeek> days = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
+
+            // Get full list of days
+            List<DayOfWeek> allDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
+            Random rng = new Random(); // For shuffling days
 
             var teachers = _teacherController.getTeachers();
             var termSubjects = _subjectController.GetTermSubjectList();
@@ -55,12 +58,16 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
             var teacherScheduleCount = new Dictionary<int, int>();
             var teacherOccupation = new HashSet<string>(); // day_period_teacherId
             var roomOccupation = new HashSet<string>();    // day_period_roomId
+            var periodADay = new HashSet<string>();        // day_period for any subject
             var subjectDayTracker = new Dictionary<string, HashSet<string>>(); // termSubjectId_roomType -> used days
 
             foreach (var termSubject in termSubjects)
             {
                 var subject = subjects.FirstOrDefault(s => s.Id == termSubject.SubjectId);
                 if (subject == null) continue;
+
+                // ✅ Shuffle days to prevent Sunday-first bias
+                List<DayOfWeek> days = allDays.OrderBy(d => rng.Next()).ToList();
 
                 int[] types = { 0, 1 }; // 0 = Lecture, 1 = Lab
 
@@ -98,8 +105,10 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
                                     foreach (var teacher in eligibleTeachers)
                                     {
                                         string teacherKey = $"{dayStr}_{periodId}_{teacher.Id}";
+                                        string periodInDay = $"{dayStr}_{periodId}";
                                         teacherScheduleCount.TryGetValue(teacher.Id, out var currentCount);
 
+                                        if (periodADay.Contains(periodInDay)) continue;
                                         if (currentCount >= teacher.QuotaPerWeek) continue;
                                         if (teacherOccupation.Contains(teacherKey)) continue;
 
@@ -121,6 +130,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
                                         teacherScheduleCount[teacher.Id] = currentCount + 1;
                                         teacherOccupation.Add(teacherKey);
                                         roomOccupation.Add(roomKey);
+                                        periodADay.Add(periodInDay);
 
                                         if (!subjectDayTracker.ContainsKey(subjectKey))
                                             subjectDayTracker[subjectKey] = new HashSet<string>();
@@ -150,33 +160,6 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
             return schedule;
         }
 
-
-
-
-
-        private bool HasTeacherConflict(int teacherId ,DayOfWeek day, int periodId)
-        {
-            using (var command = new NpgsqlCommand())
-            {
-                command.Connection = dbContext.dbConnection;
-                command.CommandText = @"
-        SELECT 1
-        FROM schedule
-        WHERE ""Day"" = @Day
-          AND ""TimePeriodId"" = @TimePeriodId
-          AND ""TeacherId"" = @TeacherId
-        LIMIT 1";
-
-                command.Parameters.AddWithValue("@Day", day.ToString());
-                command.Parameters.AddWithValue("@TimePeriodId", periodId);
-                command.Parameters.AddWithValue("@TeacherId", teacherId);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    return reader.HasRows; // returns true if a matching row exists
-                }
-            }
-        }
 
         bool IsTeacherEligible(int teacherId, int subjectId)
         {
@@ -431,6 +414,21 @@ ORDER BY teachers.""TeacherName"" ASC;";
                 return [];
             }
         }
+        
+        public bool checkHasSchedule()
+        {
+            string query = @$"SELECT 1 FROM schedule;";
+            using (var command = new NpgsqlCommand())
+            {
+                command.Connection = dbContext.dbConnection;
+                command.CommandText = query;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    return reader.HasRows;
+                }
+            }
+        }
 
         public List<ScheduleModel> getScheduleAll(int TermId, int majorId, string teacherName, string searchType)
         {
@@ -475,6 +473,7 @@ ORDER BY teachers.""TeacherName"" ASC;";
 SELECT 
     schedule.""Id"",  
     schedule.""Day"",
+    schedule.""Type"",
     subject.""SubjectName"", 
     teachers.""TeacherName"",  
     time_period.""StartTime"", 
@@ -502,7 +501,7 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     schedule.majorName = data["MajorName"].ToString();
                     schedule.period = data["StartTime"].ToString() + " - " + data["EndTime"].ToString();
                     schedule.RoomName = data["StudentClassName"].ToString();
-
+                    schedule.Type = data["Type"].ToString();
                     scheduls.Add(schedule);
                 }
                 data.Close();

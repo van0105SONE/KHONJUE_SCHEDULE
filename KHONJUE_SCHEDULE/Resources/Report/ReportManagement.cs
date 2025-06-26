@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KHONJUE_SCHEDULE.Resources.Management;
+using KHONJUE_SCHEDULE.Utils.styles;
 
 namespace KHONJUE_SCHEDULE.Resources.Report
 {
@@ -17,46 +18,67 @@ namespace KHONJUE_SCHEDULE.Resources.Report
         {
             InitializeComponent();
             REPORT_CONTAINER.Controls.Clear();
-            ScheduleReport scheduleReport = new ScheduleReport();
-            scheduleReport.Dock = DockStyle.Fill;
-            REPORT_CONTAINER.Controls.Add(scheduleReport);
+            TermReport teacherTeachReport = new TermReport();
+            teacherTeachReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(teacherTeachReport);
+            Style.SetActiveButton(btnManageSubject, panel2.Controls);
         }
 
         private void btnManageSubject_Click(object sender, EventArgs e)
         {
             REPORT_CONTAINER.Controls.Clear();
-            ScheduleReport scheduleReport = new ScheduleReport();
-            scheduleReport.Dock = DockStyle.Fill;
-            REPORT_CONTAINER.Controls.Add(scheduleReport);
+            TermReport teacherTeachReport = new TermReport();
+            teacherTeachReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(teacherTeachReport);
+            Style.SetActiveButton(btnManageSubject, panel2.Controls);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             REPORT_CONTAINER.Controls.Clear();
-            TeacherScheduleReport teacherTeachReport = new TeacherScheduleReport();
-            teacherTeachReport.Dock = DockStyle.Fill;
-            REPORT_CONTAINER.Controls.Add(teacherTeachReport);
+            LevelReport levelReport = new LevelReport();
+            levelReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(levelReport);
+            Style.SetActiveButton(button4, panel2.Controls);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            REPORT_CONTAINER.Controls.Clear();
+            MajorReport teacherTeachReport = new MajorReport();
+            teacherTeachReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(teacherTeachReport);
+            Style.SetActiveButton(button2, panel2.Controls);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             REPORT_CONTAINER.Controls.Clear();
-            TeacherTeachReport teacherTeachReport = new TeacherTeachReport();
+            RoomReport teacherTeachReport = new RoomReport();
             teacherTeachReport.Dock = DockStyle.Fill;
             REPORT_CONTAINER.Controls.Add(teacherTeachReport);
+
+            Style.SetActiveButton(button1, panel2.Controls);
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             REPORT_CONTAINER.Controls.Clear();
-            RoomScheduleReport teacherTeachReport = new RoomScheduleReport();
+            SubjectReport teacherTeachReport = new SubjectReport();
             teacherTeachReport.Dock = DockStyle.Fill;
             REPORT_CONTAINER.Controls.Add(teacherTeachReport);
+            Style.SetActiveButton(button5, panel2.Controls);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            REPORT_CONTAINER.Controls.Clear();
+            ScheduleReport scheduleReport = new ScheduleReport();
+            scheduleReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(scheduleReport);
+            Style.SetActiveButton(button3, panel2.Controls);
         }
     }
 }

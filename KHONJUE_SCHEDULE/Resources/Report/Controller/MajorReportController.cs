@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace KHONJUE_SCHEDULE.Resources.Report.Controller
 {
-    class TeacherReportController : IDocument
+    class MajorReportController : IDocument
     {
-        private List<TeacherModel> Entries;
 
-        public TeacherReportController(List<TeacherModel> entries)
+        private List<MajorModel> Entries;
+
+        public MajorReportController(List<MajorModel> entries)
         {
-            Entries = entries;
+            Entries = entries ;
         }
         public void Compose(IDocumentContainer container)
         {
@@ -29,7 +30,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.DefaultTextStyle(x => x.FontSize(10));
 
                 page.Header().AlignCenter()
-                    .Text("ລາຍງານຂໍ້ມູນອາຈານ").Bold()
+                    .Text("ລາຍງານຫ້ອງຮຽນ").Bold()
                     .FontSize(12);
 
                 page.Content().Table(table =>
@@ -37,8 +38,9 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Define columns
                     table.ColumnsDefinition(columns =>
                     {
-                        columns.RelativeColumn(1); // Day
+                        columns.RelativeColumn(2); // Day
                         columns.RelativeColumn(2); // Period
+                        columns.RelativeColumn(2); // Subject
 
                     });
 
@@ -46,8 +48,11 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Header row
                     table.Header(header =>
                     {
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ລະຫັດອາຈານ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ຊື່ອາຈານ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ລະຫັດສາຂາ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຊື່ສາຂາ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຫຼັກສູກທິ່ຈະໄດ້ຮຽນ").Bold();
+
+
 
                         static IContainer CellStyle(IContainer container)
                         {
@@ -63,11 +68,9 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Data rows
                     foreach (var entry in Entries)
                     {
-                        table.Cell().Element(CellStyle).Text(entry.TeacherCode);
-                        table.Cell().Element(CellStyle).Text(entry.TeacherName);
-     
-
-
+                        table.Cell().Element(CellStyle).Text(entry.MajorCode);
+                        table.Cell().Element(CellStyle).Text(entry.MajorName);
+                        table.Cell().Element(CellStyle).Text(entry.CurriculumName);
                         static IContainer CellStyle(IContainer container)
                         {
                             return container

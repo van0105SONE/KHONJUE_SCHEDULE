@@ -15,7 +15,7 @@ using QuestPDF.Fluent;
 
 namespace KHONJUE_SCHEDULE.Resources.Report
 {
-    public partial class RoomScheduleReport : UserControl
+    public partial class RoomReport : UserControl
     {
         private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
         private DatabaseContext _dbContext { get; set; }
@@ -25,7 +25,8 @@ namespace KHONJUE_SCHEDULE.Resources.Report
         private TimePeriodController _timePeriodController { get; set; }
         private MajorController _majorController { get; set; }
         private TermController _termController { get; set; }
-        public RoomScheduleReport()
+        private StudentClassController _studentClassController { get; set; }
+        public RoomReport()
         {
             InitializeComponent();
             _dbContext = new DatabaseContext();
@@ -36,14 +37,20 @@ namespace KHONJUE_SCHEDULE.Resources.Report
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
-
+            _studentClassController = new StudentClassController(_dbContext);
+            this.generateReport();
         }
 
     async    private void button8_Click(object sender, EventArgs e)
         {
+            this.generateReport();
+        }
+
+    async private void generateReport()
+        {
             this.REPORT_CONTAINER.Controls.Clear();
-            var data = _scheduleController.getScheduleAll(-1, -1 , null, null);
-            var report = new RoomScheduleReportController(data);
+            var data = _studentClassController.GetStudentClasstList();
+            var report = new RoomReportController(data);
             string path = Path.Combine(Environment.CurrentDirectory, "ScheduleReport.pdf");
             report.GeneratePdf(path);
 

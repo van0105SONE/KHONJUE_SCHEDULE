@@ -10,7 +10,7 @@ namespace KHONJUE_SCHEDULE.DatabaseContexts
 {
     public class DatabaseContext
     {
-        private String connectionString = "User ID=postgres;Password=123456789;Host=localhost;Port=5432;Database=KHONGJUE;";
+        private String connectionString = "User ID=postgres;Password=12345678;Host=localhost;Port=5432;Database=KHONGJUE;";
        public NpgsqlConnection dbConnection { get; set; }
         public DatabaseContext() { 
         }

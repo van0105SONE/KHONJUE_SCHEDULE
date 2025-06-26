@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             createBtn = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.None;
             createBtn.BackColor = Color.Green;
-            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(508, 227);
+            createBtn.Location = new Point(584, 220);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(201, 53);
@@ -46,10 +47,25 @@
             createBtn.UseVisualStyleBackColor = false;
             createBtn.Click += createBtn_Click;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.BackColor = Color.Black;
+            button1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(355, 220);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(201, 53);
+            button1.TabIndex = 24;
+            button1.Text = "ກັບຄືນ";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // GenerateButton
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(createBtn);
             Name = "GenerateButton";
             Size = new Size(1118, 558);
@@ -59,5 +75,6 @@
         #endregion
 
         private Button createBtn;
+        private Button button1;
     }
 }

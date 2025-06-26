@@ -15,37 +15,40 @@ using QuestPDF.Fluent;
 
 namespace KHONJUE_SCHEDULE.Resources.Report
 {
-    public partial class TeacherTeachReport : UserControl
+    public partial class SubjectReport : UserControl
     {
         private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
         private DatabaseContext _dbContext { get; set; }
         private LevelController _levelController { get; set; }
-        private TeacherController _teacherController { get; set; }
         private SubjectController _subjController { get; set; }
         private ScheduleController _scheduleController { get; set; }
         private TimePeriodController _timePeriodController { get; set; }
         private MajorController _majorController { get; set; }
         private TermController _termController { get; set; }
-        public TeacherTeachReport()
+        public SubjectReport()
         {
             InitializeComponent();
             _dbContext = new DatabaseContext();
             _dbContext.connect();
             _termController = new TermController(_dbContext);
-            _teacherController = new TeacherController(_dbContext);
             _levelController = new LevelController(_dbContext);
             _subjController = new SubjectController(_dbContext);
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
-
+            this.generateReport();
         }
 
-    async    private void button4_Click(object sender, EventArgs e)
+    async    private void button8_Click(object sender, EventArgs e)
+        {
+            this.generateReport();
+        }
+
+     async private void generateReport()
         {
             this.REPORT_CONTAINER.Controls.Clear();
-            var data = _teacherController.getTeachers();
-            var report = new TeacherReportController(data);
+            var data = _subjController.GetSubjectList();
+            var report = new SubjectReportController(data);
             string path = Path.Combine(Environment.CurrentDirectory, "ScheduleReport.pdf");
             report.GeneratePdf(path);
 
