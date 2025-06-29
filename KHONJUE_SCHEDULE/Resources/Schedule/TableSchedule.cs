@@ -255,7 +255,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbMajor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbTerms.SelectedValue != null)
+            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
@@ -264,7 +264,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbTerm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbTerms.SelectedValue != null)
+            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
