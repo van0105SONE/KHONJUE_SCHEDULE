@@ -27,7 +27,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO teacher_subject (""SubjectId"", ""TeacherId"") VALUES ({teacherId}, {teacherId})";
+                _command.CommandText = $@"INSERT INTO teacher_subject (""SubjectId"", ""TeacherId"") VALUES ({subjectId}, {teacherId})";
                 _command.ExecuteNonQuery();
                 return true;
             }
