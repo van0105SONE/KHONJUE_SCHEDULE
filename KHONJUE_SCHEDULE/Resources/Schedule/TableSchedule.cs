@@ -246,9 +246,9 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             cmbTerms.ValueMember = "Id";
             cmbTerms.DataSource = termModels;
 
-            cmbTerms.DisplayMember = "MajorName"; // Replace with the property you want to display
-            cmbTerms.ValueMember = "Id";    // Replace with the property you want as the value
-            cmbTerms.DataSource = majors;
+            cmbMajors.DisplayMember = "MajorName"; // Replace with the property you want to display
+            cmbMajors.ValueMember = "Id";    // Replace with the property you want as the value
+            cmbMajors.DataSource = majors;
             // Set the DisplayMember and ValueMember properties
 
         }
