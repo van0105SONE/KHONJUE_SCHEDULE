@@ -27,10 +27,24 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.Size(PageSizes.A4);
                 page.PageColor(Colors.White);
                 page.DefaultTextStyle(x => x.FontSize(10));
+                var physical = Path.GetFullPath("WhatsApp Image 2025-05-03 at 13.52.37.jpeg");
+                if (!File.Exists(physical))
+                    throw new FileNotFoundException(physical);
+                page.Header().Column(column =>
+                {
+                    column.Item().AlignCenter().Height(40).Image(QuestPDF.Infrastructure.Image.FromFile(physical));
+                    column.Item().Text("ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ")
+                        .FontFamily("Noto Sans Lao")
+                        .FontSize(14).AlignCenter();
+                    column.Item().Text("ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ວັດທະນາຖາວອນ")
+      .FontFamily("Noto Sans Lao")
+      .FontSize(14).AlignCenter();
 
-                page.Header().AlignCenter()
-                    .Text("ລາຍການຈັດຕາລາງຮຽນທັງໝົດ").Bold()
-                    .FontSize(12);
+                    column.Item().Text("1.ລາຍງານຕາຕະລາງຮຽນ")
+                        .FontFamily("Noto Sans Lao")
+                        .FontSize(12).AlignLeft();
+                });
+
 
                 page.Content().Table(table =>
                 {
@@ -49,12 +63,12 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Header row
                     table.Header(header =>
                     {
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ມື້").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ເວລາ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ວິຊາ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ອາຈານ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ຫ້ອງຮຽນ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ສາຂາ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ມື້").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ເວລາ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ວິຊາ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ອາຈານ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຫ້ອງຮຽນ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ສາຂາ").Bold().FontFamily("Noto Sans Lao");
 
                         static IContainer CellStyle(IContainer container)
                         {

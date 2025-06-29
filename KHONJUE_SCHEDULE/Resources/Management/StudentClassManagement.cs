@@ -126,19 +126,29 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            _studentClassController.deleteAll();
+            loadStudentClassData(false);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             CREATE_STUDENT_CLASS createDialog = new CREATE_STUDENT_CLASS();
             var result = createDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 loadStudentClassData(false);
             }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            _studentClassController.deleteAll();
-            loadStudentClassData(false);
         }
     }
 }

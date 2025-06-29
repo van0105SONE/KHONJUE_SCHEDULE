@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Image = QuestPDF.Infrastructure.Image;
 
 namespace KHONJUE_SCHEDULE.Resources.Report.Controller
 {
@@ -29,9 +30,23 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.PageColor(Colors.White);
                 page.DefaultTextStyle(x => x.FontSize(10));
 
-                page.Header().AlignCenter()
-                    .Text("ລາຍງານຫ້ອງຮຽນ").Bold()
-                    .FontSize(12);
+                var physical = Path.GetFullPath("WhatsApp Image 2025-05-03 at 13.52.37.jpeg");
+                if (!File.Exists(physical))
+                    throw new FileNotFoundException(physical);
+                page.Header().Column(column =>
+                {
+                    column.Item().AlignCenter().Height(40).Image(Image.FromFile(physical));
+                    column.Item().Text("ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ")
+                        .FontFamily("Noto Sans Lao")
+                        .FontSize(14).AlignCenter();
+                    column.Item().Text("ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ວັດທະນາຖາວອນ")
+      .FontFamily("Noto Sans Lao")
+      .FontSize(14).AlignCenter();
+
+                    column.Item().Text("1.ລາຍງານຫ້ອງຮຽນ")
+                        .FontFamily("Noto Sans Lao")
+                        .FontSize(12).AlignLeft();
+                });
 
                 page.Content().Table(table =>
                 {
@@ -49,10 +64,10 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     // Header row
                     table.Header(header =>
                     {
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ລະຫັດຫ້ອງ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ຊື່ຫ້ອງ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ປະເພດຫ້ອງ").Bold();
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ຄຳອະທິບາຍ").Bold();
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ລະຫັດຫ້ອງ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຊື່ຫ້ອງ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ປະເພດຫ້ອງ").Bold().FontFamily("Noto Sans Lao");
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຄຳອະທິບາຍ").Bold().FontFamily("Noto Sans Lao");
 
 
 

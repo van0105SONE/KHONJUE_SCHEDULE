@@ -132,6 +132,16 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             CREATE_TEACHER_FORM createForm = new CREATE_TEACHER_FORM();
             var result = createForm.ShowDialog();
             if (result == DialogResult.OK)
@@ -140,7 +150,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             _teacherController.deteleAll();
