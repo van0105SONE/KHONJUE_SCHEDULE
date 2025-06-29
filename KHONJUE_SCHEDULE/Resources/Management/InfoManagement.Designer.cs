@@ -139,7 +139,7 @@
             button3.Name = "button3";
             button3.Size = new Size(127, 80);
             button3.TabIndex = 8;
-            button3.Text = "ລະດັບຊັ້ນ";
+            button3.Text = "ປີຮຽນ";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 

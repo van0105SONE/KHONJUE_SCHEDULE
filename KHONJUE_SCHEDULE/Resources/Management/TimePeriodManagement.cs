@@ -124,7 +124,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void button1_Click_1(object sender, EventArgs e)
         {
             CREATE_TIME_PERIOD createDialog = new CREATE_TIME_PERIOD();
-            createDialog.ShowDialog();
+            var result = createDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadTimePeriods(false);
+            }
         }
     }
 }

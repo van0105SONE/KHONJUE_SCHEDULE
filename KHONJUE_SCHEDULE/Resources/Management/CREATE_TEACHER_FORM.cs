@@ -136,6 +136,16 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void deleteBtn_Click_2(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void createBtn_Click_2(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(txtQuotaPerWeek.Text) || string.IsNullOrEmpty(txtName.Text))
             {
                 return;
@@ -160,6 +170,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

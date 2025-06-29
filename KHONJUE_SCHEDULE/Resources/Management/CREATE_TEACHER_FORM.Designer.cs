@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            closeBtn = new Button();
+            createBtn = new Button();
             flowLayoutPanel4 = new FlowLayoutPanel();
             panel7 = new Panel();
             txtDescription = new TextBox();
             panel10 = new Panel();
             label3 = new Label();
-            deleteBtn = new Button();
-            createBtn = new Button();
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel3 = new Panel();
             textBox1 = new TextBox();
@@ -72,9 +72,9 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(flowLayoutPanel4);
-            panel1.Controls.Add(deleteBtn);
+            panel1.Controls.Add(closeBtn);
             panel1.Controls.Add(createBtn);
+            panel1.Controls.Add(flowLayoutPanel4);
             panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(flowLayoutPanel1);
@@ -85,6 +85,36 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(713, 619);
             panel1.TabIndex = 3;
+            // 
+            // closeBtn
+            // 
+            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            closeBtn.BackColor = Color.DarkRed;
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(279, 562);
+            closeBtn.Margin = new Padding(3, 4, 3, 4);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(201, 52);
+            closeBtn.TabIndex = 23;
+            closeBtn.Text = "ອອກ";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click;
+            // 
+            // createBtn
+            // 
+            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            createBtn.BackColor = Color.CornflowerBlue;
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.ForeColor = Color.White;
+            createBtn.Location = new Point(500, 562);
+            createBtn.Margin = new Padding(3, 4, 3, 4);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(201, 52);
+            createBtn.TabIndex = 22;
+            createBtn.Text = "ບັນທຶກ";
+            createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click_2;
             // 
             // flowLayoutPanel4
             // 
@@ -136,35 +166,6 @@
             label3.Size = new Size(88, 25);
             label3.TabIndex = 1;
             label3.Text = "ຄຳອະທິບາຍ";
-            // 
-            // deleteBtn
-            // 
-            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            deleteBtn.BackColor = Color.DarkRed;
-            deleteBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteBtn.ForeColor = Color.White;
-            deleteBtn.Location = new Point(277, 562);
-            deleteBtn.Margin = new Padding(3, 4, 3, 4);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(201, 53);
-            deleteBtn.TabIndex = 14;
-            deleteBtn.Text = "ອອກ";
-            deleteBtn.UseVisualStyleBackColor = false;
-            // 
-            // createBtn
-            // 
-            createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            createBtn.BackColor = Color.CornflowerBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(500, 562);
-            createBtn.Margin = new Padding(3, 4, 3, 4);
-            createBtn.Name = "createBtn";
-            createBtn.Size = new Size(201, 53);
-            createBtn.TabIndex = 13;
-            createBtn.Text = "ບັນທຶກ";
-            createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click;
             // 
             // flowLayoutPanel2
             // 
@@ -415,8 +416,8 @@
         private TextBox txtDescription;
         private Panel panel10;
         private Label label3;
-        private Button deleteBtn;
-        private Button createBtn;
         private TextBox textBox1;
+        private Button createBtn;
+        private Button closeBtn;
     }
 }

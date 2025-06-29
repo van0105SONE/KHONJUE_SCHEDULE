@@ -178,9 +178,9 @@
             label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(141, 33);
+            label1.Size = new Size(104, 33);
             label1.TabIndex = 1;
-            label1.Text = "ຈຳນວນຫ້ອງແຍກ";
+            label1.Text = "ຈຳນວນຫ້ອງ";
             // 
             // closeBtn
             // 

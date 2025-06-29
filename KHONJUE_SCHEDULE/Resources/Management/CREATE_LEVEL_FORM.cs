@@ -71,6 +71,21 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void closeBtn_Click_2(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void createBtn_Click_1(object sender, EventArgs e)
+        {
             bool isSuccess = false;
             if (action == Actions.Create)
             {
@@ -90,11 +105,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-        }
-
-        private void closeBtn_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

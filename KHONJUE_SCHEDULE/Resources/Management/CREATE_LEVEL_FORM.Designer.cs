@@ -59,9 +59,9 @@
             titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(5, 4);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(145, 44);
+            titleLabel.Size = new Size(129, 44);
             titleLabel.TabIndex = 3;
-            titleLabel.Text = "ເພິ່ມຊັ້ນຮຽນ";
+            titleLabel.Text = "ເພິ່ມປີຮຽນ";
             // 
             // flowLayoutPanel1
             // 
@@ -110,9 +110,9 @@
             label5.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(3, 4);
             label5.Name = "label5";
-            label5.Size = new Size(87, 33);
+            label5.Size = new Size(75, 33);
             label5.TabIndex = 1;
-            label5.Text = "ຊື່ຊັ້ນຣຽນ";
+            label5.Text = "ຊື່ປີຮຽນ";
             // 
             // closeBtn
             // 
@@ -127,6 +127,7 @@
             closeBtn.TabIndex = 14;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click_2;
             // 
             // createBtn
             // 
@@ -141,6 +142,7 @@
             createBtn.TabIndex = 13;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click_1;
             // 
             // CREATE_LEVEL_FORM
             // 
