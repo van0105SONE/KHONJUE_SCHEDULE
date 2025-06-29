@@ -109,32 +109,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text) )
-            {
-                return;
-            }
 
-            subject.SubjectName = txtSubject.Text;
-            subject.Description = txtDescription.Text;
-            subject.Lecture = int.Parse(txtLecture.Text);
-            subject.Lab = int.Parse(txtLab.Text);
-
-
-            bool isSuccess = false;
-            if (action == Actions.Create)
-            {
-                isSuccess = _subjController.createSubject(subject);
-            }
-            else
-            {
-                isSuccess = _subjController.editSubject(subject);
-            }
-
-            if (isSuccess)
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
         }
 
         private void txtLecture_KeyPress(object sender, KeyPressEventArgs e)
@@ -168,6 +143,41 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void createBtn_Click_2(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text))
+            {
+                return;
+            }
+
+            subject.SubjectName = txtSubject.Text;
+            subject.Description = txtDescription.Text;
+            subject.Lecture = int.Parse(txtLecture.Text);
+            subject.Lab = int.Parse(txtLab.Text);
+
+
+            bool isSuccess = false;
+            if (action == Actions.Create)
+            {
+                isSuccess = _subjController.createSubject(subject);
+            }
+            else
+            {
+                isSuccess = _subjController.editSubject(subject);
+            }
+
+            if (isSuccess)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }

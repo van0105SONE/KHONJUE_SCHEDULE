@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            closeBtn = new Button();
             createBtn = new Button();
             flowLayoutPanel4 = new FlowLayoutPanel();
             panel11 = new Panel();
@@ -53,6 +52,7 @@
             label5 = new Label();
             panel2 = new Panel();
             titleLabel = new Label();
+            closeBtn = new Button();
             panel1.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             panel11.SuspendLayout();
@@ -85,35 +85,20 @@
             panel1.Size = new Size(713, 718);
             panel1.TabIndex = 3;
             // 
-            // closeBtn
-            // 
-            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.DarkRed;
-            closeBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(288, 652);
-            closeBtn.Margin = new Padding(3, 4, 3, 4);
-            closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 52);
-            closeBtn.TabIndex = 15;
-            closeBtn.Text = "ອອກ";
-            closeBtn.UseVisualStyleBackColor = false;
-            closeBtn.Click += closeBtn_Click;
-            // 
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             createBtn.BackColor = Color.CornflowerBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(508, 652);
+            createBtn.Location = new Point(500, 652);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(201, 52);
-            createBtn.TabIndex = 14;
+            createBtn.TabIndex = 16;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click;
+            createBtn.Click += createBtn_Click_2;
             // 
             // flowLayoutPanel4
             // 
@@ -341,6 +326,21 @@
             titleLabel.TabIndex = 2;
             titleLabel.Text = "ເພີ່ມວີຊາ";
             // 
+            // closeBtn
+            // 
+            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            closeBtn.BackColor = Color.DarkRed;
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(293, 652);
+            closeBtn.Margin = new Padding(3, 4, 3, 4);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(201, 52);
+            closeBtn.TabIndex = 24;
+            closeBtn.Text = "ອອກ";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click_1;
+            // 
             // CREATE_SUBJECT_FORM
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -402,8 +402,8 @@
         private TextBox txtLecture;
         private Panel panel4;
         private Label label1;
-        private Button closeBtn;
-        private Button createBtn;
         private Label titleLabel;
+        private Button createBtn;
+        private Button closeBtn;
     }
 }
