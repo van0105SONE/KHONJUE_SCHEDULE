@@ -21,7 +21,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             _databaseContext = context;
         }
 
-        public bool addSubjectTeacher(int teacherId, int subjectId)
+        public bool addSubjectTeacher(int subjectId, int teacherId)
         {
             try
             {
