@@ -47,29 +47,39 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click(object sender, EventArgs e)
         {
- 
-                timePeriod.startTime = startTimePicker.Value.ToString("hh:mm tt");
-                timePeriod.endTime = endTimePicker.Value.ToString("hh:mm tt");
-                bool isSuccess = false;
-                if (action == Actions.Create)
-                {
-                    isSuccess = _timeController.createTimePeriod(timePeriod);
-                }
-                else
-                {
-                    isSuccess = _timeController.updateTimePeriod(timePeriod);
-                }
 
-                if(isSuccess)
-                {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
 
-            
+
+
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void createBtn_Click_1(object sender, EventArgs e)
+        {
+            timePeriod.startTime = startTimePicker.Value.ToString("hh:mm tt");
+            timePeriod.endTime = endTimePicker.Value.ToString("hh:mm tt");
+            bool isSuccess = false;
+            if (action == Actions.Create)
+            {
+                isSuccess = _timeController.createTimePeriod(timePeriod);
+            }
+            else
+            {
+                isSuccess = _timeController.updateTimePeriod(timePeriod);
+            }
+
+            if (isSuccess)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }

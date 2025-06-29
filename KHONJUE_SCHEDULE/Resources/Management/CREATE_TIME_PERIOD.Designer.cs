@@ -38,8 +38,8 @@
             endTimePicker = new DateTimePicker();
             panel3 = new Panel();
             label1 = new Label();
-            deleteBtn = new Button();
             createBtn = new Button();
+            closeBtn = new Button();
             panel2.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
@@ -152,42 +152,42 @@
             label1.TabIndex = 1;
             label1.Text = "ເວລາເລີກ";
             // 
-            // deleteBtn
-            // 
-            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            deleteBtn.BackColor = Color.DarkRed;
-            deleteBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteBtn.ForeColor = Color.White;
-            deleteBtn.Location = new Point(264, 232);
-            deleteBtn.Margin = new Padding(3, 4, 3, 4);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(201, 52);
-            deleteBtn.TabIndex = 8;
-            deleteBtn.Text = "ອອກ";
-            deleteBtn.UseVisualStyleBackColor = false;
-            deleteBtn.Click += deleteBtn_Click;
-            // 
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             createBtn.BackColor = Color.CornflowerBlue;
-            createBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createBtn.ForeColor = Color.White;
-            createBtn.Location = new Point(485, 232);
+            createBtn.Location = new Point(484, 232);
             createBtn.Margin = new Padding(3, 4, 3, 4);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(201, 52);
-            createBtn.TabIndex = 7;
+            createBtn.TabIndex = 21;
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
-            createBtn.Click += createBtn_Click;
+            createBtn.Click += createBtn_Click_1;
+            // 
+            // closeBtn
+            // 
+            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            closeBtn.BackColor = Color.DarkRed;
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(277, 232);
+            closeBtn.Margin = new Padding(3, 4, 3, 4);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(201, 52);
+            closeBtn.TabIndex = 22;
+            closeBtn.Text = "ອອກ";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click;
             // 
             // CREATE_TIME_PERIOD
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(687, 302);
-            Controls.Add(deleteBtn);
+            Controls.Add(closeBtn);
             Controls.Add(createBtn);
             Controls.Add(panel1);
             Controls.Add(panel8);
@@ -220,8 +220,8 @@
         private DateTimePicker endTimePicker;
         private Panel panel3;
         private Label label1;
-        private Button deleteBtn;
-        private Button createBtn;
         private DateTimePicker startTimePicker;
+        private Button createBtn;
+        private Button closeBtn;
     }
 }
