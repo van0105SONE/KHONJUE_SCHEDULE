@@ -46,7 +46,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             }
 
             subjectDatagrid.DataSource = null;
-            List<TeacherModel> subjects = _teacherController.getTeachers();
+            List<TeacherModel> subjects = _teacherController.getTeachers(txtSearch.Text.Trim());
 
             // Set data source and column headers
             subjectDatagrid.DataSource = subjects;

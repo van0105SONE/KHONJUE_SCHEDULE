@@ -46,7 +46,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             }
 
             subjectDatagrid.DataSource = null;
-            List<SubjectModel> subjects = _subjController.GetSubjectList();
+            List<SubjectModel> subjects = _subjController.GetSubjectList(txtSearch.Text.Trim());
 
             // Set data source and column headers
             subjectDatagrid.DataSource = subjects;
@@ -86,6 +86,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 var subjectCode = row.Cells["SubjectCode"].Value.ToString(); // Get subject code
                 var subjectName = row.Cells["SubjectName"].Value.ToString(); // Get subject code
                 var description = row.Cells["Description"].Value.ToString(); // Get subject code
+                var lecture = int.Parse(row.Cells["Lecture"].Value.ToString()); // Get subject code
+                var lab = int.Parse(row.Cells["Lab"].Value.ToString()); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == subjectDatagrid.Columns["EditButton"].Index)
                 {
@@ -96,7 +98,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         Id = Id,
                         SubjectCode = subjectCode,
                         SubjectName = subjectName,
-                        Description = description
+                        Description = description,
+                        Lecture = lecture,
+                        Lab = lab,
                     };
                     CREATE_SUBJECT_FORM createForm = new CREATE_SUBJECT_FORM(subjectArg);
 
@@ -151,6 +155,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         {
             MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             _subjController.deleteSubjectAll();
+            loadDataGrid(false);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
             loadDataGrid(false);
         }
     }

@@ -30,12 +30,12 @@
         {
             panel1 = new Panel();
             panel3 = new Panel();
-            panel2 = new Panel();
-            studentClassDatagrid = new DataGridView();
-            txtSearch = new TextBox();
             button8 = new Button();
-            button4 = new Button();
+            txtSearch = new TextBox();
+            panel2 = new Panel();
             button1 = new Button();
+            button4 = new Button();
+            studentClassDatagrid = new DataGridView();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -63,38 +63,6 @@
             panel3.Size = new Size(409, 71);
             panel3.TabIndex = 7;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(button1);
-            panel2.Controls.Add(button4);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1363, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(310, 71);
-            panel2.TabIndex = 4;
-            // 
-            // studentClassDatagrid
-            // 
-            studentClassDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            studentClassDatagrid.Dock = DockStyle.Fill;
-            studentClassDatagrid.Location = new Point(0, 71);
-            studentClassDatagrid.Margin = new Padding(3, 4, 3, 4);
-            studentClassDatagrid.Name = "studentClassDatagrid";
-            studentClassDatagrid.RowHeadersWidth = 51;
-            studentClassDatagrid.Size = new Size(1673, 700);
-            studentClassDatagrid.TabIndex = 3;
-            studentClassDatagrid.CellContentClick += studentClassDatagrid_CellContentClick;
-            // 
-            // txtSearch
-            // 
-            txtSearch.BorderStyle = BorderStyle.FixedSingle;
-            txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(79, 17);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(221, 40);
-            txtSearch.TabIndex = 25;
-            // 
             // button8
             // 
             button8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -108,6 +76,42 @@
             button8.TabIndex = 26;
             button8.Text = "ຄົ້ນຫາ";
             button8.UseVisualStyleBackColor = false;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
+            txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(79, 17);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(221, 40);
+            txtSearch.TabIndex = 25;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(button4);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(1363, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(310, 71);
+            panel2.TabIndex = 4;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.BackColor = Color.CornflowerBlue;
+            button1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(178, 11);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(117, 48);
+            button1.TabIndex = 22;
+            button1.Text = "ເພີ່ມຂໍ້ມູນ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button4
             // 
@@ -124,20 +128,17 @@
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click_1;
             // 
-            // button1
+            // studentClassDatagrid
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.CornflowerBlue;
-            button1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(178, 11);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(117, 48);
-            button1.TabIndex = 22;
-            button1.Text = "ເພີ່ມຂໍ້ມູນ";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            studentClassDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            studentClassDatagrid.Dock = DockStyle.Fill;
+            studentClassDatagrid.Location = new Point(0, 71);
+            studentClassDatagrid.Margin = new Padding(3, 4, 3, 4);
+            studentClassDatagrid.Name = "studentClassDatagrid";
+            studentClassDatagrid.RowHeadersWidth = 51;
+            studentClassDatagrid.Size = new Size(1673, 700);
+            studentClassDatagrid.TabIndex = 3;
+            studentClassDatagrid.CellContentClick += studentClassDatagrid_CellContentClick;
             // 
             // StudentClassManagement
             // 

@@ -43,10 +43,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _dbContext.connect();
             _subjectController = new SubjectController(_dbContext);
             _teacherController = new TeacherController(_dbContext);
-            teacherSubject = teacherSubject;
+            _teacherSubjectController = new TeacherAndSubjectController(_dbContext);
+            this.teacherSubject = teacherSubject;
             cmbTerm.SelectedValue = teacherSubject.TeacherName;
             action = Actions.Update;
             loadSubject();
+            loadTeacher();
         }
 
 
@@ -63,7 +65,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void loadSubject()
         {
-            List<SubjectModel> roles = _subjectController.GetSubjectList();
+            List<SubjectModel> roles = _subjectController.GetSubjectList("");
 
             // Set the DisplayMember and ValueMember properties
             cmbSubject.DisplayMember = "SubjectName"; // Replace with the property you want to display
@@ -74,7 +76,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         }
         private void loadTeacher()
         {
-            List<TeacherModel> roles = _teacherController.getTeachers();
+            List<TeacherModel> roles = _teacherController.getTeachers("");
 
             // Set the DisplayMember and ValueMember properties
             cmbTerm.DisplayMember = "TeacherName"; // Replace with the property you want to display
@@ -97,7 +99,15 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void createBtn_Click(object sender, EventArgs e)
         {
             bool isSuccess = false;
-            isSuccess = _teacherSubjectController.addSubjectTeacher(int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()));
+
+            if (action == Actions.Create)
+            {
+                isSuccess = _teacherSubjectController.addSubjectTeacher(int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()));
+            }else
+            {
+                isSuccess = _teacherSubjectController.updateSubjectTeacher(teacherSubject.Id,int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()));
+            }
+
 
 
             if (isSuccess)

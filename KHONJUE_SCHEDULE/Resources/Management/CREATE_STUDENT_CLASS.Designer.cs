@@ -480,11 +480,10 @@
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel2);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_STUDENT_CLASS";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CREATE_STUDENT_CLASS";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);

@@ -1,5 +1,6 @@
 ﻿using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Management.Model;
+using Microsoft.VisualBasic.Devices;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -85,14 +86,19 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public List<TeacherModel> getTeachers()
+        public List<TeacherModel> getTeachers(string keyword)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""TeacherCode"") LIKE LOWER('%{keyword}%') OR LOWER(""TeacherName"") LIKE LOWER('%{keyword}%')";
+                }
                 List<TeacherModel> teachers = new List<TeacherModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT teachers.""Id"", teachers.""TeacherName"", teachers.""TeacherCode"", teachers.""Description"", teachers.""QuotaPerWeek"", teachers.""Phone"" FROM teachers;";
+                _command.CommandText = $@"SELECT teachers.""Id"", teachers.""TeacherName"", teachers.""TeacherCode"", teachers.""Description"", teachers.""QuotaPerWeek"", teachers.""Phone"" FROM teachers {condition};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

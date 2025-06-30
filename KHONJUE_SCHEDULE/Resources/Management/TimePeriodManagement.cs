@@ -44,7 +44,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                     timePeriodDatagrid.Columns.Remove("DeleteButton");
                 }
 
-                timePeriodDatagrid.DataSource = _timeController.getTimePeriod();
+                timePeriodDatagrid.DataSource = _timeController.getTimePeriod(txtSearch.Text.Trim());
                 timePeriodDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
                 timePeriodDatagrid.Columns["Id"].Visible = false;
                 timePeriodDatagrid.Columns["periodCode"].HeaderText = "ລະຫັດຊົ່ວໂມງຮຽນ";
@@ -129,6 +129,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             {
                 loadTimePeriods(false);
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            loadTimePeriods(false);
         }
     }
 }

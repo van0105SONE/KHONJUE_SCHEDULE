@@ -86,6 +86,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(221, 40);
             txtSearch.TabIndex = 27;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // panel2
             // 

@@ -54,15 +54,15 @@ namespace KHONJUE_SCHEDULE.Resources.Search
         
         private void loadDataFilter()
         {
-            cmbMajor2.DataSource = _majorController.getMajors();
+            cmbMajor2.DataSource = _majorController.getMajors("");
             cmbMajor2.DisplayMember = "MajorName"; // Replace with the property you want to display
             cmbMajor2.ValueMember = "Id";    // Replace with the property you want as the value
 
-            cmbTerm.DataSource = _termController.getTerms();
+            cmbTerm.DataSource = _termController.getTerms("");
             cmbTerm.DisplayMember = "TermName"; // Replace with the property you want to display+
             cmbTerm.ValueMember = "Id";
 
-            cmbYear.DataSource = _levelController.getLevels();
+            cmbYear.DataSource = _levelController.getLevels("");
             cmbYear.ValueMember = "Id";
             cmbYear.DisplayMember = "LevelName";
 

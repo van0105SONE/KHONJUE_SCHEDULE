@@ -398,11 +398,10 @@
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_TERM_SUBJECT_FORM";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CREATE_LEVEL_FORM";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel8.ResumeLayout(false);

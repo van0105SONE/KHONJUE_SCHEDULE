@@ -44,7 +44,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 studentClassDatagrid.Columns.Remove("DeleteButton");
             }
 
-            studentClassDatagrid.DataSource = _studentClassController.GetStudentClasstList();
+            studentClassDatagrid.DataSource = _studentClassController.GetStudentClasstList(txtSearch.Text.Trim());
             studentClassDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             studentClassDatagrid.Columns["Code"].HeaderText = "ລະຫັດຫ້ອງນັກຮຽນ";
             studentClassDatagrid.Columns["NumberOfClass"].HeaderText = "ຈຳນວນຫ້ອງ";
@@ -80,9 +80,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 var studentClassName = row.Cells["StudentClassName"].Value.ToString(); // Get subject code
                 var description = row.Cells["Description"].Value.ToString(); // Get subject code
                 var NumberOfClass = int.Parse(row.Cells["NumberOfClass"].Value.ToString()); // Get subject code
-                var levelId = int.Parse(row.Cells["LevelId"].Value.ToString()); // Get subject code
-                var levelCode = row.Cells["LevelCode"].Value.ToString(); // Get subject code
-                var levelName = row.Cells["LevelName"].Value.ToString(); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == studentClassDatagrid.Columns["EditButton"].Index)
                 {
@@ -112,7 +109,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 else if (e.ColumnIndex == studentClassDatagrid.Columns["DeleteButton"].Index)
                 {
                     // Delete button clicked
-                    DialogResult confirm = MessageBox.Show($"Are you sure you want to delete this {levelName}?",
+                    DialogResult confirm = MessageBox.Show($"Are you sure you want to delete this {studentClassName}?",
                      "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (confirm == DialogResult.Yes)
@@ -149,6 +146,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             {
                 loadStudentClassData(false);
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            loadStudentClassData(false);
         }
     }
 }

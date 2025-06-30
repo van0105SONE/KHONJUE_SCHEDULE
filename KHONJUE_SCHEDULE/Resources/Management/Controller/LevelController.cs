@@ -24,7 +24,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE study_level SET ""LevelName""='{levelName}' WHERE id={Id}";
+                _command.CommandText = $@"UPDATE study_level SET ""LevelName""='{levelName}' WHERE ""Id""={Id}";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -86,14 +86,21 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
-        public List<LevelModel> getLevels()
+        
+
+        public List<LevelModel> getLevels(string levelCode)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(levelCode))
+                {
+                    condition += $@"WHERE LOWER(""LevelCode"") LIKE LOWER('%{levelCode}%') OR LOWER(""LevelName"") LIKE LOWER('%{levelCode}%')";
+                }
                 List<LevelModel> levels = new List<LevelModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT study_level.""Id"", study_level.""LevelName"", study_level.""LevelCode"" FROM study_level";
+                _command.CommandText = $@"SELECT study_level.""Id"", study_level.""LevelName"", study_level.""LevelCode"" FROM study_level {condition};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

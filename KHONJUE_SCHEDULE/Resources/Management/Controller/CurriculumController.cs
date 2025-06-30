@@ -50,14 +50,20 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        public List<CurriculumModel> GetCurriculumList()
+        public List<CurriculumModel> GetCurriculumList(string keyword)
         {
             try
             {
+                string condition = string.Empty;
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""LevelCode"") LIKE LOWER('%{keyword}%')";
+                }
                 List<CurriculumModel> classes = new List<CurriculumModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT Curriculum.""Id"", Curriculum.""CurriculumName"", Curriculum.""Description"" FROM Curriculum;";
+                _command.CommandText = $@"SELECT Curriculum.""Id"", Curriculum.""CurriculumName"", Curriculum.""Description"" FROM Curriculum {condition};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

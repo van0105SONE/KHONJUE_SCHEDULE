@@ -35,13 +35,13 @@
             panel7 = new Panel();
             txtDescription = new TextBox();
             panel10 = new Panel();
-            label3 = new Label();
+            label1 = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel3 = new Panel();
             textBox1 = new TextBox();
             textPhone = new TextBox();
             panel4 = new Panel();
-            label1 = new Label();
+            label4 = new Label();
             flowLayoutPanel3 = new FlowLayoutPanel();
             panel5 = new Panel();
             txtQuotaPerWeek = new TextBox();
@@ -51,7 +51,7 @@
             panel8 = new Panel();
             txtName = new TextBox();
             panel9 = new Panel();
-            label5 = new Label();
+            label6 = new Label();
             panel2 = new Panel();
             titleLabel = new Label();
             panel1.SuspendLayout();
@@ -148,7 +148,7 @@
             // 
             // panel10
             // 
-            panel10.Controls.Add(label3);
+            panel10.Controls.Add(label1);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(0, 0);
             panel10.Margin = new Padding(3, 4, 3, 4);
@@ -156,16 +156,16 @@
             panel10.Size = new Size(706, 43);
             panel10.TabIndex = 0;
             // 
-            // label3
+            // label1
             // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.SizeAll;
-            label3.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 4);
-            label3.Name = "label3";
-            label3.Size = new Size(88, 25);
-            label3.TabIndex = 1;
-            label3.Text = "ຄຳອະທິບາຍ";
+            label1.AutoSize = true;
+            label1.Cursor = Cursors.SizeAll;
+            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(3, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 33);
+            label1.TabIndex = 5;
+            label1.Text = "ຄຳອະທິບາຍ";
             // 
             // flowLayoutPanel2
             // 
@@ -211,7 +211,7 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(label1);
+            panel4.Controls.Add(label4);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(3, 4, 3, 4);
@@ -219,16 +219,16 @@
             panel4.Size = new Size(706, 43);
             panel4.TabIndex = 0;
             // 
-            // label1
+            // label4
             // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 4);
-            label1.Name = "label1";
-            label1.Size = new Size(161, 25);
-            label1.TabIndex = 1;
-            label1.Text = "ເບີໂທ (whatsapp)";
+            label4.AutoSize = true;
+            label4.Cursor = Cursors.SizeAll;
+            label4.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(193, 33);
+            label4.TabIndex = 4;
+            label4.Text = "ເບີໂທ (whatsapp)";
             // 
             // flowLayoutPanel3
             // 
@@ -276,12 +276,12 @@
             // 
             label2.AutoSize = true;
             label2.Cursor = Cursors.SizeAll;
-            label2.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(3, 4);
+            label2.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(3, 6);
             label2.Name = "label2";
-            label2.Size = new Size(160, 25);
-            label2.TabIndex = 1;
-            label2.Text = "ໂຄຕ້າການສອນ/ອາທິດ";
+            label2.Size = new Size(182, 33);
+            label2.TabIndex = 3;
+            label2.Text = "ໂຄຕ້າການສອນຕໍ່ອາທິດ";
             // 
             // flowLayoutPanel1
             // 
@@ -315,7 +315,7 @@
             // 
             // panel9
             // 
-            panel9.Controls.Add(label5);
+            panel9.Controls.Add(label6);
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(3, 4, 3, 4);
@@ -323,16 +323,16 @@
             panel9.Size = new Size(706, 43);
             panel9.TabIndex = 0;
             // 
-            // label5
+            // label6
             // 
-            label5.AutoSize = true;
-            label5.Cursor = Cursors.SizeAll;
-            label5.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(3, 4);
-            label5.Name = "label5";
-            label5.Size = new Size(68, 25);
-            label5.TabIndex = 1;
-            label5.Text = "ຊຶ່ອາຈານ";
+            label6.AutoSize = true;
+            label6.Cursor = Cursors.SizeAll;
+            label6.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(3, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(146, 33);
+            label6.TabIndex = 2;
+            label6.Text = "ຊື່ ແລະ ນາມສະກຸນ";
             // 
             // panel2
             // 
@@ -347,11 +347,11 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Microsoft Sans Serif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            titleLabel.Location = new Point(10, 25);
+            titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLabel.Location = new Point(0, 9);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(125, 31);
-            titleLabel.TabIndex = 2;
+            titleLabel.Size = new Size(131, 44);
+            titleLabel.TabIndex = 4;
             titleLabel.Text = "ເພີ່ມອາຈານ";
             // 
             // CREATE_TEACHER_FORM
@@ -360,11 +360,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 619);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_TEACHER_FORM";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CreateSub_jectForm";
             panel1.ResumeLayout(false);
             flowLayoutPanel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
@@ -398,26 +397,26 @@
         private Panel panel8;
         private TextBox txtName;
         private Panel panel9;
-        private Label label5;
         private Panel panel2;
-        private Label titleLabel;
         private FlowLayoutPanel flowLayoutPanel3;
         private Panel panel5;
         private TextBox txtQuotaPerWeek;
         private Panel panel6;
-        private Label label2;
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel panel3;
         private TextBox textPhone;
         private Panel panel4;
-        private Label label1;
         private FlowLayoutPanel flowLayoutPanel4;
         private Panel panel7;
         private TextBox txtDescription;
         private Panel panel10;
-        private Label label3;
         private TextBox textBox1;
         private Button createBtn;
         private Button closeBtn;
+        private Label label2;
+        private Label label6;
+        private Label label1;
+        private Label label4;
+        private Label titleLabel;
     }
 }

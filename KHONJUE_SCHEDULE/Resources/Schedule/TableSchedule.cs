@@ -47,8 +47,8 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         {
             subjectDatagrid.Controls.Clear();
 
-            List<string> days = new List<string> { "ວັນຈັນ", "ອັງຄານ", "ພູດ", "ພະຫັດ", "ສຸກ", "ເສົາ", "ອາທິດ" };
-            List<string> periods = _timePeriodController.getTimePeriod().Select(item => item.startTime + " - " + item.endTime).ToList();
+            List<string> days = new List<string> { "ວັນຈັນ", "ອັງຄານ", "ພູດ", "ພະຫັດ", "ສຸກ" };
+            List<string> periods = _timePeriodController.getTimePeriod("").Select(item => item.startTime + " - " + item.endTime).ToList();
 
             int rows = periods.Count + 1; // +1 for header
             int cols = days.Count + 1;    // +1 for "Time" header column
@@ -239,8 +239,8 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         public void loadDataFilter()
         {
-            List<MajorModel> majors = _majorController.getMajors();
-            List<TermModel> termModels = _termController.getTerms();
+            List<MajorModel> majors = _majorController.getMajors("");
+            List<TermModel> termModels = _termController.getTerms("");
 
             cmbTerms.DisplayMember = "TermName"; // Replace with the property you want to display
             cmbTerms.ValueMember = "Id";

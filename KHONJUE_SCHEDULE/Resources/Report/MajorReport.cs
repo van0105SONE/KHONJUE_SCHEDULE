@@ -49,7 +49,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report
     async private void generateReport()
         {
             this.REPORT_CONTAINER.Controls.Clear();
-            var data = _majorController.getMajors();
+            var data = _majorController.getMajors("");
             var report = new MajorReportController(data);
             string path = Path.Combine(Environment.CurrentDirectory, "ScheduleReport.pdf");
             report.GeneratePdf(path);

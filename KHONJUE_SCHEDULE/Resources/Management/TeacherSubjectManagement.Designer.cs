@@ -75,6 +75,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(221, 40);
             txtSearch.TabIndex = 22;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // button8
             // 

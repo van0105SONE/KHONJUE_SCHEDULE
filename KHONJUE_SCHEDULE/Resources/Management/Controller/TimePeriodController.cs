@@ -1,5 +1,6 @@
 ﻿using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Management.Model;
+using Microsoft.VisualBasic.Devices;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -64,10 +65,15 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        public List<TimePeriodModel> getTimePeriod()
+        public List<TimePeriodModel> getTimePeriod(string keyword)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""PeriodCode"") LIKE LOWER('%{keyword}%');";
+                }
                 List<TimePeriodModel>  timePeiods = new List<TimePeriodModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;

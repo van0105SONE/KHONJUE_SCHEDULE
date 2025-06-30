@@ -42,7 +42,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 levelDatagrid.Columns.Remove("DeleteButton");
             }
 
-            levelDatagrid.DataSource = _levelController.getMajors();
+            levelDatagrid.DataSource = _levelController.getMajors(txtSearch.Text.Trim());
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
             levelDatagrid.Columns["CurriculumId"].HeaderText = "ລຳດັບ";
@@ -76,20 +76,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             if (e.RowIndex >= 0) // Ensure a row (not header) is clicked
             {
                 var row = levelDatagrid.Rows[e.RowIndex];
-                var levelCode = row.Cells["MajorCode"].Value.ToString(); // Get subject code
-                var levelName = row.Cells["MajorName"].Value.ToString(); // Get subject code
+                var classPerLimit = int.Parse( row.Cells["LimitPerClass"].Value.ToString()); // Get subject code
+                var majorCode = row.Cells["MajorCode"].Value.ToString(); // Get subject code
+                var majorName = row.Cells["MajorName"].Value.ToString(); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == levelDatagrid.Columns["EditButton"].Index)
                 {
                     // Edit button clicked
 
-                    var subjectArg = new LevelModel()
+                    var subjectArg = new MajorModel()
                     {
                         Id = Id,
-                        LevelCode = levelCode,
-                        LevelName = levelName
+                        MajorCode = majorCode,
+                        MajorName = majorName,
+                        LimitPerClass = classPerLimit
                     };
-                    CREATE_LEVEL_FORM createForm = new CREATE_LEVEL_FORM(subjectArg);
+                    CREATE_MAJOR_FORM createForm = new CREATE_MAJOR_FORM(subjectArg);
 
 
 
@@ -105,7 +107,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 else if (e.ColumnIndex == levelDatagrid.Columns["DeleteButton"].Index)
                 {
                     // Delete button clicked
-                    DialogResult confirm = MessageBox.Show($"Are you sure you want to delete this {levelName}?",
+                    DialogResult confirm = MessageBox.Show($"Are you sure you want to delete this {majorName}?",
                         "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (confirm == DialogResult.Yes)

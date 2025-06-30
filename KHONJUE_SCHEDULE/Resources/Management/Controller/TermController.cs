@@ -1,6 +1,7 @@
 ﻿using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Management.Model;
 using KHONJUE_SCHEDULE.Resources.Users.Model;
+using Microsoft.VisualBasic.Devices;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE terms SET ""TermName""='{termName}' WHERE id={Id}";
+                _command.CommandText = $@"UPDATE terms SET ""TermName""='{termName}' WHERE ""Id""={Id}";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -87,14 +88,19 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public List<TermModel> getTerms()
+        public List<TermModel> getTerms(string keyword)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""TermCode"") LIKE LOWER('%{keyword}%') OR LOWER(""TermName"") LIKE LOWER('%{keyword}%')";
+                }
                 List<TermModel> terms = new List<TermModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT terms.""Id"", terms.""TermName"", terms.""TermCode"" FROM terms;";
+                _command.CommandText = $@"SELECT terms.""Id"", terms.""TermName"", terms.""TermCode"" FROM terms {condition};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

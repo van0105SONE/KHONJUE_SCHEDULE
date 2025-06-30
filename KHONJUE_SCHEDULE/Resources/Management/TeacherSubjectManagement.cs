@@ -47,13 +47,14 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             }
 
             subjectDatagrid.DataSource = null;
-            List<TeacherSubject> subjects = _teacherSubjectController.GetTeacherSubjectList();
+            List<TeacherSubject> subjects = _teacherSubjectController.GetTeacherSubjectList(txtSearch.Text.Trim());
 
             // Set data source and column headers
             subjectDatagrid.DataSource = subjects;
             subjectDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             subjectDatagrid.Columns["Id"].Visible = false;
             subjectDatagrid.Columns["TeacherId"].Visible = false;
+            subjectDatagrid.Columns["SubjectId"].Visible = false;
             subjectDatagrid.Columns["TeacherName"].HeaderText = "ຊື່ອາຈານ";
             subjectDatagrid.Columns["SubjectName"].HeaderText = "ວິຊາທີ່ອາຈານສອນ";
 
@@ -84,8 +85,19 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             {
                 var row = subjectDatagrid.Rows[e.RowIndex];
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
+                var subjectId = int.Parse(row.Cells["SubjectId"].Value.ToString()); // Get subject code
+                var teacherId = int.Parse(row.Cells["TeacherId"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == subjectDatagrid.Columns["EditButton"].Index)
                 {
+                    TeacherSubject arg = new TeacherSubject()
+                    {
+                        Id = Id,
+                        TeacherId = teacherId,
+                        SubjectId = subjectId
+                    };
+
+                    CREATE_TEACHER_SUBJECT_FORM form = new CREATE_TEACHER_SUBJECT_FORM(arg);
+                    form.ShowDialog();
                     // Edit button clicked
                     loadDataGrid(false);
                 }
@@ -129,6 +141,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         {
             MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             _teacherSubjectController.deleteAll();
+            loadDataGrid(false);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
             loadDataGrid(false);
         }
     }

@@ -192,11 +192,10 @@
             Controls.Add(panel1);
             Controls.Add(panel8);
             Controls.Add(panel2);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_TIME_PERIOD";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CreateTimePeriod";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel8.ResumeLayout(false);

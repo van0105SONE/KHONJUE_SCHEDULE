@@ -41,7 +41,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 levelDatagrid.Columns.Remove("DeleteButton");
             }
 
-            levelDatagrid.DataSource = _termController.getTerms();
+            levelDatagrid.DataSource = _termController.getTerms(txtSearch.Text.Trim());
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
             levelDatagrid.Columns["TermName"].HeaderText = "ພຽກຮຽນ";

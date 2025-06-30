@@ -20,7 +20,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private DatabaseContext _dbContext { get; set; }
         private MajorController _majorController { get; set; }
         private CurriculumController _curriculumController { get; set; }
-        private LevelModel level { get; set; }
+        private MajorModel major { get; set; }
         public CREATE_MAJOR_FORM()
         {
             InitializeComponent();
@@ -28,19 +28,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _dbContext.connect();
             _majorController = new MajorController(_dbContext);
             _curriculumController = new CurriculumController(_dbContext);
-            level = new LevelModel();
+            major = new MajorModel();
             action = Actions.Create;
+            txtLimitPerClass.Text = "1";
             loadCurriculum();
         }
 
-        public CREATE_MAJOR_FORM(LevelModel levelParam)
+        public CREATE_MAJOR_FORM(MajorModel majorParams)
         {
             InitializeComponent();
             _dbContext = new DatabaseContext();
             _dbContext.connect();
             _majorController = new MajorController(_dbContext);
-            level = levelParam;
-            txtMajorName.Text = levelParam.LevelName;
+            _curriculumController = new CurriculumController(_dbContext);
+            major = majorParams;
+            txtMajorName.Text = majorParams.MajorName;
+            txtLimitPerClass.Text = majorParams.LimitPerClass.ToString();
             action = Actions.Update;
             loadCurriculum();
         }
@@ -48,7 +51,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         public void loadCurriculum()
         {
-            var curriculums = _curriculumController.GetCurriculumList();
+            var curriculums = _curriculumController.GetCurriculumList("");
 
 
             // Set the DisplayMember and ValueMember properties
@@ -78,23 +81,24 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             bool isSuccess = false;
             if (action == Actions.Create)
             {
-                MajorModel major = new MajorModel()
+                MajorModel newMajor = new MajorModel()
                 {
                     MajorName = txtMajorName.Text,
                     LimitPerClass = int.Parse(txtLimitPerClass.Text),
                     CurriculumId = int.Parse(cmbCrl.SelectedValue.ToString()),
                 };
-                isSuccess = _majorController.CreateMajor(major);
+                isSuccess = _majorController.CreateMajor(newMajor);
             }
             else
             {
-                MajorModel major = new MajorModel()
+                MajorModel updateMajor = new MajorModel()
                 {
+                    Id = major.Id,
                     MajorName = txtMajorName.Text,
                     LimitPerClass = int.Parse(txtLimitPerClass.Text),
                     CurriculumId = int.Parse(cmbCrl.SelectedValue.ToString()),
                 };
-                isSuccess = _majorController.editMajor(major);
+                isSuccess = _majorController.editMajor(updateMajor);
             }
 
             if (isSuccess)

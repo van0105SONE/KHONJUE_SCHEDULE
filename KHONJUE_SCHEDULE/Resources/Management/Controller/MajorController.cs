@@ -1,6 +1,7 @@
 ﻿using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Management.Model;
 using KHONJUE_SCHEDULE.Resources.Users.Model;
+using Microsoft.VisualBasic.Devices;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         {
             try
             {
+
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE majors SET ""MajorName""='{majorParams.MajorName},  ""LimitPerClass""='{majorParams.LimitPerClass},""CurriculumId""='{majorParams.CurriculumId}' WHERE id={majorParams.Id}";
+                _command.CommandText = $@"UPDATE majors SET ""MajorName""='{majorParams.MajorName}',  ""LimitPerClass""={majorParams.LimitPerClass},""CurriculumId""='{majorParams.CurriculumId}' WHERE id={majorParams.Id}";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -73,6 +75,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         {
             try
             {
+
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
                 _command.CommandText = $@"DELETE FROM majors;";
@@ -86,14 +89,19 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
-        public List<MajorModel> getMajors()
+        public List<MajorModel> getMajors(string keyword)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""MajorCode"") LIKE LOWER('%{keyword}%') OR LOWER(""MajorName"") LIKE LOWER('%{keyword}%')";
+                }
                 List<MajorModel> levels = new List<MajorModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT majors.""id"", majors.""MajorCode"", majors.""MajorName"",  majors.""LimitPerClass"" ,majors.""CurriculumId"",curriculum.""CurriculumName""  FROM majors LEFT JOIN curriculum ON majors.""CurriculumId"" = curriculum.""Id""";
+                _command.CommandText = $@"SELECT majors.""id"", majors.""MajorCode"", majors.""MajorName"",  majors.""LimitPerClass"" ,majors.""CurriculumId"",curriculum.""CurriculumName""  FROM majors LEFT JOIN curriculum ON majors.""CurriculumId"" = curriculum.""Id"" {condition};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

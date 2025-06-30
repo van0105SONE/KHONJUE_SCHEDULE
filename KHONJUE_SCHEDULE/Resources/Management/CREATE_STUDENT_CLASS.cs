@@ -31,6 +31,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             student = new StudentClassModel();
             action = Actions.Create;
+            txtNumberOfClass.Text = "1";
             loadRoomTypes();
         }
 

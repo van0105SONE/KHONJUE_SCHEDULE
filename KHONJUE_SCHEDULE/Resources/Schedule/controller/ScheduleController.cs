@@ -49,11 +49,11 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
             List<DayOfWeek> allDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
             Random rng = new Random(); // For shuffling days
 
-            var teachers = _teacherController.getTeachers();
+            var teachers = _teacherController.getTeachers("");
             var termSubjects = _subjectController.GetTermSubjectList();
-            var periods = _periodController.getTimePeriod();
-            var rooms = _classController.GetStudentClasstList(); // Must include RoomType ("lecture"/"lab")
-            var subjects = _subjectController.GetSubjectList();
+            var periods = _periodController.getTimePeriod("");
+            var rooms = _classController.GetStudentClasstList(""); // Must include RoomType ("lecture"/"lab")
+            var subjects = _subjectController.GetSubjectList("");
 
             var teacherScheduleCount = new Dictionary<int, int>();
             var teacherOccupation = new HashSet<string>(); // day_period_teacherId

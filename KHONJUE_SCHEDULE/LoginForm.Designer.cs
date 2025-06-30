@@ -99,7 +99,7 @@
             button1.Name = "button1";
             button1.Size = new Size(149, 53);
             button1.TabIndex = 8;
-            button1.Text = "ເຂົ້າຊຸ່ລະບົບ";
+            button1.Text = "ເຂົ້າສູ່ລະບົບ";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 

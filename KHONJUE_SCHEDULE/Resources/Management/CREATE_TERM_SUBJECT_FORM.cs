@@ -52,6 +52,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _termController = new TermController(_dbContext);
             _levelController = new LevelController(_dbContext);
             _majorController = new MajorController(_dbContext);
+            _curriculumController = new CurriculumController(_dbContext);
             termSubject = termSubjectParam;
             cmbLevel.SelectedValue = termSubjectParam.TermName;
             action = Actions.Update;
@@ -76,7 +77,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void loadSubject()
         {
-            List<SubjectModel> roles = _subjectController.GetSubjectList();
+            List<SubjectModel> roles = _subjectController.GetSubjectList("");
 
             // Set the DisplayMember and ValueMember properties
             cmbSubject.DisplayMember = "SubjectName"; // Replace with the property you want to display
@@ -87,7 +88,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         }
         private void loadTerm()
         {
-            List<TermModel> roles = _termController.getTerms();
+            List<TermModel> roles = _termController.getTerms("");
 
             // Set the DisplayMember and ValueMember properties
             cmbTerm.DisplayMember = "TermName"; // Replace with the property you want to display
@@ -98,7 +99,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         }
         private void loadLevel()
         {
-            List<LevelModel> roles = _levelController.getLevels();
+            List<LevelModel> roles = _levelController.getLevels("");
 
             // Set the DisplayMember and ValueMember properties
             cmbLevel.DisplayMember = "LevelName"; // Replace with the property you want to display
@@ -110,7 +111,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void loadCurriculum()
         {
-            List<CurriculumModel> roles = _curriculumController.GetCurriculumList();
+            List<CurriculumModel> roles = _curriculumController.GetCurriculumList("");
             // Set the DisplayMember and ValueMember properties
             cmbCurriculum.DisplayMember = "CurriculumName"; // Replace with the property you want to display
             cmbCurriculum.ValueMember = "Id";    // Replace with the property you want as the value
@@ -126,7 +127,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void loadMajors()
         {
-            List<MajorModel> roles = _majorController.getMajors();
+            List<MajorModel> roles = _majorController.getMajors("");
 
             // Set the DisplayMember and ValueMember properties
             cmbMajor.DisplayMember = "MajorName"; // Replace with the property you want to display

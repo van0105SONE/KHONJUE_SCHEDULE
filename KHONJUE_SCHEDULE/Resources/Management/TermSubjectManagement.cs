@@ -56,6 +56,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
             levelDatagrid.Columns["SubjectId"].Visible = false;
+            levelDatagrid.Columns["LevelId"].Visible = false;
+            levelDatagrid.Columns["TermId"].Visible = false;
+            levelDatagrid.Columns["CurriculumId"].Visible = false;
+            levelDatagrid.Columns["MajorId"].Visible = false;
             levelDatagrid.Columns["SubjectName"].HeaderText = "ວິຊາ";
             levelDatagrid.Columns["MajorName"].HeaderText = "ສາຂາ";
             levelDatagrid.Columns["TermName"].HeaderText = "ພຽກຮຽນ";
@@ -87,17 +91,27 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             {
                 var row = levelDatagrid.Rows[e.RowIndex];
                 var termName = row.Cells["TermName"].Value.ToString(); // Get subject code
-                var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
+                var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject codefds
+                var subjectId = int.Parse(row.Cells["SubjectId"].Value.ToString());
+                var termId = int.Parse(row.Cells["TermId"].Value.ToString());
+                var levelId = int.Parse(row.Cells["LevelId"].Value.ToString());
+                var majorId = int.Parse(row.Cells["MajorId"].Value.ToString());
+                var curriculumId = int.Parse(row.Cells["CurriculumId"].Value.ToString());
                 if (e.ColumnIndex == levelDatagrid.Columns["EditButton"].Index)
                 {
                     // Edit button clicked
 
-                    var termArg = new TermModel()
+                    var termArg = new TermSubjectModel()
                     {
                         Id = Id,
-                        TermName = termName
+                        SubjectId = subjectId,
+                        TermName = termName,
+                        MajorId = majorId,
+                        LevelId = levelId,
+                        TermId = termId,
+                        CurriculumId = curriculumId
                     };
-                    CREATE_TERM_FORM createForm = new CREATE_TERM_FORM(termArg);
+                    CREATE_TERM_SUBJECT_FORM createForm = new CREATE_TERM_SUBJECT_FORM(termArg);
 
 
 

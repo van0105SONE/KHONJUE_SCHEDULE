@@ -40,6 +40,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             };
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             createBtn.Text = "ບັນທຶກ";
+            txtLecture.Text = "1";
+            txtLab.Text = "1";
             action = Actions.Create;
         }
 
@@ -59,6 +61,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             txtSubject.Text = subjectParam.SubjectName;
             txtDescription.Text = subjectParam.Description;
+            txtLecture.Text = subjectParam.Lecture.ToString();
+            txtLab.Text = subjectParam.Lab.ToString();
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
             action = Actions.Update;

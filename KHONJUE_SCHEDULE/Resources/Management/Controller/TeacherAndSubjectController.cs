@@ -1,5 +1,6 @@
 ﻿using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Resources.Management.Model;
+using Microsoft.VisualBasic.Devices;
 using Npgsql;
 using System;
 using System.CodeDom.Compiler;
@@ -28,6 +29,22 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
                 _command.CommandText = $@"INSERT INTO teacher_subject (""SubjectId"", ""TeacherId"") VALUES ({subjectId}, {teacherId})";
+                _command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool updateSubjectTeacher(int id, int subjectId, int teacherId)
+        {
+            try
+            {
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"UPDATE teacher_subject SET ""SubjectId""={subjectId}, ""TeacherId""={teacherId} WHERE ""Id""={id}";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -69,20 +86,26 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        public List<TeacherSubject> GetTeacherSubjectList()
+        public List<TeacherSubject> GetTeacherSubjectList(string keyword)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(teachers.""TeacherCode"") LIKE LOWER('%{keyword}%') OR LOWER( teachers.""TeacherName"") LIKE LOWER('%{keyword}%')";
+                }
                 List<TeacherSubject> teacherSubjects = new List<TeacherSubject>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT teacher_subject.""Id"",teacher_subject.""TeacherId"", subject.""SubjectName"", teachers.""TeacherName"" FROM public.teacher_subject LEFT JOIN  teachers ON teacher_subject.""TeacherId"" =  teachers.""Id""  LEFT JOIN  subject ON teacher_subject.""SubjectId"" = subject.""Id"";";
+                _command.CommandText = $@"SELECT teacher_subject.""Id"",teacher_subject.""TeacherId"", teacher_subject.""SubjectId"", subject.""SubjectName"", teachers.""TeacherName"" FROM public.teacher_subject LEFT JOIN  teachers ON teacher_subject.""TeacherId"" =  teachers.""Id""  LEFT JOIN  subject ON teacher_subject.""SubjectId"" = subject.""Id"" {condition};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
                     TeacherSubject teacherSubject = new TeacherSubject();
                     teacherSubject.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
                     teacherSubject.TeacherId = int.Parse(data.GetValue(data.GetOrdinal("TeacherId")).ToString(), 0);
+                    teacherSubject.SubjectId = int.Parse(data.GetValue(data.GetOrdinal("SubjectId")).ToString(), 0);
                     teacherSubject.SubjectName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("SubjectName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("SubjectName")).ToString();
                     teacherSubject.TeacherName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("TeacherName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("TeacherName")).ToString();
 

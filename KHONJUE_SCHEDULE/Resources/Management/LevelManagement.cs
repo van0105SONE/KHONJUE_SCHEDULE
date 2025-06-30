@@ -41,7 +41,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 levelDatagrid.Columns.Remove("DeleteButton");
             }
 
-            levelDatagrid.DataSource = _levelController.getLevels();
+            levelDatagrid.DataSource = _levelController.getLevels(txtSearch.Text.Trim());
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
             levelDatagrid.Columns["LevelCode"].HeaderText = "ລະຫັດຊັ້ນຮຽນ";
@@ -140,6 +140,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         {
             MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             _levelController.deleteLevelAll();
+            loadLevelData(false);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
             loadLevelData(false);
         }
     }

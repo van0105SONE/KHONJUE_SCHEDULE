@@ -40,7 +40,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE student_class SET ""StudentClassName""='{classParams.StudentClassName}'  WHERE ""Id"" = '{classParams.Id}';";
+                _command.CommandText = $@"UPDATE student_class SET ""StudentClassName""='{classParams.StudentClassName}',""Description""='{classParams.Description}' ,""NumberOfClass""={classParams.NumberOfClass}, ""RoomType""='{classParams.RoomType}'  WHERE ""Id"" = '{classParams.Id}';";
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -83,7 +83,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        public List<StudentClassModel> GetStudentClasstList()
+        public List<StudentClassModel> GetStudentClasstList(string keyword)
         {
             try
             {

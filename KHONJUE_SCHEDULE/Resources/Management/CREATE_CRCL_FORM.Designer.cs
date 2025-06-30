@@ -197,7 +197,7 @@
             label5.Name = "label5";
             label5.Size = new Size(81, 33);
             label5.TabIndex = 1;
-            label5.Text = "ຊື້ຫຼັກສູດ";
+            label5.Text = "ຊື່ຫຼັກສູດ";
             // 
             // panel2
             // 
@@ -225,11 +225,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 404);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CREATE_CRCL_FORM";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CreateSub_jectForm";
             panel1.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
             panel5.ResumeLayout(false);

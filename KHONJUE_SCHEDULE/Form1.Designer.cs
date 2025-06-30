@@ -232,7 +232,6 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
             WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             SIDEBAR_MENU.ResumeLayout(false);

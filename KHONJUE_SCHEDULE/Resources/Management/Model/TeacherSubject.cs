@@ -12,6 +12,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Model
        
       public int TeacherId { get; set; }
       public string TeacherName { get; set; }
+      public int SubjectId { get; set; }
       public string SubjectName { get; set; }
 
     }

@@ -88,8 +88,8 @@ namespace KHONJUE_SCHEDULE.Resources.Report
         }
         public void loadDataFilter()
         {
-            List<MajorModel> majors = _majorController.getMajors();
-            List<TermModel> termModels = _termController.getTerms();
+            List<MajorModel> majors = _majorController.getMajors("");
+            List<TermModel> termModels = _termController.getTerms("");
 
             cmbTerm.DisplayMember = "TermName"; // Replace with the property you want to display
             cmbTerm.ValueMember = "Id";

@@ -125,7 +125,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE subject SET ""SubjectName""='{subjectParams.SubjectName}',""Description""='{subjectParams.Description}'  WHERE ""Id"" = '{subjectParams.Id}';";
+                _command.CommandText = $@"UPDATE subject SET ""SubjectName""='{subjectParams.SubjectName}',""Description""='{subjectParams.Description}', ""Lecture"" = {subjectParams.Lecture}, ""Lab"" = {subjectParams.Lab}  WHERE ""Id"" = '{subjectParams.Id}';";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -136,10 +136,15 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
         }
 
 
-        public List<SubjectModel> GetSubjectList()
+        public List<SubjectModel> GetSubjectList(string keyword)
         {
             try
             {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""SubjectCode"") LIKE LOWER('%{keyword}%') OR LOWER(""SubjectName"") LIKE LOWER('%{keyword}%')";
+                }
                 List<SubjectModel> subjects = new List<SubjectModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
@@ -188,7 +193,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 List<TermSubjectModel> subjects = new List<TermSubjectModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT term_subjects.""Id"",term_subjects.""SubjectId""  ,subject.""SubjectName"", terms.""TermName"", study_level.""LevelName"", majors.""MajorName"" FROM public.term_subjects LEFT JOIN  subject ON term_subjects.""SubjectId"" = subject.""Id"" LEFT JOIN  majors ON term_subjects.""MajorId"" = majors.id LEFT JOIN  terms ON term_subjects.""TermId"" = terms.""Id""  LEFT JOIN  study_level ON term_subjects.""LevelId"" = study_level.""Id""  LEFT JOIN   curriculum ON term_subjects.""CurriculumId"" = curriculum.""Id"";";
+                _command.CommandText = $@"SELECT term_subjects.""Id"",term_subjects.""SubjectId"", term_subjects.""MajorId"", term_subjects.""TermId"", term_subjects.""LevelId"" , term_subjects.""CurriculumId"",subject.""SubjectName"", terms.""TermName"", study_level.""LevelName"", majors.""MajorName"", curriculum.""CurriculumName"" FROM public.term_subjects LEFT JOIN  subject ON term_subjects.""SubjectId"" = subject.""Id"" LEFT JOIN  majors ON term_subjects.""MajorId"" = majors.id LEFT JOIN  terms ON term_subjects.""TermId"" = terms.""Id""  LEFT JOIN  study_level ON term_subjects.""LevelId"" = study_level.""Id""  LEFT JOIN   curriculum ON term_subjects.""CurriculumId"" = curriculum.""Id"";";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
@@ -199,6 +204,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                     subject.TermName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("TermName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("TermName")).ToString();
                     subject.LevelName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("LevelName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("LevelName")).ToString();
                     subject.MajorName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("MajorName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("MajorName")).ToString();
+                    subject.CurriculumName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("CurriculumName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("CurriculumName")).ToString();
+                    subject.TermId = int.Parse(data.GetValue(data.GetOrdinal("TermId")).ToString(), 0);
+                    subject.LevelId = int.Parse(data.GetValue(data.GetOrdinal("LevelId")).ToString(), 0);
+                    subject.MajorId = int.Parse(data.GetValue(data.GetOrdinal("MajorId")).ToString(), 0);
+                    subject.CurriculumId = int.Parse(data.GetValue(data.GetOrdinal("CurriculumId")).ToString(), 0);
                     subjects.Add(subject);
                 }
                 data.Close();

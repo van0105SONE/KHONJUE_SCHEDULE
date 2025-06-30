@@ -41,7 +41,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 levelDatagrid.Columns.Remove("DeleteButton");
             }
 
-            levelDatagrid.DataSource = _curriculumController.GetCurriculumList();
+            levelDatagrid.DataSource = _curriculumController.GetCurriculumList(txtSearch.Text.Trim());
             levelDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             levelDatagrid.Columns["Id"].Visible = false;
             levelDatagrid.Columns["CurriculumName"].HeaderText = "ຊື່ຫຼັກສູດ";
@@ -138,6 +138,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         {
             MessageBox.Show("ທ່ານໝັ້ນໃຈແລ້ວບໍ ຈະລືບຂໍ້ມູນທັງໝົດ. ກົດຍືນຍັນເພືອ່ລຶບ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             _curriculumController.deleteAll();
+            loadData(false);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
             loadData(false);
         }
     }
