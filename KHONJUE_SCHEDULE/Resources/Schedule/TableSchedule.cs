@@ -17,7 +17,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 {
     public partial class TableSchedule : UserControl
     {
-
+        private Schedule schedulePage { get; set; }
         private DatabaseContext _dbContext { get; set; }
         private LevelController _levelController { get; set; }
         private SubjectController _subjController { get; set; }
@@ -41,7 +41,22 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         }
 
+        public TableSchedule(Schedule shedule)
+        {
+            InitializeComponent();
+            schedulePage = shedule;
+            _dbContext = new DatabaseContext();
+            _dbContext.connect();
+            _termController = new TermController(_dbContext);
+            _levelController = new LevelController(_dbContext);
+            _subjController = new SubjectController(_dbContext);
+            _scheduleController = new ScheduleController(_dbContext);
+            _timePeriodController = new TimePeriodController(_dbContext);
+            _majorController = new MajorController(_dbContext);
+            this.loadDataFilter();
+            this.InitializeWeekGrid();
 
+        }
 
         public void InitializeWeekGrid()
         {
@@ -272,6 +287,8 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void button3_Click(object sender, EventArgs e)
         {
+            schedulePage.visibleGeneratePage();
+
 
         }
     }

@@ -79,7 +79,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         public void visibleTablePage()
         {
             subjectDatagrid.Controls.Clear();
-            TableSchedule inforPage = new TableSchedule();
+            TableSchedule inforPage = new TableSchedule(this);
             inforPage.Dock = DockStyle.Fill;
             this.subjectDatagrid.Controls.Add(inforPage);
         }

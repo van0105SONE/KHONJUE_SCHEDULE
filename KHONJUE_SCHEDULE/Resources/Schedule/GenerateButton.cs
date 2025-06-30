@@ -31,12 +31,8 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             try
             {
                 IsDisplayTable = true;
-               if(scheduleController.checkHasSchedule())
-                {
-                    
-                }
+                scheduleController.deleteSchedule();
                 scheduleController.GenerateSchedule();
-
                 schedulePage.visibleTablePage();
             }
             catch(Exception ex)
