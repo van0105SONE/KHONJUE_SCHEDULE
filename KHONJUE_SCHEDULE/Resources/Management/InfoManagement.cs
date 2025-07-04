@@ -94,30 +94,44 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void button7_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            MajorManagement curriculumManagement = new MajorManagement();
+            ClassMajorManagement curriculumManagement = new ClassMajorManagement();
             curriculumManagement.Dock = DockStyle.Fill;
             InfoContainer.Controls.Add(curriculumManagement);
             Style.SetActiveButton(button7, panel2.Controls);
+
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            TimePeriodManagement timePerdioManagement = new TimePeriodManagement();
-            timePerdioManagement.Dock = DockStyle.Fill;
-            InfoContainer.Controls.Add(timePerdioManagement);
+            MajorManagement curriculumManagement = new MajorManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
             Style.SetActiveButton(button8, panel2.Controls);
+
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             InfoContainer.Controls.Clear();
-            CurriculumManagement curriculumManagement = new CurriculumManagement();
-            curriculumManagement.Dock = DockStyle.Fill;
-            InfoContainer.Controls.Add(curriculumManagement);
+            TimePeriodManagement timePerdioManagement = new TimePeriodManagement();
+            timePerdioManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(timePerdioManagement);
             Style.SetActiveButton(button9, panel2.Controls);
 
 
+
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            InfoContainer.Controls.Clear();
+            CurriculumManagement curriculumManagement = new CurriculumManagement();
+            curriculumManagement.Dock = DockStyle.Fill;
+            InfoContainer.Controls.Add(curriculumManagement);
+            Style.SetActiveButton(button10, panel2.Controls);
         }
     }
 }

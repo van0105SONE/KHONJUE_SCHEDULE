@@ -96,7 +96,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                 Text = "ເວລາ",
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                Font = new Font("Noto Sans Lao", 10, FontStyle.Bold)
             }, 0, 0);
 
             // Add day headers
@@ -107,7 +107,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                     Text = days[i],
                     TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
-                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                    Font = new Font("Noto Sans Lao", 10, FontStyle.Bold)
                 }, i + 1, 0);
             }
 
@@ -119,12 +119,12 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                     Text = periods[i],
                     TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
-                    Font = new Font("Segoe UI", 9, FontStyle.Regular)
+                    Font = new Font("Noto Sans Lao", 9, FontStyle.Regular)
                 }, 0, i + 1);
             }
 
             // Load schedules and place cards
-            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), null, null);
+            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), null, null);
             foreach (var schedule in schedules)
             {
                 int col = getDayOfWeek(schedule.Day); // +1 for time label
@@ -133,6 +133,8 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                 if (row > 0 && col > 0) // make sure it's valid
                 {
                     Control card = CreateScheduleCard(
+                        schedule.levelName,
+                        schedule.termName,
                         schedule.RoomName,
                         schedule.majorName,
                         schedule.period,
@@ -181,7 +183,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             }
         }
 
-        private Control CreateScheduleCard(string title, string majorName, string period, string subject, string teacher, string roomType)
+        private Control CreateScheduleCard(string levelName,string termName,string title, string majorName, string period, string subject, string teacher, string roomType)
         {
             Panel card = new Panel
             {
@@ -195,40 +197,40 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             Label lblTitle = new Label
             {
                 Text = "ຫ້ອງ: " + title,
-                Font = new Font("Segoe UI", 8, FontStyle.Bold),
+                Font = new Font("Noto Sans Lao", 8, FontStyle.Bold),
                 AutoSize = true
             };
             Label majorTitle = new Label
             {
                 Text = "ສາຂາ: " + majorName,
-                Font = new Font("Segoe UI", 6, FontStyle.Regular),
+                Font = new Font("Noto Sans Lao", 6, FontStyle.Regular),
                 AutoSize = true
             };
             Label lblPeriod = new Label
             {
                 Text = "ໂມງຮຽນ: " + period,
-                Font = new Font("Segoe UI", 6, FontStyle.Regular),
+                Font = new Font("Noto Sans Lao", 6, FontStyle.Regular),
                 AutoSize = true
             };
 
             Label lblSubject = new Label
             {
                 Text = $"ຊື່ວິຊາ: {subject}",
-                Font = new Font("Segoe UI", 6, FontStyle.Italic),
+                Font = new Font("Noto Sans Lao", 6, FontStyle.Italic),
                 AutoSize = true
             };
 
             Label lblTeacher = new Label
             {
                 Text = $"ຊື່ອາຈານ: {teacher}",
-                Font = new Font("Segoe UI", 6, FontStyle.Regular),
+                Font = new Font("Noto Sans Lao", 6, FontStyle.Regular),
                 AutoSize = true
             };
 
             Label lblRoomType = new Label
             {
                 Text = $"ປະເພດຫ້ອງ: {roomType}",
-                Font = new Font("Segoe UI", 6, FontStyle.Regular),
+                Font = new Font("Noto Sans Lao", 6, FontStyle.Regular),
                 AutoSize = true
             };
 
@@ -256,7 +258,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         {
             List<MajorModel> majors = _majorController.getMajors("");
             List<TermModel> termModels = _termController.getTerms("");
-
+            List<LevelModel> levels = _levelController.getLevels("");
             cmbTerms.DisplayMember = "TermName"; // Replace with the property you want to display
             cmbTerms.ValueMember = "Id";
             cmbTerms.DataSource = termModels;
@@ -264,13 +266,15 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             cmbMajors.DisplayMember = "MajorName"; // Replace with the property you want to display
             cmbMajors.ValueMember = "Id";    // Replace with the property you want as the value
             cmbMajors.DataSource = majors;
-            // Set the DisplayMember and ValueMember properties
 
+            cmbLevel.DisplayMember = "LevelName"; // Replace with the property you want to display
+            cmbLevel.ValueMember = "Id";    // Replace with the property you want as the value
+            cmbLevel.DataSource = levels;
         }
 
         private void cmbMajor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null)
+            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
@@ -279,7 +283,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbTerm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null)
+            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
@@ -290,6 +294,14 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             schedulePage.visibleGeneratePage();
 
 
+        }
+
+        private void cmbLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null && cmbLevel.SelectedValue != null)
+            {
+                InitializeWeekGrid();
+            }
         }
     }
 }

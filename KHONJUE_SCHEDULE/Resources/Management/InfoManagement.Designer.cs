@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
+            button10 = new Button();
             button9 = new Button();
             button8 = new Button();
             button7 = new Button();
@@ -46,6 +47,7 @@
             // panel2
             // 
             panel2.BackColor = Color.Green;
+            panel2.Controls.Add(button10);
             panel2.Controls.Add(button9);
             panel2.Controls.Add(button8);
             panel2.Controls.Add(button7);
@@ -63,6 +65,22 @@
             panel2.Size = new Size(1574, 80);
             panel2.TabIndex = 5;
             // 
+            // button10
+            // 
+            button10.BackColor = Color.Green;
+            button10.Dock = DockStyle.Left;
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button10.ForeColor = SystemColors.ButtonHighlight;
+            button10.Location = new Point(1339, 0);
+            button10.Margin = new Padding(3, 4, 3, 4);
+            button10.Name = "button10";
+            button10.Size = new Size(172, 80);
+            button10.TabIndex = 13;
+            button10.Text = "ຫຼັກສູດ";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
+            // 
             // button9
             // 
             button9.BackColor = Color.Green;
@@ -75,7 +93,7 @@
             button9.Name = "button9";
             button9.Size = new Size(172, 80);
             button9.TabIndex = 12;
-            button9.Text = "ຫຼັກສູດ";
+            button9.Text = "ຊົ່ວໂມງຮຽນ";
             button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
@@ -91,7 +109,7 @@
             button8.Name = "button8";
             button8.Size = new Size(135, 80);
             button8.TabIndex = 11;
-            button8.Text = "ຊົ່ວໂມງຮຽນ";
+            button8.Text = "ສາຂາ";
             button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
             // 
@@ -107,7 +125,7 @@
             button7.Name = "button7";
             button7.Size = new Size(105, 80);
             button7.TabIndex = 10;
-            button7.Text = "ສາຂາຮຽນ";
+            button7.Text = "ຫ້ອງສາຂາ";
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
@@ -258,5 +276,6 @@
         private Button button7;
         private Button button8;
         private Button button9;
+        private Button button10;
     }
 }

@@ -56,7 +56,8 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                         columns.RelativeColumn(1); // Subject
                         columns.RelativeColumn(1); // Teacher
                         columns.RelativeColumn(1); // Room
-                        columns.RelativeColumn(2); // Major
+                        columns.RelativeColumn(1); // Major
+                        columns.RelativeColumn(1); // Major
                     });
 
 
@@ -69,12 +70,12 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                         header.Cell().Element(CellStyle).AlignCenter().Text("ອາຈານ").Bold().FontFamily("Noto Sans Lao");
                         header.Cell().Element(CellStyle).AlignCenter().Text("ຫ້ອງຮຽນ").Bold().FontFamily("Noto Sans Lao");
                         header.Cell().Element(CellStyle).AlignCenter().Text("ສາຂາ").Bold().FontFamily("Noto Sans Lao");
-
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ປິ").Bold().FontFamily("Noto Sans Lao");
                         static IContainer CellStyle(IContainer container)
                         {
                             return container
                                 .DefaultTextStyle(x => x.SemiBold())
-                                .Padding(5)
+                                .Padding(0)
                                 .Background(Colors.Grey.Lighten2)
                                 .Border(1)
                                 .BorderColor(Colors.Grey.Darken2);
@@ -90,7 +91,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                         table.Cell().Element(CellStyle).Text(entry.TeacherName);
                         table.Cell().Element(CellStyle).Text(entry.RoomName);
                         table.Cell().Element(CellStyle).Text(entry.majorName);
-    
+                        table.Cell().Element(CellStyle).Text(entry.levelName);
 
                         static IContainer CellStyle(IContainer container)
                         {

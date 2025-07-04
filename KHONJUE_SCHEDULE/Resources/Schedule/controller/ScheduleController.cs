@@ -22,6 +22,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
         public TeacherAndSubjectController _teacherSubjectController { get; set; }
         public TimePeriodController _periodController { get; set; }
         public StudentClassController _classController { get; set; }
+        public ClassMajorController _classMajorController { get; set; }
 
         private List<DayOfWeek> days = new() {
         DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday,
@@ -37,6 +38,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
             _subjectController = new SubjectController(context);
             _periodController = new TimePeriodController(context);
             _classController = new StudentClassController(context);
+            _classMajorController = new ClassMajorController(context);
             dbContext = context;
         }
 
@@ -54,87 +56,88 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
             var periods = _periodController.getTimePeriod("");
             var rooms = _classController.GetStudentClasstList(""); // Must include RoomType ("lecture"/"lab")
             var subjects = _subjectController.GetSubjectList("");
+            var classMajors = _classMajorController.GetStudentClasstList("");
+
 
             var teacherScheduleCount = new Dictionary<int, int>();
             var teacherOccupation = new HashSet<string>(); // day_period_teacherId
             var roomOccupation = new HashSet<string>();    // day_period_roomId
             var periodADay = new HashSet<string>();        // day_period for any subject
-            var subjectDayTracker = new Dictionary<string, HashSet<string>>(); // termSubjectId_roomType -> used days
+            var subjectDayTracker = new Dictionary<string, HashSet<string>>(); // termSubjectId_roomType -> used days                                                               // NEW – block two sessions of the *same class‑major* from overlapping
+            var classMajorOccupation = new HashSet<string>();   // day_period_classMajorId
+
+            var groupedSubjects = new List<(TermSubjectModel termSubject, SubjectModel subject, int type, int count)>();
 
             foreach (var termSubject in termSubjects)
             {
                 var subject = subjects.FirstOrDefault(s => s.Id == termSubject.SubjectId);
                 if (subject == null) continue;
 
-                // ✅ Shuffle days to prevent Sunday-first bias
-                List<DayOfWeek> days = allDays.OrderBy(d => rng.Next()).ToList();
+                groupedSubjects.Add((termSubject, subject, 0, subject.Lecture)); // lecture
+                groupedSubjects.Add((termSubject, subject, 1, subject.Lab));     // lab
+            }
 
-                int[] types = { 0, 1 }; // 0 = Lecture, 1 = Lab
+            foreach (var (termSubject, subject, type, sessionCount) in groupedSubjects)
+            {
+                string roomType = type == 0 ? "lecture" : "lab";
 
-                foreach (int type in types)
+                var classList = classMajors
+                    .Where(c => c.LevelId == termSubject.LevelId && c.MajorId == termSubject.MajorId)
+                    .ToList();
+
+                if (classList.Count == 0 || sessionCount == 0) continue;
+
+                for (int session = 0; session < sessionCount; session++)
                 {
-                    int sessionCount = type == 0 ? subject.Lecture : subject.Lab;
-                    string roomType = type == 0 ? "lecture" : "lab";
-
-                    for (int i = 0; i < sessionCount; i++)
+                    // 👇 Schedule independently for each classMajor, but same subject/type/session index
+                    foreach (var classMajor in classList)
                     {
                         bool scheduled = false;
-
+                        List<DayOfWeek> days = allDays.OrderBy(_ => rng.Next()).ToList();
                         var eligibleTeachers = teachers
                             .Where(t => IsTeacherEligible(t.Id, subject.Id))
-                            .OrderBy(t => teacherScheduleCount.TryGetValue(t.Id, out var count) ? count : 0)
+                            .OrderBy(t => teacherScheduleCount.TryGetValue(t.Id, out var cnt) ? cnt : 0)
                             .ToList();
 
                         foreach (var day in days)
                         {
                             string dayStr = day.ToString();
-                            string subjectKey = $"{termSubject.Id}_{roomType}";
-
-                            if (subjectDayTracker.TryGetValue(subjectKey, out var usedDays) && usedDays.Contains(dayStr))
-                                continue;
-
                             foreach (var period in periods)
                             {
-                                int periodId = period.Id;
+                                string classKey = $"{dayStr}_{period.Id}_{classMajor.Id}";
+                                if (classMajorOccupation.Contains(classKey)) continue;
 
-                                foreach (var room in rooms.Where(r => r.RoomType.ToLower() == roomType))
+                                foreach (var room in rooms.Where(r => r.RoomType.ToLower() == roomType.ToLower()))
                                 {
-                                    string roomKey = $"{dayStr}_{periodId}_{room.Id}_{roomType}";
+                                    string roomKey = $"{dayStr}_{period.Id}_{room.Id}";
                                     if (roomOccupation.Contains(roomKey)) continue;
 
                                     foreach (var teacher in eligibleTeachers)
                                     {
-                                        string teacherKey = $"{dayStr}_{periodId}_{teacher.Id}";
-                                        string periodInDay = $"{dayStr}_{periodId}";
-                                        teacherScheduleCount.TryGetValue(teacher.Id, out var currentCount);
-
-                                        if (periodADay.Contains(periodInDay)) continue;
-                                        if (currentCount >= teacher.QuotaPerWeek) continue;
+                                        teacherScheduleCount.TryGetValue(teacher.Id, out var count);
+                                        string teacherKey = $"{dayStr}_{period.Id}_{teacher.Id}";
                                         if (teacherOccupation.Contains(teacherKey)) continue;
+                                        if (count >= teacher.QuotaPerWeek) continue;
 
-                                        // ✅ Schedule
                                         var item = new ScheduleModel
                                         {
                                             TermSubjectId = termSubject.Id,
+                                            ClassMajorId = classMajor.Id,
                                             Day = dayStr,
-                                            periodId = periodId,
+                                            periodId = period.Id,
                                             RoomId = room.Id,
                                             TeacherId = teacher.Id,
-                                            Type = room.RoomType
+                                            Type = roomType
                                         };
 
                                         schedule.Add(item);
                                         saveSchedule(item);
 
-                                        // Update usage
-                                        teacherScheduleCount[teacher.Id] = currentCount + 1;
+                                        // Update trackers
+                                        teacherScheduleCount[teacher.Id] = count + 1;
                                         teacherOccupation.Add(teacherKey);
                                         roomOccupation.Add(roomKey);
-                                        periodADay.Add(periodInDay);
-
-                                        if (!subjectDayTracker.ContainsKey(subjectKey))
-                                            subjectDayTracker[subjectKey] = new HashSet<string>();
-                                        subjectDayTracker[subjectKey].Add(dayStr);
+                                        classMajorOccupation.Add(classKey);
 
                                         scheduled = true;
                                         break;
@@ -151,11 +154,13 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
 
                         if (!scheduled)
                         {
-                            Console.WriteLine($"⚠️ Cannot schedule {subject.SubjectName} ({roomType.ToUpper()}) for TermSubjectId: {termSubject.Id}");
+                            Console.WriteLine($"⚠️ Could not schedule {subject.SubjectName} ({roomType}) for ClassMajor: {classMajor.Id}");
                         }
                     }
                 }
             }
+
+
 
             return schedule;
         }
@@ -220,7 +225,7 @@ LIMIT 1;
                 using (var command = new NpgsqlCommand())
                 {
                     command.Connection = dbContext.dbConnection;
-                    command.CommandText = $@"INSERT INTO schedule (""TermSubjectId"", ""Day"", ""TimePeriodId"", ""RoomId"", ""TeacherId"", ""Type"") VALUES ({param.TermSubjectId}, '{param.Day}', {param.periodId}, {param.RoomId}, {param.TeacherId}, '{param.Type}')";
+                    command.CommandText = $@"INSERT INTO schedule (""TermSubjectId"", ""Day"", ""TimePeriodId"", ""RoomId"", ""TeacherId"", ""Type"", ""ClassMajorId"") VALUES ({param.TermSubjectId}, '{param.Day}', {param.periodId}, {param.RoomId}, {param.TeacherId}, '{param.Type}', {param.ClassMajorId})";
                     command.ExecuteNonQuery();
                     return true;
                 }
@@ -326,10 +331,14 @@ ORDER BY teachers.""TeacherName"" ASC;";
     time_period.""StartTime"", 
     time_period.""EndTime"",
     majors.""MajorName"",
-    student_class.""StudentClassName""
+    student_class.""StudentClassName"",
+    terms.""TermName"",
+    study_level.""LevelName""
     FROM schedule
     LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
     LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
+    LEFT JOIN ""terms"" ON term_subjects.""TermId"" = ""terms"".""Id""
+    LEFT JOIN ""study_level"" ON term_subjects.""LevelId"" = ""study_level"".""Id""
     LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
     LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
     LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
@@ -340,6 +349,8 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     ScheduleModel schedule = new ScheduleModel();
                     schedule.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
                     schedule.Day = data.GetValue(data.GetOrdinal("Day")).ToString();
+                    schedule.termName = data["TermName"].ToString();
+                    schedule.levelName = data["LevelName"].ToString();
                     schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
                     schedule.subjectName = data.GetValue(data.GetOrdinal("SubjectName")).ToString();
                     schedule.majorName = data.GetValue(data.GetOrdinal("MajorName")).ToString();
@@ -360,14 +371,15 @@ ORDER BY teachers.""TeacherName"" ASC;";
 
 
 
-        public List<ScheduleModel> getScheduleTeachers(string teacherCode)
+        public List<ScheduleModel> getScheduleTeachers(string day,string teacherCode)
         {
             try
             {
                 string condition = @" ";
-                if (teacherCode != null)
+     
+                if (!string.IsNullOrEmpty(teacherCode) || !string.IsNullOrEmpty(day))
                 {
-                    condition = $@"WHERE ""TeacherCode"" = '{teacherCode}'";
+                    condition = $@"WHERE ""TeacherCode"" = '{teacherCode}' AND ""Day"" = '{day}'";
                 }
 
 
@@ -384,11 +396,15 @@ ORDER BY teachers.""TeacherName"" ASC;";
     time_period.""StartTime"", 
     time_period.""EndTime"",
     majors.""MajorName"",
-    student_class.""StudentClassName""
+    student_class.""StudentClassName"",
+    terms.""TermName"",
+    study_level.""LevelName""
     FROM schedule
     LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
     LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
     LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
+    LEFT JOIN ""terms"" ON term_subjects.""TermId"" = ""terms"".""Id""
+    LEFT JOIN ""study_level"" ON term_subjects.""LevelId"" = ""study_level"".""Id""
     LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
     LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
     LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId"" {condition} ORDER BY  teachers.""TeacherName"" ASC;";
@@ -403,7 +419,8 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     schedule.majorName = data.GetValue(data.GetOrdinal("MajorName")).ToString();
                     schedule.period = data.GetValue(data.GetOrdinal("StartTime")).ToString() + " - " + data.GetValue(data.GetOrdinal("EndTime")).ToString();
                     schedule.RoomName = data.GetValue(data.GetOrdinal("StudentClassName")).ToString();
-
+                    schedule.levelName = data["LevelName"].ToString();
+                    schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
                     scheduls.Add(schedule);
                 }
                 data.Close();
@@ -414,7 +431,71 @@ ORDER BY teachers.""TeacherName"" ASC;";
                 return [];
             }
         }
-        
+
+        public List<ScheduleModel> getScheduleStudent(string keyword)
+        {
+            try
+            {
+                string condition = @" ";
+
+                if (!string.IsNullOrEmpty(keyword) )
+                {
+                    condition = $@"WHERE ""ClassName"" = '{keyword}'";
+                }
+
+
+
+                List<ScheduleModel> scheduls = new List<ScheduleModel>();
+                _command = new NpgsqlCommand();
+                _command.Connection = dbContext.dbConnection;
+                _command.CommandText = $@"SELECT 
+    schedule.""Id"",  
+     schedule.""Day"",
+    Subject.""SubjectName"", 
+    teachers.""TeacherCode"",  
+    teachers.""TeacherName"",  
+    time_period.""StartTime"", 
+    time_period.""EndTime"",
+    majors.""MajorName"",
+    student_class.""StudentClassName"",
+    terms.""TermName"",
+    study_level.""LevelName"",
+    schedule.""ClassMajorId"",
+    class_major.""ClassName""
+    FROM schedule
+    LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
+    LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
+    LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
+    LEFT JOIN ""terms"" ON term_subjects.""TermId"" = ""terms"".""Id""
+    LEFT JOIN ""study_level"" ON term_subjects.""LevelId"" = ""study_level"".""Id""
+    LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
+    LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
+    LEFT JOIN ""class_major"" ON ""class_major"".""Id"" = ""schedule"".""ClassMajorId""
+    LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId"" {condition} ORDER BY  teachers.""TeacherName"" ASC;";
+                NpgsqlDataReader data = _command.ExecuteReader();
+                while (data.Read())
+                {
+                    ScheduleModel schedule = new ScheduleModel();
+                    schedule.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    schedule.Day = data.GetValue(data.GetOrdinal("Day")).ToString();
+                    schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
+                    schedule.subjectName = data.GetValue(data.GetOrdinal("SubjectName")).ToString();
+                    schedule.majorName = data.GetValue(data.GetOrdinal("MajorName")).ToString();
+                    schedule.period = data.GetValue(data.GetOrdinal("StartTime")).ToString() + " - " + data.GetValue(data.GetOrdinal("EndTime")).ToString();
+                    schedule.RoomName = data.GetValue(data.GetOrdinal("StudentClassName")).ToString();
+                    schedule.levelName = data["LevelName"].ToString();
+                    schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
+                    scheduls.Add(schedule);
+                }
+                data.Close();
+                return scheduls;
+            }
+            catch (Exception ex)
+            {
+                return [];
+            }
+        }
+
         public bool checkHasSchedule()
         {
             string query = @$"SELECT 1 FROM schedule;";
@@ -445,12 +526,16 @@ ORDER BY teachers.""TeacherName"" ASC;";
             }
         }
 
-        public List<ScheduleModel> getScheduleAll(int TermId, int majorId, string teacherName, string searchType)
+        public List<ScheduleModel> getScheduleAll(int levelId, int TermId, int majorId, string teacherName, string searchType)
         {
             try
             {
                 string condition = @"WHERE 1=1"; // Makes it easier to append ANDs
- 
+
+                if (levelId != -1)
+                {
+                    condition += $@" AND term_subjects.""LevelId"" = {levelId}";
+                }
                 if (TermId != -1)
                 {
                     condition += $@" AND term_subjects.""TermId"" = {TermId}";
@@ -494,11 +579,15 @@ SELECT
     time_period.""StartTime"", 
     time_period.""EndTime"",
     majors.""MajorName"",
-    student_class.""StudentClassName""
+    student_class.""StudentClassName"",  
+    terms.""TermName"",
+    study_level.""LevelName""
 FROM schedule
 LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
 LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
 LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
+LEFT JOIN ""terms"" ON term_subjects.""TermId"" = ""terms"".""Id""
+LEFT JOIN ""study_level"" ON term_subjects.""LevelId"" = ""study_level"".""Id""
 LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
 LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
 LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId""
@@ -512,6 +601,8 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     schedule.Id = int.Parse(data["Id"].ToString());
                     schedule.Day = data["Day"].ToString();
                     schedule.TeacherName = data["TeacherName"].ToString();
+                    schedule.termName = data["TermName"].ToString();
+                    schedule.levelName = data["LevelName"].ToString();
                     schedule.subjectName = data["SubjectName"].ToString();
                     schedule.majorName = data["MajorName"].ToString();
                     schedule.period = data["StartTime"].ToString() + " - " + data["EndTime"].ToString();

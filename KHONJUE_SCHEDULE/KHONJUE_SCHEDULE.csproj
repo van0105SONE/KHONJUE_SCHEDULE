@@ -28,10 +28,19 @@
     <Compile Update="Resources\Management\CREATE_TERM_FORM.cs" />
     <Compile Update="Resources\Management\TeacherSubjectManagement.cs" />
     <Compile Update="Resources\Management\TeacherManagement.cs" />
+    <Compile Update="Resources\Management\ClassMajorManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Resources\Management\TermSubjectManagement.cs" />
     <Compile Update="Resources\Management\TermManagement.cs" />
     <Compile Update="Resources\Management\MajorManagement.cs" />
     <Compile Update="Resources\Report\MajorReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Report\StudentReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Report\TeacherReport.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Resources\Report\SubjectReport.cs">

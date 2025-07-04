@@ -29,23 +29,28 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
+            panel2 = new Panel();
+            label2 = new Label();
+            cmbLevel = new ComboBox();
+            panel1 = new Panel();
+            label1 = new Label();
+            cmbMajors = new ComboBox();
             panel6 = new Panel();
             label4 = new Label();
             cmbTerms = new ComboBox();
             panel5 = new Panel();
-            subjectDatagrid = new FlowLayoutPanel();
-            panel1 = new Panel();
-            label1 = new Label();
-            cmbMajors = new ComboBox();
             button3 = new Button();
+            subjectDatagrid = new FlowLayoutPanel();
             panel3.SuspendLayout();
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel3
             // 
+            panel3.Controls.Add(panel2);
             panel3.Controls.Add(panel1);
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(panel5);
@@ -54,6 +59,69 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1532, 55);
             panel3.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(cmbLevel);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(75, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(402, 55);
+            panel2.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.Location = new Point(308, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(46, 20);
+            label2.TabIndex = 1;
+            label2.Text = "ປີຮຽນ";
+            // 
+            // cmbLevel
+            // 
+            cmbLevel.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbLevel.FormattingEnabled = true;
+            cmbLevel.Location = new Point(45, 11);
+            cmbLevel.Margin = new Padding(3, 4, 3, 4);
+            cmbLevel.Name = "cmbLevel";
+            cmbLevel.Size = new Size(251, 28);
+            cmbLevel.TabIndex = 5;
+            cmbLevel.SelectedIndexChanged += cmbLevel_SelectedIndexChanged;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(cmbMajors);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(477, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(402, 55);
+            panel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(275, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 20);
+            label1.TabIndex = 1;
+            label1.Text = "ເລືອກສາຂາ";
+            // 
+            // cmbMajors
+            // 
+            cmbMajors.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbMajors.FormattingEnabled = true;
+            cmbMajors.Location = new Point(12, 11);
+            cmbMajors.Margin = new Padding(3, 4, 3, 4);
+            cmbMajors.Name = "cmbMajors";
+            cmbMajors.Size = new Size(251, 28);
+            cmbMajors.TabIndex = 5;
             // 
             // panel6
             // 
@@ -96,45 +164,6 @@
             panel5.Size = new Size(251, 55);
             panel5.TabIndex = 1;
             // 
-            // subjectDatagrid
-            // 
-            subjectDatagrid.Dock = DockStyle.Fill;
-            subjectDatagrid.Location = new Point(0, 55);
-            subjectDatagrid.Name = "subjectDatagrid";
-            subjectDatagrid.Size = new Size(1532, 517);
-            subjectDatagrid.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(cmbMajors);
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(477, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(402, 55);
-            panel1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(275, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 20);
-            label1.TabIndex = 1;
-            label1.Text = "ເລືອກສາຂາ";
-            // 
-            // cmbMajors
-            // 
-            cmbMajors.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbMajors.FormattingEnabled = true;
-            cmbMajors.Location = new Point(12, 11);
-            cmbMajors.Margin = new Padding(3, 4, 3, 4);
-            cmbMajors.Name = "cmbMajors";
-            cmbMajors.Size = new Size(251, 28);
-            cmbMajors.TabIndex = 5;
-            // 
             // button3
             // 
             button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -146,9 +175,17 @@
             button3.Name = "button3";
             button3.Size = new Size(179, 48);
             button3.TabIndex = 8;
-            button3.Text = "ສ້າຕາຕະລາງໃຫມ່";
+            button3.Text = "ສ້າງຕາຕະລາງໃຫມ່";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // subjectDatagrid
+            // 
+            subjectDatagrid.Dock = DockStyle.Fill;
+            subjectDatagrid.Location = new Point(0, 55);
+            subjectDatagrid.Name = "subjectDatagrid";
+            subjectDatagrid.Size = new Size(1532, 517);
+            subjectDatagrid.TabIndex = 3;
             // 
             // TableSchedule
             // 
@@ -159,11 +196,13 @@
             Name = "TableSchedule";
             Size = new Size(1532, 572);
             panel3.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -178,5 +217,8 @@
         private Label label1;
         private ComboBox cmbMajors;
         private Button button3;
+        private Panel panel2;
+        private Label label2;
+        private ComboBox cmbLevel;
     }
 }

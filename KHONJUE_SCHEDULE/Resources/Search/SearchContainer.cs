@@ -37,7 +37,7 @@ namespace KHONJUE_SCHEDULE.Resources.Search
 
         private void loadData()
         {
-            dataGridView1.DataSource = _scheduleController.getScheduleAll(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor2.SelectedValue.ToString()), txtSearch.Text.Trim(), cmbTypeName.SelectedItem.ToString());
+            dataGridView1.DataSource = _scheduleController.getScheduleAll(int.Parse(cmbYear.SelectedValue.ToString()),int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor2.SelectedValue.ToString()), txtSearch.Text.Trim(), cmbTypeName.SelectedItem.ToString());
             dataGridView1.Columns["Id"].HeaderText = "ລຳດັບ";
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["TeacherId"].Visible = false;

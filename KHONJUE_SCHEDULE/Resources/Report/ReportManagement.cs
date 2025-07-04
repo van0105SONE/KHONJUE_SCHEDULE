@@ -105,10 +105,28 @@ namespace KHONJUE_SCHEDULE.Resources.Report
         private void button5_Click_1(object sender, EventArgs e)
         {
             REPORT_CONTAINER.Controls.Clear();
-            ScheduleReport scheduleReport = new ScheduleReport();
+            TeacherReport scheduleReport = new TeacherReport();
             scheduleReport.Dock = DockStyle.Fill;
             REPORT_CONTAINER.Controls.Add(scheduleReport);
             Style.SetActiveButton(button5, panel2.Controls);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            REPORT_CONTAINER.Controls.Clear();
+            StudentReport scheduleReport = new StudentReport();
+            scheduleReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(scheduleReport);
+            Style.SetActiveButton(button6, panel2.Controls);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            REPORT_CONTAINER.Controls.Clear();
+            ScheduleReport scheduleReport = new ScheduleReport();
+            scheduleReport.Dock = DockStyle.Fill;
+            REPORT_CONTAINER.Controls.Add(scheduleReport);
+            Style.SetActiveButton(button7, panel2.Controls);
         }
     }
 }
