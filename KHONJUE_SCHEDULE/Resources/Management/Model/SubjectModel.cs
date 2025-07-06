@@ -12,9 +12,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Model
         public string SubjectCode { get; set; }
         public string SubjectName { get; set; }
         public string Description { get; set; }
-
+        public int Unit { get; set; }
         public int Lecture { get; set;  }
         public int Lab { get; set; }
+        public int Research { get; set; }
 
     }
 }

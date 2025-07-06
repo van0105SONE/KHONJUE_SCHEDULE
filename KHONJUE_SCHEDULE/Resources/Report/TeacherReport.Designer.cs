@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panel3 = new Panel();
+            label1 = new Label();
+            cmbDays = new ComboBox();
+            panel6 = new Panel();
+            txtSearch = new TextBox();
+            label4 = new Label();
             panel2 = new Panel();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             REPORT_CONTAINER = new Panel();
-            label4 = new Label();
-            txtSearch = new TextBox();
-            panel6 = new Panel();
-            cmbDays = new ComboBox();
-            label1 = new Label();
-            panel3 = new Panel();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel6.SuspendLayout();
             panel3.SuspendLayout();
+            panel6.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -56,6 +56,68 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1552, 62);
             panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(cmbDays);
+            panel3.Dock = DockStyle.Right;
+            panel3.Location = new Point(140, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(358, 62);
+            panel3.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(275, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(60, 28);
+            label1.TabIndex = 1;
+            label1.Text = "ເລືອກມື້";
+            // 
+            // cmbDays
+            // 
+            cmbDays.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbDays.FormattingEnabled = true;
+            cmbDays.Location = new Point(12, 11);
+            cmbDays.Margin = new Padding(3, 4, 3, 4);
+            cmbDays.Name = "cmbDays";
+            cmbDays.Size = new Size(251, 36);
+            cmbDays.TabIndex = 5;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(txtSearch);
+            panel6.Controls.Add(label4);
+            panel6.Dock = DockStyle.Right;
+            panel6.Location = new Point(498, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(479, 62);
+            panel6.TabIndex = 3;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
+            txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(20, 10);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(342, 40);
+            txtSearch.TabIndex = 28;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(368, 16);
+            label4.Name = "label4";
+            label4.Size = new Size(95, 28);
+            label4.TabIndex = 1;
+            label4.Text = "ລະຫັດອາຈານ";
             // 
             // panel2
             // 
@@ -96,6 +158,7 @@
             button2.TabIndex = 6;
             button2.Text = "Export Pdf";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -110,6 +173,7 @@
             button1.TabIndex = 5;
             button1.Text = "Export Excel";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // REPORT_CONTAINER
             // 
@@ -120,68 +184,6 @@
             REPORT_CONTAINER.TabIndex = 1;
             REPORT_CONTAINER.Paint += REPORT_CONTAINER_Paint;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(368, 16);
-            label4.Name = "label4";
-            label4.Size = new Size(95, 28);
-            label4.TabIndex = 1;
-            label4.Text = "ລະຫັດອາຈານ";
-            // 
-            // txtSearch
-            // 
-            txtSearch.BorderStyle = BorderStyle.FixedSingle;
-            txtSearch.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(20, 10);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(342, 40);
-            txtSearch.TabIndex = 28;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(txtSearch);
-            panel6.Controls.Add(label4);
-            panel6.Dock = DockStyle.Right;
-            panel6.Location = new Point(498, 0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(479, 62);
-            panel6.TabIndex = 3;
-            // 
-            // cmbDays
-            // 
-            cmbDays.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbDays.FormattingEnabled = true;
-            cmbDays.Location = new Point(12, 11);
-            cmbDays.Margin = new Padding(3, 4, 3, 4);
-            cmbDays.Name = "cmbDays";
-            cmbDays.Size = new Size(251, 36);
-            cmbDays.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(275, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 28);
-            label1.TabIndex = 1;
-            label1.Text = "ເລືອກມື້";
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(cmbDays);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(140, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(358, 62);
-            panel3.TabIndex = 5;
-            // 
             // TeacherReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -191,11 +193,11 @@
             Name = "TeacherReport";
             Size = new Size(1552, 656);
             panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 

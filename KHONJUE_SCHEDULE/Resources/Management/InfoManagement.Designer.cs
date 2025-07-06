@@ -237,7 +237,7 @@
             btnManageSubject.Name = "btnManageSubject";
             btnManageSubject.Size = new Size(165, 80);
             btnManageSubject.TabIndex = 2;
-            btnManageSubject.Text = "ວິຊາໃນພາກຮຽນ";
+            btnManageSubject.Text = "ວິຊາໃນຫຼັກສູດ";
             btnManageSubject.UseVisualStyleBackColor = false;
             btnManageSubject.Click += btnManageSubject_Click;
             // 

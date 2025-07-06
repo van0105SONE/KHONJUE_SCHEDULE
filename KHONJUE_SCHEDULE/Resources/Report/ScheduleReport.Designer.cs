@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panel3 = new Panel();
+            label1 = new Label();
+            cmbTerm = new ComboBox();
             panel6 = new Panel();
             label4 = new Label();
             cmbMajor = new ComboBox();
@@ -37,13 +40,10 @@
             button2 = new Button();
             button1 = new Button();
             REPORT_CONTAINER = new Panel();
-            panel3 = new Panel();
-            label1 = new Label();
-            cmbTerm = new ComboBox();
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             panel6.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -56,6 +56,37 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1552, 62);
             panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(cmbTerm);
+            panel3.Dock = DockStyle.Right;
+            panel3.Location = new Point(261, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(358, 62);
+            panel3.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(275, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 28);
+            label1.TabIndex = 1;
+            label1.Text = "ເລືອກສາຂາ";
+            // 
+            // cmbTerm
+            // 
+            cmbTerm.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbTerm.FormattingEnabled = true;
+            cmbTerm.Location = new Point(12, 11);
+            cmbTerm.Margin = new Padding(3, 4, 3, 4);
+            cmbTerm.Name = "cmbTerm";
+            cmbTerm.Size = new Size(251, 36);
+            cmbTerm.TabIndex = 5;
             // 
             // panel6
             // 
@@ -127,6 +158,7 @@
             button2.TabIndex = 6;
             button2.Text = "Export Pdf";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -141,6 +173,7 @@
             button1.TabIndex = 5;
             button1.Text = "Export Excel";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // REPORT_CONTAINER
             // 
@@ -151,37 +184,6 @@
             REPORT_CONTAINER.TabIndex = 1;
             REPORT_CONTAINER.Paint += REPORT_CONTAINER_Paint;
             // 
-            // panel3
-            // 
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(cmbTerm);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(261, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(358, 62);
-            panel3.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(275, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(82, 28);
-            label1.TabIndex = 1;
-            label1.Text = "ເລືອກສາຂາ";
-            // 
-            // cmbTerm
-            // 
-            cmbTerm.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbTerm.FormattingEnabled = true;
-            cmbTerm.Location = new Point(12, 11);
-            cmbTerm.Margin = new Padding(3, 4, 3, 4);
-            cmbTerm.Name = "cmbTerm";
-            cmbTerm.Size = new Size(251, 36);
-            cmbTerm.TabIndex = 5;
-            // 
             // ScheduleReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -191,11 +193,11 @@
             Name = "ScheduleReport";
             Size = new Size(1552, 656);
             panel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
 

@@ -1,4 +1,5 @@
-﻿using KHONJUE_SCHEDULE.Resources.Schedule.Model;
+﻿using KHONJUE_SCHEDULE.Resources.Management.Model;
+using KHONJUE_SCHEDULE.Resources.Schedule.Model;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Image = QuestPDF.Infrastructure.Image;
 
 namespace KHONJUE_SCHEDULE.Resources.Report.Controller
 {
@@ -14,101 +16,128 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
     {
 
         private List<ScheduleModel> Entries;
-
-        public TeacherReportController(List<ScheduleModel> entries)
+        private List<TimePeriodModel> Periods;
+        private string Type;
+        public TeacherReportController(List<ScheduleModel> entries, List<TimePeriodModel> periods, string type)
         {
             Entries = entries;
+            Periods = periods;
+            Type = type;
         }
         public void Compose(IDocumentContainer container)
         {
-            this.Entries = this.Entries.OrderByDescending(t => t.Day).ToList() ;
+            /* 1 ─────────────────────────────────────────────────────────────
+               Build helpers: Lao labels and a fast lookup dictionary        */
+            var laoDays = new Dictionary<DayOfWeek, string>
+            {
+                [DayOfWeek.Monday] = "ຈັນ",
+                [DayOfWeek.Tuesday] = "ອັງຄານ",
+                [DayOfWeek.Wednesday] = "ພຸດ",
+                [DayOfWeek.Thursday] = "ພະຫັດ",
+                [DayOfWeek.Friday] = "ສຸກ",
+                [DayOfWeek.Saturday] = "ເສົາ",
+                [DayOfWeek.Sunday] = "ອາທິດ"
+            };
+            var daysOfWeek = Enum.GetValues<DayOfWeek>().ToList();
+
+            // All periods, sorted earliest → latest
+            var sortedPeriods = Periods.OrderBy(p => p.startTime).ToList();
+            string MakeKey(string day, string period) =>
+    $"{day.Trim().ToLowerInvariant()}|{period.Trim().ToLowerInvariant()}";
+            // Fast lookup: (Day, TimeLabel) → ScheduleModel
+            var entryLookup = Entries.ToDictionary(
+                e => MakeKey(e.Day, e.period),
+                e => e,
+                StringComparer.OrdinalIgnoreCase);
+            /* 2 ─────────────────────────────────────────────────────────────
+               Create the A4 page                                             */
             container.Page(page =>
             {
-                page.Margin(10);
+                page.Margin(4);
                 page.Size(PageSizes.A4);
                 page.PageColor(Colors.White);
-                page.DefaultTextStyle(x => x.FontSize(10));
-                var physical = Path.GetFullPath("WhatsApp Image 2025-05-03 at 13.52.37.jpeg");
-                if (!File.Exists(physical))
-                    throw new FileNotFoundException(physical);
-                page.Header().Column(column =>
-                {
-                    column.Item().AlignCenter().Height(40).Image(QuestPDF.Infrastructure.Image.FromFile(physical));
-                    column.Item().Text("ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ")
-                        .FontFamily("Noto Sans Lao")
-                        .FontSize(14).AlignCenter();
-                    column.Item().Text("ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ວັດທະນາຖາວອນ")
-      .FontFamily("Noto Sans Lao")
-      .FontSize(14).AlignCenter();
+                page.DefaultTextStyle(x => x.FontSize(9).FontFamily("Noto Sans Lao"));
 
-                    column.Item().Text("1.ລາຍງານຕາຕະລາງຮຽນ")
-                        .FontFamily("Noto Sans Lao")
+                /* ─ Header (Logo + titles) ──────────────────────────────── */
+                var logoPath = Path.GetFullPath("logo.jpeg");
+                if (!File.Exists(logoPath))
+                    throw new FileNotFoundException(logoPath);
+
+                page.Header().Column(col =>
+                {
+                    col.Item().AlignCenter().Height(40).Image(Image.FromFile(logoPath));
+
+                    col.Item().AlignCenter().Text("ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ")
+                        .FontSize(14).SemiBold();
+                    col.Item().AlignCenter().Text("ສັນຕິພາບ  ເອກະລາດ  ປະຊາທິປະໄຕ  ວັດທະນາຖາວອນ")
+                        .FontSize(14);
+
+                    col.Item().Text("1. ຕາຕະລາງຮຽນປະຈໍາອາທິດ")
                         .FontSize(12).AlignLeft();
                 });
 
-
+                /* ─ Grid timetable ──────────────────────────────────────── */
                 page.Content().Table(table =>
                 {
-                    // Define columns
-                    table.ColumnsDefinition(columns =>
+                    // Column definitions: 1 for time label, N for days
+                    table.ColumnsDefinition(cols =>
                     {
-                        columns.RelativeColumn(1); // Day
-                        columns.RelativeColumn(1); // Period
-                        columns.RelativeColumn(1); // Subject
-                        columns.RelativeColumn(1); // Teacher
-                        columns.RelativeColumn(1); // Room
-                        columns.RelativeColumn(1); // Major
-                        columns.RelativeColumn(1); // Major
+                        cols.RelativeColumn(1);            // Time / Period
+                        foreach (var _ in daysOfWeek)
+                            cols.RelativeColumn(1);        // One per day
                     });
 
-
-                    // Header row
-                    table.Header(header =>
+                    /* Header row (days) */
+                    table.Header(h =>
                     {
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ມື້").Bold().FontFamily("Noto Sans Lao");
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ເວລາ").Bold().FontFamily("Noto Sans Lao");
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ວິຊາ").Bold().FontFamily("Noto Sans Lao");
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ປິ").Bold().FontFamily("Noto Sans Lao");
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ຫ້ອງຮຽນ").Bold().FontFamily("Noto Sans Lao");
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ສາຂາ").Bold().FontFamily("Noto Sans Lao");
-                        header.Cell().Element(CellStyle).AlignCenter().Text("ອາຈານ").Bold().FontFamily("Noto Sans Lao");
-                        static IContainer CellStyle(IContainer container)
-                        {
-                            return container
-                                .DefaultTextStyle(x => x.SemiBold())
-                                .Padding(0)
-                                .Background(Colors.Grey.Lighten2)
-                                .Border(1)
-                                .BorderColor(Colors.Grey.Darken2);
-                        }
+                        // First (empty) cell for the vertical "Time" column
+                        h.Cell().Element(HeadStyle).AlignCenter()
+                            .Text("ເວລາ");
+
+                        foreach (var d in daysOfWeek)
+                            h.Cell().Element(HeadStyle).AlignCenter()
+                             .Text(laoDays[d]);
+
+                        static IContainer HeadStyle(IContainer c) =>
+                            c.Background(Colors.Grey.Lighten2)
+                             .Border(1)
+                             .BorderColor(Colors.Grey.Darken2)
+                             .DefaultTextStyle(x => x.SemiBold());
                     });
 
-                    // Data rows
-                    foreach (var entry in Entries)
+                    /* Data rows: one per defined TimePeriod */
+                    foreach (var p in sortedPeriods)
                     {
-                        table.Cell().Element(CellStyle).Text(entry.Day);
-                        table.Cell().Element(CellStyle).Text(entry.period);
-                        table.Cell().Element(CellStyle).Text(entry.subjectName);
-                        table.Cell().Element(CellStyle).Text(entry.levelName);
-                        table.Cell().Element(CellStyle).Text(entry.RoomName);
-                        table.Cell().Element(CellStyle).Text(entry.majorName);
-                        table.Cell().Element(CellStyle).Text(entry.TeacherName);
-                        static IContainer CellStyle(IContainer container)
+                        var timeLabel = $"{p.startTime:hh\\:mm} - {p.endTime:hh\\:mm}";
+
+                        // Left‑most cell: time range
+                        table.Cell().Element(RowStyle).Text(timeLabel);
+
+                        // One cell per day
+                        foreach (var day in daysOfWeek)
                         {
-                            return container
-                                .Padding(5)
-                                .BorderBottom(1)
-                                .BorderColor(Colors.Grey.Lighten2);
+                            entryLookup.TryGetValue(MakeKey(day.ToString(), timeLabel), out var entry);
+
+                            table.Cell().Element(RowStyle).AlignCenter().Text(entry is null
+                                ? ""
+                                : $"ວິຊາ: {entry.subjectName}\n ອາຈານ: {entry.TeacherName}\n ຫ້ອງ: {entry.RoomName}\n {(Type.Equals("student") ? "ຫ້ອງສາຂາ: " + entry.majorName + "(" + entry.ClassName +")" : "")}");
                         }
                     }
+
+                    static IContainer RowStyle(IContainer c) =>
+                        c
+                         .Border(1)
+                         .BorderColor(Colors.Grey.Lighten1);
                 });
 
-                page.Footer()
-                    .AlignCenter()
-                    .Text($"Generated on {DateTime.Now}")
+                /* ─ Footer ─────────────────────────────────────────────── */
+                page.Footer().AlignCenter()
+                    .Text($"Generated on {DateTime.Now:yyyy-MM-dd HH:mm}")
                     .FontSize(10)
                     .FontColor(Colors.Grey.Darken1);
             });
         }
+
+
     }
 }

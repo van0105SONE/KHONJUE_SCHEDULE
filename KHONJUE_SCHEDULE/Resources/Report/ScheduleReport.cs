@@ -53,7 +53,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report
             loadDataFilter();
         }
 
-      async  private void button3_Click(object sender, EventArgs e)
+        async private void button3_Click(object sender, EventArgs e)
         {
             this.REPORT_CONTAINER.Controls.Clear();
             var data = _scheduleController.getScheduleReport(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()));
@@ -102,7 +102,22 @@ namespace KHONJUE_SCHEDULE.Resources.Report
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, @$"ScheduleReport-{DateTime.Now.ToString("MMDDYYYY")}.pdf");
 
+            var data = _scheduleController.getScheduleReport(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()));
+            var report = new GenerateScheduleReportController(data);
+            report.GeneratePdf(filePath);
 
+            Console.WriteLine($"PDF saved to: {filePath}");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var data = _scheduleController.getScheduleReport(int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()));
+            ExcelExport.ToExcelClosedXml(data, @$"ScheduleReport-{DateTime.Now.ToString("MMDDYYYY")}.xlsx");
+        }
     }
 }

@@ -1,17 +1,18 @@
-﻿using System;
+﻿using KHONJUE_SCHEDULE.DatabaseContexts;
+using KHONJUE_SCHEDULE.Resources.Management.Controller;
+using KHONJUE_SCHEDULE.Resources.Report.Controller;
+using KHONJUE_SCHEDULE.Resources.Schedule.controller;
+using KHONJUE_SCHEDULE.Utils;
+using QuestPDF.Fluent;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KHONJUE_SCHEDULE.DatabaseContexts;
-using KHONJUE_SCHEDULE.Resources.Management.Controller;
-using KHONJUE_SCHEDULE.Resources.Schedule.controller;
-using KHONJUE_SCHEDULE.Resources.Report.Controller;
-using QuestPDF.Fluent;
 
 namespace KHONJUE_SCHEDULE.Resources.Report
 {
@@ -42,12 +43,12 @@ namespace KHONJUE_SCHEDULE.Resources.Report
 
         }
 
-    async    private void button4_Click(object sender, EventArgs e)
+        async private void button4_Click(object sender, EventArgs e)
         {
             this.generateReport();
         }
 
-  async  private void generateReport()
+        async private void generateReport()
         {
             this.REPORT_CONTAINER.Controls.Clear();
             var data = _termController.getTerms("");
@@ -75,6 +76,23 @@ namespace KHONJUE_SCHEDULE.Resources.Report
                 // Then navigate to the updated PDF file
                 webView2.CoreWebView2.Navigate($"file:///{path.Replace("\\", "/")}");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, @$"TERMS-{DateTime.Now.ToString("MMDDYYYY")}.pdf");
+            var data = _termController.getTerms("");
+            var report = new TermReportController(data);
+            report.GeneratePdf(filePath);
+
+            Console.WriteLine($"PDF saved to: {filePath}");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var data = _termController.getTerms("");
+            ExcelExport.ToExcelClosedXml(data, @$"LEVEL-{DateTime.Now.ToString("MMDDYYYY")}.xlsx");
         }
     }
 }

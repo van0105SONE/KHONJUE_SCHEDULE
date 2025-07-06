@@ -47,8 +47,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             studentClassDatagrid.DataSource = _studentClassController.GetStudentClasstList(txtSearch.Text.Trim());
             studentClassDatagrid.Columns["Id"].HeaderText = "ລຳດັບ";
             studentClassDatagrid.Columns["Code"].HeaderText = "ລະຫັດຫ້ອງນັກຮຽນ";
-            studentClassDatagrid.Columns["NumberOfClass"].HeaderText = "ຈຳນວນຫ້ອງ";
-            studentClassDatagrid.Columns["StudentClassName"].HeaderText = "ຊື່ຫ້ອງນັກຮຽນ";
+            studentClassDatagrid.Columns["NumberOfClass"].Visible = false;
+            studentClassDatagrid.Columns["StudentClassName"].HeaderText = "ຊືຫ້ອງ";
             studentClassDatagrid.Columns["Description"].HeaderText = "ຄຳອະທິບາຍ";
             studentClassDatagrid.Columns["RoomType"].HeaderText = "ປະເພດຫ້ອງ";
 

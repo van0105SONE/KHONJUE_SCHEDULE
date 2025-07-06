@@ -31,7 +31,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.PageColor(Colors.White);
                 page.DefaultTextStyle(x => x.FontSize(10));
 
-                var physical = Path.GetFullPath("WhatsApp Image 2025-05-03 at 13.52.37.jpeg");
+                var physical = Path.GetFullPath("logo.jpeg");
                 if (!File.Exists(physical))
                     throw new FileNotFoundException(physical);
                 page.Header().Column(column =>
@@ -56,8 +56,8 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                     {
                         columns.RelativeColumn(1); // Day
                         columns.RelativeColumn(1); // Period
-                        columns.RelativeColumn(2); // Subject
-
+                        columns.RelativeColumn(1); // Subject
+                        columns.RelativeColumn(1); // Subject
 
                     });
 
@@ -68,14 +68,13 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                         header.Cell().Element(CellStyle).AlignCenter().Text("ລະຫັດວິຊາຮຽນ").Bold().FontFamily("Noto Sans Lao");
                         header.Cell().Element(CellStyle).AlignCenter().Text("ຊື່ວິຊາຮຽນ").Bold().FontFamily("Noto Sans Lao");
                         header.Cell().Element(CellStyle).AlignCenter().Text("ຄຳອະທິບາຍເພິ່ມເຕີ່ມ").Bold().FontFamily("Noto Sans Lao");
-
+                        header.Cell().Element(CellStyle).AlignCenter().Text("ຫນ່ວຍກິດ").Bold().FontFamily("Noto Sans Lao");
 
 
                         static IContainer CellStyle(IContainer container)
                         {
                             return container
                                 .DefaultTextStyle(x => x.SemiBold())
-                                .Padding(5)
                                 .Background(Colors.Grey.Lighten2)
                                 .Border(1)
                                 .BorderColor(Colors.Grey.Darken2);
@@ -88,7 +87,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                         table.Cell().Element(CellStyle).Text(entry.SubjectCode);
                         table.Cell().Element(CellStyle).Text(entry.SubjectName);
                         table.Cell().Element(CellStyle).Text(entry.Description);
-
+                        table.Cell().Element(CellStyle).AlignCenter().Text($@"{entry.Unit}({entry.Lecture}-{entry.Lab}-{entry.Research}) ");
                         static IContainer CellStyle(IContainer container)
                         {
                             return container

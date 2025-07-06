@@ -31,7 +31,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             student = new StudentClassModel();
             action = Actions.Create;
-            txtNumberOfClass.Text = "1";
             loadRoomTypes();
         }
 
@@ -46,7 +45,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             loadRoomTypes();
             student = studentClassParam;
             txtDescription.Text = student.Description;
-            txtNumberOfClass.Text = student.NumberOfClass.ToString();
             txtStudentClassName.Text = student.StudentClassName;
             action = Actions.Update;
         }
@@ -69,7 +67,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click_1(object sender, EventArgs e)
         {
-            student.NumberOfClass = int.Parse(txtNumberOfClass.Text);
             student.Description = txtDescription.Text;
             student.StudentClassName = txtStudentClassName.Text;
             student.RoomType = cmbLevel.SelectedValue.ToString();

@@ -9,11 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
     <PackageReference Include="FastReport.OpenSource" Version="2025.2.0" />
     <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1652.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3296.44" />
     <PackageReference Include="Npgsql" Version="6.0.11" />
     <PackageReference Include="QuestPDF" Version="2025.5.1" />
+    <PackageReference Include="Twilio" Version="7.11.4" />
   </ItemGroup>
 
   <ItemGroup>

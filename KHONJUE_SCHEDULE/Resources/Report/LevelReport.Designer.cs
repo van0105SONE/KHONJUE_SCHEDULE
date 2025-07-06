@@ -92,6 +92,7 @@
             button5.TabIndex = 10;
             button5.Text = "Export Pdf";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -106,6 +107,7 @@
             button4.TabIndex = 9;
             button4.Text = "Export Excel";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 

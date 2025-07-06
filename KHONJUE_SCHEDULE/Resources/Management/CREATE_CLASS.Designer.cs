@@ -176,9 +176,9 @@
             titleLabel.Font = new Font("Noto Sans Lao", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLabel.Location = new Point(5, 4);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(224, 44);
+            titleLabel.Size = new Size(207, 44);
             titleLabel.TabIndex = 3;
-            titleLabel.Text = "ເພີ່ມວິຊາອາຈານສອນ";
+            titleLabel.Text = "ເພີ່ມຫ້ອງຂອງສາຂາ";
             // 
             // createBtn
             // 
@@ -246,9 +246,9 @@
             label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 4);
             label1.Name = "label1";
-            label1.Size = new Size(86, 33);
+            label1.Size = new Size(27, 33);
             label1.TabIndex = 1;
-            label1.Text = "ຫ້ອງຮຽນ";
+            label1.Text = "ຊື່";
             // 
             // CREATE_CLASS
             // 
