@@ -88,6 +88,7 @@
             button3.TabIndex = 8;
             button3.Text = "Export Excel";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -102,6 +103,7 @@
             button2.TabIndex = 7;
             button2.Text = "Export Pdf";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -125,13 +127,13 @@
             REPORT_CONTAINER.Size = new Size(1617, 683);
             REPORT_CONTAINER.TabIndex = 2;
             // 
-            // TeacherTeachReport
+            // TermReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(REPORT_CONTAINER);
             Controls.Add(panel1);
-            Name = "TeacherTeachReport";
+            Name = "TermReport";
             Size = new Size(1617, 745);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

@@ -78,7 +78,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"INSERT INTO subject (""SubjectCode"", ""SubjectName"",""Description"", ""Lecture"", ""Lab"") VALUES ('SKJ{DateTime.Now.Ticks}', '{subjectParams.SubjectName}', '{subjectParams.Description}', {subjectParams.Lecture}, {subjectParams.Lab})";
+                _command.CommandText = $@"INSERT INTO subject (""SubjectCode"", ""SubjectName"",""Description"", ""Lecture"", ""Lab"", ""Unit"", ""Research"") VALUES ('SKJ{DateTime.Now.Ticks}', '{subjectParams.SubjectName}', '{subjectParams.Description}', {subjectParams.Lecture}, {subjectParams.Lab}, {subjectParams.Unit}, {subjectParams.Research})";
                 _command.ExecuteNonQuery();
                 return true;
             }catch (Exception ex)
@@ -125,7 +125,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             {
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"UPDATE subject SET ""SubjectName""='{subjectParams.SubjectName}',""Description""='{subjectParams.Description}', ""Lecture"" = {subjectParams.Lecture}, ""Lab"" = {subjectParams.Lab}  WHERE ""Id"" = '{subjectParams.Id}';";
+                _command.CommandText = $@"UPDATE subject SET ""SubjectName""='{subjectParams.SubjectName}',""Description""='{subjectParams.Description}', ""Lecture"" = {subjectParams.Lecture}, ""Lab"" = {subjectParams.Lab}, ""Unit""={subjectParams.Unit}, ""Research""={subjectParams.Research}  WHERE ""Id"" = '{subjectParams.Id}';";
                 _command.ExecuteNonQuery();
                 return true;
             }catch(Exception ex)
@@ -148,7 +148,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 List<SubjectModel> subjects = new List<SubjectModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT subject.""Id"", subject.""SubjectCode"", subject.""SubjectName"", subject.""Description"",  subject.""Lecture"", subject.""Lab"" FROM subject ;";
+                _command.CommandText = $@"SELECT subject.""Id"", subject.""SubjectCode"", subject.""SubjectName"", subject.""Description"",  subject.""Lecture"", subject.""Lab"",subject.""Unit"", subject.""Research"" FROM subject ;";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {
@@ -159,6 +159,8 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                     subject.Description = string.IsNullOrEmpty( data.GetValue(data.GetOrdinal("Description")).ToString())? "N/A" : data.GetValue(data.GetOrdinal("Description")).ToString();
                     subject.Lecture = int.Parse(data.GetValue(data.GetOrdinal("Lecture")).ToString(), 0);
                     subject.Lab = int.Parse(data.GetValue(data.GetOrdinal("Lab")).ToString(), 0);
+                    subject.Unit = int.Parse(data.GetValue(data.GetOrdinal("Unit")).ToString(), 0);
+                    subject.Research = int.Parse(data.GetValue(data.GetOrdinal("Research")).ToString(), 0);
                     subjects.Add(subject);
                 }
                 data.Close();

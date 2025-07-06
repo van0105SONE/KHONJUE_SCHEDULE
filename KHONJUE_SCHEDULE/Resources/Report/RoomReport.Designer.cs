@@ -96,6 +96,7 @@
             button7.TabIndex = 12;
             button7.Text = "Export Pdf";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button6
             // 
@@ -110,6 +111,7 @@
             button6.TabIndex = 11;
             button6.Text = "Export Excel";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button5
             // 
@@ -189,13 +191,13 @@
             REPORT_CONTAINER.Size = new Size(1625, 676);
             REPORT_CONTAINER.TabIndex = 4;
             // 
-            // RoomScheduleReport
+            // RoomReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(REPORT_CONTAINER);
             Controls.Add(panel1);
-            Name = "RoomScheduleReport";
+            Name = "RoomReport";
             Size = new Size(1625, 738);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

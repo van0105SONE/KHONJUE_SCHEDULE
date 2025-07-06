@@ -33,7 +33,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _levelController = new LevelController(_dbContext);
             _majorController = new MajorController(_dbContext);
             _classMajorController = new ClassMajorController(_dbContext);
-
+            _classMajor = new ClassMajor();
             action = Actions.Create;
             loadLevel();
             loadMajors();

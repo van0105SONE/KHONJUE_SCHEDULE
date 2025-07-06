@@ -1,17 +1,18 @@
-﻿using System;
+﻿using KHONJUE_SCHEDULE.DatabaseContexts;
+using KHONJUE_SCHEDULE.Resources.Management.Controller;
+using KHONJUE_SCHEDULE.Resources.Report.Controller;
+using KHONJUE_SCHEDULE.Resources.Schedule.controller;
+using KHONJUE_SCHEDULE.Utils;
+using QuestPDF.Fluent;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KHONJUE_SCHEDULE.DatabaseContexts;
-using KHONJUE_SCHEDULE.Resources.Management.Controller;
-using KHONJUE_SCHEDULE.Resources.Schedule.controller;
-using KHONJUE_SCHEDULE.Resources.Report.Controller;
-using QuestPDF.Fluent;
 
 namespace KHONJUE_SCHEDULE.Resources.Report
 {
@@ -41,12 +42,12 @@ namespace KHONJUE_SCHEDULE.Resources.Report
             this.generateReport();
         }
 
-    async    private void button8_Click(object sender, EventArgs e)
+        async private void button8_Click(object sender, EventArgs e)
         {
             this.generateReport();
         }
 
-    async private void generateReport()
+        async private void generateReport()
         {
             this.REPORT_CONTAINER.Controls.Clear();
             var data = _studentClassController.GetStudentClasstList("");
@@ -74,6 +75,23 @@ namespace KHONJUE_SCHEDULE.Resources.Report
                 // Then navigate to the updated PDF file
                 webView2.CoreWebView2.Navigate($"file:///{path.Replace("\\", "/")}");
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, @$"ROOMS-{DateTime.Now.ToString("MMDDYYYY")}.pdf");
+            var data = _studentClassController.GetStudentClasstList("");
+            var report = new RoomReportController(data);
+            report.GeneratePdf(filePath);
+
+            Console.WriteLine($"PDF saved to: {filePath}");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var data = _studentClassController.GetStudentClasstList("");
+            ExcelExport.ToExcelClosedXml(data, @$"ROOM-{DateTime.Now.ToString("MMDDYYYY")}.xlsx");
         }
     }
 }

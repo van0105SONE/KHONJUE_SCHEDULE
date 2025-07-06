@@ -55,8 +55,12 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             subjectDatagrid.Columns["SubjectCode"].HeaderText = "ລະຫັດວິຊາຣຽນ";
             subjectDatagrid.Columns["SubjectName"].HeaderText = "ຊື່ວິຊາຮຽນ";
             subjectDatagrid.Columns["Description"].HeaderText = "ຄຳອະທິບາຍເພີ່ມເຕິ່ມ";
-            subjectDatagrid.Columns["Lecture"].HeaderText = "ຫ້ອງລ່ວມ";
-            subjectDatagrid.Columns["Lab"].HeaderText = "ຫ້ອງທົດລອງ";
+
+            subjectDatagrid.Columns["Unit"].HeaderText = "ຫນ່ວຍກິດ";
+            subjectDatagrid.Columns["Lecture"].HeaderText = "ທີດສະດິ";
+            subjectDatagrid.Columns["Lab"].HeaderText = "ປະຕີບັດ";
+            subjectDatagrid.Columns["Research"].HeaderText = "ຄົ້ນຄ້ວາ";
+
 
             // Add two button columns to the DataGridView (you can add them as separate columns)
             DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
@@ -86,8 +90,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 var subjectCode = row.Cells["SubjectCode"].Value.ToString(); // Get subject code
                 var subjectName = row.Cells["SubjectName"].Value.ToString(); // Get subject code
                 var description = row.Cells["Description"].Value.ToString(); // Get subject code
+                var unit = int.Parse(row.Cells["Unit"].Value.ToString()); // Get subject code
                 var lecture = int.Parse(row.Cells["Lecture"].Value.ToString()); // Get subject code
                 var lab = int.Parse(row.Cells["Lab"].Value.ToString()); // Get subject code
+                var research = int.Parse(row.Cells["Research"].Value.ToString()); // Get subject code
                 var Id = int.Parse(row.Cells["Id"].Value.ToString()); // Get subject code
                 if (e.ColumnIndex == subjectDatagrid.Columns["EditButton"].Index)
                 {
@@ -99,8 +105,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         SubjectCode = subjectCode,
                         SubjectName = subjectName,
                         Description = description,
+                        Unit = unit,
                         Lecture = lecture,
                         Lab = lab,
+                        Research = research
                     };
                     CREATE_SUBJECT_FORM createForm = new CREATE_SUBJECT_FORM(subjectArg);
 

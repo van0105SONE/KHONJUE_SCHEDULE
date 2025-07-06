@@ -25,6 +25,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         private TimePeriodController _timePeriodController { get; set; }
         private MajorController _majorController { get; set; }
         private TermController _termController { get; set; }
+        private ClassMajorController _classMajorController { get; set; }
         public TableSchedule()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
+            _classMajorController = new ClassMajorController(_dbContext);
             this.loadDataFilter();
             this.InitializeWeekGrid();
 
@@ -53,6 +55,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
+            _classMajorController = new ClassMajorController(_dbContext);
             this.loadDataFilter();
             this.InitializeWeekGrid();
 
@@ -124,7 +127,8 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             }
 
             // Load schedules and place cards
-            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), null, null);
+            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbClass.SelectedValue.ToString()), null, null);
+
             foreach (var schedule in schedules)
             {
                 int col = getDayOfWeek(schedule.Day); // +1 for time label
@@ -183,7 +187,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             }
         }
 
-        private Control CreateScheduleCard(string levelName,string termName,string title, string majorName, string period, string subject, string teacher, string roomType)
+        private Control CreateScheduleCard(string levelName, string termName, string title, string majorName, string period, string subject, string teacher, string roomType)
         {
             Panel card = new Panel
             {
@@ -259,6 +263,13 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             List<MajorModel> majors = _majorController.getMajors("");
             List<TermModel> termModels = _termController.getTerms("");
             List<LevelModel> levels = _levelController.getLevels("");
+            List<ClassMajor> classMajors = _classMajorController.GetStudentClasstList("");
+
+
+            cmbClass.DisplayMember = "ClassName"; // Replace with the property you want to display
+            cmbClass.ValueMember = "Id";
+            cmbClass.DataSource = classMajors;
+
             cmbTerms.DisplayMember = "TermName"; // Replace with the property you want to display
             cmbTerms.ValueMember = "Id";
             cmbTerms.DataSource = termModels;
@@ -274,7 +285,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbMajor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null && cmbLevel.SelectedValue != null)
+            if (cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null && cmbMajors.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
@@ -283,7 +294,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbTerm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null && cmbLevel.SelectedValue != null)
+            if (cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null && cmbMajors.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }
@@ -298,7 +309,15 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTerms.SelectedValue != null && cmbMajors.SelectedValue != null && cmbLevel.SelectedValue != null)
+            if (cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null && cmbMajors.SelectedValue != null)
+            {
+                InitializeWeekGrid();
+            }
+        }
+
+        private void cmbMajors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
             }

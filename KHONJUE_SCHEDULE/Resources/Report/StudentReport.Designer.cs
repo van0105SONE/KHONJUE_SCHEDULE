@@ -122,6 +122,7 @@
             button2.TabIndex = 6;
             button2.Text = "Export Pdf";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -136,6 +137,7 @@
             button1.TabIndex = 5;
             button1.Text = "Export Excel";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // REPORT_CONTAINER
             // 

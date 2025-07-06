@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using KHONJUE_SCHEDULE.Resources.Notifications.Controller;
 using KHONJUE_SCHEDULE.DatabaseContexts;
 using KHONJUE_SCHEDULE.Utils.styles;
+using System.Windows.Forms.VisualStyles;
 
 namespace KHONJUE_SCHEDULE.Resources.Notifications
 {
@@ -25,6 +26,8 @@ namespace KHONJUE_SCHEDULE.Resources.Notifications
             _notificationController = new NotificationController(context);
             LoadData(false);
             Style.styleDatagridView(dataGridView1);
+            this.toggle_opened.Checked = true;
+            this.notificationToAll();
         }
 
         private void toggle_opened_CheckedChanged(object sender, EventArgs e)
@@ -51,6 +54,7 @@ namespace KHONJUE_SCHEDULE.Resources.Notifications
 
                 checkBox1.BackColor = Color.White;
                 checkBox1.ForeColor = Color.Black;
+                this.notificationToAll();
             }
             else
             {
@@ -72,12 +76,20 @@ namespace KHONJUE_SCHEDULE.Resources.Notifications
 
                 toggle_opened.BackColor = Color.White;
                 toggle_opened.ForeColor = Color.Black;
+
+                this.notificationToAll();
             }
             else
             {
                 checkBox1.BackColor = Color.White;
                 checkBox1.ForeColor = Color.Black;
             }
+        }
+
+       private async Task notificationToAll()
+        {
+                await this._notificationController.SendNotify();
+            
         }
 
         private void LoadData(bool isInit)

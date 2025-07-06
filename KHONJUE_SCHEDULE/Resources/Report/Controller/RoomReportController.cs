@@ -30,7 +30,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.PageColor(Colors.White);
                 page.DefaultTextStyle(x => x.FontSize(10));
 
-                var physical = Path.GetFullPath("WhatsApp Image 2025-05-03 at 13.52.37.jpeg");
+                var physical = Path.GetFullPath("logo.jpeg");
                 if (!File.Exists(physical))
                     throw new FileNotFoundException(physical);
                 page.Header().Column(column =>

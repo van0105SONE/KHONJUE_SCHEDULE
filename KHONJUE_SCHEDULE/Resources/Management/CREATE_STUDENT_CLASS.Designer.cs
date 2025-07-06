@@ -35,29 +35,10 @@
             txtStudentClassName = new TextBox();
             panel9 = new Panel();
             label5 = new Label();
-            panel1 = new Panel();
-            textBox1 = new TextBox();
-            panel3 = new Panel();
-            label1 = new Label();
             panel4 = new Panel();
             cmbLevel = new ComboBox();
             panel5 = new Panel();
             label2 = new Label();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            panel6 = new Panel();
-            txtNumberOfClass = new TextBox();
-            panel7 = new Panel();
-            label3 = new Label();
-            flowLayoutPanel3 = new FlowLayoutPanel();
-            panel10 = new Panel();
-            textBox2 = new TextBox();
-            panel11 = new Panel();
-            label4 = new Label();
-            flowLayoutPanel4 = new FlowLayoutPanel();
-            panel14 = new Panel();
-            textBox4 = new TextBox();
-            panel15 = new Panel();
-            label7 = new Label();
             closeBtn = new Button();
             createBtn = new Button();
             panel12 = new Panel();
@@ -68,19 +49,8 @@
             flowLayoutPanel1.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
-            panel1.SuspendLayout();
-            panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            panel6.SuspendLayout();
-            panel7.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
-            panel10.SuspendLayout();
-            panel11.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            panel14.SuspendLayout();
-            panel15.SuspendLayout();
             panel12.SuspendLayout();
             panel13.SuspendLayout();
             SuspendLayout();
@@ -156,52 +126,11 @@
             label5.TabIndex = 1;
             label5.Text = "ຊື່ຫ້ອງ";
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(panel3);
-            panel1.Location = new Point(3, 191);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(706, 89);
-            panel1.TabIndex = 5;
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(0, 42);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(706, 30);
-            textBox1.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(label1);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(3, 4, 3, 4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(706, 42);
-            panel3.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 4);
-            label1.Name = "label1";
-            label1.Size = new Size(147, 25);
-            label1.TabIndex = 1;
-            label1.Text = "ຈຳນວນຫ້ອງນັກຮຽນ";
-            // 
             // panel4
             // 
             panel4.Controls.Add(cmbLevel);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(3, 385);
+            panel4.Location = new Point(6, 294);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
             panel4.Size = new Size(706, 89);
@@ -240,162 +169,6 @@
             label2.Text = "ປະເພດຫ້ອງ";
             label2.Click += label2_Click;
             // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.Controls.Add(panel6);
-            flowLayoutPanel2.Controls.Add(flowLayoutPanel3);
-            flowLayoutPanel2.Controls.Add(flowLayoutPanel4);
-            flowLayoutPanel2.Dock = DockStyle.Top;
-            flowLayoutPanel2.Location = new Point(0, 189);
-            flowLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(715, 100);
-            flowLayoutPanel2.TabIndex = 6;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(txtNumberOfClass);
-            panel6.Controls.Add(panel7);
-            panel6.Location = new Point(3, 4);
-            panel6.Margin = new Padding(3, 4, 3, 4);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(706, 89);
-            panel6.TabIndex = 4;
-            // 
-            // txtNumberOfClass
-            // 
-            txtNumberOfClass.Dock = DockStyle.Fill;
-            txtNumberOfClass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNumberOfClass.Location = new Point(0, 42);
-            txtNumberOfClass.Margin = new Padding(3, 4, 3, 4);
-            txtNumberOfClass.Name = "txtNumberOfClass";
-            txtNumberOfClass.Size = new Size(706, 30);
-            txtNumberOfClass.TabIndex = 1;
-            txtNumberOfClass.KeyPress += txtNumberOfClass_KeyPress;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(label3);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 0);
-            panel7.Margin = new Padding(3, 4, 3, 4);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(706, 42);
-            panel7.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.SizeAll;
-            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 4);
-            label3.Name = "label3";
-            label3.Size = new Size(104, 33);
-            label3.TabIndex = 1;
-            label3.Text = "ຈຳນວນຫ້ອງ";
-            // 
-            // flowLayoutPanel3
-            // 
-            flowLayoutPanel3.Controls.Add(panel10);
-            flowLayoutPanel3.Dock = DockStyle.Top;
-            flowLayoutPanel3.Location = new Point(3, 101);
-            flowLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(715, 100);
-            flowLayoutPanel3.TabIndex = 9;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(textBox2);
-            panel10.Controls.Add(panel11);
-            panel10.Location = new Point(3, 4);
-            panel10.Margin = new Padding(3, 4, 3, 4);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(706, 89);
-            panel10.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(0, 42);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(706, 30);
-            textBox2.TabIndex = 1;
-            // 
-            // panel11
-            // 
-            panel11.Controls.Add(label4);
-            panel11.Dock = DockStyle.Top;
-            panel11.Location = new Point(0, 0);
-            panel11.Margin = new Padding(3, 4, 3, 4);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(706, 42);
-            panel11.TabIndex = 0;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Cursor = Cursors.SizeAll;
-            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 4);
-            label4.Name = "label4";
-            label4.Size = new Size(95, 25);
-            label4.TabIndex = 1;
-            label4.Text = "ຈຳນວນຫ້ອງ";
-            // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.Controls.Add(panel14);
-            flowLayoutPanel4.Dock = DockStyle.Top;
-            flowLayoutPanel4.Location = new Point(3, 209);
-            flowLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(715, 100);
-            flowLayoutPanel4.TabIndex = 7;
-            // 
-            // panel14
-            // 
-            panel14.Controls.Add(textBox4);
-            panel14.Controls.Add(panel15);
-            panel14.Location = new Point(3, 4);
-            panel14.Margin = new Padding(3, 4, 3, 4);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(706, 89);
-            panel14.TabIndex = 4;
-            // 
-            // textBox4
-            // 
-            textBox4.Dock = DockStyle.Fill;
-            textBox4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(0, 42);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(706, 30);
-            textBox4.TabIndex = 1;
-            // 
-            // panel15
-            // 
-            panel15.Controls.Add(label7);
-            panel15.Dock = DockStyle.Top;
-            panel15.Location = new Point(0, 0);
-            panel15.Margin = new Padding(3, 4, 3, 4);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(706, 42);
-            panel15.TabIndex = 0;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Cursor = Cursors.SizeAll;
-            label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(3, 4);
-            label7.Name = "label7";
-            label7.Size = new Size(55, 25);
-            label7.TabIndex = 1;
-            label7.Text = "ຊື່ຫ້ອງ";
-            // 
             // closeBtn
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -430,7 +203,7 @@
             // 
             panel12.Controls.Add(txtDescription);
             panel12.Controls.Add(panel13);
-            panel12.Location = new Point(3, 295);
+            panel12.Location = new Point(3, 197);
             panel12.Margin = new Padding(3, 4, 3, 4);
             panel12.Name = "panel12";
             panel12.Size = new Size(706, 89);
@@ -476,8 +249,6 @@
             Controls.Add(createBtn);
             Controls.Add(panel12);
             Controls.Add(panel4);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -491,28 +262,9 @@
             panel8.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            panel14.ResumeLayout(false);
-            panel14.PerformLayout();
-            panel15.ResumeLayout(false);
-            panel15.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
             panel13.ResumeLayout(false);
@@ -529,29 +281,10 @@
         private TextBox txtStudentClassName;
         private Panel panel9;
         private Label label5;
-        private Panel panel1;
-        private TextBox textBox1;
-        private Panel panel3;
-        private Label label1;
         private Panel panel4;
         private Panel panel5;
         private Label label2;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private Panel panel6;
-        private TextBox txtNumberOfClass;
-        private Panel panel7;
-        private Label label3;
         private ComboBox cmbLevel;
-        private FlowLayoutPanel flowLayoutPanel3;
-        private Panel panel10;
-        private TextBox textBox2;
-        private Panel panel11;
-        private Label label4;
-        private FlowLayoutPanel flowLayoutPanel4;
-        private Panel panel14;
-        private TextBox textBox4;
-        private Panel panel15;
-        private Label label7;
         private Button closeBtn;
         private Button createBtn;
         private Panel panel12;

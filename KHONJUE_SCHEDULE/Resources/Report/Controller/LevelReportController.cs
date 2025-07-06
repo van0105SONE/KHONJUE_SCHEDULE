@@ -31,7 +31,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                 page.DefaultTextStyle(x => x.FontSize(10));
                 string currentDirectory = Directory.GetCurrentDirectory();
 
-                var physical = Path.GetFullPath("WhatsApp Image 2025-05-03 at 13.52.37.jpeg");
+                var physical = Path.GetFullPath("logo.jpeg");
                 if (!File.Exists(physical))
                     throw new FileNotFoundException(physical);
 
@@ -74,7 +74,6 @@ namespace KHONJUE_SCHEDULE.Resources.Report.Controller
                         {
                             return container
                                 .DefaultTextStyle(x => x.SemiBold())
-                                .Padding(5)
                                 .Background(Colors.Grey.Lighten2)
                                 .Border(1)
                                 .BorderColor(Colors.Grey.Darken2);

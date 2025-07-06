@@ -485,6 +485,7 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     schedule.RoomName = data.GetValue(data.GetOrdinal("StudentClassName")).ToString();
                     schedule.levelName = data["LevelName"].ToString();
                     schedule.TeacherName = data.GetValue(data.GetOrdinal("TeacherName")).ToString();
+                    schedule.ClassName = data["ClassName"].ToString();
                     scheduls.Add(schedule);
                 }
                 data.Close();
@@ -526,11 +527,15 @@ ORDER BY teachers.""TeacherName"" ASC;";
             }
         }
 
-        public List<ScheduleModel> getScheduleAll(int levelId, int TermId, int majorId, string teacherName, string searchType)
+        public List<ScheduleModel> getScheduleAll(int levelId, int TermId, int majorId,int classMajorId,string teacherName, string searchType)
         {
             try
             {
                 string condition = @"WHERE 1=1"; // Makes it easier to append ANDs
+                if (classMajorId != -1)
+                {
+                    condition += $@" AND schedule.""ClassMajorId"" = {classMajorId}";
+                }
 
                 if (levelId != -1)
                 {
@@ -581,8 +586,10 @@ SELECT
     majors.""MajorName"",
     student_class.""StudentClassName"",  
     terms.""TermName"",
-    study_level.""LevelName""
+    study_level.""LevelName"",
+    class_major.""ClassName""
 FROM schedule
+LEFT JOIN ""class_major"" ON schedule.""ClassMajorId"" = ""class_major"".""Id""
 LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
 LEFT JOIN ""subject"" ON ""term_subjects"".""SubjectId"" = ""subject"".""Id""
 LEFT JOIN ""majors"" ON ""majors"".""id"" = ""term_subjects"".""MajorId""
@@ -591,6 +598,7 @@ LEFT JOIN ""study_level"" ON term_subjects.""LevelId"" = ""study_level"".""Id""
 LEFT JOIN ""teachers"" ON ""teachers"".""Id"" = ""schedule"".""TeacherId""
 LEFT JOIN ""time_period"" ON ""time_period"".""Id"" = ""schedule"".""TimePeriodId""
 LEFT JOIN ""student_class"" ON ""student_class"".""Id"" = ""schedule"".""RoomId""
+
 {condition}
 ORDER BY teachers.""TeacherName"" ASC;";
 
@@ -604,6 +612,7 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     schedule.termName = data["TermName"].ToString();
                     schedule.levelName = data["LevelName"].ToString();
                     schedule.subjectName = data["SubjectName"].ToString();
+                    schedule.ClassName = data["ClassName"].ToString();
                     schedule.majorName = data["MajorName"].ToString();
                     schedule.period = data["StartTime"].ToString() + " - " + data["EndTime"].ToString();
                     schedule.RoomName = data["StudentClassName"].ToString();

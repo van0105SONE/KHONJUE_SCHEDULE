@@ -49,15 +49,16 @@ namespace KHONJUE_SCHEDULE.Resources.Report
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
- 
+
 
         }
 
-        async  private void button3_Click(object sender, EventArgs e)
+        async private void button3_Click(object sender, EventArgs e)
         {
             this.REPORT_CONTAINER.Controls.Clear();
             var data = _scheduleController.getScheduleStudent(txtSearch.Text.Trim());
-            var report = new TeacherReportController(data);
+            var periods = _timePeriodController.getTimePeriod("");
+            var report = new TeacherReportController(data, periods, "student");
             string path = Path.Combine(Environment.CurrentDirectory, "ScheduleReport.pdf");
             report.GeneratePdf(path);
 
@@ -87,7 +88,23 @@ namespace KHONJUE_SCHEDULE.Resources.Report
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, @$"TEACHER-SCHEDULE-{DateTime.Now.ToString("MMDDYYYY")}.pdf");
+            var data = _scheduleController.getScheduleStudent(txtSearch.Text.Trim());
+            var periods = _timePeriodController.getTimePeriod("");
+            var report = new TeacherReportController(data, periods, "teacher");
+            report.GeneratePdf(filePath);
 
+            Console.WriteLine($"PDF saved to: {filePath}");
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var data = _scheduleController.getScheduleStudent(txtSearch.Text.Trim());
+            ExcelExport.ToExcelClosedXml(data, @$"STUDENT-SCHEDULE-{DateTime.Now.ToString("MMDDYYYY")}.xlsx");
+        }
     }
 }

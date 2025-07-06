@@ -40,8 +40,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             };
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             createBtn.Text = "ບັນທຶກ";
-            txtLecture.Text = "1";
+            txtUnit.Text = "1";
             txtLab.Text = "1";
+            txtLecture.Text = "1";
+            txtResearch.Text = "1";
             action = Actions.Create;
         }
 
@@ -61,8 +63,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             txtSubject.Text = subjectParam.SubjectName;
             txtDescription.Text = subjectParam.Description;
+            txtUnit.Text = subjectParam.Unit.ToString();
             txtLecture.Text = subjectParam.Lecture.ToString();
             txtLab.Text = subjectParam.Lab.ToString();
+            txtResearch.Text = subjectParam.Research.ToString();
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
             action = Actions.Update;
@@ -153,6 +157,16 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click_2(object sender, EventArgs e)
         {
+
+        }
+
+        private void closeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void createBtn_Click_3(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text))
             {
                 return;
@@ -160,9 +174,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             subject.SubjectName = txtSubject.Text;
             subject.Description = txtDescription.Text;
-            subject.Lecture = int.Parse(txtLecture.Text);
-            subject.Lab = int.Parse(txtLab.Text);
-
+            subject.Unit = int.Parse(txtUnit.Text);
+            subject.Lecture = int.Parse(txtUnit.Text);
+            subject.Lab = int.Parse(txtLecture.Text);
+            subject.Research = int.Parse(txtResearch.Text);
 
             bool isSuccess = false;
             if (action == Actions.Create)
@@ -179,9 +194,10 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+
         }
 
-        private void closeBtn_Click_1(object sender, EventArgs e)
+        private void closeBtn_Click_2(object sender, EventArgs e)
         {
             this.Close();
         }
