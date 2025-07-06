@@ -208,6 +208,7 @@
             closeBtn.TabIndex = 27;
             closeBtn.Text = "ອອກ";
             closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click;
             // 
             // panel2
             // 

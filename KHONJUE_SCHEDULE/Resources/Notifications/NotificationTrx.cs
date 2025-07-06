@@ -88,7 +88,6 @@ namespace KHONJUE_SCHEDULE.Resources.Notifications
 
        private async Task notificationToAll()
         {
-                await this._notificationController.SendNotify();
             
         }
 

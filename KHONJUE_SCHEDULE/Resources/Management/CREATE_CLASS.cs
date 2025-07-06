@@ -47,13 +47,14 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _levelController = new LevelController(_dbContext);
             _majorController = new MajorController(_dbContext);
             _classMajorController = new ClassMajorController(_dbContext);
+            loadLevel();
+            loadMajors();
             cmbMajor.SelectedValue = classMojor.MajorId;
             cmbLevel.SelectedValue = classMojor.LevelId;
             txtLevelName.Text = classMojor.MajorName;
             _classMajor = classMojor;
             action = Actions.Update;
-            loadLevel();
-            loadMajors();
+
         }
 
         private void createBtn_Click(object sender, EventArgs e)
@@ -110,6 +111,11 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             // Bind the roles list to the ComboBox
             cmbMajor.DataSource = roles;
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
