@@ -41,11 +41,6 @@
             txtLab = new TextBox();
             panel10 = new Panel();
             label3 = new Label();
-            flowLayoutPanel4 = new FlowLayoutPanel();
-            panel11 = new Panel();
-            txtLecture = new TextBox();
-            panel12 = new Panel();
-            label4 = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel3 = new Panel();
             txtUnit = new TextBox();
@@ -70,9 +65,6 @@
             flowLayoutPanel5.SuspendLayout();
             panel7.SuspendLayout();
             panel10.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            panel11.SuspendLayout();
-            panel12.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -91,7 +83,6 @@
             panel1.Controls.Add(flowLayoutPanel6);
             panel1.Controls.Add(createBtn);
             panel1.Controls.Add(flowLayoutPanel5);
-            panel1.Controls.Add(flowLayoutPanel4);
             panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(flowLayoutPanel1);
@@ -122,7 +113,7 @@
             // 
             flowLayoutPanel6.Controls.Add(panel13);
             flowLayoutPanel6.Dock = DockStyle.Top;
-            flowLayoutPanel6.Location = new Point(0, 605);
+            flowLayoutPanel6.Location = new Point(0, 501);
             flowLayoutPanel6.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Size = new Size(713, 104);
@@ -188,7 +179,7 @@
             // 
             flowLayoutPanel5.Controls.Add(panel7);
             flowLayoutPanel5.Dock = DockStyle.Top;
-            flowLayoutPanel5.Location = new Point(0, 501);
+            flowLayoutPanel5.Location = new Point(0, 397);
             flowLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Size = new Size(713, 104);
@@ -234,58 +225,6 @@
             label3.Size = new Size(72, 33);
             label3.TabIndex = 1;
             label3.Text = "ປະຕິບັດ";
-            // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.Controls.Add(panel11);
-            flowLayoutPanel4.Dock = DockStyle.Top;
-            flowLayoutPanel4.Location = new Point(0, 397);
-            flowLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(713, 104);
-            flowLayoutPanel4.TabIndex = 11;
-            // 
-            // panel11
-            // 
-            panel11.Controls.Add(txtLecture);
-            panel11.Controls.Add(panel12);
-            panel11.Location = new Point(3, 4);
-            panel11.Margin = new Padding(3, 4, 3, 4);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(706, 89);
-            panel11.TabIndex = 4;
-            // 
-            // txtLecture
-            // 
-            txtLecture.Dock = DockStyle.Fill;
-            txtLecture.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLecture.Location = new Point(0, 42);
-            txtLecture.Margin = new Padding(3, 4, 3, 4);
-            txtLecture.Name = "txtLecture";
-            txtLecture.Size = new Size(706, 30);
-            txtLecture.TabIndex = 1;
-            txtLecture.KeyPress += txtLab_KeyPress;
-            // 
-            // panel12
-            // 
-            panel12.Controls.Add(label4);
-            panel12.Dock = DockStyle.Top;
-            panel12.Location = new Point(0, 0);
-            panel12.Margin = new Padding(3, 4, 3, 4);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(706, 42);
-            panel12.TabIndex = 0;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Cursor = Cursors.SizeAll;
-            label4.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 4);
-            label4.Name = "label4";
-            label4.Size = new Size(75, 33);
-            label4.TabIndex = 1;
-            label4.Text = "ທິດສະດິ";
             // 
             // flowLayoutPanel2
             // 
@@ -482,11 +421,6 @@
             panel7.PerformLayout();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -521,11 +455,6 @@
         private TextBox txtDescription;
         private Panel panel6;
         private Label label2;
-        private FlowLayoutPanel flowLayoutPanel4;
-        private Panel panel11;
-        private TextBox txtLecture;
-        private Panel panel12;
-        private Label label4;
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel panel3;
         private TextBox txtUnit;
