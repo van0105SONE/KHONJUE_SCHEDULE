@@ -97,5 +97,40 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 return new List<TimePeriodModel>();
             }
         }
+
+        public List<TimePeriodModel> getFreeTimePeriod(string keyword)
+        {
+            try
+            {
+                string condition = "";
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    condition += $@"WHERE LOWER(""PeriodCode"") LIKE LOWER('%{keyword}%');";
+                }
+                List<TimePeriodModel> timePeiods = new List<TimePeriodModel>();
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"SELECT * FROM public.time_period;";
+                NpgsqlDataReader data = _command.ExecuteReader();
+
+                while (data.Read())
+                {
+                    TimePeriodModel subject = new TimePeriodModel();
+                    subject.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    subject.periodCode = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("PeriodCode")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("PeriodCode")).ToString();
+                    subject.startTime = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("StartTime")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("StartTime")).ToString();
+                    subject.endTime = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("EndTime")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("EndTime")).ToString();
+                    timePeiods.Add(subject);
+                }
+
+
+                data.Close();
+                return timePeiods;
+            }
+            catch (Exception ex)
+            {
+                return new List<TimePeriodModel>();
+            }
+        }
     }
 }

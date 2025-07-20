@@ -44,6 +44,7 @@
             panel5 = new Panel();
             button3 = new Button();
             subjectDatagrid = new FlowLayoutPanel();
+            button1 = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -70,7 +71,7 @@
             panel4.Controls.Add(label3);
             panel4.Controls.Add(cmbMajors);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(129, 0);
+            panel4.Location = new Point(10, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(358, 55);
             panel4.TabIndex = 5;
@@ -102,7 +103,7 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(cmbLevel);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(487, 0);
+            panel2.Location = new Point(368, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(333, 55);
             panel2.TabIndex = 4;
@@ -134,7 +135,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(cmbTerms);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(820, 0);
+            panel1.Location = new Point(701, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(349, 55);
             panel1.TabIndex = 3;
@@ -165,7 +166,7 @@
             panel6.Controls.Add(label4);
             panel6.Controls.Add(cmbClass);
             panel6.Dock = DockStyle.Right;
-            panel6.Location = new Point(1169, 0);
+            panel6.Location = new Point(1050, 0);
             panel6.Name = "panel6";
             panel6.Size = new Size(352, 55);
             panel6.TabIndex = 2;
@@ -194,11 +195,12 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(button1);
             panel5.Controls.Add(button3);
             panel5.Dock = DockStyle.Right;
-            panel5.Location = new Point(1521, 0);
+            panel5.Location = new Point(1402, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(251, 55);
+            panel5.Size = new Size(370, 55);
             panel5.TabIndex = 1;
             // 
             // button3
@@ -207,7 +209,7 @@
             button3.BackColor = Color.DarkGreen;
             button3.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(36, 3);
+            button3.Location = new Point(174, 4);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
             button3.Size = new Size(179, 48);
@@ -223,6 +225,21 @@
             subjectDatagrid.Name = "subjectDatagrid";
             subjectDatagrid.Size = new Size(1772, 517);
             subjectDatagrid.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.BackColor = Color.DarkGreen;
+            button1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(12, 4);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(156, 48);
+            button1.TabIndex = 9;
+            button1.Text = "ແກ້ໄຂ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // TableSchedule
             // 
@@ -262,5 +279,6 @@
         private Panel panel4;
         private Label label3;
         private ComboBox cmbMajors;
+        private Button button1;
     }
 }

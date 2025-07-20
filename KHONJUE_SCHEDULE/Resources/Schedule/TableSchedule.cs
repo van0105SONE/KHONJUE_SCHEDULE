@@ -322,5 +322,15 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                 InitializeWeekGrid();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EditTablePage editDialog = new EditTablePage();
+            editDialog.ShowDialog();
+            if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
+            {
+                InitializeWeekGrid();
+            }
+        }
     }
 }

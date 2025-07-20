@@ -120,5 +120,44 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
+        public List<TeacherSubject> GetTeacherSubjectListBySubjectId(int subjectId)
+        {
+            try
+            {
+
+                List<TeacherSubject> teacherSubjects = new List<TeacherSubject>();
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"SELECT DISTINCT ON (teacher_subject.""TeacherId"")
+    teacher_subject.""Id"",
+    teacher_subject.""TeacherId"",
+    teacher_subject.""SubjectId"",
+    subject.""SubjectName"",
+    teachers.""TeacherName""
+FROM public.teacher_subject
+LEFT JOIN teachers ON teacher_subject.""TeacherId"" = teachers.""Id""
+LEFT JOIN subject ON teacher_subject.""SubjectId"" = subject.""Id""
+WHERE teacher_subject.""SubjectId"" = {subjectId};";
+                NpgsqlDataReader data = _command.ExecuteReader();
+                while (data.Read())
+                {
+                    TeacherSubject teacherSubject = new TeacherSubject();
+                    teacherSubject.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    teacherSubject.TeacherId = int.Parse(data.GetValue(data.GetOrdinal("TeacherId")).ToString(), 0);
+                    teacherSubject.SubjectId = int.Parse(data.GetValue(data.GetOrdinal("SubjectId")).ToString(), 0);
+                    teacherSubject.SubjectName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("SubjectName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("SubjectName")).ToString();
+                    teacherSubject.TeacherName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("TeacherName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("TeacherName")).ToString();
+
+                    teacherSubjects.Add(teacherSubject);
+                }
+                data.Close();
+                return teacherSubjects;
+            }
+            catch (Exception ex)
+            {
+                return new List<TeacherSubject>();
+            }
+        }
+
     }
 }

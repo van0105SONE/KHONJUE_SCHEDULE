@@ -48,7 +48,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
             List<ScheduleModel> schedule = new();
 
             // Get full list of days
-            List<DayOfWeek> allDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
+            List<DayOfWeek> allDays = days;
             Random rng = new Random(); // For shuffling days
 
             var teachers = _teacherController.getTeachers("");
@@ -168,33 +168,32 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
 
         bool IsTeacherEligible(int teacherId, int subjectId)
         {
-            return !HasSubjectConflict(teacherId, subjectId) &&
-                   !HasTeacherSubject(teacherId, subjectId);
+            return HasSubjectConflict(teacherId, subjectId);
         }
 
-        private bool HasTeacherSubject(int teacherId,int subjectId)
-        {
-            using (var command = new NpgsqlCommand())
-            {
-                command.Connection = dbContext.dbConnection;
-                command.CommandText = @"
-SELECT 1
-FROM schedule s
-LEFT JOIN teacher_subject t ON s.""TermSubjectId"" = t.""Id""
-WHERE t.""SubjectId"" = @SubjectId
-  AND s.""TeacherId"" = @TeacherId
-LIMIT 1;
-";
+//        private bool HasTeacherSubject(int teacherId,int subjectId)
+//        {
+//            using (var command = new NpgsqlCommand())
+//            {
+//                command.Connection = dbContext.dbConnection;
+//                command.CommandText = @"
+//SELECT 1
+//FROM schedule s
+//LEFT JOIN teacher_subject t ON s.""TermSubjectId"" = t.""Id""
+//WHERE t.""SubjectId"" = @SubjectId
+//  AND s.""TeacherId"" = @TeacherId
+//LIMIT 1;
+//";
 
-                command.Parameters.AddWithValue("@SubjectId", subjectId);
-                command.Parameters.AddWithValue("@TeacherId", teacherId);
+//                command.Parameters.AddWithValue("@SubjectId", subjectId);
+//                command.Parameters.AddWithValue("@TeacherId", teacherId);
 
-                using (var reader = command.ExecuteReader())
-                {
-                    return reader.HasRows; // returns true if a matching row exists
-                }
-            }
-        }
+//                using (var reader = command.ExecuteReader())
+//                {
+//                    return reader.HasRows; // returns true if a matching row exists
+//                }
+//            }
+//        }
 
 
         private bool HasSubjectConflict(int teacherId,int subjectId)
@@ -225,7 +224,28 @@ LIMIT 1;
                 using (var command = new NpgsqlCommand())
                 {
                     command.Connection = dbContext.dbConnection;
-                    command.CommandText = $@"INSERT INTO schedule (""TermSubjectId"", ""Day"", ""TimePeriodId"", ""RoomId"", ""TeacherId"", ""Type"", ""ClassMajorId"") VALUES ({param.TermSubjectId}, '{param.Day}', {param.periodId}, {param.RoomId}, {param.TeacherId}, '{param.Type}', {param.ClassMajorId})";
+                    command.CommandText = $@"
+INSERT INTO schedule (""TermSubjectId"", ""Day"", ""TimePeriodId"", ""RoomId"", ""TeacherId"", ""Type"", ""ClassMajorId"") VALUES ({param.TermSubjectId}, '{param.Day}', {param.periodId}, {param.RoomId}, {param.TeacherId}, '{param.Type}', {param.ClassMajorId});
+";
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving schedule: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool EditSchedule(int id, ScheduleModel param)
+        {
+            try
+            {
+                using (var command = new NpgsqlCommand())
+                {
+                    command.Connection = dbContext.dbConnection;
+                    command.CommandText = $@"UPDATE schedule  SET ""Day"" = '{param.Day}', ""TimePeriodId"" = {param.periodId}, ""RoomId""={param.RoomId}, ""TeacherId""={param.TeacherId} WHERE ""Id"" = {id};";
                     command.ExecuteNonQuery();
                     return true;
                 }
@@ -579,15 +599,23 @@ SELECT
     schedule.""Id"",  
     schedule.""Day"",
     schedule.""Type"",
+    schedule.""TeacherId"",  
+    schedule.""RoomId"",  
+    schedule.""TimePeriodId"",
     subject.""SubjectName"", 
     teachers.""TeacherName"",  
     time_period.""StartTime"", 
     time_period.""EndTime"",
     majors.""MajorName"",
     student_class.""StudentClassName"",  
+    schedule.""ClassMajorId"",  
     terms.""TermName"",
     study_level.""LevelName"",
-    class_major.""ClassName""
+    class_major.""ClassName"",
+    term_subjects.""MajorId"",
+    term_subjects.""LevelId"",
+    term_subjects.""TermId"",
+    term_subjects.""SubjectId""
 FROM schedule
 LEFT JOIN ""class_major"" ON schedule.""ClassMajorId"" = ""class_major"".""Id""
 LEFT JOIN ""term_subjects"" ON schedule.""TermSubjectId"" = ""term_subjects"".""Id""
@@ -615,8 +643,16 @@ ORDER BY teachers.""TeacherName"" ASC;";
                     schedule.ClassName = data["ClassName"].ToString();
                     schedule.majorName = data["MajorName"].ToString();
                     schedule.period = data["StartTime"].ToString() + " - " + data["EndTime"].ToString();
+                    schedule.TeacherId = int.Parse(data["TeacherId"].ToString());
+                    schedule.periodId = int.Parse(data["TimePeriodId"].ToString());
+                    schedule.RoomId = int.Parse(data["RoomId"].ToString());
                     schedule.RoomName = data["StudentClassName"].ToString();
                     schedule.Type = data["Type"].ToString();
+                    schedule.ClassMajorId = int.Parse(data["ClassMajorId"].ToString());
+                    schedule.subjectId = int.Parse(data["SubjectId"].ToString());
+                    schedule.majorId = int.Parse(data["MajorId"].ToString());
+                    schedule.termId = int.Parse(data["TermId"].ToString());
+                    schedule.levelId = int.Parse(data["levelId"].ToString());
                     scheduls.Add(schedule);
                 }
                 data.Close();

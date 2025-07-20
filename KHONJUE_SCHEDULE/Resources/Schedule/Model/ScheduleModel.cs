@@ -15,11 +15,15 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.Model
          public string ClassName { get; set; }
          public string TeacherName { get; set; }
          public int TermSubjectId { get; set; }
+         public int subjectId { get; set; }
          public string subjectName { get; set; }
-        public string majorName { get; set; }
-        public string termName { get; set; }
-        public string levelName { get; set; }
-        public int periodId { get; set; }
+         public int majorId { get; set; }
+         public string majorName { get; set; }
+         public int termId { get; set; }
+         public string termName { get; set; }
+         public int levelId { get; set; }
+         public string levelName { get; set; }
+         public int periodId { get; set; }
          public String period { get; set; }
         public int RoomId { get; set; }
         public string Type { get; set; }
