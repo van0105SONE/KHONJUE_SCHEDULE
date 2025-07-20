@@ -128,6 +128,7 @@
             cmbDays.Name = "cmbDays";
             cmbDays.Size = new Size(448, 33);
             cmbDays.TabIndex = 3;
+            cmbDays.SelectedIndexChanged += cmbDays_SelectedIndexChanged;
             // 
             // panel5
             // 
@@ -343,6 +344,7 @@
             cmbPeriods.Name = "cmbPeriods";
             cmbPeriods.Size = new Size(448, 33);
             cmbPeriods.TabIndex = 3;
+            cmbPeriods.SelectedIndexChanged += cmbPeriods_SelectedIndexChanged;
             // 
             // panel13
             // 

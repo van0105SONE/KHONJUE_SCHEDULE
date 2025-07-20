@@ -325,7 +325,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EditTablePage editDialog = new EditTablePage();
+            EditTablePage editDialog = new EditTablePage(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbClass.SelectedValue.ToString()));
             editDialog.ShowDialog();
             if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {

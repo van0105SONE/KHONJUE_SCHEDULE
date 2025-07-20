@@ -28,7 +28,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         private MajorController _majorController { get; set; }
         private TermController _termController { get; set; }
         private ClassMajorController _classMajorController { get; set; }
-        public EditTablePage()
+        public EditTablePage(int  levelId, int termId, int majorId, int classMajorId)
         {
             InitializeComponent();
             _dbContext = new DatabaseContext();
@@ -40,16 +40,16 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
             _classMajorController = new ClassMajorController(_dbContext);
-            loadData();
+            loadData(levelId, termId, majorId, classMajorId);
             Style.styleDatagridView(dataGridView1);
         }
 
 
-        private void loadData()
+        private void loadData(int levelId, int termId,int majorId ,int classMajorId)
         {
             try
             {
-                List<ScheduleModel> schedules = _scheduleController.getScheduleAll(-1, -1, -1, -1, null, null);
+                List<ScheduleModel> schedules = _scheduleController.getScheduleAll(levelId, termId,majorId ,classMajorId, null, null);
 
                 dataGridView1.DataSource = schedules;
                 dataGridView1.Columns["Id"].HeaderText = "ລະຫັດ";
@@ -58,6 +58,10 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                 dataGridView1.Columns["periodId"].Visible = false;
                 dataGridView1.Columns["RoomId"].Visible = false;
                 dataGridView1.Columns["ClassMajorId"].Visible = false;
+                dataGridView1.Columns["subjectId"].Visible = false;
+                dataGridView1.Columns["majorId"].Visible = false;
+                dataGridView1.Columns["termId"].Visible = false;
+                dataGridView1.Columns["levelId"].Visible = false;
                 dataGridView1.Columns["Day"].HeaderText = "ມຶ້";
                 dataGridView1.Columns["ClassName"].HeaderText = "ຫ້ອງ";
                 dataGridView1.Columns["MajorName"].HeaderText = "ສາຂາ";

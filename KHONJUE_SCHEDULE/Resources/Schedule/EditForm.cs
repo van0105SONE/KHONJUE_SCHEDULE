@@ -34,7 +34,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         public EditForm()
         {
             InitializeComponent();
-            schedule = new ScheduleModel(); 
+            schedule = new ScheduleModel();
         }
 
         public EditForm(ScheduleModel schedulParams)
@@ -52,6 +52,9 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             _periodController = new TimePeriodController(_dbContext);
             _classMajorController = new ClassMajorController(_dbContext);
             _studentClassController = new StudentClassController(_dbContext);
+
+            cmbDays.DataSource = new List<string>() {
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
             loadMajors();
             loadLevel();
             loadSubject();
@@ -61,8 +64,6 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             loadClassMajors();
             loadRooms();
 
-            cmbDays.DataSource = new List<string>() {
-            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
             cmbDays.SelectedItem = schedulParams.Day;
             cmbClass.SelectedValue = schedulParams.ClassMajorId;
             cmbLevel.SelectedValue = schedulParams.levelId;
@@ -125,14 +126,18 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void loadPeriods()
         {
-            List<TimePeriodModel> periods = _periodController.getTimePeriod("");
+            if (cmbTeacher.SelectedValue != null)
+            {
+                List<TimePeriodModel> periods = _periodController.getFreeTimePeriod(cmbDays.SelectedItem.ToString(), int.Parse(cmbTeacher.SelectedValue.ToString()));
 
-            // Set the DisplayMember and ValueMember properties
-            cmbPeriods.DisplayMember = "StartTime"; // Replace with the property you want to display
-            cmbPeriods.ValueMember = "Id";    // Replace with the property you want as the value
+                // Set the DisplayMember and ValueMember properties
+                cmbPeriods.DisplayMember = "StartTime"; // Replace with the property you want to display
+                cmbPeriods.ValueMember = "Id";    // Replace with the property you want as the value
 
-            // Bind the roles list to the ComboBox
-            cmbPeriods.DataSource = periods;
+                // Bind the roles list to the ComboBox
+                cmbPeriods.DataSource = periods;
+            }
+
         }
 
 
@@ -175,14 +180,18 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void loadRooms()
         {
-            List<StudentClassModel> rooms = _studentClassController.GetStudentClasstList("");
+            if (cmbPeriods.SelectedValue != null)
+            {
+                List<StudentClassModel> rooms = _studentClassController.GetAvailableRooms(cmbDays.SelectedItem.ToString(), int.Parse(cmbPeriods.SelectedValue.ToString()));
 
-            // Set the DisplayMember and ValueMember properties
-            cmbRooms.DisplayMember = "StudentClassName"; // Replace with the property you want to display
-            cmbRooms.ValueMember = "Id";    // Replace with the property you want as the value
+                // Set the DisplayMember and ValueMember properties
+                cmbRooms.DisplayMember = "StudentClassName"; // Replace with the property you want to display
+                cmbRooms.ValueMember = "Id";    // Replace with the property you want as the value
 
-            // Bind the roles list to the ComboBox
-            cmbRooms.DataSource = rooms;
+                // Bind the roles list to the ComboBox
+                cmbRooms.DataSource = rooms;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -191,8 +200,9 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             schedule.TeacherId = int.Parse(cmbTeacher.SelectedValue.ToString());
             schedule.periodId = int.Parse(cmbPeriods.SelectedValue.ToString());
             schedule.RoomId = int.Parse(cmbRooms.SelectedValue.ToString());
-
             _scheduleController.EditSchedule(schedule.Id, schedule);
+
+
             this.Close();
         }
 
@@ -204,6 +214,16 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbPeriods_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadRooms();
+        }
+
+        private void cmbDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadPeriods();
         }
     }
 }

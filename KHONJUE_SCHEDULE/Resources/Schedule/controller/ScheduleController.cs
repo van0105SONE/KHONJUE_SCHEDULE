@@ -115,7 +115,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
                                     foreach (var teacher in eligibleTeachers)
                                     {
                                         teacherScheduleCount.TryGetValue(teacher.Id, out var count);
-                                        string teacherKey = $"{dayStr}_{period.Id}_{teacher.Id}";
+                                        string teacherKey = $"{dayStr}_{period.Id}_{teacher.Id}_{roomType.ToLower()}";
                                         if (teacherOccupation.Contains(teacherKey)) continue;
                                         if (count >= teacher.QuotaPerWeek) continue;
 

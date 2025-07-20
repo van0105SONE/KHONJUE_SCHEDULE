@@ -98,19 +98,24 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        public List<TimePeriodModel> getFreeTimePeriod(string keyword)
+        public List<TimePeriodModel> getFreeTimePeriod(string day, int teacherId)
         {
             try
             {
-                string condition = "";
-                if (!string.IsNullOrEmpty(keyword))
-                {
-                    condition += $@"WHERE LOWER(""PeriodCode"") LIKE LOWER('%{keyword}%');";
-                }
+ 
+
                 List<TimePeriodModel> timePeiods = new List<TimePeriodModel>();
                 _command = new NpgsqlCommand();
                 _command.Connection = _databaseContext.dbConnection;
-                _command.CommandText = $@"SELECT * FROM public.time_period;";
+                _command.CommandText = $@"
+    SELECT * 
+    FROM public.time_period tp
+    WHERE NOT EXISTS (
+        SELECT 1 
+        FROM schedule s 
+        WHERE s.""TimePeriodId"" = tp.""Id"" AND s.""Day"" = '{day}' AND s.""TeacherId"" = {teacherId}
+    );";
+
                 NpgsqlDataReader data = _command.ExecuteReader();
 
                 while (data.Read())
@@ -123,9 +128,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                     timePeiods.Add(subject);
                 }
 
-
                 data.Close();
                 return timePeiods;
+
             }
             catch (Exception ex)
             {
