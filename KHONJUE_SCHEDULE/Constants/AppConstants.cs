@@ -8,7 +8,7 @@ namespace KHONJUE_SCHEDULE.Constants
 {
     class AppConstants
     {
-        private List<string> roomTypes = new List<string> { "Lecture", "Lab", };
+        private List<string> roomTypes = new List<string> {"General" ,"Lecture", "Lab", };
         public AppConstants()
         {
 

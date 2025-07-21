@@ -107,7 +107,9 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
                                 string classKey = $"{dayStr}_{period.Id}_{classMajor.Id}";
                                 if (classMajorOccupation.Contains(classKey)) continue;
 
-                                foreach (var room in rooms.Where(r => r.RoomType.ToLower() == roomType.ToLower()))
+                                foreach (var room in rooms.Where(r =>
+                                    r.RoomType.Equals(roomType, StringComparison.OrdinalIgnoreCase) ||
+                                    r.RoomType.Equals("general", StringComparison.OrdinalIgnoreCase)))
                                 {
                                     string roomKey = $"{dayStr}_{period.Id}_{room.Id}";
                                     if (roomOccupation.Contains(roomKey)) continue;
@@ -133,7 +135,6 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
                                         schedule.Add(item);
                                         saveSchedule(item);
 
-                                        // Update trackers
                                         teacherScheduleCount[teacher.Id] = count + 1;
                                         teacherOccupation.Add(teacherKey);
                                         roomOccupation.Add(roomKey);
@@ -151,6 +152,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule.controller
 
                             if (scheduled) break;
                         }
+
 
                         if (!scheduled)
                         {

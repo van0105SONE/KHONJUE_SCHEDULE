@@ -59,13 +59,28 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            _classMajor = new ClassMajor()
+            if (cmbMajor.SelectedValue == null)
             {
-                Id = _classMajor.Id,
-                LevelId = int.Parse(cmbLevel.SelectedValue.ToString()),
-                MajorId = int.Parse(cmbMajor.SelectedValue.ToString()),
-                ClassName = txtLevelName.Text.Trim()
-            };
+                MessageBox.Show($"ກາລຸນາເລືອກ ສາຂາ ຣຽນກ່ອນ!",
+"Warning");
+            }else if (cmbLevel.SelectedValue == null)
+            {
+                MessageBox.Show($"ກາລຸນາເລືອກປິຮຽນກ່ອນ!",
+        "Warning");
+            }else if (String.IsNullOrEmpty(txtLevelName.Text))
+            {
+                MessageBox.Show($"ກາລຸນາປ້ອນຂໍ້ມູນສາຂາຮຽນກ່ອນ!",
+"Warning");
+            }
+
+
+                _classMajor = new ClassMajor()
+                {
+                    Id = _classMajor.Id,
+                    LevelId = int.Parse(cmbLevel.SelectedValue.ToString()),
+                    MajorId = int.Parse(cmbMajor.SelectedValue.ToString()),
+                    ClassName = txtLevelName.Text.Trim()
+                };
 
             if (action == Actions.Create)
             {
