@@ -59,7 +59,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             txtName.Text = teacherParam.TeacherName;
             txtQuotaPerWeek.Text = teacherParam.QuotaPerWeek.ToString();
-            textPhone.Text = teacherParam.Description;
+            textPhone.Text = teacherParam.Phone;
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
             createBtn.Text = "ແກ້ໄຂ";
             action = Actions.Update;

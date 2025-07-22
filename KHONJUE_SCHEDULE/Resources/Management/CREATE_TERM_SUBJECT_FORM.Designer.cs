@@ -229,6 +229,9 @@
             cmbSubject.Name = "cmbSubject";
             cmbSubject.Size = new Size(442, 33);
             cmbSubject.TabIndex = 4;
+            cmbSubject.SelectedIndexChanged += cmbSubject_SelectedIndexChanged;
+            cmbSubject.Enter += cmbSubject_Enter;
+            cmbSubject.KeyPress += cmbSubject_KeyPress;
             // 
             // panel5
             // 
@@ -281,6 +284,7 @@
             cmbMajor.Name = "cmbMajor";
             cmbMajor.Size = new Size(442, 33);
             cmbMajor.TabIndex = 4;
+            cmbMajor.SelectedIndexChanged += cmbMajor_SelectedIndexChanged;
             // 
             // panel7
             // 

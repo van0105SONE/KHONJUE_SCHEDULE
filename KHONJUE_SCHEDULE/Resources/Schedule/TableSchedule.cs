@@ -81,16 +81,16 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             };
 
             // Set column styles (first column is for period labels)
-            weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150)); // Time period column
+            weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 113)); // Time period column
             for (int i = 1; i < cols; i++)
             {
-                weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 150f / days.Count));
+                weekGrid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 113f / days.Count));
             }
 
             // Set row styles
             for (int i = 0; i < rows; i++)
             {
-                weekGrid.RowStyles.Add(new RowStyle(SizeType.Absolute, 150f)); // or AutoSize if desired
+                weekGrid.RowStyles.Add(new RowStyle(SizeType.Absolute, 113f)); // or AutoSize if desired
             }
 
             // Add top-left corner cell (empty)

@@ -82,6 +82,33 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
+        public List<CurriculumModel> getCurriculumByMajor(int majorId)
+        {
+            try
+            {
+                string condition = string.Empty;
+                List<CurriculumModel> classes = new List<CurriculumModel>();
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"SELECT Curriculum.""Id"", Curriculum.""CurriculumName"", Curriculum.""Description"" FROM Curriculum {condition} WHERE Curriculum.""Id"" = (SELECT majors.""CurriculumId"" FROM majors WHERE majors.id = {majorId});";
+                NpgsqlDataReader data = _command.ExecuteReader();
+                while (data.Read())
+                {
+                    CurriculumModel curriculum = new CurriculumModel();
+                    curriculum.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    curriculum.CurriculumName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("CurriculumName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("CurriculumName")).ToString();
+                    curriculum.Description = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("Description")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("Description")).ToString();
+                    classes.Add(curriculum);
+                }
+                data.Close();
+                return classes;
+            }
+            catch (Exception ex)
+            {
+                return new List<CurriculumModel>();
+            }
+        }
+
         public bool deleteCurriculum(int Id)
         {
             try

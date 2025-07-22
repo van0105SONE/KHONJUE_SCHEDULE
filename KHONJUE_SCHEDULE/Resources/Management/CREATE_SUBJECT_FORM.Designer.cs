@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            closeBtn = new Button();
-            flowLayoutPanel6 = new FlowLayoutPanel();
-            panel13 = new Panel();
-            txtResearch = new TextBox();
-            panel14 = new Panel();
-            label6 = new Label();
-            createBtn = new Button();
-            flowLayoutPanel5 = new FlowLayoutPanel();
+            panel11 = new Panel();
+            textBox1 = new TextBox();
+            panel12 = new Panel();
+            label4 = new Label();
             panel7 = new Panel();
             txtLab = new TextBox();
             panel10 = new Panel();
             label3 = new Label();
+            panel13 = new Panel();
+            txtResearch = new TextBox();
+            panel14 = new Panel();
+            label6 = new Label();
+            closeBtn = new Button();
+            createBtn = new Button();
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel3 = new Panel();
             txtUnit = new TextBox();
@@ -59,12 +61,12 @@
             panel2 = new Panel();
             titleLabel = new Label();
             panel1.SuspendLayout();
-            flowLayoutPanel6.SuspendLayout();
-            panel13.SuspendLayout();
-            panel14.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
+            panel11.SuspendLayout();
+            panel12.SuspendLayout();
             panel7.SuspendLayout();
             panel10.SuspendLayout();
+            panel13.SuspendLayout();
+            panel14.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -79,10 +81,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(panel11);
+            panel1.Controls.Add(panel7);
+            panel1.Controls.Add(panel13);
             panel1.Controls.Add(closeBtn);
-            panel1.Controls.Add(flowLayoutPanel6);
             panel1.Controls.Add(createBtn);
-            panel1.Controls.Add(flowLayoutPanel5);
             panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(flowLayoutPanel1);
@@ -94,36 +97,93 @@
             panel1.Size = new Size(713, 803);
             panel1.TabIndex = 3;
             // 
-            // closeBtn
+            // panel11
             // 
-            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            closeBtn.BackColor = Color.DarkRed;
-            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(293, 738);
-            closeBtn.Margin = new Padding(3, 4, 3, 4);
-            closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(201, 52);
-            closeBtn.TabIndex = 29;
-            closeBtn.Text = "ອອກ";
-            closeBtn.UseVisualStyleBackColor = false;
-            closeBtn.Click += closeBtn_Click_2;
+            panel11.Controls.Add(textBox1);
+            panel11.Controls.Add(panel12);
+            panel11.Location = new Point(3, 405);
+            panel11.Margin = new Padding(3, 4, 3, 4);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(706, 89);
+            panel11.TabIndex = 5;
             // 
-            // flowLayoutPanel6
+            // textBox1
             // 
-            flowLayoutPanel6.Controls.Add(panel13);
-            flowLayoutPanel6.Dock = DockStyle.Top;
-            flowLayoutPanel6.Location = new Point(0, 501);
-            flowLayoutPanel6.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Size = new Size(713, 104);
-            flowLayoutPanel6.TabIndex = 28;
+            textBox1.Dock = DockStyle.Fill;
+            textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(0, 42);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(706, 30);
+            textBox1.TabIndex = 1;
+            // 
+            // panel12
+            // 
+            panel12.Controls.Add(label4);
+            panel12.Dock = DockStyle.Top;
+            panel12.Location = new Point(0, 0);
+            panel12.Margin = new Padding(3, 4, 3, 4);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(706, 42);
+            panel12.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Cursor = Cursors.SizeAll;
+            label4.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 4);
+            label4.Name = "label4";
+            label4.Size = new Size(72, 33);
+            label4.TabIndex = 1;
+            label4.Text = "ປະຕິບັດ";
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(txtLab);
+            panel7.Controls.Add(panel10);
+            panel7.Location = new Point(3, 502);
+            panel7.Margin = new Padding(3, 4, 3, 4);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(706, 89);
+            panel7.TabIndex = 4;
+            // 
+            // txtLab
+            // 
+            txtLab.Dock = DockStyle.Fill;
+            txtLab.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLab.Location = new Point(0, 42);
+            txtLab.Margin = new Padding(3, 4, 3, 4);
+            txtLab.Name = "txtLab";
+            txtLab.Size = new Size(706, 30);
+            txtLab.TabIndex = 1;
+            // 
+            // panel10
+            // 
+            panel10.Controls.Add(label3);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(0, 0);
+            panel10.Margin = new Padding(3, 4, 3, 4);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(706, 42);
+            panel10.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.SizeAll;
+            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(3, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(72, 33);
+            label3.TabIndex = 1;
+            label3.Text = "ປະຕິບັດ";
             // 
             // panel13
             // 
             panel13.Controls.Add(txtResearch);
             panel13.Controls.Add(panel14);
-            panel13.Location = new Point(3, 4);
+            panel13.Location = new Point(3, 599);
             panel13.Margin = new Padding(3, 4, 3, 4);
             panel13.Name = "panel13";
             panel13.Size = new Size(706, 89);
@@ -160,6 +220,21 @@
             label6.TabIndex = 1;
             label6.Text = "ຄົ້ນຄ້ວາ";
             // 
+            // closeBtn
+            // 
+            closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            closeBtn.BackColor = Color.DarkRed;
+            closeBtn.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(293, 738);
+            closeBtn.Margin = new Padding(3, 4, 3, 4);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(201, 52);
+            closeBtn.TabIndex = 29;
+            closeBtn.Text = "ອອກ";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click_2;
+            // 
             // createBtn
             // 
             createBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -174,57 +249,6 @@
             createBtn.Text = "ບັນທຶກ";
             createBtn.UseVisualStyleBackColor = false;
             createBtn.Click += createBtn_Click_3;
-            // 
-            // flowLayoutPanel5
-            // 
-            flowLayoutPanel5.Controls.Add(panel7);
-            flowLayoutPanel5.Dock = DockStyle.Top;
-            flowLayoutPanel5.Location = new Point(0, 397);
-            flowLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(713, 104);
-            flowLayoutPanel5.TabIndex = 25;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(txtLab);
-            panel7.Controls.Add(panel10);
-            panel7.Location = new Point(3, 4);
-            panel7.Margin = new Padding(3, 4, 3, 4);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(706, 89);
-            panel7.TabIndex = 4;
-            // 
-            // txtLab
-            // 
-            txtLab.Dock = DockStyle.Fill;
-            txtLab.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLab.Location = new Point(0, 42);
-            txtLab.Margin = new Padding(3, 4, 3, 4);
-            txtLab.Name = "txtLab";
-            txtLab.Size = new Size(706, 30);
-            txtLab.TabIndex = 1;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(label3);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 0);
-            panel10.Margin = new Padding(3, 4, 3, 4);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(706, 42);
-            panel10.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.SizeAll;
-            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 4);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 33);
-            label3.TabIndex = 1;
-            label3.Text = "ປະຕິບັດ";
             // 
             // flowLayoutPanel2
             // 
@@ -411,16 +435,18 @@
             Name = "CREATE_SUBJECT_FORM";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
-            flowLayoutPanel6.ResumeLayout(false);
-            panel13.ResumeLayout(false);
-            panel13.PerformLayout();
-            panel14.ResumeLayout(false);
-            panel14.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
+            panel11.ResumeLayout(false);
+            panel11.PerformLayout();
+            panel12.ResumeLayout(false);
+            panel12.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
+            panel13.ResumeLayout(false);
+            panel13.PerformLayout();
+            panel14.ResumeLayout(false);
+            panel14.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -462,16 +488,18 @@
         private Label label1;
         private Label titleLabel;
         private Button closeBtn;
-        private FlowLayoutPanel flowLayoutPanel6;
         private Panel panel13;
         private TextBox txtResearch;
         private Panel panel14;
         private Label label6;
         private Button createBtn;
-        private FlowLayoutPanel flowLayoutPanel5;
         private Panel panel7;
         private TextBox txtLab;
         private Panel panel10;
         private Label label3;
+        private Panel panel11;
+        private TextBox textBox1;
+        private Panel panel12;
+        private Label label4;
     }
 }

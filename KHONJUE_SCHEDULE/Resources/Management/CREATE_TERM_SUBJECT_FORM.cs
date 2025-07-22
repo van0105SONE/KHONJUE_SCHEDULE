@@ -53,14 +53,19 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _levelController = new LevelController(_dbContext);
             _majorController = new MajorController(_dbContext);
             _curriculumController = new CurriculumController(_dbContext);
-            termSubject = termSubjectParam;
-            cmbLevel.SelectedValue = termSubjectParam.TermName;
-            action = Actions.Update;
             loadSubject();
             loadTerm();
             loadLevel();
             loadMajors();
             loadCurriculum();
+            termSubject = termSubjectParam;
+            cmbLevel.SelectedValue = termSubjectParam.LevelId;
+            cmbCurriculum.SelectedValue = termSubjectParam.CurriculumId;
+            cmbMajor.SelectedValue = termSubjectParam.MajorId;
+            cmbSubject.SelectedValue = termSubjectParam.SubjectId;
+            cmbTerm.SelectedValue = termSubjectParam.TermId;
+            action = Actions.Update;
+
         }
 
 
@@ -111,12 +116,15 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void loadCurriculum()
         {
-            List<CurriculumModel> roles = _curriculumController.GetCurriculumList("");
-            // Set the DisplayMember and ValueMember properties
-            cmbCurriculum.DisplayMember = "CurriculumName"; // Replace with the property you want to display
-            cmbCurriculum.ValueMember = "Id";    // Replace with the property you want as the value
-            // Bind the roles list to the ComboBox
-            cmbCurriculum.DataSource = roles;
+            if (cmbMajor.SelectedValue != null)
+            {
+                List<CurriculumModel> roles = _curriculumController.getCurriculumByMajor(int.Parse(cmbMajor.SelectedValue.ToString()));
+                // Set the DisplayMember and ValueMember properties
+                cmbCurriculum.DisplayMember = "CurriculumName"; // Replace with the property you want to display
+                cmbCurriculum.ValueMember = "Id";    // Replace with the property you want as the value
+                                                     // Bind the roles list to the ComboBox
+                cmbCurriculum.DataSource = roles;
+            }
         }
 
         private void createBtn_Click_2(object sender, EventArgs e)
@@ -149,8 +157,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             if (!isExist)
             {
                 isSuccess = _subjectController.AddSubjectAndTerm(int.Parse(cmbSubject.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbCurriculum.SelectedValue.ToString()));
-
-
                 if (isSuccess)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -167,6 +173,34 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void closeBtn_Click_2(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbMajor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            loadCurriculum();
+        }
+
+        private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbSubject_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cmbSubject_Enter(object sender, EventArgs e)
+        {
+            List<SubjectModel> roles = _subjectController.GetSubjectList(cmbSubject.Text.Trim());
+
+            // Set the DisplayMember and ValueMember properties
+            cmbSubject.DisplayMember = "SubjectName"; // Replace with the property you want to display
+            cmbSubject.ValueMember = "Id";    // Replace with the property you want as the value
+
+            // Bind the roles list to the ComboBox
+            cmbSubject.DataSource = roles;
         }
     }
 }

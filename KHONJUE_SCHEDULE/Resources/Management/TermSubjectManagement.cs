@@ -100,7 +100,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 if (e.ColumnIndex == levelDatagrid.Columns["EditButton"].Index)
                 {
                     // Edit button clicked
-
                     var termArg = new TermSubjectModel()
                     {
                         Id = Id,
@@ -109,6 +108,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                         MajorId = majorId,
                         LevelId = levelId,
                         TermId = termId,
+                      
                         CurriculumId = curriculumId
                     };
                     CREATE_TERM_SUBJECT_FORM createForm = new CREATE_TERM_SUBJECT_FORM(termArg);
