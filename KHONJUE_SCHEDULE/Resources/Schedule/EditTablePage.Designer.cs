@@ -31,15 +31,12 @@
             panel1 = new Panel();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
-            button1 = new Button();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -66,20 +63,6 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.CornflowerBlue;
-            button1.Font = new Font("Noto Sans Lao", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(1420, 9);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(117, 48);
-            button1.TabIndex = 25;
-            button1.Text = "ເພີ່ມຂໍ້ມູນ";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // EditTablePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -91,7 +74,6 @@
             Name = "EditTablePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditTablePage";
-            panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -102,6 +84,5 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView dataGridView1;
-        private Button button1;
     }
 }
