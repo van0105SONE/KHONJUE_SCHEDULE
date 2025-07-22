@@ -114,7 +114,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
             }
         }
 
-        public List<ClassMajor> GetRoomByMajor(int majorId)
+        public List<ClassMajor> GetRoomByMajor(int majorId, int levelId)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 _command.Connection = _databaseContext.dbConnection;
                 _command.CommandText = $@"SELECT class_major.""Id"",class_major.""ClassName"", class_major.""LevelId"", class_major.""MajorId"",majors.""MajorName"",study_level.""LevelName""  FROM public.class_major
                                         LEFT JOIN ""majors"" ON  ""class_major"".""MajorId"" = ""majors"".""id"" 
-                                        LEFT JOIN ""study_level"" ON class_major.""LevelId"" = ""study_level"".""Id"" WHERE class_major.""MajorId"" = {majorId};";
+                                        LEFT JOIN ""study_level"" ON class_major.""LevelId"" = ""study_level"".""Id"" WHERE class_major.""MajorId"" = {majorId} AND class_major.""LevelId"" = {levelId};";
                 NpgsqlDataReader data = _command.ExecuteReader();
                 while (data.Read())
                 {

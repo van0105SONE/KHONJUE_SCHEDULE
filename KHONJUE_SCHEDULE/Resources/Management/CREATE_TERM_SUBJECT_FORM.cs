@@ -82,14 +82,18 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void loadSubject()
         {
-            List<SubjectModel> roles = _subjectController.GetSubjectList("");
+            if (cmbLevel.SelectedValue != null && cmbTerm.SelectedValue != null && cmbMajor.SelectedValue != null && cmbCurriculum.SelectedValue != null)
+            {
+                List<SubjectModel> roles = _subjectController.GetSubjectListNotExistInTerm(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerm.SelectedValue.ToString()), int.Parse(cmbMajor.SelectedValue.ToString()),  int.Parse(cmbCurriculum.SelectedValue.ToString()));
 
-            // Set the DisplayMember and ValueMember properties
-            cmbSubject.DisplayMember = "SubjectName"; // Replace with the property you want to display
-            cmbSubject.ValueMember = "Id";    // Replace with the property you want as the value
+                // Set the DisplayMember and ValueMember properties
+                cmbSubject.DisplayMember = "SubjectName"; // Replace with the property you want to display
+                cmbSubject.ValueMember = "Id";    // Replace with the property you want as the value
 
-            // Bind the roles list to the ComboBox
-            cmbSubject.DataSource = roles;
+                // Bind the roles list to the ComboBox
+                cmbSubject.DataSource = roles;
+            }
+
         }
         private void loadTerm()
         {
@@ -193,14 +197,35 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void cmbSubject_Enter(object sender, EventArgs e)
         {
-            List<SubjectModel> roles = _subjectController.GetSubjectList(cmbSubject.Text.Trim());
 
-            // Set the DisplayMember and ValueMember properties
-            cmbSubject.DisplayMember = "SubjectName"; // Replace with the property you want to display
-            cmbSubject.ValueMember = "Id";    // Replace with the property you want as the value
+        }
 
-            // Bind the roles list to the ComboBox
-            cmbSubject.DataSource = roles;
+        private void cmbLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadSubject();
+        }
+
+        private void cmbMajor_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmbMajor.SelectedValue != null)
+            {
+                List<CurriculumModel> roles = _curriculumController.getCurriculumByMajor(int.Parse(cmbMajor.SelectedValue.ToString()));
+                // Set the DisplayMember and ValueMember properties
+                cmbCurriculum.DisplayMember = "CurriculumName"; // Replace with the property you want to display
+                cmbCurriculum.ValueMember = "Id";    // Replace with the property you want as the value
+                                                     // Bind the roles list to the ComboBox
+                cmbCurriculum.DataSource = roles;
+            }
+        }
+
+        private void cmbCurriculum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadSubject();
+        }
+
+        private void cmbTerm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadSubject();
         }
     }
 }

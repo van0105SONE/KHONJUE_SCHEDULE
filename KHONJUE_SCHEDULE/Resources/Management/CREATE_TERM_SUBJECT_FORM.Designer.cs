@@ -34,7 +34,6 @@
             cmbTerm = new ComboBox();
             panel9 = new Panel();
             label5 = new Label();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel2 = new Panel();
             cmbLevel = new ComboBox();
@@ -45,11 +44,6 @@
             cmbSubject = new ComboBox();
             panel5 = new Panel();
             label2 = new Label();
-            flowLayoutPanel4 = new FlowLayoutPanel();
-            panel6 = new Panel();
-            cmbMajor = new ComboBox();
-            panel7 = new Panel();
-            label3 = new Label();
             closeBtn = new Button();
             createBtn = new Button();
             flowLayoutPanel5 = new FlowLayoutPanel();
@@ -57,22 +51,26 @@
             cmbCurriculum = new ComboBox();
             panel11 = new Panel();
             label4 = new Label();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            panel6 = new Panel();
+            cmbMajor = new ComboBox();
+            panel7 = new Panel();
+            label3 = new Label();
             panel1.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            panel6.SuspendLayout();
-            panel7.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
             panel10.SuspendLayout();
             panel11.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -99,7 +97,7 @@
             // 
             panel8.Controls.Add(cmbTerm);
             panel8.Controls.Add(panel9);
-            panel8.Location = new Point(3, 4);
+            panel8.Location = new Point(3, 358);
             panel8.Margin = new Padding(3, 4, 3, 4);
             panel8.Name = "panel8";
             panel8.Size = new Size(442, 89);
@@ -115,6 +113,7 @@
             cmbTerm.Name = "cmbTerm";
             cmbTerm.Size = new Size(442, 33);
             cmbTerm.TabIndex = 4;
+            cmbTerm.SelectedIndexChanged += cmbTerm_SelectedIndexChanged;
             // 
             // panel9
             // 
@@ -137,21 +136,10 @@
             label5.TabIndex = 1;
             label5.Text = "ພາກຮຽນ";
             // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Controls.Add(panel8);
-            flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(0, 52);
-            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(448, 100);
-            flowLayoutPanel1.TabIndex = 3;
-            // 
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Controls.Add(panel2);
-            flowLayoutPanel2.Dock = DockStyle.Top;
-            flowLayoutPanel2.Location = new Point(0, 152);
+            flowLayoutPanel2.Location = new Point(0, 254);
             flowLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(448, 100);
@@ -177,6 +165,7 @@
             cmbLevel.Name = "cmbLevel";
             cmbLevel.Size = new Size(442, 33);
             cmbLevel.TabIndex = 4;
+            cmbLevel.SelectedIndexChanged += cmbLevel_SelectedIndexChanged;
             // 
             // panel3
             // 
@@ -202,8 +191,7 @@
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.Controls.Add(panel4);
-            flowLayoutPanel3.Dock = DockStyle.Top;
-            flowLayoutPanel3.Location = new Point(0, 252);
+            flowLayoutPanel3.Location = new Point(0, 455);
             flowLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new Size(448, 100);
@@ -254,59 +242,6 @@
             label2.TabIndex = 1;
             label2.Text = "ວິຊາຮຽນ";
             // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.Controls.Add(panel6);
-            flowLayoutPanel4.Dock = DockStyle.Top;
-            flowLayoutPanel4.Location = new Point(0, 352);
-            flowLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(448, 100);
-            flowLayoutPanel4.TabIndex = 19;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(cmbMajor);
-            panel6.Controls.Add(panel7);
-            panel6.Location = new Point(3, 4);
-            panel6.Margin = new Padding(3, 4, 3, 4);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(442, 89);
-            panel6.TabIndex = 4;
-            // 
-            // cmbMajor
-            // 
-            cmbMajor.Dock = DockStyle.Fill;
-            cmbMajor.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cmbMajor.FormattingEnabled = true;
-            cmbMajor.Location = new Point(0, 42);
-            cmbMajor.Margin = new Padding(3, 4, 3, 4);
-            cmbMajor.Name = "cmbMajor";
-            cmbMajor.Size = new Size(442, 33);
-            cmbMajor.TabIndex = 4;
-            cmbMajor.SelectedIndexChanged += cmbMajor_SelectedIndexChanged;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(label3);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 0);
-            panel7.Margin = new Padding(3, 4, 3, 4);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(442, 42);
-            panel7.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.SizeAll;
-            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(3, 4);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 33);
-            label3.TabIndex = 1;
-            label3.Text = "ສາຂາຮຽນ";
-            // 
             // closeBtn
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -341,11 +276,11 @@
             // 
             flowLayoutPanel5.Controls.Add(panel10);
             flowLayoutPanel5.Dock = DockStyle.Top;
-            flowLayoutPanel5.Location = new Point(0, 452);
+            flowLayoutPanel5.Location = new Point(0, 152);
             flowLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Size = new Size(448, 100);
-            flowLayoutPanel5.TabIndex = 22;
+            flowLayoutPanel5.TabIndex = 24;
             // 
             // panel10
             // 
@@ -367,6 +302,7 @@
             cmbCurriculum.Name = "cmbCurriculum";
             cmbCurriculum.Size = new Size(442, 33);
             cmbCurriculum.TabIndex = 4;
+            cmbCurriculum.SelectedIndexChanged += cmbCurriculum_SelectedIndexChanged;
             // 
             // panel11
             // 
@@ -389,18 +325,71 @@
             label4.TabIndex = 1;
             label4.Text = "ຫຼັກສູດ";
             // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(panel6);
+            flowLayoutPanel4.Dock = DockStyle.Top;
+            flowLayoutPanel4.Location = new Point(0, 52);
+            flowLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(448, 100);
+            flowLayoutPanel4.TabIndex = 23;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(cmbMajor);
+            panel6.Controls.Add(panel7);
+            panel6.Location = new Point(3, 4);
+            panel6.Margin = new Padding(3, 4, 3, 4);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(442, 89);
+            panel6.TabIndex = 4;
+            // 
+            // cmbMajor
+            // 
+            cmbMajor.Dock = DockStyle.Fill;
+            cmbMajor.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbMajor.FormattingEnabled = true;
+            cmbMajor.Location = new Point(0, 42);
+            cmbMajor.Margin = new Padding(3, 4, 3, 4);
+            cmbMajor.Name = "cmbMajor";
+            cmbMajor.Size = new Size(442, 33);
+            cmbMajor.TabIndex = 4;
+            cmbMajor.SelectedIndexChanged += cmbMajor_SelectedIndexChanged_1;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(label3);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(0, 0);
+            panel7.Margin = new Padding(3, 4, 3, 4);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(442, 42);
+            panel7.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.SizeAll;
+            label3.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(3, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 33);
+            label3.TabIndex = 1;
+            label3.Text = "ສາຂາຮຽນ";
+            // 
             // CREATE_TERM_SUBJECT_FORM
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(448, 643);
             Controls.Add(flowLayoutPanel5);
+            Controls.Add(flowLayoutPanel4);
+            Controls.Add(panel8);
             Controls.Add(closeBtn);
             Controls.Add(createBtn);
-            Controls.Add(flowLayoutPanel4);
             Controls.Add(flowLayoutPanel3);
             Controls.Add(flowLayoutPanel2);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
@@ -411,7 +400,6 @@
             panel8.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -420,14 +408,14 @@
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             flowLayoutPanel5.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -439,7 +427,6 @@
         private ComboBox cmbTerm;
         private Panel panel9;
         private Label label5;
-        private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel panel2;
         private ComboBox cmbLevel;
@@ -450,11 +437,6 @@
         private ComboBox cmbSubject;
         private Panel panel5;
         private Label label2;
-        private FlowLayoutPanel flowLayoutPanel4;
-        private Panel panel6;
-        private ComboBox cmbMajor;
-        private Panel panel7;
-        private Label label3;
         private Button closeBtn;
         private Button createBtn;
         private FlowLayoutPanel flowLayoutPanel5;
@@ -462,5 +444,10 @@
         private ComboBox cmbCurriculum;
         private Panel panel11;
         private Label label4;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Panel panel6;
+        private ComboBox cmbMajor;
+        private Panel panel7;
+        private Label label3;
     }
 }

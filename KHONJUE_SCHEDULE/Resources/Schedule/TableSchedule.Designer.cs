@@ -160,6 +160,7 @@
             cmbTerms.Name = "cmbTerms";
             cmbTerms.Size = new Size(251, 28);
             cmbTerms.TabIndex = 5;
+            cmbTerms.SelectedIndexChanged += cmbTerms_SelectedIndexChanged;
             // 
             // panel6
             // 

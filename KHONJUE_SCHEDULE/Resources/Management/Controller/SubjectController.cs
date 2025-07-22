@@ -135,6 +135,42 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
 
         }
 
+        public List<SubjectModel> GetSubjectListNotExistInTerm(int levelId, int termId, int majorId, int curriculumId)
+        {
+            try
+            {
+
+                List<SubjectModel> subjects = new List<SubjectModel>();
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"SELECT subject.""Id"", subject.""SubjectCode"", subject.""SubjectName"", subject.""Description"",  subject.""Lecture"", subject.""Lab"",subject.""Unit"", subject.""Research"" FROM subject WHERE NOT EXISTS (
+        SELECT 1 
+        FROM term_subjects ts 
+        WHERE ts.""SubjectId"" = subject.""Id"" AND ts.""LevelId"" = {levelId} AND ts.""TermId"" = {termId} AND ts.""MajorId"" = {majorId} AND ts.""CurriculumId"" = {curriculumId}
+    ); ";
+                NpgsqlDataReader data = _command.ExecuteReader();
+                while (data.Read())
+                {
+                    SubjectModel subject = new SubjectModel();
+                    subject.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    subject.SubjectCode = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("SubjectCode")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("SubjectCode")).ToString();
+                    subject.SubjectName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("SubjectName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("SubjectName")).ToString();
+                    subject.Description = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("Description")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("Description")).ToString();
+                    subject.Lecture = int.Parse(data.GetValue(data.GetOrdinal("Lecture")).ToString(), 0);
+                    subject.Lab = int.Parse(data.GetValue(data.GetOrdinal("Lab")).ToString(), 0);
+                    subject.Unit = int.Parse(data.GetValue(data.GetOrdinal("Unit")).ToString(), 0);
+                    subject.Research = int.Parse(data.GetValue(data.GetOrdinal("Research")).ToString(), 0);
+                    subjects.Add(subject);
+                }
+                data.Close();
+                return subjects;
+            }
+            catch (Exception ex)
+            {
+                return new List<SubjectModel>();
+            }
+        }
+
 
         public List<SubjectModel> GetSubjectList(string keyword)
         {

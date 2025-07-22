@@ -312,6 +312,11 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             if (cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null && cmbMajors.SelectedValue != null)
             {
                 InitializeWeekGrid();
+                List<ClassMajor> classMajors = _classMajorController.GetRoomByMajor(int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
+
+                cmbClass.DisplayMember = "ClassName"; // Replace with the property you want to display
+                cmbClass.ValueMember = "Id";
+                cmbClass.DataSource = classMajors;
             }
         }
 
@@ -320,7 +325,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
-                List<ClassMajor> classMajors = _classMajorController.GetRoomByMajor(int.Parse(cmbMajors.SelectedValue.ToString()));
+                List<ClassMajor> classMajors = _classMajorController.GetRoomByMajor(int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
 
                 cmbClass.DisplayMember = "ClassName"; // Replace with the property you want to display
                 cmbClass.ValueMember = "Id";
@@ -332,6 +337,14 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
         {
             EditTablePage editDialog = new EditTablePage(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbClass.SelectedValue.ToString()));
             editDialog.ShowDialog();
+            if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
+            {
+                InitializeWeekGrid();
+            }
+        }
+
+        private void cmbTerms_SelectedIndexChanged(object sender, EventArgs e)
+        {
             if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
