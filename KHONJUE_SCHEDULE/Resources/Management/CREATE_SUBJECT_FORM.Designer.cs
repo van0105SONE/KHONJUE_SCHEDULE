@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             panel11 = new Panel();
-            textBox1 = new TextBox();
+            txtLecture = new TextBox();
             panel12 = new Panel();
             label4 = new Label();
             panel7 = new Panel();
@@ -99,7 +99,7 @@
             // 
             // panel11
             // 
-            panel11.Controls.Add(textBox1);
+            panel11.Controls.Add(txtLecture);
             panel11.Controls.Add(panel12);
             panel11.Location = new Point(3, 405);
             panel11.Margin = new Padding(3, 4, 3, 4);
@@ -107,15 +107,15 @@
             panel11.Size = new Size(706, 89);
             panel11.TabIndex = 5;
             // 
-            // textBox1
+            // txtLecture
             // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(0, 42);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(706, 30);
-            textBox1.TabIndex = 1;
+            txtLecture.Dock = DockStyle.Fill;
+            txtLecture.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLecture.Location = new Point(0, 42);
+            txtLecture.Margin = new Padding(3, 4, 3, 4);
+            txtLecture.Name = "txtLecture";
+            txtLecture.Size = new Size(706, 30);
+            txtLecture.TabIndex = 1;
             // 
             // panel12
             // 
@@ -134,9 +134,9 @@
             label4.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(3, 4);
             label4.Name = "label4";
-            label4.Size = new Size(72, 33);
+            label4.Size = new Size(75, 33);
             label4.TabIndex = 1;
-            label4.Text = "ປະຕິບັດ";
+            label4.Text = "ທິດສະດີ";
             // 
             // panel7
             // 
@@ -498,7 +498,7 @@
         private Panel panel10;
         private Label label3;
         private Panel panel11;
-        private TextBox textBox1;
+        private TextBox txtLecture;
         private Panel panel12;
         private Label label4;
     }

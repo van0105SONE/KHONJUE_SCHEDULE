@@ -41,6 +41,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             titleLabel.Text = "ເພິ່ມຂໍ້ມູນ";
             createBtn.Text = "ບັນທຶກ";
             txtUnit.Text = "1";
+            txtLecture.Text = "1";
             txtResearch.Text = "1";
             action = Actions.Create;
         }
@@ -62,6 +63,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             txtSubject.Text = subjectParam.SubjectName;
             txtDescription.Text = subjectParam.Description;
             txtUnit.Text = subjectParam.Unit.ToString();
+            txtLecture.Text = subjectParam.Lecture.ToString();
             txtLab.Text = subjectParam.Lab.ToString();
             txtResearch.Text = subjectParam.Research.ToString();
             titleLabel.Text = "ແກ້ໄຂຂໍ້ມູນ";
@@ -172,9 +174,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
             subject.SubjectName = txtSubject.Text;
             subject.Description = txtDescription.Text;
-            subject.Unit = int.Parse(txtUnit.Text);
-            subject.Lecture = int.Parse(txtUnit.Text);
-            subject.Lab = int.Parse(txtLab.Text);
+            subject.Unit = int.Parse(txtUnit.Text.Trim());
+            subject.Lecture = int.Parse(txtLecture.Text.Trim());
+            subject.Lab = int.Parse(txtLab.Text.Trim());
             subject.Research = int.Parse(txtResearch.Text);
 
             bool isSuccess = false;
