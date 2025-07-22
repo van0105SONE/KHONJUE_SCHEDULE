@@ -67,8 +67,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             deleteButtonColumn.Text = "Delete";  // Set the text to be displayed on the button
             deleteButtonColumn.UseColumnTextForButtonValue = true;  // Use button text
             levelDatagrid.Columns.Add(deleteButtonColumn);
-
-
         }
 
         private void levelDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
