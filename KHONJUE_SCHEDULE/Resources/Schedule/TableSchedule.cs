@@ -126,36 +126,39 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
                 }, 0, i + 1);
             }
 
-            // Load schedules and place cards
-            List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbClass.SelectedValue.ToString()), null, null);
-
-            foreach (var schedule in schedules)
+            if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
-                int col = getDayOfWeek(schedule.Day); // +1 for time label
-                int row = periods.IndexOf(schedule.period) + 1; // +1 for header row
+                // Load schedules and place cards
+                List<ScheduleModel> schedules = _scheduleController.getScheduleAll(int.Parse(cmbLevel.SelectedValue.ToString()), int.Parse(cmbTerms.SelectedValue.ToString()), int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbClass.SelectedValue.ToString()), null, null);
 
-                if (row > 0 && col > 0) // make sure it's valid
+                foreach (var schedule in schedules)
                 {
-                    Control card = CreateScheduleCard(
-                        schedule.levelName,
-                        schedule.termName,
-                        schedule.RoomName,
-                        schedule.majorName,
-                        schedule.period,
-                        schedule.subjectName,
-                        schedule.TeacherName,
-                        schedule.Type
-                        );
+                    int col = getDayOfWeek(schedule.Day); // +1 for time label
+                    int row = periods.IndexOf(schedule.period) + 1; // +1 for header row
 
-                    weekGrid.Controls.Add(card, col, row);
+                    if (row > 0 && col > 0) // make sure it's valid
+                    {
+                        Control card = CreateScheduleCard(
+                            schedule.levelName,
+                            schedule.termName,
+                            schedule.RoomName,
+                            schedule.majorName,
+                            schedule.period,
+                            schedule.subjectName,
+                            schedule.TeacherName,
+                            schedule.Type
+                            );
+
+                        weekGrid.Controls.Add(card, col, row);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid schedule: Day={schedule.Day}, Period={schedule.period}");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine($"Invalid schedule: Day={schedule.Day}, Period={schedule.period}");
-                }
+
+                subjectDatagrid.Controls.Add(weekGrid);
             }
-
-            subjectDatagrid.Controls.Add(weekGrid);
         }
 
         private void AddControlToDay(TableLayoutPanel grid, Control control, DayOfWeek day)
