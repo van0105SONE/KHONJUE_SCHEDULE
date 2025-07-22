@@ -309,7 +309,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null && cmbMajors.SelectedValue != null)
+            if ( cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null && cmbMajors.SelectedValue != null)
             {
                 InitializeWeekGrid();
                 List<ClassMajor> classMajors = _classMajorController.GetRoomByMajor(int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
@@ -322,7 +322,7 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
 
         private void cmbMajors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
+            if (cmbMajors.SelectedValue != null  && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
                 List<ClassMajor> classMajors = _classMajorController.GetRoomByMajor(int.Parse(cmbMajors.SelectedValue.ToString()), int.Parse(cmbLevel.SelectedValue.ToString()));
