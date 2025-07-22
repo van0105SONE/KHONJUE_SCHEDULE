@@ -35,11 +35,6 @@
             txtMajorName = new TextBox();
             panel9 = new Panel();
             label5 = new Label();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            panel2 = new Panel();
-            txtLimitPerClass = new TextBox();
-            panel3 = new Panel();
-            label1 = new Label();
             closeBtn = new Button();
             createBtn = new Button();
             panel4 = new Panel();
@@ -50,9 +45,6 @@
             flowLayoutPanel1.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             SuspendLayout();
@@ -128,60 +120,6 @@
             label5.TabIndex = 1;
             label5.Text = "ຊື່ສາຂາ";
             // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.Controls.Add(panel2);
-            flowLayoutPanel2.Dock = DockStyle.Top;
-            flowLayoutPanel2.Location = new Point(0, 152);
-            flowLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(448, 100);
-            flowLayoutPanel2.TabIndex = 13;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(txtLimitPerClass);
-            panel2.Controls.Add(panel3);
-            panel2.Location = new Point(3, 4);
-            panel2.Margin = new Padding(3, 4, 3, 4);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(442, 89);
-            panel2.TabIndex = 4;
-            // 
-            // txtLimitPerClass
-            // 
-            txtLimitPerClass.Dock = DockStyle.Fill;
-            txtLimitPerClass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLimitPerClass.Location = new Point(0, 42);
-            txtLimitPerClass.Margin = new Padding(3, 4, 3, 4);
-            txtLimitPerClass.Name = "txtLimitPerClass";
-            txtLimitPerClass.Size = new Size(442, 30);
-            txtLimitPerClass.TabIndex = 2;
-            txtLimitPerClass.TextChanged += txtLimitPerClass_TextChanged;
-            txtLimitPerClass.KeyPress += txtLimitPerClass_KeyPress;
-            txtLimitPerClass.KeyUp += txtLimitPerClass_KeyUp;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(label1);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(3, 4, 3, 4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(442, 42);
-            panel3.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.SizeAll;
-            label1.Font = new Font("Noto Sans Lao", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 4);
-            label1.Name = "label1";
-            label1.Size = new Size(104, 33);
-            label1.TabIndex = 1;
-            label1.Text = "ຈຳນວນຫ້ອງ";
-            // 
             // closeBtn
             // 
             closeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -216,7 +154,7 @@
             // 
             panel4.Controls.Add(cmbCrl);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(0, 254);
+            panel4.Location = new Point(0, 153);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
             panel4.Size = new Size(448, 89);
@@ -263,7 +201,6 @@
             Controls.Add(panel4);
             Controls.Add(closeBtn);
             Controls.Add(createBtn);
-            Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -277,11 +214,6 @@
             panel8.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -297,11 +229,6 @@
         private Panel panel9;
         private Label label5;
         private TextBox txtMajorName;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private Panel panel2;
-        private TextBox txtLimitPerClass;
-        private Panel panel3;
-        private Label label1;
         private Button closeBtn;
         private Button createBtn;
         private Panel panel4;

@@ -113,5 +113,36 @@ namespace KHONJUE_SCHEDULE.Resources.Management.Controller
                 return new List<ClassMajor>();
             }
         }
+
+        public List<ClassMajor> GetRoomByMajor(int majorId)
+        {
+            try
+            {
+                List<ClassMajor> classes = new List<ClassMajor>();
+                _command = new NpgsqlCommand();
+                _command.Connection = _databaseContext.dbConnection;
+                _command.CommandText = $@"SELECT class_major.""Id"",class_major.""ClassName"", class_major.""LevelId"", class_major.""MajorId"",majors.""MajorName"",study_level.""LevelName""  FROM public.class_major
+                                        LEFT JOIN ""majors"" ON  ""class_major"".""MajorId"" = ""majors"".""id"" 
+                                        LEFT JOIN ""study_level"" ON class_major.""LevelId"" = ""study_level"".""Id"" WHERE class_major.""MajorId"" = {majorId};";
+                NpgsqlDataReader data = _command.ExecuteReader();
+                while (data.Read())
+                {
+                    ClassMajor studentClass = new ClassMajor();
+                    studentClass.Id = int.Parse(data.GetValue(data.GetOrdinal("Id")).ToString(), 0);
+                    studentClass.ClassName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("ClassName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("ClassName")).ToString();
+                    studentClass.MajorId = int.Parse(data.GetValue(data.GetOrdinal("MajorId")).ToString());
+                    studentClass.LevelId = int.Parse(data.GetValue(data.GetOrdinal("LevelId")).ToString());
+                    studentClass.MajorName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("MajorName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("MajorName")).ToString();
+                    studentClass.LevelName = string.IsNullOrEmpty(data.GetValue(data.GetOrdinal("LevelName")).ToString()) ? "N/A" : data.GetValue(data.GetOrdinal("LevelName")).ToString();
+                    classes.Add(studentClass);
+                }
+                data.Close();
+                return classes;
+            }
+            catch (Exception ex)
+            {
+                return new List<ClassMajor>();
+            }
+        }
     }
 }

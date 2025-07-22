@@ -30,7 +30,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _curriculumController = new CurriculumController(_dbContext);
             major = new MajorModel();
             action = Actions.Create;
-            txtLimitPerClass.Text = "1";
             loadCurriculum();
         }
 
@@ -43,7 +42,6 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             _curriculumController = new CurriculumController(_dbContext);
             major = majorParams;
             txtMajorName.Text = majorParams.MajorName;
-            txtLimitPerClass.Text = majorParams.LimitPerClass.ToString();
             action = Actions.Update;
             loadCurriculum();
         }
@@ -79,12 +77,20 @@ namespace KHONJUE_SCHEDULE.Resources.Management
         private void createBtn_Click_1(object sender, EventArgs e)
         {
             bool isSuccess = false;
+
+            if (string.IsNullOrEmpty(txtMajorName.Text))
+            {
+                MessageBox.Show("ກາລູນາເພີ່ມຊື່ສາຂາຮຽນກ່ອນ");
+                return;
+            }
+
+
             if (action == Actions.Create)
             {
                 MajorModel newMajor = new MajorModel()
                 {
                     MajorName = txtMajorName.Text,
-                    LimitPerClass = int.Parse(txtLimitPerClass.Text),
+                    LimitPerClass = 1,
                     CurriculumId = int.Parse(cmbCrl.SelectedValue.ToString()),
                 };
                 isSuccess = _majorController.CreateMajor(newMajor);
@@ -95,7 +101,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
                 {
                     Id = major.Id,
                     MajorName = txtMajorName.Text,
-                    LimitPerClass = int.Parse(txtLimitPerClass.Text),
+                    LimitPerClass = 1,
                     CurriculumId = int.Parse(cmbCrl.SelectedValue.ToString()),
                 };
                 isSuccess = _majorController.editMajor(updateMajor);

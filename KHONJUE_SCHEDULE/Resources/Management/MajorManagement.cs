@@ -49,7 +49,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             levelDatagrid.Columns["CurriculumId"].Visible = false;
             levelDatagrid.Columns["MajorCode"].HeaderText = "ລະຫັດສາຂາ";
             levelDatagrid.Columns["MajorName"].HeaderText = "ຊື່ສາຂາ";
-            levelDatagrid.Columns["LimitPerClass"].HeaderText = "ຈຳນວນຫ້ອງ";
+            levelDatagrid.Columns["LimitPerClass"].Visible = false; ;
             levelDatagrid.Columns["CurriculumName"].HeaderText = "ຫຼັກສູດ";
 
             // Add two button columns to the DataGridView (you can add them as separate columns)

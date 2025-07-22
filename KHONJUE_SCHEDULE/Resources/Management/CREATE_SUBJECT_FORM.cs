@@ -164,8 +164,9 @@ namespace KHONJUE_SCHEDULE.Resources.Management
 
         private void createBtn_Click_3(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtSubject.Text))
+            if (string.IsNullOrEmpty(txtSubject.Text))
             {
+                MessageBox.Show("ກາລູນາປ້ອນຂໍ້ມູນຊື່ວິຊາກ່ອນ!");
                 return;
             }
 
@@ -173,7 +174,7 @@ namespace KHONJUE_SCHEDULE.Resources.Management
             subject.Description = txtDescription.Text;
             subject.Unit = int.Parse(txtUnit.Text);
             subject.Lecture = int.Parse(txtUnit.Text);
-            subject.Lab = int.Parse(txtUnit.Text);
+            subject.Lab = int.Parse(txtLab.Text);
             subject.Research = int.Parse(txtResearch.Text);
 
             bool isSuccess = false;

@@ -44,6 +44,11 @@ namespace KHONJUE_SCHEDULE.Resources.Search
             dataGridView1.Columns["TermSubjectId"].Visible = false;
             dataGridView1.Columns["periodId"].Visible = false;
             dataGridView1.Columns["RoomId"].Visible = false;
+            dataGridView1.Columns["ClassMajorId"].Visible = false;
+            dataGridView1.Columns["subjectId"].Visible = false;
+            dataGridView1.Columns["majorId"].Visible = false;
+            dataGridView1.Columns["termId"].Visible = false;
+            dataGridView1.Columns["levelId"].Visible = false;
             dataGridView1.Columns["Day"].HeaderText = "ມື້";
             dataGridView1.Columns["TeacherName"].HeaderText = "ຊື່ອາຈານ";
             dataGridView1.Columns["subjectName"].HeaderText = "ວິຊາ";

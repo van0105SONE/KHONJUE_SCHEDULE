@@ -42,9 +42,9 @@
             label4 = new Label();
             cmbClass = new ComboBox();
             panel5 = new Panel();
+            button1 = new Button();
             button3 = new Button();
             subjectDatagrid = new FlowLayoutPanel();
-            button1 = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -91,10 +91,10 @@
             // 
             cmbMajors.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbMajors.FormattingEnabled = true;
-            cmbMajors.Location = new Point(12, 11);
+            cmbMajors.Location = new Point(78, 11);
             cmbMajors.Margin = new Padding(3, 4, 3, 4);
             cmbMajors.Name = "cmbMajors";
-            cmbMajors.Size = new Size(251, 28);
+            cmbMajors.Size = new Size(185, 28);
             cmbMajors.TabIndex = 5;
             cmbMajors.SelectedIndexChanged += cmbMajors_SelectedIndexChanged;
             // 
@@ -203,6 +203,21 @@
             panel5.Size = new Size(370, 55);
             panel5.TabIndex = 1;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.BackColor = Color.DarkGreen;
+            button1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(12, 4);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(156, 48);
+            button1.TabIndex = 9;
+            button1.Text = "ແກ້ໄຂ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // button3
             // 
             button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -225,21 +240,6 @@
             subjectDatagrid.Name = "subjectDatagrid";
             subjectDatagrid.Size = new Size(1772, 517);
             subjectDatagrid.TabIndex = 3;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.DarkGreen;
-            button1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(12, 4);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(156, 48);
-            button1.TabIndex = 9;
-            button1.Text = "ແກ້ໄຂ";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // TableSchedule
             // 

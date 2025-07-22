@@ -320,6 +320,11 @@ namespace KHONJUE_SCHEDULE.Resources.Schedule
             if (cmbMajors.SelectedValue != null && cmbClass.SelectedValue != null && cmbTerms.SelectedValue != null && cmbLevel.SelectedValue != null)
             {
                 InitializeWeekGrid();
+                List<ClassMajor> classMajors = _classMajorController.GetRoomByMajor(int.Parse(cmbMajors.SelectedValue.ToString()));
+
+                cmbClass.DisplayMember = "ClassName"; // Replace with the property you want to display
+                cmbClass.ValueMember = "Id";
+                cmbClass.DataSource = classMajors;
             }
         }
 
