@@ -62,9 +62,9 @@
             panel3.Controls.Add(label1);
             panel3.Controls.Add(cmbTerm);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(261, 0);
+            panel3.Location = new Point(229, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(358, 62);
+            panel3.Size = new Size(390, 62);
             panel3.TabIndex = 4;
             // 
             // label1
@@ -74,9 +74,9 @@
             label1.ForeColor = SystemColors.ActiveCaptionText;
             label1.Location = new Point(275, 16);
             label1.Name = "label1";
-            label1.Size = new Size(82, 28);
+            label1.Size = new Size(109, 28);
             label1.TabIndex = 1;
-            label1.Text = "ເລືອກສາຂາ";
+            label1.Text = "ເລືອກພາກຮຽນ";
             // 
             // cmbTerm
             // 
