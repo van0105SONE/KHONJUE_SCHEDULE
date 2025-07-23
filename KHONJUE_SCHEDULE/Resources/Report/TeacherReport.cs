@@ -49,15 +49,14 @@ namespace KHONJUE_SCHEDULE.Resources.Report
             _scheduleController = new ScheduleController(_dbContext);
             _timePeriodController = new TimePeriodController(_dbContext);
             _majorController = new MajorController(_dbContext);
-            cmbDays.DataSource = new List<string>() {
-            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+
 
         }
 
         async private void button3_Click(object sender, EventArgs e)
         {
             this.REPORT_CONTAINER.Controls.Clear();
-            var data = _scheduleController.getScheduleTeachers(cmbDays.SelectedItem.ToString().Trim(), txtSearch.Text.Trim());
+            var data = _scheduleController.getScheduleTeachers(txtSearch.Text.Trim());
             var period = _timePeriodController.getTimePeriod("");
             var report = new TeacherReportController(data, period, "teacher");
             string path = Path.Combine(Environment.CurrentDirectory, "ScheduleReport.pdf");
@@ -93,7 +92,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string filePath = Path.Combine(desktopPath, @$"TEACHER-SCHEDULE-{DateTime.Now.ToString("MMDDYYYY")}.pdf");
-            var data = _scheduleController.getScheduleTeachers(cmbDays.SelectedItem.ToString().Trim(), txtSearch.Text.Trim());
+            var data = _scheduleController.getScheduleTeachers(txtSearch.Text.Trim());
             var period = _timePeriodController.getTimePeriod("");
             var report = new TeacherReportController(data, period, "teacher");
             report.GeneratePdf(filePath);
@@ -103,7 +102,7 @@ namespace KHONJUE_SCHEDULE.Resources.Report
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var data = _scheduleController.getScheduleTeachers(cmbDays.SelectedItem.ToString().Trim(), txtSearch.Text.Trim());
+            var data = _scheduleController.getScheduleTeachers( txtSearch.Text.Trim());
             ExcelExport.ToExcelClosedXml(data, @$"TEACHER-SCHEDULE-{DateTime.Now.ToString("MMDDYYYY")}.xlsx");
         }
     }

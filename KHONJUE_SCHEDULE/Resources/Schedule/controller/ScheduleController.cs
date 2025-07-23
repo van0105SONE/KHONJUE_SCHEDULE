@@ -393,15 +393,15 @@ ORDER BY teachers.""TeacherName"" ASC;";
 
 
 
-        public List<ScheduleModel> getScheduleTeachers(string day,string teacherCode)
+        public List<ScheduleModel> getScheduleTeachers(string teacherCode)
         {
             try
             {
                 string condition = @" ";
      
-                if (!string.IsNullOrEmpty(teacherCode) || !string.IsNullOrEmpty(day))
+                if (!string.IsNullOrEmpty(teacherCode))
                 {
-                    condition = $@"WHERE ""TeacherCode"" = '{teacherCode}' AND ""Day"" = '{day}'";
+                    condition = $@"WHERE ""TeacherCode"" = '{teacherCode}';";
                 }
 
 

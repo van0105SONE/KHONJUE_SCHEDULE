@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel3 = new Panel();
-            label1 = new Label();
-            cmbDays = new ComboBox();
             panel6 = new Panel();
             txtSearch = new TextBox();
             label4 = new Label();
@@ -41,14 +38,12 @@
             button1 = new Button();
             REPORT_CONTAINER = new Panel();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
             panel6.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Top;
@@ -56,37 +51,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1552, 62);
             panel1.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(cmbDays);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(140, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(358, 62);
-            panel3.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(275, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 28);
-            label1.TabIndex = 1;
-            label1.Text = "ເລືອກມື້";
-            // 
-            // cmbDays
-            // 
-            cmbDays.Font = new Font("Noto Sans Lao", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbDays.FormattingEnabled = true;
-            cmbDays.Location = new Point(12, 11);
-            cmbDays.Margin = new Padding(3, 4, 3, 4);
-            cmbDays.Name = "cmbDays";
-            cmbDays.Size = new Size(251, 36);
-            cmbDays.TabIndex = 5;
             // 
             // panel6
             // 
@@ -193,8 +157,6 @@
             Name = "TeacherReport";
             Size = new Size(1552, 656);
             panel1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel2.ResumeLayout(false);
@@ -212,8 +174,5 @@
         private Panel panel6;
         private TextBox txtSearch;
         private Label label4;
-        private Panel panel3;
-        private Label label1;
-        private ComboBox cmbDays;
     }
 }
