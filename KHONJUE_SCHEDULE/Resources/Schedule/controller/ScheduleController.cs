@@ -401,7 +401,7 @@ ORDER BY teachers.""TeacherName"" ASC;";
      
                 if (!string.IsNullOrEmpty(teacherCode))
                 {
-                    condition = $@"WHERE ""TeacherCode"" = '{teacherCode}';";
+                    condition = $@"WHERE ""TeacherCode"" = '{teacherCode}'";
                 }
 
 
